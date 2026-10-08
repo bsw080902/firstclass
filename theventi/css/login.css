@@ -27,7 +27,7 @@ main { padding: 26px 20px 90px; }
 .input_box input:focus { border-color: var(--primary); }
 .input_box.rela input { padding-right: 60px; }
 .pw_btn { position: absolute; right: 15px; top: 10px; width: 30px; height: 30px; display: grid; place-items: center; color: var(--secondary); }
-.pw_btn svg { width: 26px; height: 26px; }
+.pw_btn img { display: block; width: 26px; height: 26px; }
 .login_option { display: flex; gap: 30px; align-items: center; margin-top: 12px; }
 .login_option label { display: inline-flex; align-items: center; gap: 8px; font-size: 1.5rem; font-weight: 700; cursor: pointer; }
 .login_option .check + span::before { content: ""; display: inline-block; width: 26px; height: 26px; border: 1px solid #BDB7C3; border-radius: 3px; background: var(--white); vertical-align: middle; margin-right: 8px; }
