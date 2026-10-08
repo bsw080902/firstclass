@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>더벤티 로그인</title>
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../font/css/notosanskr.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>로그인</h1>
+            <button type="button" class="prev_btn" aria-label="이전 화면" onclick="history.back()"></button>
+        </header>
+        <main>
+            <h2 class="title">
+                <span>안녕하세요 :)</span>
+                <span class="brand_name"><strong>theVenti</strong>입니다.</span>
+            </h2>
+            <form action="#" method="get" id="login_form">
+                <fieldset>
+                    <legend class="sr-only">이메일 로그인</legend>
+                    <label for="email" class="email">이메일 로그인</label>
+                    <div class="input_box">
+                        <input type="email" id="email" name="email" autocomplete="username" placeholder="아이디(이메일)를 입력해 주세요." required>
+                    </div>
+                    <div class="input_box rela">
+                        <input type="password" id="password" name="password" autocomplete="current-password" placeholder="비밀번호를 입력해 주세요." required>
+                        <button type="button" class="pw_btn" aria-label="비밀번호 보기" aria-pressed="false">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/><path d="M4 21 20 3"/></svg>
+                        </button>
+                    </div>
+                    <div class="login_option">
+                        <label><input type="checkbox" class="check sr-only" name="auto_login" checked><span>자동 로그인</span></label>
+                        <label><input type="checkbox" class="check sr-only" name="save_id"><span>아이디 저장</span></label>
+                    </div>
+                    <button type="submit" class="login_btn" disabled>로그인</button>
+                </fieldset>
+            </form>
+            <nav class="login_link" aria-label="계정 관련 메뉴">
+                <a href="#">아이디 찾기</a>
+                <a href="#">비밀번호 재설정</a>
+                <a href="#">회원가입</a>
+            </nav>
+            <div class="sns_login">
+                <p>SNS로 간편하게 로그인</p>
+                <!-- theventi/img/에 실제 SNS 아이콘이 추가되면 아래 텍스트를 이미지로 교체 -->
+                <div class="sns_list">
+                    <a href="#" class="kakao" aria-label="카카오 로그인">●</a>
+                    <a href="#" class="naver" aria-label="네이버 로그인">N</a>
+                    <a href="#" class="apple" aria-label="애플 로그인">●</a>
+                    <a href="#" class="samsung" aria-label="삼성카드 로그인">삼성<br>카드</a>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        const email = document.querySelector('#email');
+        const password = document.querySelector('#password');
+        const loginBtn = document.querySelector('.login_btn');
+        const pwBtn = document.querySelector('.pw_btn');
+        function updateLoginButton() {
+            loginBtn.disabled = !email.value.trim() || !password.value.trim();
+        }
+        email.addEventListener('input', updateLoginButton);
+        password.addEventListener('input', updateLoginButton);
+        pwBtn.addEventListener('click', function () {
+            const visible = password.type === 'password';
+            password.type = visible ? 'text' : 'password';
+            pwBtn.setAttribute('aria-pressed', String(visible));
+            pwBtn.setAttribute('aria-label', visible ? '비밀번호 숨기기' : '비밀번호 보기');
+        });
+        document.querySelector('#login_form').addEventListener('submit', function (event) {
+            event.preventDefault(); // 서버 연동 전 화면 구현용
+        });
+    </script>
+</body>
+</html>
