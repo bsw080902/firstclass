@@ -35,7 +35,7 @@ main { padding: 26px 20px 90px; }
 .login_option .check:checked + span::after { content: ""; position: absolute; left: 7px; top: 7px; width: 12px; height: 7px; border-left: 2px solid var(--white); border-bottom: 2px solid var(--white); transform: rotate(-45deg); }
 .login_option label span { position: relative; display: inline-flex; align-items: center; white-space: nowrap; }
 .login_option .check:checked + span::after { left: 7px; top: 8px; }
-.login_option label:nth-child(2) .check:checked + span::before { background: var(--primary); border-color: var(--primary); }
+
 .login_btn { width: 100%; height: 50px; margin-top: 20px; border-radius: 25px; background: var(--primary); color: var(--white); font-size: 1.8rem; font-weight: 700; }
 .login_btn:disabled { background: #E6CFEB; color: #F7EAF9; cursor: not-allowed; }
 .login_link { display: flex; justify-content: center; align-items: center; margin-top: 18px; font-size: 1.3rem; }
