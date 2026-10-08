@@ -46,8 +46,5 @@ main { padding: 26px 20px 90px; }
 .sns_login > p::before, .sns_login > p::after { content: ""; height: 1px; flex: 1; background: var(--line); }
 .sns_list { display: flex; justify-content: center; gap: 16px; }
 .sns_list a { display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%; font-weight: 900; font-size: 2.2rem; }
-.sns_list .kakao { background: #FEE500; color: #30231E; }
-.sns_list .naver { background: #03C75A; color: var(--white); }
-.sns_list .apple { background: #202020; color: var(--white); }
-.sns_list .samsung { background: #073DD8; color: var(--white); font-size: 1.1rem; line-height: 1.1; text-align: center; }
+.sns_list a img { display: block; width: 45px; height: 45px; }
 @media (max-width: 360px) { .login_option { gap: 12px; } .login_link a { padding: 0 8px; } }
