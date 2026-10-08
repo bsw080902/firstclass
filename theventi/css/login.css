@@ -17,7 +17,7 @@ header h1 { font-size: 2rem; font-weight: 800; }
 main { padding: 26px 20px 90px; }
 .title { display: flex; justify-content: center; align-items: center; margin-bottom: 47px; }
 .brand_name { display: flex; align-items: center; gap: 2px; font-size: 3.1rem; letter-spacing: -1.5px; }
-.brand_logo { display: block; width: 150px; max-width: 100%; height: auto; }
+.brand_logo { display: block; width: 150px; max-width: 100%; height: auto; margin: 0 auto; }
 .brand_name strong { font-family: Georgia, serif; font-weight: 900; font-style: italic; letter-spacing: -2px; }
 .email { display: inline-block; margin-bottom: 6px; font-size: 1.4rem; font-weight: 700; }
 .input_box { position: relative; }
