@@ -16,7 +16,8 @@ header h1 { font-size: 2rem; font-weight: 800; }
 .prev_btn::before { content: ""; width: 14px; height: 14px; border-left: 3px solid var(--primary); border-bottom: 3px solid var(--primary); transform: rotate(45deg); }
 main { padding: 26px 20px 90px; }
 .title { display: flex; flex-direction: column; gap: 8px; margin-bottom: 47px; color: var(--primary); font-size: 2.5rem; font-weight: 800; line-height: 1.5; }
-.brand_name { font-size: 3.1rem; letter-spacing: -1.5px; }
+.brand_name { display: flex; align-items: center; gap: 2px; font-size: 3.1rem; letter-spacing: -1.5px; }
+.brand_logo { display: block; width: 150px; height: auto; flex-shrink: 0; }
 .brand_name strong { font-family: Georgia, serif; font-weight: 900; font-style: italic; letter-spacing: -2px; }
 .email { display: inline-block; margin-bottom: 6px; font-size: 1.4rem; font-weight: 700; }
 .input_box { position: relative; }
