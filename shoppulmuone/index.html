@@ -40,6 +40,9 @@
                     <div class="visual-controls">
                         <div class="swiper-pagination"></div>
                         <div class="swiper-scrollbar"></div>
+                        <button type="button" class="visual-autoplay" aria-label="자동재생 일시정지" aria-pressed="false">
+                            <img src="img/Pause.svg" alt="">
+                        </button>
                     </div>
                 </div>
             </div>
@@ -63,10 +66,29 @@
                 prevEl: '.visual .swiper-button-prev',
             },
 
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+
             scrollbar: {
                 el: '.visual .swiper-scrollbar',
                 draggable: true,
             },
+        });
+
+        const autoplayButton = document.querySelector('.visual-autoplay');
+        autoplayButton.addEventListener('click', () => {
+            const paused = autoplayButton.getAttribute('aria-pressed') === 'true';
+            if (paused) {
+                swiperHero.autoplay.start();
+                autoplayButton.setAttribute('aria-pressed', 'false');
+                autoplayButton.setAttribute('aria-label', '자동재생 일시정지');
+            } else {
+                swiperHero.autoplay.stop();
+                autoplayButton.setAttribute('aria-pressed', 'true');
+                autoplayButton.setAttribute('aria-label', '자동재생 시작');
+            }
         });
     </script>
 </body>
