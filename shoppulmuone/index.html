@@ -1,81 +1,73 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>샵풀무원리뉴얼포트폴리오</title>
-        <link rel="stylesheet" href="../css/default.css">
-        <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
-        <link rel="stylesheet" href="../font/css/pretendardvariable.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="../npm/swiper/swiper-bundle.min.js"></script>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>샵풀무원리뉴얼포트폴리오</title>
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../font/css/pretendardvariable.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="../npm/swiper/swiper-bundle.min.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <header>제목공간</header>
 
-    </head>
-    <body>
-        <div id="wrap">
-            <header>제목공간</header>
-            <main>
-                <div class="hero-sec">
-                    <!-- Slider main container -->
-                    <div class="swiper visual">
-                        <!-- Additional required wrapper -->
-                        <div class="swiper-wrapper">
-                            <!-- Slides -->
-                            <div class="swiper-slide">
-                                <img src="img/visual01.png" alt="할인배너" 
-                                class="pc">
-                                <img src="img/m_visual01.jpg" alt="모바일 할인배너" 
-                                class="mo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="img/visual02.png" alt="아미오" 
-                                class="pc">
-                                <img src="img/m_visual02.jpg" alt="모바일아미오" 
-                                class="mo">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="img/visual03.png" alt="가을한상" 
-                                class="pc">
-                                <img src="img/m_visual03.jpg" alt="모바일가을한상" 
-                                class="mo">   
-                            </div>
+        <main>
+            <div class="hero-sec">
+                <div class="swiper visual">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="img/visual01.png" alt="할인배너" class="pc">
+                            <img src="img/m_visual01.jpg" alt="모바일 할인배너" class="mo">
                         </div>
-                        <!-- If we need pagination -->배너
-                        <div class="swiper-pagination"></div>
+                        <div class="swiper-slide">
+                            <img src="img/visual02.png" alt="아미오" class="pc">
+                            <img src="img/m_visual02.jpg" alt="모바일아미오" class="mo">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/visual03.png" alt="가을한상" class="pc">
+                            <img src="img/m_visual03.jpg" alt="모바일가을한상" class="mo">
+                        </div>
+                    </div>
 
-                        <!-- If we need navigation buttons -->
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
-                        
-                        <!-- If we need scrollbar -->
-                        <div class="swiper-scrollbar"></div>        
+                    <!-- Figma 형태의 좌우 화살표 -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
+                    <!-- Figma 형태의 우측 하단 컨트롤 -->
+                    <div class="visual-controls">
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-scrollbar"></div>
                     </div>
                 </div>
-            </main>
-            <footer>&copy;</footer>
-        </div>
-        <script>
-            const swiperHero = new Swiper('.hero-sec > .swiper', {
-                // Optional parameters
-                direction: 'horizontal',
-                loop: true,
+            </div>
+        </main>
 
-                    // If we need pagination
-                    pagination: {
-                        el: '.visual .swiper-pagination',
-                    },
+        <footer>&copy;</footer>
+    </div>
 
-                    // Navigation arrows
-                    navigation: {
-                        nextEl: '.visual .swiper-button-next',
-                        prevEl: '.visual .swiper-button-prev',
-                    },
+    <script>
+        const swiperHero = new Swiper('.hero-sec > .swiper', {
+            direction: 'horizontal',
+            loop: true,
 
-                // And if we need scrollbar
-                scrollbar: {
-                    el: '.visual .swiper-scrollbar',
-                },
-            });
-        </script>
-    </body>
-    </html> 
+            pagination: {
+                el: '.visual .swiper-pagination',
+                type: 'fraction',
+            },
+
+            navigation: {
+                nextEl: '.visual .swiper-button-next',
+                prevEl: '.visual .swiper-button-prev',
+            },
+
+            scrollbar: {
+                el: '.visual .swiper-scrollbar',
+                draggable: true,
+            },
+        });
+    </script>
+</body>
+</html>
