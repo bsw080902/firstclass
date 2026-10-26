@@ -50,6 +50,12 @@ body {
 }
 .visual .swiper-button-prev::after,
 .visual .swiper-button-next::after {
+    content: none !important;
+    display: none !important;
+}
+/* Swiper 기본 화살표 아이콘은 숨기고 SVG만 표시 */
+.visual .swiper-button-prev svg,
+.visual .swiper-button-next svg {
     display: none;
 }
 
