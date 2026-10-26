@@ -1,32 +1,131 @@
 body {
     background-color: yellow;
-    font-family: 
-    "Pretendard Variable", 
+    font-family:
+    "Pretendard Variable",
     sans-serif;
 }
+
 .mo {
     display: none;
 }
+
 .hero-sec .swiper {
     width: 100%;
     height: 600px;
+    position: relative;
 }
-/*높이를 고정하고 싶은 경우는 px값 적용 */
+
+/* 높이를 고정하고 싶은 경우는 px값 적용 */
 /* 반응형에 따라 높이값이 점점 줄어들길 바라면 높이값
 주지않기! max-height정도는 가능 */
+
 .hero-sec .swiper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+/* ------------------------------
+   HERO Swiper - Figma 스타일
+------------------------------ */
+
+/* 좌우 화살표: 반투명 원형 버튼 */
+.visual .swiper-button-prev,
+.visual .swiper-button-next {
+    width: 52px;
+    height: 52px;
+    margin-top: 0;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.14);
+    color: #fff;
+    transition: background-color 0.2s ease;
+}
+
+.visual .swiper-button-prev {
+    left: 36px;
+}
+
+.visual .swiper-button-next {
+    right: 36px;
+}
+
+.visual .swiper-button-prev:hover,
+.visual .swiper-button-next:hover {
+    background: rgba(0, 0, 0, 0.24);
+}
+
+.visual .swiper-button-prev::after,
+.visual .swiper-button-next::after {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* 오른쪽 아래 pagination + scrollbar 묶음 */
+.visual-controls {
+    position: absolute;
+    right: 28px;
+    bottom: 24px;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    min-height: 28px;
+    padding: 0 10px;
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* 숫자 pagination */
+.visual .swiper-pagination {
+    position: static;
+    width: auto;
+    min-width: 34px;
+
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 12px;
+    line-height: 1;
+}
+
+.visual .swiper-pagination-current {
+    color: #fff;
+    font-weight: 700;
+}
+
+/* 기본 "/"를 Figma처럼 가볍게 보이게 */
+.visual .swiper-pagination-total {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+/* 진행형 scrollbar */
+.visual .swiper-scrollbar {
+    position: static;
+    width: 34px;
+    height: 2px;
+
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.38);
+}
+
+.visual .swiper-scrollbar-drag {
+    border-radius: 999px;
+    background: #fff;
+}
+
 @media (max-width: 1024px) {
     .pc {
         display: none;
     }
+
     .mo {
         display: block;
     }
+
     header {
         position: fixed;
         width: 100%;
@@ -34,7 +133,27 @@ body {
         background-color: orange;
         z-index: 10;
     }
+
     .hero-sec .swiper {
         height: 100dvh;
+    }
+
+    .visual .swiper-button-prev,
+    .visual .swiper-button-next {
+        width: 44px;
+        height: 44px;
+    }
+
+    .visual .swiper-button-prev {
+        left: 18px;
+    }
+
+    .visual .swiper-button-next {
+        right: 18px;
+    }
+
+    .visual-controls {
+        right: 16px;
+        bottom: 18px;
     }
 }
