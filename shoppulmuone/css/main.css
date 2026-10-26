@@ -29,36 +29,28 @@ body {
    HERO Swiper - Figma 스타일
 ------------------------------ */
 
-/* 좌우 화살표: 반투명 원형 버튼 */
+/* 원본 SVG를 좌우 화살표에 그대로 사용 */
 .visual .swiper-button-prev,
 .visual .swiper-button-next {
-    width: 52px;
-    height: 52px;
+    width: 62px;
+    height: 62px;
     margin-top: 0;
     transform: translateY(-50%);
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.14);
-    color: #fff;
-    transition: background-color 0.2s ease;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
-
 .visual .swiper-button-prev {
     left: 36px;
+    background-image: url("../img/Left_icon.svg");
 }
-
 .visual .swiper-button-next {
     right: 36px;
+    background-image: url("../img/Right_icon.svg");
 }
-
-.visual .swiper-button-prev:hover,
-.visual .swiper-button-next:hover {
-    background: rgba(0, 0, 0, 0.24);
-}
-
 .visual .swiper-button-prev::after,
 .visual .swiper-button-next::after {
-    font-size: 18px;
-    font-weight: 700;
+    display: none;
 }
 
 /* 오른쪽 아래 pagination + scrollbar 묶음 */
@@ -72,13 +64,43 @@ body {
     align-items: center;
     gap: 8px;
 
-    min-height: 28px;
-    padding: 0 10px;
+    min-height: 20px;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.visual-autoplay {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 0;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    position: relative;
+}
+.visual-autoplay img { display: block; width: 20px; height: 20px; }
+.visual-autoplay[aria-pressed="true"] img { visibility: hidden; }
+.visual-autoplay[aria-pressed="true"]::after {
+    content: "▶";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,.2);
+    color: white;
+    font-size: 10px;
+}
+.visual-controls .swiper-pagination {
+    background: rgba(255,255,255,.25);
+    padding: 4px 8px;
+    border-radius: 999px;
     border-radius: 999px;
 
-    background: rgba(255, 255, 255, 0.28);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
 }
 
 /* 숫자 pagination */
