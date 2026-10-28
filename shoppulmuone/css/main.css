@@ -428,3 +428,31 @@ body {
 .category-panel.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
 @media (max-width: 600px) { .category-panel { left: 0; width: min(430px, calc(100vw - 32px)); padding: 30px 16px; grid-template-columns: minmax(110px, 1fr) 2px minmax(115px, 1fr); column-gap: 12px; } .category-panel .category-item { width: 100%; } }
 @media (prefers-reduced-motion: reduce) { .category-panel { transition: none; } }
+
+/* 혜택 호버 드롭다운: 150px 너비, 254px 높이 */
+.benefit-menu { position: relative; display: flex; align-items: center; }
+.benefit-panel {
+    position: absolute; top: calc(100% + 18px); left: 50%;
+    transform: translate(-50%, -7px);
+    width: 150px; height: 254px; box-sizing: border-box;
+    padding: 22px 10px; background: #fff;
+    border: 1px solid #e1e8e1; border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .16);
+    display: flex; flex-direction: column; justify-content: space-around; align-items: center;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
+    z-index: 45;
+}
+/* 트리거와 드롭다운 사이의 공간에서도 호버가 끊기지 않도록 연결 */
+.benefit-panel::before { content: ''; position: absolute; left: 0; right: 0; top: -20px; height: 20px; }
+.benefit-menu:hover .benefit-panel,
+.benefit-menu:focus-within .benefit-panel {
+    opacity: 1; visibility: visible; pointer-events: auto;
+    transform: translate(-50%, 0);
+}
+.header-nav .benefit-panel a { font-size: 14px; font-weight: 500; color: #6b7b6f; }
+.header-nav .benefit-panel a:hover, .header-nav .benefit-panel a:focus-visible { color: #009333; }
+.benefit-menu:hover .benefit-trigger, .benefit-menu:focus-within .benefit-trigger { color: #009333; }
+.benefit-menu:hover .benefit-trigger .icon-default, .benefit-menu:focus-within .benefit-trigger .icon-default { opacity: 0; }
+.benefit-menu:hover .benefit-trigger .icon-hover, .benefit-menu:focus-within .benefit-trigger .icon-hover { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .benefit-panel { transition: none; } }
