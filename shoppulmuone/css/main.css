@@ -456,3 +456,7 @@ body {
 .benefit-menu:hover .benefit-trigger .icon-default, .benefit-menu:focus-within .benefit-trigger .icon-default { opacity: 0; }
 .benefit-menu:hover .benefit-trigger .icon-hover, .benefit-menu:focus-within .benefit-trigger .icon-hover { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .benefit-panel { transition: none; } }
+
+/* 일일배달: 혜택과 동일한 호버 효과, 이미지 기준 150 × 336px */
+.daily-panel { height: 336px; }
+.header-nav .daily-panel a { display: block; width: 100%; text-align: center; line-height: 1.5; white-space: normal; }
