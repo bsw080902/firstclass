@@ -55,8 +55,12 @@
 .header-nav .nav-icon-switch { position: relative; display: inline-flex; flex: none; align-items: center; justify-content: center; }
 .header-nav .nav-icon-switch img { display: block; transition: opacity 0.25s ease, filter 0.25s ease; }
 .header-nav .nav-icon-switch .icon-hover { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
-.header-nav a.is-active .icon-default { opacity: 0; }
-.header-nav a.is-active .icon-hover { opacity: 1; }
+.header-nav .category-link.is-active .icon-default,
+.header-nav .nav-dropdown:hover .icon-default,
+.header-nav .nav-dropdown:focus-visible .icon-default { opacity: 0; }
+.header-nav .category-link.is-active .icon-hover,
+.header-nav .nav-dropdown:hover .icon-hover,
+.header-nav .nav-dropdown:focus-visible .icon-hover { opacity: 1; }
 .header-nav .category-link .icon-hover { width: 26px; height: 26px; }
 /* SVG 이미지는 CSS color를 상속하지 않으므로 hover 때 녹색 필터 적용 */
 .header-nav a:hover img:not(.nav-divider):not(.icon-hover),
