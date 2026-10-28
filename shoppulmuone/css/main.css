@@ -48,11 +48,11 @@
 .header-nav .best-link { gap: 25px; }
 .header-nav .best-link .nav-divider { display: block; width: 3px; height: 18px; margin-right: 0; flex: none; }
 .header-nav .nav-dropdown img { width: 15px; height: 15px; }
-/* 헤더 메뉴: hover/focus 시 Action Primary (#009333) 및 아이콘 전환 */
+/* 헤더 메뉴: 글씨는 hover/focus 시 초록색, 아이콘 전환은 클릭 시 */
 .header-nav a:hover, .header-nav a:focus-visible { color: #009333; }
 .header-nav .icon-hover { display: none; }
-.header-nav a:hover .icon-default, .header-nav a:focus-visible .icon-default { display: none; }
-.header-nav a:hover .icon-hover, .header-nav a:focus-visible .icon-hover { display: block; }
+.header-nav a.is-active .icon-default { display: none; }
+.header-nav a.is-active .icon-hover { display: block; }
 .header-nav .category-link .icon-hover { width: 26px; height: 26px; }
 /* SVG 이미지는 CSS color를 상속하지 않으므로 hover 때 녹색 필터 적용 */
 .header-nav a:hover img:not(.nav-divider):not(.icon-hover),
