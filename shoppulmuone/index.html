@@ -305,6 +305,26 @@
             });
         });
 
+        // 스크롤 방향에 따라 헤더를 부드럽게 숨기거나 다시 표시합니다.
+        const siteHeader = document.querySelector('.site-header');
+        let previousScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            const difference = currentScrollY - previousScrollY;
+            if (currentScrollY <= 80) {
+                siteHeader.classList.remove('header-hidden');
+            } else if (Math.abs(difference) > 4) {
+                const menuFocused = siteHeader.contains(document.activeElement);
+                if (difference > 0 && !menuFocused) {
+                    siteHeader.classList.add('header-hidden');
+                    closeCategoryPanel();
+                } else if (difference < 0) {
+                    siteHeader.classList.remove('header-hidden');
+                }
+            }
+            previousScrollY = currentScrollY;
+        }, { passive: true });
+
         // 찜 버튼의 선택 상태를 바꿉니다. (데모 UI, 서버 저장 기능은 아님)
         document.querySelectorAll('.recommend-wish').forEach(button => {
             button.addEventListener('click', () => {
