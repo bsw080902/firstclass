@@ -472,6 +472,6 @@ body {
 
 
 /* 헤더는 고정하지 않고, 아래 콘텐츠만 스크롤 시 부드럽게 등장 */
-.scroll-reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-.scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) { .scroll-reveal { opacity: 1; transform: none; transition: none; } }
+.scroll-reveal-item { opacity: 0; transform: translateY(28px); transition: opacity .65s ease var(--reveal-delay, 0ms), transform .65s ease var(--reveal-delay, 0ms); }
+.scroll-reveal-item.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .scroll-reveal-item { opacity: 1; transform: none; transition: none; } }
