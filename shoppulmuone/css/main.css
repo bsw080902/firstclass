@@ -283,7 +283,7 @@ body {
     text-align: center;
     text-decoration: none;
     font-family: "Pretendard Variable", sans-serif;
-    font-size: 24px; /* Figma 18pt = CSS 24px (96dpi 기준) */
+    font-size: 18px; /* Figma 글자 크기 18 */
     font-weight: 600; /* SemiBold */
     line-height: 1.4;
     white-space: nowrap;
