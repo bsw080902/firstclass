@@ -11,21 +11,24 @@ body {
 }
 
 .hero-sec {
-    padding: 20px;
+    padding: 0;
+    margin-top: 32px;
+    overflow: hidden; /* 화면 밖으로 나가는 양옆 슬라이드만 잘라냄 */
 }
 
 .hero-sec .swiper {
     width: 100%;
-    height: min(600px, 70vh);
-    min-height: 320px;
+    height: clamp(320px, 24vw, 460px);
     position: relative;
+    overflow: visible; /* 양옆 슬라이드가 보이도록 */
+}
+
+.hero-sec .swiper-slide {
+    width: min(1280px, 66.6667vw);
+    height: 100%;
     border-radius: 20px;
     overflow: hidden;
 }
-
-/* 높이를 고정하고 싶은 경우는 px값 적용 */
-/* 반응형에 따라 높이값이 점점 줄어들길 바라면 높이값
-주지않기! max-height정도는 가능 */
 
 .hero-sec .swiper img {
     width: 100%;
@@ -49,11 +52,11 @@ body {
     background-size: contain;
 }
 .visual .swiper-button-prev {
-    left: 36px;
+    left: calc(50% - min(640px, 33.33335vw) + 36px);
     background-image: url("../img/Left_icon.svg");
 }
 .visual .swiper-button-next {
-    right: 36px;
+    right: calc(50% - min(640px, 33.33335vw) + 36px);
     background-image: url("../img/Right_icon.svg");
 }
 .visual .swiper-button-prev::after,
@@ -70,7 +73,7 @@ body {
 /* 오른쪽 아래 pagination + 자동재생 버튼 */
 .visual-controls {
     position: absolute;
-    right: 28px;
+    right: calc(50% - min(640px, 33.33335vw) + 28px);
     bottom: 24px;
     z-index: 10;
 
@@ -158,12 +161,16 @@ body {
     }
 
     .hero-sec {
-        padding: 12px;
+        margin-top: 72px;
     }
 
     .hero-sec .swiper {
-        height: min(600px, 70dvh);
+        height: min(65dvh, 540px);
         min-height: 320px;
+    }
+
+    .hero-sec .swiper-slide {
+        width: calc(100vw - 32px);
     }
 
     .visual .swiper-button-prev,
@@ -173,15 +180,15 @@ body {
     }
 
     .visual .swiper-button-prev {
-        left: 18px;
+        left: 34px;
     }
 
     .visual .swiper-button-next {
-        right: 18px;
+        right: 34px;
     }
 
     .visual-controls {
-        right: 16px;
+        right: 32px;
         bottom: 18px;
     }
 }
