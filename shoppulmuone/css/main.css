@@ -398,14 +398,16 @@ body {
 /* 카테고리 펼침 메뉴: 430 × 300, 이미지 레퍼런스 기준 */
 .header-nav { position: relative; }
 .site-header { position: relative; z-index: 30; }
-.category-panel[hidden] { display: none; }
+
 .category-panel {
     position: absolute; top: calc(100% + 12px); left: 8px;
     width: 430px; height: 300px; box-sizing: border-box;
     padding: 40px 30px; background: #fff; border: 1px solid #e0e8df;
     border-radius: 20px; box-shadow: 0 14px 36px rgba(0, 0, 0, .18);
     display: grid; grid-template-columns: 142px 3px 1fr; column-gap: 30px;
-    z-index: 40; animation: category-panel-in .22s ease-out;
+    z-index: 40; opacity: 0; visibility: hidden; pointer-events: none;
+    transform: translateY(-7px);
+    transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
 }
 .category-panel-left { display: flex; flex-direction: column; justify-content: space-between; }
 .category-panel .category-item {
@@ -419,6 +421,6 @@ body {
 .category-panel-right { display: flex; flex-direction: column; align-items: center; justify-content: space-around; }
 .header-nav .category-panel-right a { color: #6b7b6f; font-size: 14px; font-weight: 500; }
 .header-nav .category-panel-right a:hover { color: #009333; }
-@keyframes category-panel-in { from { opacity: 0; transform: translateY(-7px); } to { opacity: 1; transform: translateY(0); } }
+.category-panel.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); }
 @media (max-width: 600px) { .category-panel { left: 0; width: min(430px, calc(100vw - 32px)); padding: 30px 16px; grid-template-columns: minmax(110px, 1fr) 2px minmax(115px, 1fr); column-gap: 12px; } .category-panel .category-item { width: 100%; } }
-@media (prefers-reduced-motion: reduce) { .category-panel { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .category-panel { transition: none; } }
