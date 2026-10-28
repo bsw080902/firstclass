@@ -305,9 +305,10 @@
             });
         });
 
-        // 화면에 들어오는 콘텐츠를 한 번만 자연스럽게 나타냅니다.
-        const revealItems = document.querySelectorAll('.quick-menu, .recommend-section');
+        // 퀵메뉴와 추천 상품을 각각 화면에 들어올 때 부드럽게 표시합니다.
+        const revealItems = document.querySelectorAll('.quick-menu-list li, .recommend-heading, .recommend-card');
         if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            // 화면 밖에 있는 항목에만 숨김 상태를 적용해 초기 화면 깜빡임을 방지합니다.
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -315,9 +316,10 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
-            revealItems.forEach(item => {
-                item.classList.add('scroll-reveal');
+            }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+            revealItems.forEach((item, index) => {
+                item.classList.add('scroll-reveal-item');
+                item.style.setProperty('--reveal-delay', (index % 6) * 65 + 'ms');
                 revealObserver.observe(item);
             });
         }
