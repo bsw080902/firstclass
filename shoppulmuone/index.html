@@ -305,6 +305,20 @@
             });
         });
 
+        // 아래로 스크롤하면 헤더를 숨기고, 위로 스크롤하면 다시 보여줍니다.
+        const siteHeader = document.querySelector('.site-header');
+        let previousScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            const difference = currentScrollY - previousScrollY;
+            if (currentScrollY <= 10) {
+                siteHeader.classList.remove('is-hidden');
+            } else if (Math.abs(difference) > 5) {
+                siteHeader.classList.toggle('is-hidden', difference > 0);
+            }
+            previousScrollY = currentScrollY;
+        }, { passive: true });
+
         // 퀵메뉴와 추천 상품을 각각 화면에 들어올 때 부드럽게 표시합니다.
         const revealItems = document.querySelectorAll('.quick-menu-list li, .recommend-heading, .recommend-card');
         if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
