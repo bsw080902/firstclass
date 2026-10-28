@@ -51,9 +51,12 @@
 .header-nav .nav-dropdown img { width: 15px; height: 15px; }
 /* 헤더 메뉴: 글씨는 hover/focus 시 초록색, 아이콘 전환은 클릭 시 */
 .header-nav a:hover, .header-nav a:focus-visible { color: #009333; }
-.header-nav .icon-hover { display: none; }
-.header-nav a.is-active .icon-default { display: none; }
-.header-nav a.is-active .icon-hover { display: block; }
+/* 두 SVG를 겹쳐두고 투명도로 전환하면 클릭할 때 부드럽게 바뀝니다. */
+.header-nav .nav-icon-switch { position: relative; display: inline-flex; flex: none; align-items: center; justify-content: center; }
+.header-nav .nav-icon-switch img { display: block; transition: opacity 0.25s ease, filter 0.25s ease; }
+.header-nav .nav-icon-switch .icon-hover { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+.header-nav a.is-active .icon-default { opacity: 0; }
+.header-nav a.is-active .icon-hover { opacity: 1; }
 .header-nav .category-link .icon-hover { width: 26px; height: 26px; }
 /* SVG 이미지는 CSS color를 상속하지 않으므로 hover 때 녹색 필터 적용 */
 .header-nav a:hover img:not(.nav-divider):not(.icon-hover),
