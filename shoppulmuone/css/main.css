@@ -469,3 +469,15 @@ body {
     .daily-menu .benefit-panel { left: auto; right: 0; }
     .category-panel { left: 0; max-width: calc(100vw - 32px); }
 }
+
+/* 스크롤 방향에 따라 헤더 전체가 위로 자연스럽게 숨겨졌다 나타납니다. */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    transition: transform .3s ease;
+}
+.site-header.header-hidden { transform: translateY(-100%); }
+@media (prefers-reduced-motion: reduce) {
+    .site-header { transition: none; }
+}
