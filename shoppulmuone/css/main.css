@@ -42,7 +42,7 @@
 }
 .header-search button { border: 0; background: transparent; padding: 0; cursor: pointer; }
 .header-search button img { width: 26px; height: 26px; display: block; }
-.header-nav { display: flex; align-items: center; gap: 22px; white-space: nowrap; }
+.header-nav { display: flex; align-items: center; gap: 25px; white-space: nowrap; }
 .header-nav a { display: inline-flex; align-items: center; gap: 5px; color: var(--text-primary); font-size: 15px; font-weight: 600; text-decoration: none; }
 .header-nav .category-link img { width: 26px; height: 26px; }
 .header-nav .best-link .nav-divider { display: block; width: 3px; height: 18px; margin-right: 6px; flex: none; }
