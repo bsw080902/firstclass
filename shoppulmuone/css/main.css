@@ -48,6 +48,18 @@
 .header-nav .best-link { gap: 25px; }
 .header-nav .best-link .nav-divider { display: block; width: 3px; height: 18px; margin-right: 0; flex: none; }
 .header-nav .nav-dropdown img { width: 15px; height: 15px; }
+/* 헤더 메뉴: hover/focus 시 Action Primary (#009333) 및 아이콘 전환 */
+.header-nav a:hover, .header-nav a:focus-visible { color: #009333; }
+.header-nav .icon-hover { display: none; }
+.header-nav a:hover .icon-default, .header-nav a:focus-visible .icon-default { display: none; }
+.header-nav a:hover .icon-hover, .header-nav a:focus-visible .icon-hover { display: block; }
+.header-nav .category-link .icon-hover { width: 26px; height: 26px; }
+/* SVG 이미지는 CSS color를 상속하지 않으므로 hover 때 녹색 필터 적용 */
+.header-nav a:hover img:not(.nav-divider):not(.icon-hover),
+.header-nav a:focus-visible img:not(.nav-divider):not(.icon-hover),
+.header-actions a:hover img, .header-actions a:focus-visible img { filter: brightness(0) saturate(100%) invert(36%) sepia(95%) saturate(1605%) hue-rotate(105deg) brightness(90%) contrast(103%); }
+.header-actions a:hover, .header-actions a:focus-visible { color: #009333; }
+
 .header-actions { display: flex; align-items: center; gap: 16px; }
 .header-actions a { display: flex; align-items: center; justify-content: center; width: 32px; height: 33px; }
 .header-actions img { display: block; max-width: 33px; max-height: 33px; }
