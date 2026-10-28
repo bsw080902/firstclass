@@ -282,8 +282,10 @@ body {
     color: var(--text-primary);
     text-align: center;
     text-decoration: none;
-    font-size: 16px;
-    font-weight: 600;
+    font-family: "Pretendard Variable", sans-serif;
+    font-size: 24px; /* Figma 18pt = CSS 24px (96dpi 기준) */
+    font-weight: 600; /* SemiBold */
+    line-height: 1.4;
     white-space: nowrap;
 }
 
@@ -325,7 +327,7 @@ body {
     }
 
     .quick-menu-list a {
-        font-size: 14px;
+        font-size: 18px;
         gap: 10px;
     }
 }
