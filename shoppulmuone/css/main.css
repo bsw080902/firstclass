@@ -43,8 +43,9 @@
 .header-search button { border: 0; background: transparent; padding: 0; cursor: pointer; }
 .header-search button img { width: 26px; height: 26px; display: block; }
 .header-nav { display: flex; align-items: center; gap: 25px; white-space: nowrap; }
-.header-nav a { display: inline-flex; align-items: center; gap: 5px; color: var(--text-primary); font-size: 15px; font-weight: 600; text-decoration: none; }
+.header-nav a { display: inline-flex; align-items: center; gap: 5px; color: var(--text-primary); font-size: 15px; font-weight: 600; text-decoration: none; transition: color 0.25s ease; }
 .header-nav .category-link img { width: 26px; height: 26px; }
+.header-nav a img { transition: filter 0.25s ease; }
 .header-nav .best-link { gap: 25px; }
 .header-nav .best-link .nav-divider { display: block; width: 3px; height: 18px; margin-right: 0; flex: none; }
 .header-nav .nav-dropdown img { width: 15px; height: 15px; }
@@ -61,8 +62,8 @@
 .header-actions a:hover, .header-actions a:focus-visible { color: #009333; }
 
 .header-actions { display: flex; align-items: center; gap: 16px; }
-.header-actions a { display: flex; align-items: center; justify-content: center; width: 32px; height: 33px; }
-.header-actions img { display: block; max-width: 33px; max-height: 33px; }
+.header-actions a { display: flex; align-items: center; justify-content: center; width: 32px; height: 33px; transition: color 0.25s ease; }
+.header-actions img { display: block; max-width: 33px; max-height: 33px; transition: filter 0.25s ease; }
 @media (max-width: 1280px) {
     .header-inner { padding: 0 30px; }
     .header-center { position: static; transform: none; }
@@ -384,4 +385,9 @@ body {
     .recommend-card, .recommend-card-featured { flex-basis: min(70vw, 300px); }
     .recommend-image, .recommend-card-featured .recommend-image { width: 100%; height: auto; aspect-ratio: 1; }
     .recommend-price { margin-top: 16px; }
+}
+
+/* 움직임 최소화 설정을 사용하는 경우 전환 효과 생략 */
+@media (prefers-reduced-motion: reduce) {
+    .header-nav a, .header-nav a img, .header-actions a, .header-actions img { transition: none; }
 }
