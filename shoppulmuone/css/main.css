@@ -116,7 +116,7 @@ body {
     width: 100%;
     height: clamp(320px, 24vw, 460px);
     position: relative;
-    overflow: visible; /* 양옆 슬라이드가 보이도록 */
+    overflow: hidden; /* 화면 축소 시 슬라이드가 뷰포트 밖으로 넘치지 않도록 */
 }
 
 .hero-sec .swiper-slide {
