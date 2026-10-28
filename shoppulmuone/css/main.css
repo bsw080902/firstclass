@@ -283,7 +283,7 @@ body {
     text-align: center;
     text-decoration: none;
     font-family: "Pretendard Variable", sans-serif;
-    font-size: 18pt; /* 요청한 글자 크기: 18pt */
+    font-size: 18px;
     font-weight: 600; /* SemiBold */
     line-height: 1.4;
     white-space: nowrap;
