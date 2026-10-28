@@ -268,12 +268,6 @@
             categoryLink.setAttribute('aria-expanded', String(open));
             categoryPanel.classList.toggle('is-open', open);
         });
-        document.querySelectorAll('.header-nav .nav-dropdown').forEach(link => {
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-                link.classList.toggle('is-active');
-            });
-        });
         // 메뉴 밖을 클릭하거나 Esc를 누르면 닫힙니다.
         function closeCategoryPanel() {
             categoryPanel.classList.remove('is-open');
