@@ -29,7 +29,7 @@
                     </form>
                     <nav class="header-nav" aria-label="주요 메뉴">
                         <a href="#" class="category-link" aria-expanded="false" aria-controls="category-panel"><span class="nav-icon-switch"><img class="icon-default" src="img/Menu_icon.svg" alt=""><img class="icon-hover" src="img/Cancel.svg" alt=""></span>카테고리</a>
-                        <div class="category-panel" id="category-panel" aria-label="상품 카테고리" hidden>
+                        <div class="category-panel" id="category-panel" aria-label="상품 카테고리">
                             <div class="category-panel-left">
                                 <button type="button" class="category-item is-selected">신선식품</button>
                                 <button type="button" class="category-item">간편식 · 반찬</button>
@@ -266,7 +266,7 @@
             const open = !categoryLink.classList.contains('is-active');
             categoryLink.classList.toggle('is-active', open);
             categoryLink.setAttribute('aria-expanded', String(open));
-            categoryPanel.hidden = !open;
+            categoryPanel.classList.toggle('is-open', open);
         });
         document.querySelectorAll('.header-nav .nav-dropdown').forEach(link => {
             link.addEventListener('click', (event) => {
@@ -276,15 +276,15 @@
         });
         // 메뉴 밖을 클릭하거나 Esc를 누르면 닫힙니다.
         function closeCategoryPanel() {
-            categoryPanel.hidden = true;
+            categoryPanel.classList.remove('is-open');
             categoryLink.classList.remove('is-active');
             categoryLink.setAttribute('aria-expanded', 'false');
         }
         document.addEventListener('click', (event) => {
-            if (!categoryPanel.hidden && !categoryLink.contains(event.target) && !categoryPanel.contains(event.target)) closeCategoryPanel();
+            if (categoryPanel.classList.contains('is-open') && !categoryLink.contains(event.target) && !categoryPanel.contains(event.target)) closeCategoryPanel();
         });
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && !categoryPanel.hidden) { closeCategoryPanel(); categoryLink.focus(); }
+            if (event.key === 'Escape' && categoryPanel.classList.contains('is-open')) { closeCategoryPanel(); categoryLink.focus(); }
         });
         // 왼쪽 분류의 선택 표시 (오른쪽 세부 메뉴는 현재 신선식품 예시입니다).
         document.querySelectorAll('.category-panel-left .category-item').forEach(button => {
