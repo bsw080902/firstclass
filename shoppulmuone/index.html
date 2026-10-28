@@ -305,23 +305,22 @@
             });
         });
 
-        // 스크롤 방향에 따라 헤더를 부드럽게 숨기거나 다시 표시합니다.
-        const siteHeader = document.querySelector('.site-header');
-        let previousScrollY = window.scrollY;
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            const difference = currentScrollY - previousScrollY;
-            if (currentScrollY <= 80) {
-                siteHeader.classList.remove('header-hidden');
-            } else if (difference < 0) {
-                // 위로 조금만 스크롤해도 즉시 헤더 표시
-                siteHeader.classList.remove('header-hidden');
-            } else if (difference > 0 && !siteHeader.contains(document.activeElement)) {
-                siteHeader.classList.add('header-hidden');
-                closeCategoryPanel();
-            }
-            previousScrollY = currentScrollY;
-        }, { passive: true });
+        // 화면에 들어오는 콘텐츠를 한 번만 자연스럽게 나타냅니다.
+        const revealItems = document.querySelectorAll('.quick-menu, .recommend-section');
+        if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            revealItems.forEach(item => {
+                item.classList.add('scroll-reveal');
+                revealObserver.observe(item);
+            });
+        }
 
         // 찜 버튼의 선택 상태를 바꿉니다. (데모 UI, 서버 저장 기능은 아님)
         document.querySelectorAll('.recommend-wish').forEach(button => {
