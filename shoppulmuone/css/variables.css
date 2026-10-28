@@ -1,0 +1,21 @@
+/* Figma Variables: Primitives (Mode 1) */
+:root {
+    --brand-green: #009333;
+    --brand-lime: #80c342;
+    --neutral-white: #ffffff;
+    --neutral-soft-green: #f5f8f3;
+    --neutral-dark-green-black: #202820;
+    --neutral-muted-gray: #68756a;
+    --green-pale-green: #e8f4df;
+    --neutral-light-gray-green: #dde5dc;
+
+    /* Figma Variables: Sementic (aliases) */
+    --bg-default: var(--neutral-white);
+    --bg-surface: var(--neutral-soft-green);
+    --bg-accent: var(--neutral-soft-green);
+    --action-primary: var(--brand-green);
+    --brand-secondary: var(--brand-lime);
+    --text-primary: var(--neutral-dark-green-black);
+    --text-secondary: var(--neutral-muted-gray);
+    --border-default: var(--neutral-light-gray-green);
+}
