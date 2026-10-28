@@ -244,6 +244,14 @@
             }
         });
 
+        // 카테고리, 혜택, 일일배달 아이콘은 호버가 아니라 클릭으로 전환합니다.
+        document.querySelectorAll('.header-nav .category-link, .header-nav .nav-dropdown').forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); // 아직 연결된 메뉴 페이지가 없으므로 이동하지 않음
+                link.classList.toggle('is-active');
+            });
+        });
+
         // 찜 버튼의 선택 상태를 바꿉니다. (데모 UI, 서버 저장 기능은 아님)
         document.querySelectorAll('.recommend-wish').forEach(button => {
             button.addEventListener('click', () => {
