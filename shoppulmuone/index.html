@@ -313,14 +313,12 @@
             const difference = currentScrollY - previousScrollY;
             if (currentScrollY <= 80) {
                 siteHeader.classList.remove('header-hidden');
-            } else if (Math.abs(difference) > 4) {
-                const menuFocused = siteHeader.contains(document.activeElement);
-                if (difference > 0 && !menuFocused) {
-                    siteHeader.classList.add('header-hidden');
-                    closeCategoryPanel();
-                } else if (difference < 0) {
-                    siteHeader.classList.remove('header-hidden');
-                }
+            } else if (difference < 0) {
+                // 위로 조금만 스크롤해도 즉시 헤더 표시
+                siteHeader.classList.remove('header-hidden');
+            } else if (difference > 0 && !siteHeader.contains(document.activeElement)) {
+                siteHeader.classList.add('header-hidden');
+                closeCategoryPanel();
             }
             previousScrollY = currentScrollY;
         }, { passive: true });
