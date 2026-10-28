@@ -45,7 +45,7 @@
 .header-nav { display: flex; align-items: center; gap: 22px; white-space: nowrap; }
 .header-nav a { display: inline-flex; align-items: center; gap: 5px; color: var(--text-primary); font-size: 15px; font-weight: 600; text-decoration: none; }
 .header-nav .category-link img { width: 26px; height: 26px; }
-.header-nav .best-link::before { content: ""; width: 3px; height: 18px; margin-right: 6px; background: var(--brand-green); }
+.header-nav .best-link .nav-divider { display: block; width: 3px; height: 18px; margin-right: 6px; flex: none; }
 .header-nav .nav-dropdown img { width: 15px; height: 15px; }
 .header-actions { display: flex; align-items: center; gap: 16px; }
 .header-actions a { display: flex; align-items: center; justify-content: center; width: 32px; height: 33px; }
