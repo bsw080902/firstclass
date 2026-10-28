@@ -368,7 +368,7 @@ body {
     .recommend-section { padding: 0 16px 72px; }
     .recommend-heading h2 { font-size: 23px; }
     .recommend-list { gap: 16px; }
-    .recommend-card, .recommend-card-featured { flex: 0 0 100%; }
+    .recommend-card, .recommend-card-featured { flex-basis: min(70vw, 300px); }
     .recommend-image, .recommend-card-featured .recommend-image { width: 100%; height: auto; aspect-ratio: 1; }
     .recommend-price { margin-top: 16px; }
 }
