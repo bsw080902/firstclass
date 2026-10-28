@@ -470,14 +470,8 @@ body {
     .category-panel { left: 0; max-width: calc(100vw - 32px); }
 }
 
-/* 스크롤 방향에 따라 헤더 전체가 위로 자연스럽게 숨겨졌다 나타납니다. */
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 30;
-    transition: transform .3s ease;
-}
-.site-header.header-hidden { transform: translateY(-100%); }
-@media (prefers-reduced-motion: reduce) {
-    .site-header { transition: none; }
-}
+
+/* 헤더는 고정하지 않고, 아래 콘텐츠만 스크롤 시 부드럽게 등장 */
+.scroll-reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .scroll-reveal { opacity: 1; transform: none; transition: none; } }
