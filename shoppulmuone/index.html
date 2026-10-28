@@ -52,18 +52,23 @@
     </div>
 
     <script>
+        // 배너 원본은 3개지만, 양옆에 이전/다음 배너가 항상 보이도록 복제합니다.
+        // Swiper 12의 loop는 슬라이드가 너무 적으면 정상 배치되지 않을 수 있습니다.
+        const heroWrapper = document.querySelector('.hero-sec .swiper-wrapper');
+        const originalSlides = Array.from(heroWrapper.children);
+        const originalCount = originalSlides.length;
+        originalSlides.forEach(slide => heroWrapper.appendChild(slide.cloneNode(true)));
+        originalSlides.forEach(slide => heroWrapper.appendChild(slide.cloneNode(true)));
+
         const swiperHero = new Swiper('.hero-sec > .swiper', {
             direction: 'horizontal',
             slidesPerView: 'auto',
             centeredSlides: true,
             spaceBetween: 20,
-            initialSlide: 0,
+            initialSlide: originalCount,
             loop: true,
 
-            pagination: {
-                el: '.visual .swiper-pagination',
-                type: 'fraction',
-            },
+            // 화면에는 복제된 개수가 아니라 원본 배너 개수만 표시합니다.
 
             navigation: {
                 nextEl: '.visual .swiper-button-next',
@@ -76,6 +81,14 @@
             },
 
         });
+
+        const fraction = document.querySelector('.visual .swiper-pagination');
+        function updateHeroFraction() {
+            const current = (swiperHero.realIndex % originalCount) + 1;
+            fraction.textContent = current + '  |  ' + originalCount;
+        }
+        swiperHero.on('slideChange', updateHeroFraction);
+        updateHeroFraction();
 
         const autoplayButton = document.querySelector('.visual-autoplay');
         autoplayButton.addEventListener('click', () => {
