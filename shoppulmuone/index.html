@@ -28,7 +28,21 @@
                         </button>
                     </form>
                     <nav class="header-nav" aria-label="주요 메뉴">
-                        <a href="#" class="category-link"><span class="nav-icon-switch"><img class="icon-default" src="img/Menu_icon.svg" alt=""><img class="icon-hover" src="img/Cancel.svg" alt=""></span>카테고리</a>
+                        <a href="#" class="category-link" aria-expanded="false" aria-controls="category-panel"><span class="nav-icon-switch"><img class="icon-default" src="img/Menu_icon.svg" alt=""><img class="icon-hover" src="img/Cancel.svg" alt=""></span>카테고리</a>
+                        <div class="category-panel" id="category-panel" aria-label="상품 카테고리" hidden>
+                            <div class="category-panel-left">
+                                <button type="button" class="category-item is-selected">신선식품</button>
+                                <button type="button" class="category-item">간편식 · 반찬</button>
+                                <button type="button" class="category-item">가공식품</button>
+                                <button type="button" class="category-item">생활용품</button>
+                            </div>
+                            <div class="category-panel-divider" aria-hidden="true"></div>
+                            <div class="category-panel-right">
+                                <a href="#">두부 · 콩나물 · 달걀</a>
+                                <a href="#">과일 · 채소 · 쌀</a>
+                                <a href="#">정육 · 수산</a>
+                            </div>
+                        </div>
                         <a href="#" class="best-link"><img src="img/Line%201.svg" alt="" class="nav-divider">베스트</a>
                         <a href="#">신상품</a>
                         <a href="#" class="nav-dropdown">혜택<span class="nav-icon-switch"><img class="icon-default" src="img/Arrow_down.svg" alt=""><img class="icon-hover" src="img/Arrow_up.svg" alt=""></span></a>
@@ -244,11 +258,39 @@
             }
         });
 
-        // 카테고리, 혜택, 일일배달 아이콘은 호버가 아니라 클릭으로 전환합니다.
-        document.querySelectorAll('.header-nav .category-link, .header-nav .nav-dropdown').forEach(link => {
+        // 카테고리 클릭 시 패널을 열고 닫습니다. 아이콘과 글씨 색상도 함께 유지합니다.
+        const categoryLink = document.querySelector('.category-link');
+        const categoryPanel = document.querySelector('#category-panel');
+        categoryLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            const open = !categoryLink.classList.contains('is-active');
+            categoryLink.classList.toggle('is-active', open);
+            categoryLink.setAttribute('aria-expanded', String(open));
+            categoryPanel.hidden = !open;
+        });
+        document.querySelectorAll('.header-nav .nav-dropdown').forEach(link => {
             link.addEventListener('click', (event) => {
-                event.preventDefault(); // 아직 연결된 메뉴 페이지가 없으므로 이동하지 않음
+                event.preventDefault();
                 link.classList.toggle('is-active');
+            });
+        });
+        // 메뉴 밖을 클릭하거나 Esc를 누르면 닫힙니다.
+        function closeCategoryPanel() {
+            categoryPanel.hidden = true;
+            categoryLink.classList.remove('is-active');
+            categoryLink.setAttribute('aria-expanded', 'false');
+        }
+        document.addEventListener('click', (event) => {
+            if (!categoryPanel.hidden && !categoryLink.contains(event.target) && !categoryPanel.contains(event.target)) closeCategoryPanel();
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !categoryPanel.hidden) { closeCategoryPanel(); categoryLink.focus(); }
+        });
+        // 왼쪽 분류의 선택 표시 (오른쪽 세부 메뉴는 현재 신선식품 예시입니다).
+        document.querySelectorAll('.category-panel-left .category-item').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.category-panel-left .category-item').forEach(item => item.classList.remove('is-selected'));
+                button.classList.add('is-selected');
             });
         });
 
