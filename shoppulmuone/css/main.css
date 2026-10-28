@@ -1,6 +1,10 @@
 /* Header: 1920px PC 기준, 높이 120px */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    transition: transform 0.3s ease;
     height: 120px;
     background: var(--bg-default);
     border-bottom: 1px solid var(--border-default);
@@ -78,7 +82,7 @@
     .header-actions { gap: 8px; }
 }
 @media (max-width: 1024px) {
-    .site-header { position: relative; height: auto; min-height: 72px; z-index: 20; }
+    .site-header { position: sticky; height: auto; min-height: 72px; z-index: 30; }
     .header-inner { padding: 14px 16px; flex-wrap: wrap; gap: 14px; }
     .header-logo img { width: 120px; height: auto; }
     .header-actions { margin-left: auto; gap: 6px; }
@@ -401,7 +405,9 @@ body {
 
 /* 카테고리 펼침 메뉴: 430 × 300, 이미지 레퍼런스 기준 */
 .header-nav { position: relative; }
-.site-header { position: relative; z-index: 30; }
+.site-header { position: sticky; z-index: 30; }
+.site-header.is-hidden { transform: translateY(-100%); }
+@media (prefers-reduced-motion: reduce) { .site-header { transition: none; } }
 
 .category-panel {
     position: absolute; top: calc(100% + 12px); left: 8px;
