@@ -271,7 +271,7 @@ body {
 }
 
 .quick-menu-list li {
-    flex: 0 0 100px;
+    flex: 0 0 94px;
 }
 
 .quick-menu-list a {
@@ -293,8 +293,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: 100px;
+    width: 94px;
+    height: 94px;
     border-radius: 100px;
     background-color: var(--bg-accent); /* #F5F8F3 */
     overflow: hidden;
