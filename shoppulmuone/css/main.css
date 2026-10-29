@@ -756,3 +756,13 @@ body {
 .new-slider-shell > .new-next:hover:not(.swiper-button-disabled) { background: transparent; }
 .new-slider-shell > .new-prev > img,
 .new-slider-shell > .new-next > img { display: block; width: 62px; height: 62px; }
+
+/* 배송 조회: 이미지 전체 필터 대신 선만 초록색인 SVG 교체 */
+.header-actions .header-truck { position: relative; }
+.header-actions .header-truck img { position: absolute; inset: 0; margin: auto; transition: opacity .25s ease; }
+.header-actions .header-truck .truck-default { opacity: 1; }
+.header-actions .header-truck .truck-hover { opacity: 0; }
+.header-actions .header-truck:hover .truck-default,
+.header-actions .header-truck:focus-visible .truck-default { opacity: 0; }
+.header-actions .header-truck:hover .truck-hover,
+.header-actions .header-truck:focus-visible .truck-hover { opacity: 1; filter: none; }
