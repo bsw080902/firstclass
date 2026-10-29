@@ -1322,24 +1322,3 @@ body {
     object-fit: contain;
     object-position: right center;
 }
-
-/* BEST: 한 화면에 완전한 카드만 표시, 활성 이미지 확대 여유 확보 */
-.best-swiper .swiper-slide {
-    box-sizing: border-box;
-    padding: 16px;
-}
-.best-swiper .best-card,
-.best-swiper .best-image {
-    width: 100%;
-}
-.best-swiper .best-image {
-    height: auto;
-    aspect-ratio: 1 / 1;
-}
-.best-swiper .swiper-slide-active .best-image {
-    transform: scale(1.04);
-}
-@media (max-width: 767px) {
-    .best-swiper .swiper-slide { padding: 12px; }
-    .best-swiper .swiper-slide-active .best-image { transform: scale(1.04); }
-}
