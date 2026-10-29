@@ -261,6 +261,37 @@
                     <a class="best-more recommend-more" href="#" aria-label="다른 상품 더 보기"><img src="img/More_button.svg" alt="" width="161" height="48"></a>
                 </div>
             </section>
+
+            <!-- NEW: 상품 소개 슬라이더 (대표 이미지 + 상품 정보 이미지) -->
+            <section class="new-section" aria-labelledby="new-title">
+                <div class="new-inner">
+                    <div class="new-heading"><p>NEW</p><h2 id="new-title">새롭게 만나는 상품</h2></div>
+                    <div class="swiper new-swiper" aria-label="새로운 상품 소개">
+                        <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <article class="new-card">
+                                <img class="new-card-hero" src="img/pulmuonead_1.png" alt="안심치즈돈카츠 대표 이미지" loading="lazy">
+                                <img class="new-card-detail" src="img/pulmuonead_11.png" alt="안심치즈돈카츠 상품 정보" loading="lazy">
+                            </article>
+                        </div>
+                        <div class="swiper-slide">
+                            <article class="new-card">
+                                <img class="new-card-hero" src="img/pulmuonead_2.png" alt="생만두 대표 이미지" loading="lazy">
+                                <img class="new-card-detail" src="img/pulmuonead_22.png" alt="생만두 상품 정보" loading="lazy">
+                            </article>
+                        </div>
+                        <div class="swiper-slide">
+                            <article class="new-card">
+                                <img class="new-card-hero" src="img/pulmuonead_3.png" alt="쌀떡볶이 대표 이미지" loading="lazy">
+                                <img class="new-card-detail" src="img/pulmuonead_33.png" alt="쌀떡볶이 상품 정보" loading="lazy">
+                            </article>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="new-pagination" aria-label="새 상품 페이지 이동"></div>
+                    <a class="new-more" href="#">다른 상품 더 보기</a>
+                </div>
+            </section>
         </main>
 
         <footer>&copy;</footer>
@@ -364,7 +395,7 @@
         }, { passive: true });
 
         // 각 섹션이 충분히 보였을 때 내부 콘텐츠를 순서대로 등장시킵니다.
-        const revealSections = document.querySelectorAll('.quick-menu, .recommend-section, .best-section');
+        const revealSections = document.querySelectorAll('.quick-menu, .recommend-section, .best-section, .new-section');
         if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             const sectionObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -381,7 +412,7 @@
             }, { threshold: Array.from({ length: 101 }, (_, i) => i / 100) });
 
             revealSections.forEach(section => {
-                const items = section.querySelectorAll('.quick-menu-list li, .recommend-heading, .recommend-card, .best-heading, .best-swiper, .best-more');
+                const items = section.querySelectorAll('.quick-menu-list li, .recommend-heading, .recommend-card, .best-heading, .best-swiper, .best-more, .new-heading, .new-swiper, .new-more');
                 items.forEach((item, index) => {
                     item.classList.add('scroll-reveal-item');
                     item.style.setProperty('--reveal-delay', (index % 6) * 65 + 'ms');
@@ -446,6 +477,19 @@
         }
         bestSwiper.on('slideChange', updateBestPagination);
         updateBestPagination();
+
+        // NEW: 카드 3개를 화면 폭에 맞춰 보여주며 순환합니다.
+        const newSwiper = new Swiper('.new-swiper', {
+            slidesPerView: 1.1,
+            spaceBetween: 20,
+            loop: true,
+            grabCursor: true,
+            pagination: { el: '.new-pagination', clickable: true },
+            breakpoints: {
+                768: { slidesPerView: 1.65, spaceBetween: 24 },
+                1200: { slidesPerView: 2.4, spaceBetween: 30 }
+            }
+        });
 
         // 찜 버튼의 선택 상태를 바꿉니다. (데모 UI, 서버 저장 기능은 아님)
         // BEST는 복제 슬라이드가 있으므로 이벤트 위임으로 찜 버튼을 처리합니다.
