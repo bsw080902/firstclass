@@ -370,7 +370,9 @@
                 entries.forEach(entry => {
                     const section = entry.target;
                     // 화면보다 긴 섹션은 화면 높이의 약 60%가 보이면 시작합니다.
-                    const requiredRatio = Math.min(0.7, (window.innerHeight * 0.6) / section.offsetHeight);
+                    const requiredRatio = section.classList.contains('best-section')
+                        ? 0.15
+                        : Math.min(0.7, (window.innerHeight * 0.6) / section.offsetHeight);
                     if (entry.intersectionRatio >= requiredRatio) {
                         section.querySelectorAll('.scroll-reveal-item').forEach(item => item.classList.add('is-visible'));
                         observer.unobserve(section);
@@ -379,7 +381,7 @@
             }, { threshold: Array.from({ length: 101 }, (_, i) => i / 100) });
 
             revealSections.forEach(section => {
-                const items = section.querySelectorAll('.quick-menu-list li, .recommend-heading, .recommend-card, .best-heading, .best-card, .best-more');
+                const items = section.querySelectorAll('.quick-menu-list li, .recommend-heading, .recommend-card, .best-heading, .best-swiper, .best-more');
                 items.forEach((item, index) => {
                     item.classList.add('scroll-reveal-item');
                     item.style.setProperty('--reveal-delay', (index % 6) * 65 + 'ms');
