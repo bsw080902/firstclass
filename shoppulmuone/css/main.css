@@ -635,7 +635,12 @@ body {
 .new-product-actions button { border: 1px solid #dce7dc; border-radius: 999px; padding: 7px 12px; background: #fff; color: #637566; font: inherit; font-size: 13px; cursor: pointer; white-space: nowrap; }
 .new-product-actions button:hover, .new-product-actions button:focus-visible { background: #f5f8f3; }
 .new-product-actions .recommend-wish[aria-pressed="true"] { color: #e04453; }
-.new-next { position: absolute; top: 46%; right: 0; z-index: 5; transform: translateY(-50%); width: 55px; height: 55px; border: 0; border-radius: 50%; background: #e0e3dfd9; color: #fff; font-size: 40px; cursor: pointer; }
+.new-prev, .new-next { position: absolute; top: 46%; z-index: 5; display: flex; align-items: center; justify-content: center; transform: translateY(-50%); width: 55px; height: 55px; padding: 0; border: 0; border-radius: 50%; background: #e0e3dfd9; cursor: pointer; opacity: 1; visibility: visible; transition: opacity .35s ease, visibility .35s ease, background .25s ease; }
+.new-prev { left: 0; }
+.new-next { right: 0; }
+.new-prev img, .new-next img { display: block; width: 24px; height: 24px; object-fit: contain; }
+.new-prev:hover:not(.swiper-button-disabled), .new-next:hover:not(.swiper-button-disabled) { background: #cbd5cbd9; }
+.new-prev.swiper-button-disabled, .new-next.swiper-button-disabled, .new-prev.swiper-button-lock, .new-next.swiper-button-lock { opacity: 0; visibility: hidden; pointer-events: none; }
 .new-pagination { margin-top: 18px; }
 .new-more { margin-top: 0; }
 @media (max-width: 1199px) {
