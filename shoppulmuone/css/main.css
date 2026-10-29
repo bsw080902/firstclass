@@ -545,7 +545,7 @@ body {
 /* BEST: 가운데 활성 상품만 300px에서 330px로 확대 */
 .best-section { background: #f5f8f3; padding: 72px 24px 64px; }
 .best-inner { max-width: 1600px; margin: 0 auto; }
-.best-heading { margin-bottom: 28px; }
+.best-heading { margin-bottom: 12px; }
 .best-heading p { margin: 0 0 8px; color: #009333; font-size: 14px; font-weight: 700; }
 .best-heading h2 { margin: 0; font-size: 26px; font-weight: 700; }
 .best-swiper { overflow: hidden; padding: 16px 0 20px; }
@@ -589,10 +589,10 @@ body {
 /* NEW: 대표 이미지와 상품 정보 이미지를 하나의 카드로 연결 */
 .new-section { padding: 84px 24px 100px; background: #fff; }
 .new-inner { max-width: 1720px; margin: 0 auto; }
-.new-heading { margin-bottom: 18px; }
+.new-heading { margin-bottom: 12px; }
 .new-heading p { margin: 0 0 6px; color: var(--brand-green); font-size: 14px; font-weight: 700; }
 .new-heading h2 { margin: 0; color: var(--text-primary); font-size: 28px; font-weight: 700; }
-.new-swiper { overflow: hidden; }
+.new-swiper { overflow: hidden; padding: 30px; box-sizing: border-box; }
 .new-swiper .swiper-slide { height: auto; }
 .new-card { overflow: hidden; border: 1px solid #e8e8e8; border-radius: 18px; background: #fff; height: 100%; }
 .new-card img { display: block; width: 100%; height: auto; }
