@@ -1120,3 +1120,8 @@ body {
     .visual .visual-stepper .swiper-pagination { font-size: 12px; }
     .visual .visual-autoplay { width: 25px; height: 20px; flex-basis: 25px; }
 }
+
+/* HERO 화살표 뒤 별도 프레임/배경 제거 */
+.visual .visual-stepper { background: transparent; overflow: visible; }
+.visual .visual-stepper .swiper-button-prev,
+.visual .visual-stepper .swiper-button-next { background: transparent !important; box-shadow: none; border: 0; }
