@@ -554,8 +554,8 @@ body {
 .best-image { width: 300px; height: 300px; position: relative; box-sizing: border-box; border: 3px solid transparent; border-radius: 20px; background: #fff; transition: transform .4s ease, border-color .4s ease; transform-origin: center center; }
 .best-image > img { width: 100%; height: 100%; display: block; object-fit: cover; border-radius: 17px; }
 .best-swiper .swiper-slide-active .best-image { transform: scale(1.1); border-color: #80c441; z-index: 2; }
-.best-actions { position: absolute; right: 8px; bottom: 8px; display: flex; gap: 4px; opacity: 0; transition: opacity .25s ease; }
-.best-card:hover .best-actions, .best-card:focus-within .best-actions { opacity: 1; }
+.best-actions { position: absolute; right: 12px; bottom: 12px; display: flex; align-items: center; gap: 6px; opacity: 0; visibility: hidden; transform: translateY(7px); transition: opacity .2s, transform .2s, visibility .2s; }
+.best-card:hover .best-actions, .best-card:focus-within .best-actions { opacity: 1; visibility: visible; transform: translateY(0); }
 .best-actions button { padding: 0; border: 0; background: transparent; cursor: pointer; }
 .best-actions img { display: block; height: 36px; width: auto; }
 .best-info { padding-top: 22px; }
@@ -700,4 +700,9 @@ body {
   .new-card .new-product-image { width: 110px; height: 110px; flex-basis: 110px; }
   .new-product-info h4 { font-size: 13px; }
   .new-card-copy { left: 16px; bottom: 14px; }
+}
+
+/* BEST 빠른 행동도 PICK과 동일하게 터치 환경에서는 항상 표시 */
+@media (hover: none) {
+  .best-actions { opacity: 1; visibility: visible; transform: none; }
 }
