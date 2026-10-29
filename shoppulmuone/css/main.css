@@ -656,3 +656,9 @@ body {
     .new-product-info h4 { font-size: 14px; }
     .new-product-actions button { padding: 5px 7px; font-size: 11px; }
 }
+
+/* Swiper가 내비게이션 버튼에 자동으로 추가하는 SVG를 숨겨 중복 화살표 방지 */
+.new-swiper .new-prev svg,
+.new-swiper .new-next svg,
+.new-swiper .new-prev::after,
+.new-swiper .new-next::after { display: none !important; content: none !important; }
