@@ -777,3 +777,57 @@ body {
 .header-actions .header-truck:focus-visible .truck-default { opacity: 0; }
 .header-actions .header-truck:hover .truck-hover,
 .header-actions .header-truck:focus-visible .truck-hover { opacity: 1; filter: none; }
+
+/* 헤더 마이페이지/고객센터: 시안 기준 너비 150px, 패딩 상하 30px 좌우 10px */
+.header-actions { position: relative; }
+.header-action-menu { position: relative; display: flex; align-items: center; justify-content: center; }
+.header-actions .header-action-menu > a { display: flex; align-items: center; justify-content: center; }
+.header-action-panel {
+    position: absolute;
+    top: 100%;
+    right: 50%;
+    transform: translate(50%, -5px);
+    z-index: 50;
+    box-sizing: border-box;
+    width: 150px;
+    padding: 30px 10px;
+    border: 1px solid #e7ece7;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(0,0,0,.09);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+}
+.header-actions .header-action-panel a {
+    display: flex;
+    width: 100%;
+    height: auto;
+    min-height: 34px;
+    padding: 7px 0;
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+    color: #68756a;
+    font-size: 12px;
+    line-height: 1.5;
+    text-decoration: none;
+    white-space: normal;
+}
+.header-action-menu:hover .header-action-panel,
+.header-action-menu:focus-within .header-action-panel {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(50%, 0);
+}
+.header-actions .header-action-panel a:hover,
+.header-actions .header-action-panel a:focus-visible { color: #009333; }
+@media (prefers-reduced-motion: reduce) {
+    .header-action-panel { transition: none; }
+}
