@@ -1250,22 +1250,21 @@ body {
     .hero-sec .visual .swiper-slide > img { transition: none; }
 }
 
-/* 주요 CTA 호버: 가볍게 떠오르는 움직임 + 은은한 그림자 */
+/* 주요 CTA 호버: SVG 버튼은 사각 그림자 없이 살짝 떠오르기 */
+.recommend-more,
+.best-more,
+.new-more,
+.benefits-more,
+.benefit-card-footer a {
+    transition: transform .25s ease, filter .25s ease;
+}
 @media (hover: hover) and (pointer: fine) {
-    .recommend-more,
-    .best-more,
-    .new-more,
-    .benefits-more,
-    .benefit-card-footer a {
-        transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
-    }
     .recommend-more:hover,
     .best-more:hover,
     .new-more:hover,
     .benefits-more:hover,
     .benefit-card-footer a:hover {
         transform: translateY(-3px);
-        box-shadow: 0 6px 16px rgba(0, 80, 35, .12);
         filter: brightness(.98);
     }
 }
@@ -1293,8 +1292,4 @@ body {
     .new-card { transition: none; }
 }
 
-/* BENEFITS 하단 SVG 이미지 버튼: 사각형 그림자 제거 */
-.benefits-more { box-shadow: none !important; }
-@media (hover: hover) and (pointer: fine) {
-    .benefits-more:hover { box-shadow: none !important; }
-}
+
