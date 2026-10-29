@@ -481,3 +481,44 @@ body {
 .scroll-reveal-item { opacity: 0; transform: translateY(28px); transition: opacity .65s ease var(--reveal-delay, 0ms), transform .65s ease var(--reveal-delay, 0ms); }
 .scroll-reveal-item.is-visible { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) { .scroll-reveal-item { opacity: 1; transform: none; transition: none; } }
+
+/* 버튼 호버: 기존 디자인과 위치는 유지하고 밝기만 부드럽게 전환 */
+.header-search button,
+.visual-autoplay,
+.visual .swiper-button-prev,
+.visual .swiper-button-next,
+.category-panel .category-item,
+.recommend-actions button,
+.recommend-more,
+.quick-menu-list a {
+    transition: filter 0.25s ease;
+}
+
+.header-search button:hover,
+.header-search button:focus-visible,
+.visual-autoplay:hover,
+.visual-autoplay:focus-visible,
+.visual .swiper-button-prev:hover,
+.visual .swiper-button-next:hover,
+.category-panel .category-item:hover,
+.category-panel .category-item:focus-visible,
+.recommend-actions button:hover,
+.recommend-actions button:focus-visible,
+.recommend-more:hover,
+.recommend-more:focus-visible,
+.quick-menu-list a:hover,
+.quick-menu-list a:focus-visible {
+    filter: brightness(0.94);
+}
+
+/* 움직임 최소화 설정을 켠 경우 호버 전환 애니메이션 생략 */
+@media (prefers-reduced-motion: reduce) {
+    .header-search button,
+    .visual-autoplay,
+    .visual .swiper-button-prev,
+    .visual .swiper-button-next,
+    .category-panel .category-item,
+    .recommend-actions button,
+    .recommend-more,
+    .quick-menu-list a { transition: none; }
+}
