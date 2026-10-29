@@ -119,11 +119,25 @@ body {
     overflow: hidden; /* 화면 축소 시 슬라이드가 뷰포트 밖으로 넘치지 않도록 */
 }
 
+/* PC: 중앙에 두 배너를 선명하게, 양끝 미리보기는 흐리게 표시 */
+.hero-sec .swiper-wrapper {
+    left: calc(min(380px, 20vw) + 6px);
+}
+
 .hero-sec .swiper-slide {
-    width: min(1280px, 66.6667vw);
+    width: min(760px, 40vw);
     height: 100%;
-    border-radius: 20px;
+    border-radius: 12px;
     overflow: hidden;
+    filter: blur(5px) brightness(.9);
+    opacity: .65;
+    transition: filter .45s ease, opacity .45s ease;
+}
+
+.hero-sec .swiper-slide-prev,
+.hero-sec .swiper-slide-active {
+    filter: none;
+    opacity: 1;
 }
 
 .hero-sec .swiper img {
@@ -148,11 +162,11 @@ body {
     background-size: contain;
 }
 .visual .swiper-button-prev {
-    left: calc(50% - min(640px, 33.33335vw) + 36px);
+    left: calc(10% + 16px);
     background-image: url("../img/Left_icon.svg");
 }
 .visual .swiper-button-next {
-    right: calc(50% - min(640px, 33.33335vw) + 36px);
+    right: calc(10% + 16px);
     background-image: url("../img/Right_icon.svg");
 }
 .visual .swiper-button-prev::after,
@@ -169,7 +183,7 @@ body {
 /* 오른쪽 아래 pagination + 자동재생 버튼 */
 .visual-controls {
     position: absolute;
-    right: calc(50% - min(640px, 33.33335vw) + 28px);
+    right: calc(10% + 20px);
     bottom: 24px;
     z-index: 10;
 
@@ -255,9 +269,15 @@ body {
         min-height: 320px;
     }
 
+    .hero-sec .swiper-wrapper { left: 0; }
+
     .hero-sec .swiper-slide {
         width: calc(100vw - 32px);
+        border-radius: 16px;
     }
+
+    .hero-sec .swiper-slide-prev,
+    .hero-sec .swiper-slide-next { filter: blur(3px) brightness(.92); opacity: .75; }
 
     .visual .swiper-button-prev,
     .visual .swiper-button-next {
@@ -521,4 +541,8 @@ body {
     .recommend-actions button,
     .recommend-more,
     .quick-menu-list a { transition: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-sec .swiper-slide { transition: none; }
 }
