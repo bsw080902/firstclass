@@ -1237,19 +1237,15 @@ body {
     .new-card-top > img { transition: none; }
 }
 
-/* HERO 배너와 하단 빠른 메뉴: 이미지에만 부드러운 줌인 호버 */
+/* HERO 배너에만 부드러운 줌인 호버 */
 .hero-sec .visual .swiper-slide { overflow: hidden; }
-.hero-sec .visual .swiper-slide > img,
-.quick-menu-icon img {
+.hero-sec .visual .swiper-slide > img {
     transition: transform .5s ease;
     transform-origin: center center;
 }
-.hero-sec .visual .swiper-slide:hover > img,
-.quick-menu-list a:hover .quick-menu-icon img,
-.quick-menu-list a:focus-visible .quick-menu-icon img {
+.hero-sec .visual .swiper-slide:hover > img {
     transform: scale(1.08);
 }
 @media (prefers-reduced-motion: reduce) {
-    .hero-sec .visual .swiper-slide > img,
-    .quick-menu-icon img { transition: none; }
+    .hero-sec .visual .swiper-slide > img { transition: none; }
 }
