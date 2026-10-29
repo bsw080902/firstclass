@@ -1249,3 +1249,30 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .hero-sec .visual .swiper-slide > img { transition: none; }
 }
+
+/* 주요 CTA 호버: 가볍게 떠오르는 움직임 + 은은한 그림자 */
+@media (hover: hover) and (pointer: fine) {
+    .recommend-more,
+    .best-more,
+    .new-more,
+    .benefits-more,
+    .benefit-card-footer a {
+        transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+    }
+    .recommend-more:hover,
+    .best-more:hover,
+    .new-more:hover,
+    .benefits-more:hover,
+    .benefit-card-footer a:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(0, 80, 35, .12);
+        filter: brightness(.98);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .recommend-more,
+    .best-more,
+    .new-more,
+    .benefits-more,
+    .benefit-card-footer a { transition: none; }
+}
