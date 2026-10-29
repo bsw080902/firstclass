@@ -710,3 +710,27 @@ body {
 /* NEW 더보기: 위 상품 섹션과 같은 SVG 버튼 */
 .new-more { display: block; width: 161px; height: 48px; margin: 18px auto 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
 .new-more img { display: block; width: 161px; height: 48px; }
+
+/* NEW 상품의 찜/장바구니: PICK/BEST와 동일한 SVG 버튼 */
+.new-product-actions { align-items: center; gap: 6px; }
+.new-product-actions button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    border-radius: 18px;
+    background: transparent;
+    cursor: pointer;
+}
+.new-product-actions button:hover,
+.new-product-actions button:focus-visible { background: transparent; filter: brightness(.97); }
+.new-product-actions button img { display: block; width: auto; height: 36px; }
+.new-product-actions .recommend-wish[aria-pressed="true"] { filter: drop-shadow(0 0 2px #e04453); }
+@media (max-width: 767px) {
+    .new-product-actions { gap: 4px; }
+    .new-product-actions button { height: 30px; padding: 0; }
+    .new-product-actions button img { height: 30px; }
+}
