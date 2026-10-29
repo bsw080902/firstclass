@@ -212,15 +212,27 @@ body {
 .visual-autoplay img { display: block; width: 20px; height: 20px; }
 .visual-autoplay[aria-pressed="true"] img { visibility: hidden; }
 .visual-autoplay[aria-pressed="true"]::after {
-    content: "▶";
+    content: "";
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
     position: absolute;
     inset: 0;
     display: grid;
     place-items: center;
     border-radius: 50%;
     background: rgba(104,117,106,.2);
-    color: white;
-    font-size: 10px;
+}
+.visual-autoplay[aria-pressed="true"]::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 8px;
+    top: 6px;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid #fff;
+    pointer-events: none;
 }
 .visual-controls .swiper-pagination {
     background: rgba(104,117,106,.2);
