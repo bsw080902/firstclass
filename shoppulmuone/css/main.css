@@ -1206,3 +1206,13 @@ body {
     .visual .visual-stepper .swiper-button-next { width: 22px; height: 20px; flex-basis: 22px; }
     .visual .visual-autoplay { width: 20px; height: 20px; flex-basis: 20px; }
 }
+
+/* HERO: 화살표 SVG에는 원형 배경이 없음. Swiper 기본 화살표도 숨김 */
+.visual .visual-stepper .swiper-button-prev,
+.visual .visual-stepper .swiper-button-next { color: #fff; background: transparent !important; box-shadow: none !important; }
+.visual .visual-stepper .swiper-button-prev::before,
+.visual .visual-stepper .swiper-button-next::before,
+.visual .visual-stepper .swiper-button-prev::after,
+.visual .visual-stepper .swiper-button-next::after { content: none !important; display: none !important; }
+.visual .visual-stepper .swiper-button-prev svg,
+.visual .visual-stepper .swiper-button-next svg { display: block; width: 11px; height: 11px; flex-shrink: 0; }
