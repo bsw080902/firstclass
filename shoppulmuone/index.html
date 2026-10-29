@@ -389,31 +389,38 @@
         }
 
 
-        // BEST: 가운데 활성 상품은 CSS에서 330×330px로 확대하고 테두리를 표시합니다.
-        // 원본 상품이 5개뿐이라 넓은 PC에서 loop 연결이 끊길 수 있습니다.
-        // 앞뒤로 같은 상품을 복제해 슬라이드가 계속 이어지도록 합니다.
+        // BEST: 원본 5개를 앞뒤에 배치해 끊김 없이 순환합니다.
+        // Swiper의 loop와 수동 복제를 동시에 쓰지 않고, 중앙 묶음으로 되돌립니다.
         const bestWrapper = document.querySelector('.best-swiper .swiper-wrapper');
         const bestOriginalSlides = Array.from(bestWrapper.children);
         const bestOriginalCount = bestOriginalSlides.length;
-        bestOriginalSlides.forEach((slide, index) => {
-            slide.dataset.bestIndex = index;
-        });
+        bestOriginalSlides.forEach((slide, index) => { slide.dataset.bestIndex = index; });
         bestOriginalSlides.forEach(slide => bestWrapper.appendChild(slide.cloneNode(true)));
-        bestOriginalSlides.forEach(slide => bestWrapper.appendChild(slide.cloneNode(true)));
+        bestOriginalSlides.forEach(slide => bestWrapper.insertBefore(slide.cloneNode(true), bestWrapper.children[bestOriginalCount]));
 
         const bestSwiper = new Swiper('.best-swiper', {
             slidesPerView: 'auto',
             centeredSlides: true,
             spaceBetween: 20,
             initialSlide: bestOriginalCount + 2,
-            loop: true,
-            loopAdditionalSlides: bestOriginalCount,
+            loop: false,
+            speed: 500,
             grabCursor: true,
             autoplay: { delay: 10000, disableOnInteraction: false },
             breakpoints: { 768: { spaceBetween: 24 }, 1200: { spaceBetween: 30 } }
         });
 
-        // 복제된 상품은 페이지 수에 포함하지 않고 원본 5개만 표시합니다.
+        // 가장자리 복제 영역에 도착하면 같은 상품이 있는 중앙 영역으로 즉시 이동합니다.
+        bestSwiper.on('slideChangeTransitionEnd', () => {
+            const index = bestSwiper.activeIndex;
+            if (index < bestOriginalCount) {
+                bestSwiper.slideTo(index + bestOriginalCount, 0, false);
+            } else if (index >= bestOriginalCount * 2) {
+                bestSwiper.slideTo(index - bestOriginalCount, 0, false);
+            }
+        });
+
+        // 페이지 점은 복제본을 제외한 원본 상품 5개만 보여줍니다.
         const bestPagination = document.querySelector('.best-pagination');
         const bestDots = bestOriginalSlides.map((_, index) => {
             const dot = document.createElement('button');
@@ -421,12 +428,7 @@
             dot.className = 'swiper-pagination-bullet';
             dot.setAttribute('aria-label', (index + 1) + '번째 상품으로 이동');
             dot.addEventListener('click', () => {
-                const current = bestSwiper.activeIndex;
-                const candidates = bestSwiper.slides.map((slide, i) => ({ slide, i }))
-                    .filter(item => Number(item.slide.dataset.bestIndex) === index);
-                const closest = candidates.reduce((a, b) =>
-                    Math.abs(a.i - current) <= Math.abs(b.i - current) ? a : b);
-                bestSwiper.slideTo(closest.i);
+                bestSwiper.slideTo(bestOriginalCount + index);
             });
             bestPagination.appendChild(dot);
             return dot;
