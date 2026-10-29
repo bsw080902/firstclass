@@ -1250,6 +1250,28 @@ body {
     .hero-sec .visual .swiper-slide > img { transition: none; }
 }
 
+/* 주요 CTA 호버: SVG 버튼의 링크 박스도 둥글게 처리 */
+.recommend-more,
+.best-more.recommend-more,
+.new-more,
+.benefits-more,
+.benefit-card-footer a {
+    border-radius: 999px;
+    box-shadow: none !important;
+}
+.recommend-more:hover,
+.recommend-more:focus-visible,
+.best-more:hover,
+.best-more:focus-visible,
+.new-more:hover,
+.new-more:focus-visible,
+.benefits-more:hover,
+.benefits-more:focus-visible,
+.benefit-card-footer a:hover,
+.benefit-card-footer a:focus-visible {
+    box-shadow: none !important;
+}
+
 /* 주요 CTA 호버: SVG 버튼은 사각 그림자 없이 살짝 떠오르기 */
 .recommend-more,
 .best-more,
