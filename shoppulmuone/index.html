@@ -325,8 +325,8 @@
             const sectionObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     const section = entry.target;
-                    // 화면보다 긴 섹션은 화면 높이의 약 75%가 보이면 시작합니다.
-                    const requiredRatio = Math.min(0.85, (window.innerHeight * 0.75) / section.offsetHeight);
+                    // 화면보다 긴 섹션은 화면 높이의 약 60%가 보이면 시작합니다.
+                    const requiredRatio = Math.min(0.7, (window.innerHeight * 0.6) / section.offsetHeight);
                     if (entry.intersectionRatio >= requiredRatio) {
                         section.querySelectorAll('.scroll-reveal-item').forEach(item => item.classList.add('is-visible'));
                         observer.unobserve(section);
