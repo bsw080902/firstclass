@@ -295,10 +295,6 @@ body {
 
 
 /* HERO 아래 빠른 메뉴: 첨부된 Figma 화면 참고 */
-.quick-menu {
-    padding: 72px 20px 100px;
-}
-
 .quick-menu-list {
     display: flex;
     align-items: flex-start;
@@ -349,10 +345,6 @@ body {
 }
 
 @media (max-width: 1024px) {
-    .quick-menu {
-        padding: 72px 16px 72px;
-    }
-
     .quick-menu-list {
         flex-wrap: wrap;
         gap: 28px 24px;
