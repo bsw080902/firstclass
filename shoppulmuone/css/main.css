@@ -743,3 +743,16 @@ body {
 }
 .new-swiper .new-prev { left: -31px; }
 .new-swiper .new-next { right: -31px; }
+
+/* 화살표가 Swiper의 overflow:hidden에 잘리지 않도록 바깥 래퍼에 배치 */
+.new-slider-shell { position: relative; }
+.new-slider-shell > .new-prev,
+.new-slider-shell > .new-next { position: absolute; top: 50%; z-index: 10; transform: translateY(-50%); }
+.new-slider-shell > .new-prev { left: -31px; }
+.new-slider-shell > .new-next { right: -31px; }
+.new-slider-shell > .new-prev,
+.new-slider-shell > .new-next { width: 62px; height: 62px; background: transparent; box-shadow: none; }
+.new-slider-shell > .new-prev:hover:not(.swiper-button-disabled),
+.new-slider-shell > .new-next:hover:not(.swiper-button-disabled) { background: transparent; }
+.new-slider-shell > .new-prev > img,
+.new-slider-shell > .new-next > img { display: block; width: 62px; height: 62px; }
