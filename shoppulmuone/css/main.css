@@ -990,3 +990,11 @@ body {
 .benefit-card-footer a img { width: 125px; }
 .benefits-more img { width: 157px; height: 48px; }
 @media (max-width: 767px) { .benefit-card-footer a { width: 110px; } .benefit-card-footer a img { width: 100%; height: auto; } }
+
+/* BENEFITS 버튼: NEW '다른 상품 더 보기'와 같은 부드러운 호버 효과 */
+.benefit-card-footer a,
+.benefits-more { transition: filter .25s ease; }
+.benefit-card-footer a:hover,
+.benefit-card-footer a:focus-visible,
+.benefits-more:hover,
+.benefits-more:focus-visible { filter: brightness(.96); opacity: 1; }
