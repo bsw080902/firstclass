@@ -975,3 +975,9 @@ body {
 .benefit-red .benefit-card-visual { background: #f36b59; }
 .benefit-red .benefit-badge { background: #79c941; }
 .benefit-red .benefit-card-copy h3 { color: #111; }
+
+/* BENEFITS 자세히 보기: 원본 More_benefits.svg (157 × 48) 사용 */
+.benefit-card-footer a { display: inline-flex; align-items: center; justify-content: center; width: 157px; height: 48px; padding: 0; border: 0; border-radius: 24px; flex-shrink: 0; }
+.benefit-card-footer a img { display: block; width: 157px; height: 48px; max-width: 100%; }
+.benefit-card-footer a:hover { border: 0; opacity: .82; }
+@media (max-width: 767px) { .benefit-card-footer a { width: 110px; height: auto; } .benefit-card-footer a img { width: 100%; height: auto; } }
