@@ -218,12 +218,12 @@ body {
     display: grid;
     place-items: center;
     border-radius: 50%;
-    background: rgba(255,255,255,.2);
+    background: rgba(104,117,106,.2);
     color: white;
     font-size: 10px;
 }
 .visual-controls .swiper-pagination {
-    background: rgba(255,255,255,.25);
+    background: rgba(104,117,106,.2);
     padding: 4px 8px;
     border-radius: 999px;
     border-radius: 999px;
@@ -236,7 +236,7 @@ body {
     width: auto;
     min-width: 34px;
 
-    color: rgba(255, 255, 255, 0.82);
+    color: #fff;
     font-size: 12px;
     line-height: 1;
 }
@@ -248,7 +248,7 @@ body {
 
 /* 기본 "/"를 Figma처럼 가볍게 보이게 */
 .visual .swiper-pagination-total {
-    color: rgba(255, 255, 255, 0.78);
+    color: #fff;
 }
 
 @media (max-width: 1024px) {
