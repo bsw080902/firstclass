@@ -984,3 +984,9 @@ body {
 
 /* BENEFITS 가을 한상 이벤트 배지: Brand/Lime */
 .benefit-autumn .benefit-badge { background: #80C342; }
+
+/* BENEFITS 버튼 역할 정정: 카드 자세히 보기 125px / 하단 혜택 더 알아보기 157px */
+.benefit-card-footer a { width: 125px; }
+.benefit-card-footer a img { width: 125px; }
+.benefits-more img { width: 157px; height: 48px; }
+@media (max-width: 767px) { .benefit-card-footer a { width: 110px; } .benefit-card-footer a img { width: 100%; height: auto; } }
