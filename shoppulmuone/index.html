@@ -370,12 +370,31 @@
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape' && categoryPanel.classList.contains('is-open')) { closeCategoryPanel(); categoryLink.focus(); }
         });
-        // 왼쪽 분류의 선택 표시 (오른쪽 세부 메뉴는 현재 신선식품 예시입니다).
-        document.querySelectorAll('.category-panel-left .category-item').forEach(button => {
+        // 왼쪽 카테고리를 선택하면 오른쪽 세부 메뉴가 함께 바뀝니다.
+        const categoryMenus = [
+            ['두부 · 콩나물 · 달걀', '과일 · 채소 · 쌀', '정육 · 수산'],
+            ['만두 · 피자 · 떡볶이', '면요리', '반찬 · 김치'],
+            ['양념 · 소스 · 오일', '과자 · 견과 · 베이커리', '생수 · 음료 · 유제품', '건강식품'],
+            ['생활용품']
+        ];
+        const categoryButtons = document.querySelectorAll('.category-panel-left .category-item');
+        const categoryDetails = document.querySelector('.category-panel-right');
+        categoryButtons.forEach((button, index) => {
             button.addEventListener('click', () => {
-                document.querySelectorAll('.category-panel-left .category-item').forEach(item => item.classList.remove('is-selected'));
+                categoryButtons.forEach(item => {
+                    item.classList.remove('is-selected');
+                    item.setAttribute('aria-pressed', 'false');
+                });
                 button.classList.add('is-selected');
+                button.setAttribute('aria-pressed', 'true');
+                categoryDetails.replaceChildren(...categoryMenus[index].map(label => {
+                    const link = document.createElement('a');
+                    link.href = '#';
+                    link.textContent = label;
+                    return link;
+                }));
             });
+            button.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
         });
 
         // 아래로 스크롤하면 헤더를 숨기고, 위로 스크롤하면 다시 보여줍니다.
