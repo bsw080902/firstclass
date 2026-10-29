@@ -1315,3 +1315,10 @@ body {
 }
 
 
+
+/* BENEFITS 첫 두 카드: 원본 이미지 오른쪽이 잘리지 않도록 전체 표시 */
+.benefit-eggs .benefit-card-visual > img,
+.benefit-seafood .benefit-card-visual > img {
+    object-fit: contain;
+    object-position: right center;
+}
