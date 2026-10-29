@@ -577,3 +577,11 @@ body {
     .best-swiper .swiper-slide-active .best-image { transform: scale(1.06); }
 }
 @media (prefers-reduced-motion: reduce) { .best-image, .best-actions { transition: none; } }
+
+/* BEST 빠른 버튼과 더보기는 위 추천상품 섹션과 같은 디자인을 공유합니다. */
+.best-card:hover .recommend-actions,
+.best-card:focus-within .recommend-actions { opacity: 1; visibility: visible; transform: translateY(0); }
+.best-actions.recommend-actions { right: 12px; bottom: 12px; gap: 6px; }
+.best-more.recommend-more { display: block; width: 161px; height: 48px; margin: 45px auto 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
+.best-more.recommend-more img { display: block; width: 161px; height: 48px; }
+@media (hover: none) { .best-actions.recommend-actions { opacity: 1; visibility: visible; transform: none; } }
