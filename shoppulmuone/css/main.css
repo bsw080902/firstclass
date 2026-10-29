@@ -981,3 +981,6 @@ body {
 .benefit-card-footer a img { display: block; width: 157px; height: 48px; max-width: 100%; }
 .benefit-card-footer a:hover { border: 0; opacity: .82; }
 @media (max-width: 767px) { .benefit-card-footer a { width: 110px; height: auto; } .benefit-card-footer a img { width: 100%; height: auto; } }
+
+/* BENEFITS 가을 한상 이벤트 배지: Brand/Lime */
+.benefit-autumn .benefit-badge { background: #80C342; }
