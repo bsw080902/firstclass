@@ -1136,3 +1136,73 @@ body {
     line-height: normal;
     letter-spacing: 0;
 }
+
+/* HERO 최종 버튼 형태: 하나의 회색 캡슐 + 별도 원형 일시정지 */
+.visual .visual-controls { gap: 6px; align-items: center; }
+.visual .visual-stepper {
+    width: 101px;
+    height: 20px;
+    background: rgba(100, 110, 105, .23);
+    border-radius: 999px;
+    overflow: hidden;
+}
+.visual .visual-stepper .swiper-button-prev,
+.visual .visual-stepper .swiper-button-next {
+    position: static;
+    width: 22px;
+    height: 20px;
+    flex: 0 0 22px;
+    margin: 0;
+    background: transparent !important;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+.visual .visual-stepper .swiper-button-prev::after,
+.visual .visual-stepper .swiper-button-next::after { display: none; content: none; }
+.visual .visual-stepper .swiper-button-prev img,
+.visual .visual-stepper .swiper-button-next img {
+    display: block;
+    width: 11px;
+    height: 11px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+.visual .visual-stepper .swiper-pagination {
+    position: static;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-width: 0;
+    color: #fff;
+}
+.visual .hero-current,
+.visual .hero-total {
+    flex: 1 1 0;
+    height: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.visual .hero-current { border-right: 1px solid rgba(255,255,255,.22); }
+.visual .visual-autoplay {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    border-radius: 50%;
+    background: rgba(100, 110, 105, .23);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.visual .visual-autoplay svg { width: 16px; height: 16px; }
+@media (max-width: 767px) {
+    .visual .visual-controls { gap: 6px; }
+    .visual .visual-stepper { width: 101px; height: 20px; }
+    .visual .visual-stepper .swiper-button-prev,
+    .visual .visual-stepper .swiper-button-next { width: 22px; height: 20px; flex-basis: 22px; }
+    .visual .visual-autoplay { width: 20px; height: 20px; flex-basis: 20px; }
+}
