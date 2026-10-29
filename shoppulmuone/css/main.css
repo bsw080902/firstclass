@@ -565,9 +565,36 @@ body {
 .best-delivery strong { color: #639e3d; font-weight: 500; }
 .best-price { margin: 24px 0 0; text-align: right; font-size: 17px; }
 .best-price span { color: #f04452; margin-right: 6px; }
-.best-pagination { display: flex; justify-content: center; align-items: center; gap: 6px; margin: 24px 0 18px; }
-.best-pagination .swiper-pagination-bullet { width: 7px; height: 7px; margin: 0 !important; background: #cdd8c9; opacity: 1; }
-.best-pagination .swiper-pagination-bullet-active { background: #009333; }
+/* BEST 페이지 표시: 선택 항목은 캡슐, 나머지는 링 형태 */
+.best-pagination { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 24px 0 18px; }
+.best-pagination .swiper-pagination-bullet {
+    display: block;
+    flex: 0 0 14px;
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    margin: 0 !important;
+    border: 2px solid #dce8dc;
+    border-radius: 999px;
+    box-sizing: border-box;
+    background: transparent;
+    opacity: 1;
+    cursor: pointer;
+    transition: width .3s ease, flex-basis .3s ease, background-color .3s ease, border-color .3s ease;
+}
+.best-pagination .swiper-pagination-bullet-active {
+    flex-basis: 30px;
+    width: 30px;
+    background: #009b3a;
+    border-color: #009b3a;
+}
+.best-pagination .swiper-pagination-bullet:focus-visible {
+    outline: 2px solid #006e2d;
+    outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+    .best-pagination .swiper-pagination-bullet { transition: none; }
+}
 .best-more { display: table; margin: 0 auto; padding: 13px 22px; border: 1px solid #e1e8df; border-radius: 999px; background: #fff; color: #667166; font-size: 13px; text-decoration: none; }
 @media (max-width: 767px) {
     .best-section { padding: 48px 16px 56px; }
