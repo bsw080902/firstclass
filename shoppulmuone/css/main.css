@@ -957,3 +957,16 @@ body {
   .benefits-next { right: -15px; }
   .benefits-prev { left: -15px; }
 }
+
+/* BENEFITS 최종 시안: PC 카드 3개만 표시하고 네 번째는 이동 후 노출 */
+.benefits-swiper { overflow: hidden; }
+.benefits-swiper .swiper-slide { width: auto; }
+.benefits-slider-shell { position: relative; }
+.benefits-next { right: -31px; }
+.benefits-prev { left: -31px; }
+@media (max-width: 767px) {
+    .benefits-swiper { overflow: hidden; }
+    .benefits-swiper .swiper-slide { width: auto; }
+    .benefits-next { right: -15px; }
+    .benefits-prev { left: -15px; }
+}
