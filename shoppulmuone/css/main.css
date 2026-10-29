@@ -587,8 +587,8 @@ body {
     overflow: hidden;
     flex-basis: 30px;
     width: 30px;
+    border: 0;
     background: #dce8dc;
-    border-color: #dce8dc;
 }
 .best-pagination .best-progress-fill {
     display: block;
