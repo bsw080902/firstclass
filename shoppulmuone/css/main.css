@@ -583,10 +583,20 @@ body {
     transition: width .3s ease, flex-basis .3s ease, background-color .3s ease, border-color .3s ease;
 }
 .best-pagination .swiper-pagination-bullet-active {
+    position: relative;
+    overflow: hidden;
     flex-basis: 30px;
     width: 30px;
+    background: #dce8dc;
+    border-color: #dce8dc;
+}
+.best-pagination .swiper-pagination-bullet-active::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--best-progress, 0%);
     background: #009b3a;
-    border-color: #009b3a;
+    border-radius: inherit;
 }
 .best-pagination .swiper-pagination-bullet:focus-visible {
     outline: 2px solid #006e2d;
