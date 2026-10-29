@@ -845,3 +845,56 @@ body {
 .header-actions .header-action-menu:has([aria-label="마이페이지"]) .header-action-panel a:focus-visible {
     color: var(--action-primary);
 }
+
+/* 일일배달 서비스: PC 기준 1720 × 400 */
+.daily-section { padding: 80px 24px 100px; background: var(--bg-default); }
+.daily-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1720px;
+    height: 400px;
+    margin: 0 auto;
+    padding: 55px clamp(40px, 5.8vw, 120px);
+    border-radius: 24px;
+    background: #e8f4df;
+    overflow: hidden;
+}
+.daily-content { flex: 0 1 540px; min-width: 0; }
+.daily-eyebrow { margin: 0 0 16px; color: var(--action-primary); font-size: 14px; font-weight: 600; }
+.daily-content h2 { margin: 0 0 22px; color: var(--text-primary); font-size: clamp(28px, 2.2vw, 40px); font-weight: 700; line-height: 1.25; }
+.daily-description { margin: 0; color: var(--text-secondary); font-size: 17px; line-height: 1.55; }
+.daily-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 48px;
+    padding: 12px 24px;
+    border: 1px solid var(--action-primary);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--action-primary);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .2s ease, color .2s ease;
+}
+.daily-cta:hover, .daily-cta:focus-visible { background: var(--action-primary); color: #fff; }
+.daily-image { display: block; flex: 0 1 auto; width: min(53%, 780px); max-height: 100%; height: auto; object-fit: contain; }
+@media (max-width: 900px) {
+    .daily-section { padding: 60px 16px; }
+    .daily-banner { height: auto; min-height: 340px; padding: 36px 30px; gap: 20px; }
+    .daily-content { flex-basis: 50%; }
+    .daily-image { width: 48%; }
+    .daily-description { font-size: 14px; }
+    .daily-cta { margin-top: 28px; }
+}
+@media (max-width: 600px) {
+    .daily-banner { flex-direction: column; align-items: flex-start; padding: 30px 22px; border-radius: 18px; }
+    .daily-content { flex-basis: auto; }
+    .daily-content h2 { font-size: 27px; }
+    .daily-image { align-self: center; width: 100%; max-height: 230px; }
+}
