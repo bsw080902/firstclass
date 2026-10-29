@@ -570,10 +570,6 @@
             const dot = document.createElement('button');
             dot.type = 'button';
             dot.className = 'swiper-pagination-bullet';
-            const fill = document.createElement('span');
-            fill.className = 'best-progress-fill';
-            fill.setAttribute('aria-hidden', 'true');
-            dot.appendChild(fill);
             dot.setAttribute('aria-label', (index + 1) + '번째 상품으로 이동');
             dot.addEventListener('click', () => {
                 bestSwiper.slideTo(bestOriginalCount + index);
@@ -587,11 +583,33 @@
             const index = Number(active.dataset.bestIndex);
             bestDots.forEach((dot, i) => {
                 dot.classList.toggle('swiper-pagination-bullet-active', i === index);
+                if (i !== index) dot.style.removeProperty('background');
                 dot.setAttribute('aria-current', i === index ? 'true' : 'false');
             });
         }
         bestSwiper.on('slideChange', updateBestPagination);
         updateBestPagination();
+
+        // 활성 버튼 자체를 채웁니다. 내부 요소/가상 요소의 표시 문제를 피합니다.
+        // Swiper 자동재생의 남은 시간에 맞춰 색상 경계를 직접 이동시킵니다.
+        let bestProgressStart = performance.now();
+        bestSwiper.on('slideChange', () => {
+            bestProgressStart = performance.now();
+        });
+        function paintBestProgress(now) {
+            const activeDot = bestPagination.querySelector('.swiper-pagination-bullet-active');
+            if (activeDot) {
+                const autoplay = bestSwiper.autoplay;
+                const remaining = autoplay && autoplay.timeLeft;
+                const ratio = autoplay && autoplay.running && Number.isFinite(remaining)
+                    ? 1 - Math.max(0, Math.min(4000, remaining)) / 4000
+                    : Math.max(0, Math.min(1, (now - bestProgressStart) / 4000));
+                const percent = (ratio * 100).toFixed(2) + '%';
+                activeDot.style.background = 'linear-gradient(to right, #009b3a 0%, #009b3a ' + percent + ', #dce8dc ' + percent + ', #dce8dc 100%)';
+            }
+            requestAnimationFrame(paintBestProgress);
+        }
+        requestAnimationFrame(paintBestProgress);
 
         // 활성 버튼이 바뀌면 CSS의 4초 채움 애니메이션이 새로 시작됩니다.
         // 기존 requestAnimationFrame의 인라인 transform이 CSS 애니메이션을 덮지 않도록 제거했습니다.
