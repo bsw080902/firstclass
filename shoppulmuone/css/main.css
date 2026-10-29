@@ -200,40 +200,49 @@ body {
 }
 
 .visual-autoplay {
-    display: block;
+    display: grid;
+    place-items: center;
     width: 20px;
     height: 20px;
     border: 0;
     padding: 0;
-    background: none;
+    border-radius: 50%;
+    background: rgba(104,117,106,.2);
     cursor: pointer;
     position: relative;
 }
-.visual-autoplay img { display: block; width: 20px; height: 20px; }
-.visual-autoplay[aria-pressed="true"] img { visibility: hidden; }
-.visual-autoplay[aria-pressed="true"]::after {
+/* 재생·일시정지 모두 화살표와 동일한 반투명 배경을 사용 */
+.visual-autoplay img { display: none; }
+.visual-autoplay::before,
+.visual-autoplay::after {
     content: "";
-    width: 20px;
-    height: 20px;
-    box-sizing: border-box;
     position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background: rgba(104,117,106,.2);
+    pointer-events: none;
 }
+/* 자동재생 중: 흰색 일시정지 막대 두 개 */
+.visual-autoplay[aria-pressed="false"]::before {
+    width: 2px;
+    height: 7px;
+    background: #fff;
+    left: 7px;
+    top: 6.5px;
+}
+.visual-autoplay[aria-pressed="false"]::after {
+    width: 2px;
+    height: 7px;
+    background: #fff;
+    left: 11px;
+    top: 6.5px;
+}
+/* 일시정지 중: 흰색 재생 삼각형 */
 .visual-autoplay[aria-pressed="true"]::before {
-    content: "";
-    position: absolute;
-    z-index: 1;
     left: 8px;
     top: 6px;
     border-top: 4px solid transparent;
     border-bottom: 4px solid transparent;
     border-left: 6px solid #fff;
-    pointer-events: none;
 }
+
 .visual-controls .swiper-pagination {
     background: rgba(104,117,106,.2);
     padding: 4px 8px;
