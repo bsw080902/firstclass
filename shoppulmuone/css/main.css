@@ -1216,3 +1216,23 @@ body {
 .visual .visual-stepper .swiper-button-next::after { content: none !important; display: none !important; }
 .visual .visual-stepper .swiper-button-prev svg,
 .visual .visual-stepper .swiper-button-next svg { display: block; width: 11px; height: 11px; flex-shrink: 0; }
+
+/* 상품 이미지 호버 확대: 카드 크기와 버튼은 그대로 유지 */
+.recommend-image > img,
+.best-image > img,
+.new-card-top > img {
+    transition: transform .5s ease;
+    transform-origin: center center;
+}
+.recommend-image:hover > img,
+.best-image:hover > img,
+.new-card-top:hover > img {
+    transform: scale(1.08);
+}
+.best-image { overflow: hidden; }
+.new-card-top { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) {
+    .recommend-image > img,
+    .best-image > img,
+    .new-card-top > img { transition: none; }
+}
