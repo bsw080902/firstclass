@@ -595,6 +595,7 @@ body {
     position: absolute;
     inset: 0 auto 0 0;
     width: var(--best-progress, 0%);
+    height: 100%;
     background: #009b3a;
     border-radius: inherit;
 }
