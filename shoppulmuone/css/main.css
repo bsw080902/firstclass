@@ -1100,3 +1100,23 @@ body {
     .visual .visual-stepper .swiper-pagination { font-size: 16px; }
     .visual .visual-autoplay { width: 36px; height: 36px; flex-basis: 36px; }
 }
+
+/* HERO Figma 실제 선택 크기: 페이지 컨트롤 101 × 20 Hug */
+.visual .visual-controls { gap: 8px; bottom: 20px; }
+.visual .visual-stepper { width: 101px; height: 20px; border-radius: 999px; }
+.visual .visual-stepper .swiper-button-prev,
+.visual .visual-stepper .swiper-button-next {
+    width: 23px; height: 20px; flex: 0 0 23px;
+}
+.visual .visual-stepper .swiper-button-prev img,
+.visual .visual-stepper .swiper-button-next img { width: 11px; height: 11px; }
+.visual .visual-stepper .swiper-pagination { font-size: 12px; font-weight: 600; }
+.visual .visual-autoplay { width: 25px; height: 20px; flex: 0 0 25px; border-radius: 999px; }
+.visual .visual-autoplay svg { width: 16px; height: 16px; }
+@media (max-width: 767px) {
+    .visual .visual-stepper { width: 101px; height: 20px; }
+    .visual .visual-stepper .swiper-button-prev,
+    .visual .visual-stepper .swiper-button-next { width: 23px; height: 20px; flex-basis: 23px; }
+    .visual .visual-stepper .swiper-pagination { font-size: 12px; }
+    .visual .visual-autoplay { width: 25px; height: 20px; flex-basis: 25px; }
+}
