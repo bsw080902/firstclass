@@ -390,17 +390,58 @@
 
 
         // BEST: 가운데 활성 상품은 CSS에서 330×330px로 확대하고 테두리를 표시합니다.
+        // 원본 상품이 5개뿐이라 넓은 PC에서 loop 연결이 끊길 수 있습니다.
+        // 앞뒤로 같은 상품을 복제해 슬라이드가 계속 이어지도록 합니다.
+        const bestWrapper = document.querySelector('.best-swiper .swiper-wrapper');
+        const bestOriginalSlides = Array.from(bestWrapper.children);
+        const bestOriginalCount = bestOriginalSlides.length;
+        bestOriginalSlides.forEach((slide, index) => {
+            slide.dataset.bestIndex = index;
+        });
+        bestOriginalSlides.forEach(slide => bestWrapper.appendChild(slide.cloneNode(true)));
+        bestOriginalSlides.forEach(slide => bestWrapper.appendChild(slide.cloneNode(true)));
+
         const bestSwiper = new Swiper('.best-swiper', {
             slidesPerView: 'auto',
             centeredSlides: true,
             spaceBetween: 20,
-            initialSlide: 2,
+            initialSlide: bestOriginalCount + 2,
             loop: true,
+            loopAdditionalSlides: bestOriginalCount,
             grabCursor: true,
             autoplay: { delay: 10000, disableOnInteraction: false },
-            pagination: { el: '.best-pagination', clickable: true },
             breakpoints: { 768: { spaceBetween: 24 }, 1200: { spaceBetween: 30 } }
         });
+
+        // 복제된 상품은 페이지 수에 포함하지 않고 원본 5개만 표시합니다.
+        const bestPagination = document.querySelector('.best-pagination');
+        const bestDots = bestOriginalSlides.map((_, index) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'swiper-pagination-bullet';
+            dot.setAttribute('aria-label', (index + 1) + '번째 상품으로 이동');
+            dot.addEventListener('click', () => {
+                const current = bestSwiper.activeIndex;
+                const candidates = bestSwiper.slides.map((slide, i) => ({ slide, i }))
+                    .filter(item => Number(item.slide.dataset.bestIndex) === index);
+                const closest = candidates.reduce((a, b) =>
+                    Math.abs(a.i - current) <= Math.abs(b.i - current) ? a : b);
+                bestSwiper.slideTo(closest.i);
+            });
+            bestPagination.appendChild(dot);
+            return dot;
+        });
+        function updateBestPagination() {
+            const active = bestSwiper.slides[bestSwiper.activeIndex];
+            if (!active) return;
+            const index = Number(active.dataset.bestIndex);
+            bestDots.forEach((dot, i) => {
+                dot.classList.toggle('swiper-pagination-bullet-active', i === index);
+                dot.setAttribute('aria-current', i === index ? 'true' : 'false');
+            });
+        }
+        bestSwiper.on('slideChange', updateBestPagination);
+        updateBestPagination();
 
         // 찜 버튼의 선택 상태를 바꿉니다. (데모 UI, 서버 저장 기능은 아님)
         document.querySelectorAll('.recommend-wish').forEach(button => {
