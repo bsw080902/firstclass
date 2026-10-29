@@ -1077,3 +1077,26 @@ body {
     .visual .visual-autoplay { width: 38px; height: 38px; flex-basis: 38px; }
     .visual .visual-autoplay svg { width: 20px; height: 20px; }
 }
+
+/* HERO 컨트롤 크기 보정: 제공된 245×49 캡처 기준 (컨트롤 약 230×40) */
+.visual .visual-controls { gap: 10px; bottom: 20px; }
+.visual .visual-stepper { width: 184px; height: 40px; }
+.visual .visual-stepper .swiper-button-prev,
+.visual .visual-stepper .swiper-button-next {
+    width: 42px;
+    height: 40px;
+    flex-basis: 42px;
+}
+.visual .visual-stepper .swiper-button-prev img,
+.visual .visual-stepper .swiper-button-next img { width: 18px; height: 18px; }
+.visual .visual-stepper .swiper-pagination { font-size: 18px; }
+.visual .visual-autoplay { width: 40px; height: 40px; flex-basis: 40px; }
+.visual .visual-autoplay svg { width: 24px; height: 24px; }
+@media (max-width: 767px) {
+    .visual .visual-controls { gap: 8px; }
+    .visual .visual-stepper { width: 160px; height: 36px; }
+    .visual .visual-stepper .swiper-button-prev,
+    .visual .visual-stepper .swiper-button-next { width: 36px; height: 36px; flex-basis: 36px; }
+    .visual .visual-stepper .swiper-pagination { font-size: 16px; }
+    .visual .visual-autoplay { width: 36px; height: 36px; flex-basis: 36px; }
+}
