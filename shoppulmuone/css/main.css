@@ -734,3 +734,12 @@ body {
     .new-product-actions button { height: 30px; padding: 0; }
     .new-product-actions button img { height: 30px; }
 }
+
+/* NEW 슬라이더: 참고 이미지처럼 화살표를 슬라이더 양 끝에 반쯤 걸쳐 배치 */
+.new-swiper .new-prev,
+.new-swiper .new-next {
+    top: 50%;
+    transform: translateY(-50%);
+}
+.new-swiper .new-prev { left: -31px; }
+.new-swiper .new-next { right: -31px; }
