@@ -600,8 +600,16 @@ body {
     transform-origin: left center;
     pointer-events: none;
 }
+.best-pagination .swiper-pagination-bullet-active .best-progress-fill {
+    animation: best-progress-fill 4s linear forwards;
+}
 .best-pagination .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) .best-progress-fill {
     visibility: hidden;
+    animation: none;
+}
+@keyframes best-progress-fill {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
 }
 .best-pagination .swiper-pagination-bullet:focus-visible {
     outline: 2px solid #006e2d;
