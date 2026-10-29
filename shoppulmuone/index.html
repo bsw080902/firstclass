@@ -218,6 +218,49 @@
                     <a class="recommend-more" href="#" aria-label="다른 상품 더 보기"><img src="img/More_button.svg" alt="" width="161" height="48"></a>
                 </div>
             </section>
+
+            <!-- BEST: 가운데 상품만 330px로 확대되는 슬라이더 (상품 이미지/정보는 임시) -->
+            <section class="best-section" aria-labelledby="best-title">
+                <div class="best-inner">
+                    <div class="best-heading"><p>BEST</p><h2 id="best-title">가장 잘 팔리는 상품</h2></div>
+                    <div class="swiper best-swiper">
+                        <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <article class="best-card">
+                                <div class="best-image"><img src="img/list1_1.png" alt="채소습관 케일&사과 (130ml) (임시 이미지)"><div class="best-actions"><button type="button" aria-label="채소습관 케일&사과 (130ml) 찜하기"><img src="img/Heart_button.svg" alt=""></button><button type="button" aria-label="채소습관 케일&사과 (130ml) 장바구니"><img src="img/Cart_button.svg" alt=""></button></div></div>
+                                <div class="best-info"><p class="best-brand">풀무원</p><h3>채소습관 케일&사과 (130ml)</h3><p class="best-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p><p class="best-price"><span>10%</span> <strong>4,950원</strong></p></div>
+                            </article>
+                        </div>
+                        <div class="swiper-slide">
+                            <article class="best-card">
+                                <div class="best-image"><img src="img/list1_2.png" alt="100% 당근즙 (130ml) (임시 이미지)"><div class="best-actions"><button type="button" aria-label="100% 당근즙 (130ml) 찜하기"><img src="img/Heart_button.svg" alt=""></button><button type="button" aria-label="100% 당근즙 (130ml) 장바구니"><img src="img/Cart_button.svg" alt=""></button></div></div>
+                                <div class="best-info"><p class="best-brand">풀무원</p><h3>100% 당근즙 (130ml)</h3><p class="best-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p><p class="best-price"><span>10%</span> <strong>4,950원</strong></p></div>
+                            </article>
+                        </div>
+                        <div class="swiper-slide">
+                            <article class="best-card">
+                                <div class="best-image"><img src="img/list1_3.png" alt="시그니처 밸런스 식단 (1일1식) (임시 이미지)"><div class="best-actions"><button type="button" aria-label="시그니처 밸런스 식단 (1일1식) 찜하기"><img src="img/Heart_button.svg" alt=""></button><button type="button" aria-label="시그니처 밸런스 식단 (1일1식) 장바구니"><img src="img/Cart_button.svg" alt=""></button></div></div>
+                                <div class="best-info"><p class="best-brand">풀무원</p><h3>시그니처 밸런스 식단 (1일1식)</h3><p class="best-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p><p class="best-price"><span>10%</span> <strong>8,280원</strong></p></div>
+                            </article>
+                        </div>
+                        <div class="swiper-slide">
+                            <article class="best-card">
+                                <div class="best-image"><img src="img/list1_4.png" alt="로제빈 우먼밸런스 (3개월분) (임시 이미지)"><div class="best-actions"><button type="button" aria-label="로제빈 우먼밸런스 (3개월분) 찜하기"><img src="img/Heart_button.svg" alt=""></button><button type="button" aria-label="로제빈 우먼밸런스 (3개월분) 장바구니"><img src="img/Cart_button.svg" alt=""></button></div></div>
+                                <div class="best-info"><p class="best-brand">풀무원</p><h3>로제빈 우먼밸런스 (3개월분)</h3><p class="best-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p><p class="best-price"><span>10%</span> <strong>4,950원</strong></p></div>
+                            </article>
+                        </div>
+                        <div class="swiper-slide">
+                            <article class="best-card">
+                                <div class="best-image"><img src="img/list1_5.png" alt="풀무원 인기 상품 (임시 이미지)"><div class="best-actions"><button type="button" aria-label="풀무원 인기 상품 찜하기"><img src="img/Heart_button.svg" alt=""></button><button type="button" aria-label="풀무원 인기 상품 장바구니"><img src="img/Cart_button.svg" alt=""></button></div></div>
+                                <div class="best-info"><p class="best-brand">풀무원</p><h3>풀무원 인기 상품</h3><p class="best-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p><p class="best-price"><span>10%</span> <strong>4,950원</strong></p></div>
+                            </article>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="best-pagination" aria-label="베스트 상품 슬라이드 위치"></div>
+                    <a class="best-more" href="#">다른 상품 더 보기</a>
+                </div>
+            </section>
         </main>
 
         <footer>&copy;</footer>
@@ -344,6 +387,18 @@
                 sectionObserver.observe(section);
             });
         }
+
+
+        // BEST: 가운데 활성 상품은 CSS에서 330×330px로 확대하고 테두리를 표시합니다.
+        const bestSwiper = new Swiper('.best-swiper', {
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 20,
+            initialSlide: 2,
+            grabCursor: true,
+            pagination: { el: '.best-pagination', clickable: true },
+            breakpoints: { 768: { spaceBetween: 24 }, 1200: { spaceBetween: 30 } }
+        });
 
         // 찜 버튼의 선택 상태를 바꿉니다. (데모 UI, 서버 저장 기능은 아님)
         document.querySelectorAll('.recommend-wish').forEach(button => {
