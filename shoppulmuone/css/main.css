@@ -706,3 +706,7 @@ body {
 @media (hover: none) {
   .best-actions { opacity: 1; visibility: visible; transform: none; }
 }
+
+/* NEW 더보기: 위 상품 섹션과 같은 SVG 버튼 */
+.new-more { display: block; width: 161px; height: 48px; margin: 18px auto 0; padding: 0; border: 0; border-radius: 0; background: transparent; }
+.new-more img { display: block; width: 161px; height: 48px; }
