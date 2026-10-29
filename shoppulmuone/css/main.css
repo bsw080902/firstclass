@@ -1125,3 +1125,14 @@ body {
 .visual .visual-stepper { background: transparent; overflow: visible; }
 .visual .visual-stepper .swiper-button-prev,
 .visual .visual-stepper .swiper-button-next { background: transparent !important; box-shadow: none; border: 0; }
+
+/* HERO 페이지 숫자: Figma Typography (Pretendard Variable / SemiBold / 12px) */
+.visual .visual-stepper .swiper-pagination,
+.visual .hero-current,
+.visual .hero-total {
+    font-family: "Pretendard Variable", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0;
+}
