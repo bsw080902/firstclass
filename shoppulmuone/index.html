@@ -593,25 +593,8 @@
         bestSwiper.on('slideChange', updateBestPagination);
         updateBestPagination();
 
-        // 실제 DOM 막대에 Swiper의 남은 자동재생 시간을 직접 표시합니다.
-        // CSS 가상 요소 애니메이션 대신 매 프레임 채움 비율을 갱신합니다.
-        let bestFallbackStart = performance.now();
-        bestSwiper.on('slideChange', () => { bestFallbackStart = performance.now(); });
-        function renderBestProgress(now) {
-            const activeDot = bestPagination.querySelector('.swiper-pagination-bullet-active');
-            const fill = activeDot && activeDot.querySelector('.best-progress-fill');
-            if (fill) {
-                const remaining = bestSwiper.autoplay && bestSwiper.autoplay.timeLeft;
-                const hasTime = bestSwiper.autoplay && bestSwiper.autoplay.running &&
-                    typeof remaining === 'number' && remaining > 0 && remaining <= 4000;
-                const elapsed = hasTime
-                    ? 1 - remaining / 4000
-                    : Math.min(1, (now - bestFallbackStart) / 4000);
-                fill.style.transform = 'scaleX(' + Math.max(0, Math.min(1, elapsed)) + ')';
-            }
-            requestAnimationFrame(renderBestProgress);
-        }
-        requestAnimationFrame(renderBestProgress);
+        // 활성 버튼이 바뀌면 CSS의 4초 채움 애니메이션이 새로 시작됩니다.
+        // 기존 requestAnimationFrame의 인라인 transform이 CSS 애니메이션을 덮지 않도록 제거했습니다.
 
         // NEW: 카드 3개를 화면 폭에 맞춰 보여주며 순환합니다.
         const benefitsSwiper = new Swiper('.benefits-swiper', {
