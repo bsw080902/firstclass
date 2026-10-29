@@ -761,3 +761,19 @@ body {
 /* 배송 조회 트럭: 호버/포커스 시에도 원래 아이콘 색상 유지 */
 .header-actions .header-truck:hover img,
 .header-actions .header-truck:focus-visible img { filter: none; }
+
+/* 헤더 배송 아이콘: Action/Primary #009333, 바퀴 내부는 흰색 유지 */
+.header-actions .header-truck { position: relative; }
+.header-actions .header-truck img {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    filter: none;
+    transition: opacity .2s ease;
+}
+.header-actions .header-truck .truck-default { opacity: 1; }
+.header-actions .header-truck .truck-hover { opacity: 0; }
+.header-actions .header-truck:hover .truck-default,
+.header-actions .header-truck:focus-visible .truck-default { opacity: 0; }
+.header-actions .header-truck:hover .truck-hover,
+.header-actions .header-truck:focus-visible .truck-hover { opacity: 1; filter: none; }
