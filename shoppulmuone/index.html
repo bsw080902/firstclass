@@ -543,15 +543,15 @@
         bestOriginalSlides.forEach(slide => bestWrapper.insertBefore(slide.cloneNode(true), bestWrapper.children[bestOriginalCount]));
 
         const bestSwiper = new Swiper('.best-swiper', {
-            slidesPerView: 'auto',
-            centeredSlides: true,
+            slidesPerView: 1,
+            centeredSlides: false,
             spaceBetween: 20,
             initialSlide: bestOriginalCount + 2,
             loop: false,
             speed: 500,
             grabCursor: true,
             autoplay: { delay: 4000, disableOnInteraction: false },
-            breakpoints: { 768: { spaceBetween: 24 }, 1200: { spaceBetween: 30 } }
+            breakpoints: { 768: { slidesPerView: 2, spaceBetween: 24 }, 1200: { slidesPerView: 3, spaceBetween: 30 } }
         });
 
         // 가장자리 복제 영역에 도착하면 같은 상품이 있는 중앙 영역으로 즉시 이동합니다.
