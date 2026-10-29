@@ -1030,8 +1030,8 @@ body {
 
 /* HERO 하단 컨트롤: Figma 레퍼런스처럼 한 줄로 묶기 */
 .visual .visual-controls {
-    right: calc(10% + 20px);
-    bottom: 20px;
+    right: calc(10% + 8px);
+    bottom: 18px;
     display: flex;
     align-items: center;
     gap: 12px;
