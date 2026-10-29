@@ -587,6 +587,12 @@
             });
         }
         bestSwiper.on('slideChange', updateBestPagination);
+        // Swiper가 알려주는 실제 남은 시간으로 활성 캡슐을 채웁니다.
+        // 슬라이드를 직접 넘기거나 자동재생이 재시작되어도 진행률이 동기화됩니다.
+        bestSwiper.on('autoplayTimeLeft', (swiper, timeLeft, percentage) => {
+            const active = bestPagination.querySelector('.swiper-pagination-bullet-active');
+            if (active) active.style.setProperty('--best-progress', (Math.max(0, Math.min(1, 1 - percentage)) * 100) + '%');
+        });
         updateBestPagination();
 
         // NEW: 카드 3개를 화면 폭에 맞춰 보여주며 순환합니다.
