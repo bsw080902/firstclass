@@ -896,3 +896,51 @@ body {
     .daily-content h2 { font-size: 27px; }
     .daily-image { align-self: center; width: 100%; max-height: 230px; }
 }
+
+/* BENEFITS: 560 × 336 카드, 섹션 상하 90px */
+.benefits-section { padding: 90px 24px; background: var(--bg-default); overflow: hidden; }
+.benefits-inner { max-width: 1720px; margin: 0 auto; }
+.benefits-heading { margin-bottom: 24px; }
+.benefits-heading p { margin: 0 0 8px; color: var(--action-primary); font-size: 14px; font-weight: 700; }
+.benefits-heading h2 { margin: 0; color: var(--text-primary); font-size: 28px; font-weight: 700; }
+.benefits-slider-shell { position: relative; }
+.benefits-swiper { overflow: hidden; }
+.benefits-swiper .swiper-slide { width: 560px; height: 336px; }
+.benefit-card { height: 100%; overflow: hidden; border: 1px solid var(--border-default); border-radius: 22px; background: #fff; box-sizing: border-box; }
+.benefit-card-visual { display: flex; position: relative; height: 224px; overflow: hidden; background: #f3f9fc; }
+.benefit-card-copy { z-index: 1; position: relative; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding-left: 36px; width: 52%; box-sizing: border-box; }
+.benefit-badge { display: inline-block; padding: 5px 11px; border-radius: 100px; background: var(--action-primary); color: #fff; font-size: 12px; font-weight: 700; }
+.benefit-card-copy h3 { margin: 12px 0 0; color: #161e16; font-size: 22px; line-height: 1.4; font-weight: 700; }
+.benefit-card-visual > img { position: absolute; right: 0; top: 0; width: 50%; height: 100%; object-fit: cover; }
+.benefit-seafood .benefit-card-visual { background: #ead9cb; }
+.benefit-autumn .benefit-card-visual { background: #f2e8d1; }
+.benefit-red .benefit-card-visual { background: #e85b4c; }
+.benefit-red .benefit-card-copy h3 { color: #171717; }
+.benefit-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 22px 26px; height: 112px; box-sizing: border-box; }
+.benefit-card-footer p { margin: 0 0 6px; color: var(--text-secondary); font-size: 11px; }
+.benefit-card-footer strong { color: var(--text-primary); font-size: 13px; font-weight: 600; }
+.benefit-card-footer a { flex: 0 0 auto; padding: 11px 20px; border: 1px solid var(--border-default); border-radius: 999px; color: var(--text-secondary); font-size: 12px; text-decoration: none; }
+.benefit-card-footer a:hover { color: var(--action-primary); border-color: var(--action-primary); }
+.benefits-prev, .benefits-next { position: absolute; z-index: 3; top: 50%; width: 62px; height: 62px; padding: 0; transform: translateY(-50%); border: 0; background: transparent; cursor: pointer; transition: opacity .3s ease, visibility .3s ease; }
+.benefits-prev { left: -31px; }
+.benefits-next { right: -31px; }
+.benefits-prev img, .benefits-next img { display: block; width: 100%; height: 100%; }
+.benefits-prev.swiper-button-disabled, .benefits-next.swiper-button-disabled, .benefits-prev.swiper-button-lock, .benefits-next.swiper-button-lock { opacity: 0; visibility: hidden; pointer-events: none; }
+.benefits-pagination { display: flex; justify-content: center; gap: 8px; margin: 20px 0; }
+.benefits-pagination .swiper-pagination-bullet { width: 8px; height: 8px; margin: 0 !important; background: #dce6dc; opacity: 1; }
+.benefits-pagination .swiper-pagination-bullet-active { background: var(--action-primary); }
+.benefits-more { display: block; width: max-content; margin: 0 auto; }
+.benefits-more img { display: block; max-width: 100%; height: auto; }
+@media (max-width: 767px) {
+    .benefits-section { padding: 90px 16px; }
+    .benefits-heading h2 { font-size: 24px; }
+    .benefits-swiper .swiper-slide { width: min(85vw, 560px); height: auto; }
+    .benefit-card-visual { height: 190px; }
+    .benefit-card-copy { padding-left: 18px; }
+    .benefit-card-copy h3 { font-size: 16px; }
+    .benefit-card-footer { height: 100px; padding: 14px; }
+    .benefit-card-footer strong { font-size: 11px; }
+    .benefit-card-footer a { padding: 9px 12px; font-size: 11px; }
+    .benefits-prev { left: -15px; }
+    .benefits-next { right: -15px; }
+}
