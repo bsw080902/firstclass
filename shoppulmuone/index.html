@@ -587,11 +587,11 @@
             });
         }
         bestSwiper.on('slideChange', updateBestPagination);
-        // Swiper가 알려주는 실제 남은 시간으로 활성 캡슐을 채웁니다.
-        // 슬라이드를 직접 넘기거나 자동재생이 재시작되어도 진행률이 동기화됩니다.
+        // 자동재생 남은 시간에 맞춰 현재 캡슐의 채움 비율을 갱신합니다.
+        // 개별 버튼의 인라인 스타일 대신 페이지 표시 컨테이너의 변수를 사용합니다.
         bestSwiper.on('autoplayTimeLeft', (swiper, timeLeft, percentage) => {
-            const active = bestPagination.querySelector('.swiper-pagination-bullet-active');
-            if (active) active.style.setProperty('--best-progress', (Math.max(0, Math.min(1, 1 - percentage)) * 100) + '%');
+            const progress = Math.max(0, Math.min(1, 1 - percentage));
+            bestPagination.style.setProperty('--best-progress', (progress * 100) + '%');
         });
         updateBestPagination();
 
