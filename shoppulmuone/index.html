@@ -570,6 +570,10 @@
             const dot = document.createElement('button');
             dot.type = 'button';
             dot.className = 'swiper-pagination-bullet';
+            const fill = document.createElement('span');
+            fill.className = 'best-progress-fill';
+            fill.setAttribute('aria-hidden', 'true');
+            dot.appendChild(fill);
             dot.setAttribute('aria-label', (index + 1) + '번째 상품으로 이동');
             dot.addEventListener('click', () => {
                 bestSwiper.slideTo(bestOriginalCount + index);
@@ -585,13 +589,29 @@
                 dot.classList.toggle('swiper-pagination-bullet-active', i === index);
                 dot.setAttribute('aria-current', i === index ? 'true' : 'false');
             });
-            // 활성 점이 바뀌거나 같은 상품으로 다시 돌아와도 4초 진행 애니메이션을 재시작합니다.
-            bestPagination.classList.remove('best-progress-running');
-            void bestPagination.offsetWidth;
-            bestPagination.classList.add('best-progress-running');
         }
         bestSwiper.on('slideChange', updateBestPagination);
         updateBestPagination();
+
+        // 실제 DOM 막대에 Swiper의 남은 자동재생 시간을 직접 표시합니다.
+        // CSS 가상 요소 애니메이션 대신 매 프레임 채움 비율을 갱신합니다.
+        let bestFallbackStart = performance.now();
+        bestSwiper.on('slideChange', () => { bestFallbackStart = performance.now(); });
+        function renderBestProgress(now) {
+            const activeDot = bestPagination.querySelector('.swiper-pagination-bullet-active');
+            const fill = activeDot && activeDot.querySelector('.best-progress-fill');
+            if (fill) {
+                const remaining = bestSwiper.autoplay && bestSwiper.autoplay.timeLeft;
+                const hasTime = bestSwiper.autoplay && bestSwiper.autoplay.running &&
+                    typeof remaining === 'number' && remaining > 0 && remaining <= 4000;
+                const elapsed = hasTime
+                    ? 1 - remaining / 4000
+                    : Math.min(1, (now - bestFallbackStart) / 4000);
+                fill.style.transform = 'scaleX(' + Math.max(0, Math.min(1, elapsed)) + ')';
+            }
+            requestAnimationFrame(renderBestProgress);
+        }
+        requestAnimationFrame(renderBestProgress);
 
         // NEW: 카드 3개를 화면 폭에 맞춰 보여주며 순환합니다.
         const benefitsSwiper = new Swiper('.benefits-swiper', {
