@@ -1292,3 +1292,9 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .new-card { transition: none; }
 }
+
+/* BENEFITS 하단 SVG 이미지 버튼: 사각형 그림자 제거 */
+.benefits-more { box-shadow: none !important; }
+@media (hover: hover) and (pointer: fine) {
+    .benefits-more:hover { box-shadow: none !important; }
+}
