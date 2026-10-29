@@ -285,7 +285,7 @@
                                 <div class="new-card-bottom"><img class="new-product-image" src="img/pulmuonead_33.png" alt="식감이 살아있는 쌀떡볶이 상품 이미지" loading="lazy"><div class="new-product-info"><p class="new-product-brand">풀무원식품</p><h4>식감이 살아있는 쌀떡볶이</h4><p class="new-product-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p><div class="new-product-purchase"><p class="new-product-price"></p><div class="new-product-actions"><button type="button" class="recommend-wish" aria-pressed="false" aria-label="식감이 살아있는 쌀떡볶이 찜하기"><span aria-hidden="true">♡</span> 찜</button><button type="button" class="recommend-cart" aria-label="식감이 살아있는 쌀떡볶이 장바구니 담기"><span aria-hidden="true">🛒</span> 장바구니</button></div></div></div></div>
                             </article>
                         </div>
-                    </div><button type="button" class="new-next" aria-label="다음 상품">›</button></div>
+                    </div><button type="button" class="new-prev" aria-label="이전 상품"><img src="img/Left_icon.svg" alt=""></button><button type="button" class="new-next" aria-label="다음 상품"><img src="img/Right_icon.svg" alt=""></button></div>
                     <div class="new-pagination" aria-label="새 상품 페이지 이동"></div>
                     <a class="new-more" href="#">다른 상품 더 보기</a>
                 </div>
@@ -480,10 +480,11 @@
         const newSwiper = new Swiper('.new-swiper', {
             slidesPerView: 1.1,
             spaceBetween: 20,
-            loop: true,
+            loop: false,
+            watchOverflow: true,
             grabCursor: true,
             pagination: { el: '.new-pagination', clickable: true },
-            navigation: { nextEl: '.new-next' },
+            navigation: { nextEl: '.new-next', prevEl: '.new-prev' },
             breakpoints: {
                 768: { slidesPerView: 1.65, spaceBetween: 24 },
                 1200: { slidesPerView: 2.4, spaceBetween: 30 }
