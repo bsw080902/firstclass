@@ -129,9 +129,9 @@ body {
     height: 100%;
     border-radius: 12px;
     overflow: hidden;
-    filter: blur(2px) brightness(.97);
-    opacity: .9;
-    transition: filter .45s ease, opacity .45s ease;
+    filter: blur(1.5px) brightness(.98);
+    opacity: .95;
+    transition: filter .7s ease-in-out, opacity .7s ease-in-out;
 }
 
 .hero-sec .swiper-slide-prev,
@@ -277,7 +277,7 @@ body {
     }
 
     .hero-sec .swiper-slide-prev,
-    .hero-sec .swiper-slide-next { filter: blur(1.5px) brightness(.97); opacity: .9; }
+    .hero-sec .swiper-slide-next { filter: blur(1px) brightness(.98); opacity: .95; }
 
     .visual .swiper-button-prev,
     .visual .swiper-button-next {
