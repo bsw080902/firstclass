@@ -904,7 +904,7 @@ body {
 .benefits-heading p { margin: 0 0 8px; color: var(--action-primary); font-size: 14px; font-weight: 700; }
 .benefits-heading h2 { margin: 0; color: var(--text-primary); font-size: 28px; font-weight: 700; }
 .benefits-slider-shell { position: relative; }
-.benefits-swiper { overflow: hidden; }
+.benefits-swiper { overflow: visible; }
 .benefits-swiper .swiper-slide { width: 560px; height: 336px; }
 .benefit-card { height: 100%; overflow: hidden; border: 1px solid var(--border-default); border-radius: 22px; background: #fff; box-sizing: border-box; }
 .benefit-card-visual { display: flex; position: relative; height: 224px; overflow: hidden; background: #f3f9fc; }
@@ -943,4 +943,17 @@ body {
     .benefit-card-footer a { padding: 9px 12px; font-size: 11px; }
     .benefits-prev { left: -15px; }
     .benefits-next { right: -15px; }
+}
+
+/* BENEFITS 시안 보정: 세 장을 온전히 보여주고 다음 카드가 오른쪽에 이어지도록 */
+.benefits-section { overflow: hidden; background: #fff; }
+.benefits-slider-shell { isolation: isolate; }
+.benefits-swiper .swiper-slide { flex-shrink: 0; }
+.benefit-card-visual > img { object-fit: cover; object-position: center; }
+.benefits-next { right: -31px; }
+.benefits-prev { left: -31px; }
+@media (max-width: 767px) {
+  .benefits-swiper { overflow: visible; }
+  .benefits-next { right: -15px; }
+  .benefits-prev { left: -15px; }
 }
