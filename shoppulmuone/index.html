@@ -591,13 +591,17 @@
 
         // NEW: 카드 3개를 화면 폭에 맞춰 보여주며 순환합니다.
         const benefitsSwiper = new Swiper('.benefits-swiper', {
-            slidesPerView: 'auto',
+            slidesPerView: 1,
             spaceBetween: 16,
             speed: 500,
             grabCursor: true,
             watchOverflow: true,
             navigation: { nextEl: '.benefits-next', prevEl: '.benefits-prev' },
-            pagination: { el: '.benefits-pagination', clickable: true }
+            pagination: { el: '.benefits-pagination', clickable: true },
+            breakpoints: {
+                768: { slidesPerView: 2, spaceBetween: 16 },
+                1200: { slidesPerView: 3, spaceBetween: 16 }
+            }
         });
 
         const newSwiper = new Swiper('.new-swiper', {
