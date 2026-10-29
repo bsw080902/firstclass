@@ -548,7 +548,7 @@ body {
 .best-heading { margin-bottom: 12px; }
 .best-heading p { margin: 0 0 8px; color: #009333; font-size: 14px; font-weight: 700; }
 .best-heading h2 { margin: 0; font-size: 26px; font-weight: 700; }
-.best-swiper { overflow: hidden; padding: 16px 10px 20px; box-sizing: border-box; }
+.best-swiper { overflow: hidden; padding: 16px 0 20px; }
 .best-swiper .swiper-slide { width: 300px; height: auto; }
 .best-card { width: 300px; }
 .best-image { width: 300px; height: 300px; position: relative; box-sizing: border-box; border: 3px solid transparent; border-radius: 20px; background: #fff; transition: transform .4s ease, border-color .4s ease; transform-origin: center center; }
