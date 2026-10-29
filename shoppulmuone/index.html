@@ -585,14 +585,12 @@
                 dot.classList.toggle('swiper-pagination-bullet-active', i === index);
                 dot.setAttribute('aria-current', i === index ? 'true' : 'false');
             });
+            // 활성 점이 바뀌거나 같은 상품으로 다시 돌아와도 4초 진행 애니메이션을 재시작합니다.
+            bestPagination.classList.remove('best-progress-running');
+            void bestPagination.offsetWidth;
+            bestPagination.classList.add('best-progress-running');
         }
         bestSwiper.on('slideChange', updateBestPagination);
-        // 자동재생 남은 시간에 맞춰 현재 캡슐의 채움 비율을 갱신합니다.
-        // 개별 버튼의 인라인 스타일 대신 페이지 표시 컨테이너의 변수를 사용합니다.
-        bestSwiper.on('autoplayTimeLeft', (swiper, timeLeft, percentage) => {
-            const progress = Math.max(0, Math.min(1, 1 - percentage));
-            bestPagination.style.setProperty('--best-progress', (progress * 100) + '%');
-        });
         updateBestPagination();
 
         // NEW: 카드 3개를 화면 폭에 맞춰 보여주며 순환합니다.
