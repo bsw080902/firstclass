@@ -348,7 +348,7 @@ body {
 
 @media (max-width: 1024px) {
     .quick-menu {
-        padding: 48px 16px 72px;
+        padding: 72px 16px 72px;
     }
 
     .quick-menu-list {
