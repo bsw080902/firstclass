@@ -662,3 +662,23 @@ body {
 .new-swiper .new-next svg,
 .new-swiper .new-prev::after,
 .new-swiper .new-next::after { display: none !important; content: none !important; }
+
+/* NEW 화살표: SVG 파일 자체에 원형 배경이 있으므로 버튼 배경을 제거 */
+.new-swiper .new-prev,
+.new-swiper .new-next {
+    width: 62px;
+    height: 62px;
+    background: transparent;
+    box-shadow: none;
+}
+.new-swiper .new-prev:hover:not(.swiper-button-disabled),
+.new-swiper .new-next:hover:not(.swiper-button-disabled) {
+    background: transparent;
+}
+.new-swiper .new-prev > img,
+.new-swiper .new-next > img {
+    width: 62px;
+    height: 62px;
+    max-width: none;
+    object-fit: contain;
+}
