@@ -1322,3 +1322,8 @@ body {
     object-fit: contain;
     object-position: right center;
 }
+
+/* BEST: 중앙 활성 상품만 테두리 표시 */
+.best-swiper .swiper-slide:not(.swiper-slide-active) .best-image {
+    border-color: transparent;
+}
