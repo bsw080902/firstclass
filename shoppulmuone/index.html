@@ -319,22 +319,28 @@
             previousScrollY = currentScrollY;
         }, { passive: true });
 
-        // 퀵메뉴와 추천 상품을 각각 화면에 들어올 때 부드럽게 표시합니다.
-        const revealItems = document.querySelectorAll('.quick-menu-list li, .recommend-heading, .recommend-card');
+        // 각 섹션이 충분히 보였을 때 내부 콘텐츠를 순서대로 등장시킵니다.
+        const revealSections = document.querySelectorAll('.quick-menu, .recommend-section');
         if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            // 화면 밖에 있는 항목에만 숨김 상태를 적용해 초기 화면 깜빡임을 방지합니다.
-            const revealObserver = new IntersectionObserver((entries, observer) => {
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
+                    const section = entry.target;
+                    // 화면보다 긴 섹션은 화면 높이의 약 75%가 보이면 시작합니다.
+                    const requiredRatio = Math.min(0.85, (window.innerHeight * 0.75) / section.offsetHeight);
+                    if (entry.intersectionRatio >= requiredRatio) {
+                        section.querySelectorAll('.scroll-reveal-item').forEach(item => item.classList.add('is-visible'));
+                        observer.unobserve(section);
                     }
                 });
-            }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
-            revealItems.forEach((item, index) => {
-                item.classList.add('scroll-reveal-item');
-                item.style.setProperty('--reveal-delay', (index % 6) * 65 + 'ms');
-                revealObserver.observe(item);
+            }, { threshold: Array.from({ length: 101 }, (_, i) => i / 100) });
+
+            revealSections.forEach(section => {
+                const items = section.querySelectorAll('.quick-menu-list li, .recommend-heading, .recommend-card');
+                items.forEach((item, index) => {
+                    item.classList.add('scroll-reveal-item');
+                    item.style.setProperty('--reveal-delay', (index % 6) * 65 + 'ms');
+                });
+                sectionObserver.observe(section);
             });
         }
 
