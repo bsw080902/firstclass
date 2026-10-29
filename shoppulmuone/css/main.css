@@ -831,3 +831,17 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .header-action-panel { transition: none; }
 }
+
+/* 마이페이지 드롭다운: Figma 시안의 24px 간격과 Text/Secondary 적용 */
+.header-actions .header-action-menu:has([aria-label="마이페이지"]) .header-action-panel {
+    gap: 24px;
+}
+.header-actions .header-action-menu:has([aria-label="마이페이지"]) .header-action-panel a {
+    min-height: 0;
+    padding: 0;
+    color: var(--text-secondary);
+}
+.header-actions .header-action-menu:has([aria-label="마이페이지"]) .header-action-panel a:hover,
+.header-actions .header-action-menu:has([aria-label="마이페이지"]) .header-action-panel a:focus-visible {
+    color: var(--action-primary);
+}
