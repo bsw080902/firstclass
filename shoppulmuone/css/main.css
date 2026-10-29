@@ -970,3 +970,8 @@ body {
     .benefits-next { right: -15px; }
     .benefits-prev { left: -15px; }
 }
+
+/* BENEFITS 네 번째 카드: 제공된 이벤트 시안의 코랄 배경과 연두 배지 */
+.benefit-red .benefit-card-visual { background: #f36b59; }
+.benefit-red .benefit-badge { background: #79c941; }
+.benefit-red .benefit-card-copy h3 { color: #111; }
