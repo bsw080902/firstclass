@@ -565,41 +565,34 @@ body {
 .best-delivery strong { color: #639e3d; font-weight: 500; }
 .best-price { margin: 24px 0 0; text-align: right; font-size: 17px; }
 .best-price span { color: #f04452; margin-right: 6px; }
-/* BEST 페이지 표시: Figma처럼 34px 단색 캡슐 + 34px 원형 점 */
-.best-pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-    margin: 24px 0 18px;
-}
+/* BEST 페이지 표시: 선택 항목은 캡슐, 나머지는 링 형태 */
+.best-pagination { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 24px 0 18px; }
 .best-pagination .swiper-pagination-bullet {
     display: block;
-    flex: 0 0 34px;
-    width: 34px;
-    height: 34px;
+    flex: 0 0 14px;
+    width: 14px;
+    height: 14px;
     padding: 0;
     margin: 0 !important;
-    border: 0;
+    border: 2px solid #dce8dc;
     border-radius: 999px;
-    background: #dce8dc;
+    box-sizing: border-box;
+    background: transparent;
     opacity: 1;
     cursor: pointer;
-    transition: background-color .25s ease, width .25s ease, flex-basis .25s ease;
+    transition: width .3s ease, flex-basis .3s ease, background-color .3s ease, border-color .3s ease;
 }
 .best-pagination .swiper-pagination-bullet-active {
-    flex-basis: 65px;
-    width: 65px;
-    background: #009b3a;
+    position: relative;
+    overflow: hidden;
+    flex-basis: 30px;
+    width: 30px;
+    border: 0;
+    background: #dce8dc;
 }
 .best-pagination .swiper-pagination-bullet:focus-visible {
     outline: 2px solid #006e2d;
     outline-offset: 4px;
-}
-@media (max-width: 767px) {
-    .best-pagination { gap: 12px; }
-    .best-pagination .swiper-pagination-bullet { flex-basis: 18px; width: 18px; height: 18px; }
-    .best-pagination .swiper-pagination-bullet-active { flex-basis: 36px; width: 36px; }
 }
 @media (prefers-reduced-motion: reduce) {
     .best-pagination .swiper-pagination-bullet { transition: none; }
