@@ -1622,8 +1622,11 @@ body {
   .new-section .new-inner > .new-heading {
     width: min(100%, 1420px);
     max-width: 1420px;
-    margin-left: auto;
-    margin-right: auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: 0;
+    margin-right: 0;
     box-sizing: border-box;
   }
 }
