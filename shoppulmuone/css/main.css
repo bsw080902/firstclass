@@ -378,7 +378,8 @@ body {
 .recommend-heading { margin-bottom: 24px; }
 .recommend-eyebrow { margin: 0 0 7px; color: var(--brand-green); font-size: 14px; font-weight: 700; }
 .recommend-heading h2 { margin: 0; font-size: 28px; font-weight: 700; line-height: 1.35; }
-.recommend-list { display: flex; align-items: flex-start; gap: 30px; padding: 0; margin: 0; list-style: none; overflow-x: auto; scrollbar-width: thin; }
+.recommend-list { display: flex; align-items: flex-start; gap: 30px; padding: 0; margin: 0; list-style: none; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+.recommend-list::-webkit-scrollbar { display: none; }
 .recommend-card { flex: 0 0 300px; min-width: 0; }
 .recommend-card-featured { flex-basis: 400px; }
 .recommend-card article { min-width: 0; }
