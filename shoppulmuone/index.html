@@ -389,6 +389,7 @@
                     <div class="brand-top">
                         <div class="brand-heading"><p>BRAND</p><h2 id="brand-title">풀무원의 모든 브랜드</h2></div>
                         <div class="brand-tabs-shell">
+                            <button class="brand-tabs-prev" type="button" aria-label="이전 브랜드 보기"><img src="img/Left_icon.svg" alt=""></button>
                             <div class="brand-tabs" role="group" aria-label="브랜드 선택"></div>
                             <button class="brand-tabs-next" type="button" aria-label="다음 브랜드 보기"><img src="img/Right_icon.svg" alt=""></button>
                         </div>
@@ -685,6 +686,7 @@
         const brandNames = ['풀무원식품', '올가', '풀무원지구식단', '아임리얼', '풀무원다논', '풀스키친', '풀스키즈', '풀스쿡', '바릴라', '풀무원샘물', '풀무원 아미오', '풀무원녹즙', '디자인밀', '퍼팩', '풀무원건강식물원', '풀무원로하스'];
         const brandTabs = document.querySelector('.brand-tabs');
         const brandNext = document.querySelector('.brand-tabs-next');
+        const brandPrev = document.querySelector('.brand-tabs-prev');
         const brandProducts = document.querySelector('.brand-products');
         const brandAd = document.querySelector('.brand-ad');
         const brandMore = document.querySelector('.brand-more');
@@ -718,11 +720,18 @@
             brandTabs.appendChild(button);
         });
         brandTabs.firstElementChild.classList.add('is-active');
-        brandNext.addEventListener('click', () => {
-            const maxScroll = brandTabs.scrollWidth - brandTabs.clientWidth;
-            if (brandTabs.scrollLeft >= maxScroll - 5) brandTabs.scrollTo({left: 0, behavior: 'smooth'});
-            else brandTabs.scrollBy({left: Math.max(260, brandTabs.clientWidth * 0.65), behavior: 'smooth'});
-        });
+        function updateBrandArrows() {
+            const max = Math.max(0, brandTabs.scrollWidth - brandTabs.clientWidth);
+            brandPrev.classList.toggle('is-hidden', brandTabs.scrollLeft <= 2);
+            brandNext.classList.toggle('is-hidden', brandTabs.scrollLeft >= max - 2);
+            brandPrev.disabled = brandTabs.scrollLeft <= 2;
+            brandNext.disabled = brandTabs.scrollLeft >= max - 2;
+        }
+        brandPrev.addEventListener('click', () => brandTabs.scrollBy({ left: -Math.max(260, brandTabs.clientWidth * 0.65), behavior: 'smooth' }));
+        brandNext.addEventListener('click', () => brandTabs.scrollBy({ left: Math.max(260, brandTabs.clientWidth * 0.65), behavior: 'smooth' }));
+        brandTabs.addEventListener('scroll', updateBrandArrows, { passive: true });
+        window.addEventListener('resize', updateBrandArrows);
+        updateBrandArrows();
 
         // 찜 버튼의 선택 상태를 바꿉니다. (데모 UI, 서버 저장 기능은 아님)
         // BEST는 복제 슬라이드가 있으므로 이벤트 위임으로 찜 버튼을 처리합니다.
