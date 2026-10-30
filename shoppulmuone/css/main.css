@@ -1442,16 +1442,16 @@ body {
 
 
 /* FOOTER — Figma reference */
-.site-footer { width: 100%; color: #515d53; font-size: 12px; line-height: 1.6; }
+.site-footer { width: 100%; color: #515d53; font-size: 14px; line-height: 1.6; }
 .footer-nav { background: #80c441; color: #fff; }
 .footer-nav-inner { max-width: 1496px; min-height: 60px; margin: 0 auto; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
-.footer-nav-inner a { color: inherit; text-decoration: none; padding: 0 22px; line-height: 1; font-size: 13px; border-right: 1px solid rgba(255,255,255,.5); }
+.footer-nav-inner a { color: inherit; text-decoration: none; padding: 0 22px; line-height: 1; font-size: 16px; font-weight: 500; border-right: 1px solid rgba(255,255,255,.5); }
 .footer-nav-inner a:last-child { border-right: 0; }
 .footer-nav-inner a:hover, .footer-nav-inner a:focus-visible { text-decoration: underline; }
 .footer-main { background: #f7faf5; }
 .footer-main-inner { max-width: 1496px; min-height: 340px; margin: 0 auto; padding: 72px 76px 66px; display: flex; align-items: flex-start; justify-content: space-between; gap: 64px; box-sizing: border-box; }
 .footer-company { flex: 1; min-width: 0; }
-.footer-brand-line { display: flex; align-items: center; gap: 30px; margin-bottom: 10px; color: #1e261f; }
+.footer-brand-line { display: flex; align-items: center; gap: 30px; margin-bottom: 20px; color: #1e261f; }
 .footer-logo { display: block; width: 150px; height: auto; }
 .footer-brand-line strong { font-size: 13px; font-weight: 700; }
 .footer-company address { font-style: normal; }
@@ -1464,14 +1464,14 @@ body {
 .footer-kakao { display: inline-block; max-width: 76px; max-height: 24px; width: auto; height: auto; object-fit: contain; }
 .footer-text-link { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .footer-certifications { display: flex; justify-content: flex-start; align-items: center; gap: 14px; margin-top: 30px; }
-.footer-certifications img { display: block; max-width: 65px; height: 54px; object-fit: contain; }
+.footer-certifications img { display: block; max-width: 65px; height: 46px; object-fit: contain; }
 @media (max-width: 1199px) {
     .footer-main-inner { padding: 54px 32px; gap: 32px; }
     .footer-support { flex-basis: 330px; }
 }
 @media (max-width: 767px) {
     .footer-nav-inner { justify-content: flex-start; padding: 14px 12px; row-gap: 12px; }
-    .footer-nav-inner a { font-size: 12px; padding: 0 12px; }
+    .footer-nav-inner a { font-size: 16px; padding: 0 12px; }
     .footer-main-inner { min-height: 0; padding: 40px 20px 48px; flex-direction: column; gap: 24px; }
     .footer-brand-line { gap: 18px; }
     .footer-logo { width: 128px; }
