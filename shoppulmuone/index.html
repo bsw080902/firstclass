@@ -612,8 +612,8 @@
         }
 
 
-        // BEST: 원본 5개를 앞뒤에 배치해 끊김 없이 순환합니다.
-        // Swiper의 loop와 수동 복제를 동시에 쓰지 않고, 중앙 묶음으로 되돌립니다.
+        // BEST: 넉넉한 반복 슬라이드를 준비하고 Swiper의 기본 loop로 자연스럽게 순환합니다.
+        // 직접 위치를 순간 이동시키지 않아 경계에서 끊기는 현상을 방지합니다.
         const bestWrapper = document.querySelector('.best-swiper .swiper-wrapper');
         const bestOriginalSlides = Array.from(bestWrapper.children);
         const bestOriginalCount = bestOriginalSlides.length;
@@ -626,21 +626,11 @@
             centeredSlides: true,
             spaceBetween: 20,
             initialSlide: bestOriginalCount + 2,
-            loop: false,
+            loop: true,
             speed: 500,
             grabCursor: true,
             autoplay: { delay: 4000, disableOnInteraction: false },
             breakpoints: { 768: { spaceBetween: 24 }, 1200: { spaceBetween: 30 } }
-        });
-
-        // 가장자리 복제 영역에 도착하면 같은 상품이 있는 중앙 영역으로 즉시 이동합니다.
-        bestSwiper.on('slideChangeTransitionEnd', () => {
-            const index = bestSwiper.activeIndex;
-            if (index < bestOriginalCount) {
-                bestSwiper.slideTo(index + bestOriginalCount, 0, false);
-            } else if (index >= bestOriginalCount * 2) {
-                bestSwiper.slideTo(index - bestOriginalCount, 0, false);
-            }
         });
 
         // 페이지 점은 복제본을 제외한 원본 상품 5개만 보여줍니다.
@@ -654,7 +644,7 @@
             dot.style.backgroundColor = '#dce8dc';
             dot.setAttribute('aria-label', (index + 1) + '번째 상품으로 이동');
             dot.addEventListener('click', () => {
-                bestSwiper.slideTo(bestOriginalCount + index);
+                bestSwiper.slideToLoop(bestOriginalCount + index);
             });
             bestPagination.appendChild(dot);
             return dot;
