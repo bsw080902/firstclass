@@ -782,14 +782,16 @@
             brandDidDrag = false;
             brandDragStartX = event.clientX;
             brandDragStartScroll = brandTabs.scrollLeft;
-            brandTabs.setPointerCapture(event.pointerId);
         });
         brandTabs.addEventListener('pointermove', event => {
             if (brandPointerId !== event.pointerId) return;
             const distance = event.clientX - brandDragStartX;
             if (!brandDidDrag && Math.abs(distance) < 5) return;
-            brandDidDrag = true;
-            brandTabs.classList.add('is-dragging');
+            if (!brandDidDrag) {
+                brandDidDrag = true;
+                brandTabs.classList.add('is-dragging');
+                brandTabs.setPointerCapture(event.pointerId);
+            }
             brandTabs.scrollLeft = brandDragStartScroll - distance;
         });
         function finishBrandDrag(event) {
