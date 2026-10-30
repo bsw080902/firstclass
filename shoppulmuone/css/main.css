@@ -1359,7 +1359,7 @@ body {
 
 /* BRAND: 500px 대표 이미지 + 300px 상품 3개, 간격 32px */
 .brand-section { padding: 95px 24px 105px; overflow: hidden; }
-.brand-inner { max-width: 1480px; margin: 0 auto; }
+.brand-inner { max-width: 1530px; margin: 0 auto; }
 .brand-top { display: flex; align-items: flex-start; gap: 32px; margin-bottom: 32px; }
 .brand-heading { flex: 0 0 400px; }
 .brand-heading p { margin: 0 0 7px; color: var(--brand-green); font-size: 14px; font-weight: 700; }
