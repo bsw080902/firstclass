@@ -771,40 +771,42 @@
         brandPrev.addEventListener('click', () => selectBrand(selectedBrand - 1));
         brandNext.addEventListener('click', () => selectBrand(selectedBrand + 1));
         selectBrand(0);
-        // 브랜드 탭을 마우스/터치로 좌우 드래그해 탐색합니다.
-        // 드래그 직후에는 의도치 않은 브랜드 선택 클릭을 막습니다.
+        // BRAND: 탭 목록은 마우스로 드래그하고 터치에서는 기본 가로 스크롤을 사용합니다.
         let brandDragStartX = 0;
         let brandDragStartScroll = 0;
-        let brandDragging = false;
+        let brandPointerId = null;
         let brandDidDrag = false;
         brandTabs.addEventListener('pointerdown', event => {
-            if (event.pointerType === 'mouse' && event.button !== 0) return;
-            brandDragging = true;
+            if (event.pointerType !== 'mouse' || event.button !== 0) return;
+            brandPointerId = event.pointerId;
             brandDidDrag = false;
             brandDragStartX = event.clientX;
             brandDragStartScroll = brandTabs.scrollLeft;
+            brandTabs.setPointerCapture(event.pointerId);
         });
         brandTabs.addEventListener('pointermove', event => {
-            if (!brandDragging) return;
+            if (brandPointerId !== event.pointerId) return;
             const distance = event.clientX - brandDragStartX;
-            if (Math.abs(distance) < 6 && !brandDidDrag) return;
+            if (!brandDidDrag && Math.abs(distance) < 5) return;
             brandDidDrag = true;
             brandTabs.classList.add('is-dragging');
             brandTabs.scrollLeft = brandDragStartScroll - distance;
         });
-        const finishBrandDrag = () => {
-            brandDragging = false;
+        function finishBrandDrag(event) {
+            if (brandPointerId !== event.pointerId) return;
+            brandPointerId = null;
             brandTabs.classList.remove('is-dragging');
-            if (brandDidDrag) window.setTimeout(() => { brandDidDrag = false; }, 0);
-        };
+            if (brandTabs.hasPointerCapture(event.pointerId)) {
+                brandTabs.releasePointerCapture(event.pointerId);
+            }
+        }
         brandTabs.addEventListener('pointerup', finishBrandDrag);
         brandTabs.addEventListener('pointercancel', finishBrandDrag);
-        brandTabs.addEventListener('pointerleave', finishBrandDrag);
         brandTabs.addEventListener('click', event => {
-            if (brandDidDrag) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
+            if (!brandDidDrag) return;
+            event.preventDefault();
+            event.stopPropagation();
+            brandDidDrag = false;
         }, true);
 
         // 찜 버튼의 선택 상태를 바꿉니다. (데모 UI, 서버 저장 기능은 아님)
