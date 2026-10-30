@@ -690,49 +690,52 @@
         const brandAd = document.querySelector('.brand-ad');
         const brandMore = document.querySelector('.brand-more');
         let selectedBrand = 0;
+        const brandPlaceholder = document.createElement('p');
+        brandPlaceholder.className = 'brand-placeholder';
+        brandPlaceholder.setAttribute('role', 'status');
+        brandPlaceholder.hidden = true;
+        document.querySelector('.brand-content').appendChild(brandPlaceholder);
+
+        function selectBrand(index) {
+            if (index < 0 || index >= brandNames.length) return;
+            selectedBrand = index;
+            const tabs = brandTabs.querySelectorAll('.brand-tab');
+            tabs.forEach((tab, i) => {
+                tab.classList.toggle('is-active', i === index);
+                tab.setAttribute('aria-pressed', String(i === index));
+            });
+            // 선택된 브랜드가 보이도록 상단 목록만 필요한 만큼 이동합니다.
+            const activeTab = tabs[index];
+            const targetLeft = activeTab.offsetLeft - brandTabs.offsetLeft - (brandTabs.clientWidth - activeTab.offsetWidth) / 2;
+            brandTabs.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
+
+            // 제공된 상품 자료는 풀무원식품 1개 브랜드분이므로 다른 브랜드는 안내 표시.
+            brandProducts.hidden = index !== 0;
+            brandAd.hidden = index !== 0;
+            brandPlaceholder.hidden = index === 0;
+            brandPlaceholder.textContent = brandNames[index] + ' 상품 콘텐츠 준비 중';
+            brandMore.textContent = index === 0 ? '브랜드 상품 더 보기' : brandNames[index] + ' 상품 더 보기';
+            updateBrandArrows();
+        }
         brandNames.forEach((name, index) => {
             const button = document.createElement('button');
             button.type = 'button';
             button.className = 'brand-tab';
             button.textContent = name;
-            button.setAttribute('aria-pressed', String(index === 0));
-            button.addEventListener('click', () => {
-                selectedBrand = index;
-                brandTabs.querySelectorAll('.brand-tab').forEach((tab, i) => {
-                    tab.classList.toggle('is-active', i === index);
-                    tab.setAttribute('aria-pressed', String(i === index));
-                });
-                // 다른 브랜드의 상품 이미지가 아직 제공되지 않아 임의의 상품을 표시하지 않습니다.
-                brandProducts.hidden = index !== 0;
-                brandAd.hidden = index !== 0;
-                let placeholder = document.querySelector('.brand-placeholder');
-                if (!placeholder) {
-                    placeholder = document.createElement('p');
-                    placeholder.className = 'brand-placeholder';
-                    placeholder.setAttribute('role', 'status');
-                    document.querySelector('.brand-content').appendChild(placeholder);
-                }
-                placeholder.hidden = index === 0;
-                placeholder.textContent = name + ' 상품 콘텐츠 준비 중';
-                brandMore.textContent = index === 0 ? '브랜드 상품 더 보기' : name + ' 상품 더 보기';
-            });
+            button.addEventListener('click', () => selectBrand(index));
             brandTabs.appendChild(button);
         });
-        brandTabs.firstElementChild.classList.add('is-active');
         function updateBrandArrows() {
-            const max = Math.max(0, brandTabs.scrollWidth - brandTabs.clientWidth);
-            brandPrev.classList.toggle('is-hidden', brandTabs.scrollLeft <= 2);
-            brandNext.classList.toggle('is-hidden', brandTabs.scrollLeft >= max - 2);
-            brandPrev.disabled = brandTabs.scrollLeft <= 2;
-            brandNext.disabled = brandTabs.scrollLeft >= max - 2;
+            const atFirst = selectedBrand === 0;
+            const atLast = selectedBrand === brandNames.length - 1;
+            brandPrev.classList.toggle('is-hidden', atFirst);
+            brandNext.classList.toggle('is-hidden', atLast);
+            brandPrev.disabled = atFirst;
+            brandNext.disabled = atLast;
         }
-        brandPrev.addEventListener('click', () => brandTabs.scrollBy({ left: -Math.max(260, brandTabs.clientWidth * 0.65), behavior: 'smooth' }));
-        brandNext.addEventListener('click', () => brandTabs.scrollBy({ left: Math.max(260, brandTabs.clientWidth * 0.65), behavior: 'smooth' }));
-        brandTabs.addEventListener('scroll', updateBrandArrows, { passive: true });
-        window.addEventListener('resize', updateBrandArrows);
-        updateBrandArrows();
-        requestAnimationFrame(updateBrandArrows);
-        window.addEventListener('load', updateBrandArrows);
+        brandPrev.addEventListener('click', () => selectBrand(selectedBrand - 1));
+        brandNext.addEventListener('click', () => selectBrand(selectedBrand + 1));
+        selectBrand(0);
 
         // 찜 버튼의 선택 상태를 바꿉니다. (데모 UI, 서버 저장 기능은 아님)
         // BEST는 복제 슬라이드가 있으므로 이벤트 위임으로 찜 버튼을 처리합니다.
