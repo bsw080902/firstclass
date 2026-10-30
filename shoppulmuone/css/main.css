@@ -1523,4 +1523,5 @@ body {
 /* BRAND: 탭 목록 마우스 드래그 탐색 */
 .brand-tabs { cursor: grab; }
 .brand-tabs.is-dragging { cursor: grabbing; scroll-behavior: auto; user-select: none; }
-.brand-tabs.is-dragging .brand-tab { pointer-events: none; }
+.brand-tabs { touch-action: pan-x; }
+.brand-tabs.is-dragging .brand-tab { user-select: none; }
