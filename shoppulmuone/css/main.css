@@ -1526,8 +1526,18 @@ body {
 .brand-tabs { touch-action: pan-x; }
 .brand-tabs.is-dragging .brand-tab { user-select: none; }
 
-/* PULMUONE'S PICK: 찜·장바구니 아이콘만 소폭 축소 */
-.recommend-section .recommend-actions button,
-.recommend-section .recommend-actions button img {
+/* 모든 상품 카드: 찜·장바구니 아이콘 크기 통일 */
+.recommend-actions button,
+.recommend-actions button img,
+.best-actions button,
+.best-actions img,
+.new-product-actions button,
+.new-product-actions button img {
     height: 32px;
+}
+@media (max-width: 767px) {
+    .new-product-actions button,
+    .new-product-actions button img {
+        height: 30px;
+    }
 }
