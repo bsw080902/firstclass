@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/main.css?v=new-section-edge-align-20261030">
+    <link rel="stylesheet" href="css/main.css?v=new-card-687x478-20261030">
     <script src="../npm/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
@@ -703,7 +703,7 @@
         });
 
         const newSwiper = new Swiper('.new-swiper', {
-            slidesPerView: 1.1,
+            slidesPerView: 'auto',
             spaceBetween: 20,
             loop: false,
             watchOverflow: true,
@@ -711,8 +711,8 @@
             pagination: { el: '.new-pagination', clickable: true },
             navigation: { nextEl: '.new-next', prevEl: '.new-prev' },
             breakpoints: {
-                768: { slidesPerView: 1.65, spaceBetween: 24 },
-                1200: { slidesPerView: 2, spaceBetween: 30 }
+                768: { spaceBetween: 24 },
+                1200: { spaceBetween: 48 }
             }
         });
 
