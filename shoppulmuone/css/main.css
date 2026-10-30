@@ -1554,3 +1554,46 @@ body {
     padding: 30px 0;
     box-sizing: border-box;
 }
+
+
+/* NEW: Figma 상품 카드 687×478 기준 */
+@media (min-width: 1200px) {
+    .new-swiper .swiper-slide {
+        width: 687px;
+        flex: 0 0 687px;
+    }
+
+    .new-card {
+        width: 687px;
+        height: 478px;
+        box-sizing: border-box;
+    }
+
+    .new-card-top {
+        height: 248px;
+        aspect-ratio: auto;
+    }
+
+    .new-card-bottom {
+        height: 228px;
+        min-height: 0;
+        padding: 20px 22px;
+        gap: 24px;
+        box-sizing: border-box;
+    }
+
+    .new-card .new-product-image {
+        width: 185px;
+        height: 185px;
+        flex: 0 0 185px;
+    }
+
+    .new-card-copy {
+        left: 30px;
+        bottom: 24px;
+    }
+
+    .new-card-copy h3 {
+        font-size: 26px;
+    }
+}
