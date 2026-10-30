@@ -1542,3 +1542,6 @@ body {
         height: 30px;
     }
 }
+
+/* NEW: 제목 시작선을 첫 번째 상품 카드와 맞춤 (Swiper 좌우 패딩 30px) */
+.new-heading { padding-left: 30px; }
