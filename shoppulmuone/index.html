@@ -545,7 +545,7 @@
         }, { passive: true });
 
         // 각 섹션이 충분히 보였을 때 내부 콘텐츠를 순서대로 등장시킵니다.
-        const revealSections = document.querySelectorAll('.quick-menu, .recommend-section, .best-section, .new-section, .daily-section, .benefits-section');
+        const revealSections = document.querySelectorAll('.quick-menu, .recommend-section, .best-section, .new-section, .daily-section, .benefits-section, .brand-section');
         if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             const sectionObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -562,7 +562,7 @@
             }, { threshold: Array.from({ length: 101 }, (_, i) => i / 100) });
 
             revealSections.forEach(section => {
-                const items = section.querySelectorAll('.quick-menu-list li, .recommend-heading, .recommend-card, .best-heading, .best-swiper, .best-more, .new-heading, .new-swiper, .new-more, .daily-content, .daily-image, .benefits-heading, .benefits-slider-shell, .benefits-pagination, .benefits-more');
+                const items = section.querySelectorAll('.quick-menu-list li, .recommend-heading, .recommend-card, .best-heading, .best-swiper, .best-more, .new-heading, .new-swiper, .new-more, .daily-content, .daily-image, .benefits-heading, .benefits-slider-shell, .benefits-pagination, .benefits-more, .brand-heading, .brand-tabs-shell, .brand-ad, .brand-product, .brand-pagination, .brand-more');
                 items.forEach((item, index) => {
                     item.classList.add('scroll-reveal-item');
                     item.style.setProperty('--reveal-delay', (index % 6) * 65 + 'ms');
