@@ -1624,16 +1624,3 @@ body {
         overflow: hidden;
     }
 }
-
-
-/* NEW: 두 상품 카드와 제목을 동일한 중앙 콘텐츠 폭에 정렬 */
-@media (min-width: 1200px) {
-    .new-section .new-inner > .new-heading,
-    .new-section .new-inner > .new-slider-shell {
-        width: min(100%, 1420px);
-        max-width: 1420px;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        box-sizing: border-box;
-    }
-}
