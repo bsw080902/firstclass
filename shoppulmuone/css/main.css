@@ -553,7 +553,7 @@ body {
 .best-card { width: 300px; }
 .best-image { width: 300px; height: 300px; position: relative; box-sizing: border-box; border: 3px solid transparent; border-radius: 20px; background: #fff; transition: transform .4s ease, border-color .4s ease; transform-origin: center center; }
 .best-image > img { width: 100%; height: 100%; display: block; object-fit: cover; border-radius: 17px; }
-.best-swiper .swiper-slide-active .best-image { transform: scale(1.1); border-color: #80c441; z-index: 2; }
+.best-swiper .swiper-slide-active .best-image { transform: scale(1.1); z-index: 2; }
 .best-actions { position: absolute; right: 12px; bottom: 12px; display: flex; align-items: center; gap: 6px; opacity: 0; visibility: hidden; transform: translateY(7px); transition: opacity .2s, transform .2s, visibility .2s; }
 .best-card:hover .best-actions, .best-card:focus-within .best-actions { opacity: 1; visibility: visible; transform: translateY(0); }
 .best-actions button { padding: 0; border: 0; background: transparent; cursor: pointer; }
@@ -1498,4 +1498,10 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .recommend-image > img,
     .best-image > img { transition: none; }
+}
+
+/* BEST: NEW 상품 카드처럼 호버 시에만 연두색 테두리 표시 */
+.best-card:hover .best-image,
+.best-card:focus-within .best-image {
+    border-color: #b6dba6;
 }
