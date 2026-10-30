@@ -384,6 +384,44 @@
                     <a class="benefits-more" href="#" aria-label="혜택 더 알아보기"><img src="img/More_benefits.svg" alt=""></a>
                 </div>
             </section>
+            <section class="brand-section" aria-labelledby="brand-title">
+                <div class="brand-inner">
+                    <div class="brand-top">
+                        <div class="brand-heading"><p>BRAND</p><h2 id="brand-title">풀무원의 모든 브랜드</h2></div>
+                        <div class="brand-tabs-shell">
+                            <div class="brand-tabs" role="group" aria-label="브랜드 선택"></div>
+                            <button class="brand-tabs-next" type="button" aria-label="다음 브랜드 보기"><img src="img/Right_icon.svg" alt=""></button>
+                        </div>
+                    </div>
+                    <div class="brand-content">
+                        <div class="brand-ad"><img src="img/Brand_ad.png" alt="풀무원 - 건강한 재료로 만드는 풀무원 바른 먹거리" loading="lazy"></div>
+                        <div class="brand-products">
+                            <div class="brand-product-list">
+                                <article class="brand-product">
+                                    <div class="brand-product-image"><img src="img/Brand1.png" alt="식감혁신 본격 떡볶이 마포식" loading="lazy">
+                                        <div class="recommend-actions"><button type="button" class="recommend-wish" aria-label="떡볶이 찜하기" aria-pressed="false"><img src="img/Heart_button.svg" alt=""></button><button type="button" class="recommend-cart" aria-label="떡볶이 장바구니 담기"><img src="img/Cart_button.svg" alt=""></button></div>
+                                    </div>
+                                    <p class="recommend-brand">풀무원식품</p><h3 class="recommend-name">식감혁신 본격 떡볶이 마포식 (420g)</h3><p class="recommend-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p><p class="recommend-price"><strong>4,480원</strong></p>
+                                </article>
+                                <article class="brand-product">
+                                    <div class="brand-product-image"><img src="img/Brand2.png" alt="특등급 국산콩 두부칩 오리지널" loading="lazy">
+                                        <div class="recommend-actions"><button type="button" class="recommend-wish" aria-label="두부칩 찜하기" aria-pressed="false"><img src="img/Heart_button.svg" alt=""></button><button type="button" class="recommend-cart" aria-label="두부칩 장바구니 담기"><img src="img/Cart_button.svg" alt=""></button></div>
+                                    </div>
+                                    <p class="recommend-brand">풀무원식품</p><h3 class="recommend-name">특등급 국산콩 두부칩 오리지널 (400g)</h3><p class="recommend-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p><p class="recommend-price"><em>32%</em> <strong>2,000원</strong></p>
+                                </article>
+                                <article class="brand-product">
+                                    <div class="brand-product-image"><img src="img/Brand3.png" alt="특등급 국산콩두유 서리태" loading="lazy">
+                                        <div class="recommend-actions"><button type="button" class="recommend-wish" aria-label="두유 찜하기" aria-pressed="false"><img src="img/Heart_button.svg" alt=""></button><button type="button" class="recommend-cart" aria-label="두유 장바구니 담기"><img src="img/Cart_button.svg" alt=""></button></div>
+                                    </div>
+                                    <p class="recommend-brand">풀무원식품</p><h3 class="recommend-name">특등급 국산콩두유 서리태 (190ml×16개입)</h3><p class="recommend-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p><p class="recommend-price"><em>10%</em> <strong>19,900원</strong></p>
+                                </article>
+                            </div>
+                            <div class="brand-pagination" aria-hidden="true"><span class="is-active"></span><span></span></div>
+                        </div>
+                    </div>
+                    <a href="#" class="brand-more">브랜드 상품 더 보기</a>
+                </div>
+            </section>
         </main>
 
         <footer>&copy;</footer>
@@ -641,6 +679,49 @@
                 768: { slidesPerView: 1.65, spaceBetween: 24 },
                 1200: { slidesPerView: 2.4, spaceBetween: 30 }
             }
+        });
+
+        // 브랜드 목록: 오른쪽 화살표로 다음 브랜드들을 보여주고 탭을 선택합니다.
+        const brandNames = ['풀무원식품', '올가', '풀무원지구식단', '아임리얼', '풀무원다논', '풀스키친', '풀스키즈', '풀스쿡', '바릴라', '풀무원샘물', '풀무원 아미오', '풀무원녹즙', '디자인밀', '퍼팩', '풀무원건강식물원', '풀무원로하스'];
+        const brandTabs = document.querySelector('.brand-tabs');
+        const brandNext = document.querySelector('.brand-tabs-next');
+        const brandProducts = document.querySelector('.brand-products');
+        const brandAd = document.querySelector('.brand-ad');
+        const brandMore = document.querySelector('.brand-more');
+        let selectedBrand = 0;
+        brandNames.forEach((name, index) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'brand-tab';
+            button.textContent = name;
+            button.setAttribute('aria-pressed', String(index === 0));
+            button.addEventListener('click', () => {
+                selectedBrand = index;
+                brandTabs.querySelectorAll('.brand-tab').forEach((tab, i) => {
+                    tab.classList.toggle('is-active', i === index);
+                    tab.setAttribute('aria-pressed', String(i === index));
+                });
+                // 다른 브랜드의 상품 이미지가 아직 제공되지 않아 임의의 상품을 표시하지 않습니다.
+                brandProducts.hidden = index !== 0;
+                brandAd.hidden = index !== 0;
+                let placeholder = document.querySelector('.brand-placeholder');
+                if (!placeholder) {
+                    placeholder = document.createElement('p');
+                    placeholder.className = 'brand-placeholder';
+                    placeholder.setAttribute('role', 'status');
+                    document.querySelector('.brand-content').appendChild(placeholder);
+                }
+                placeholder.hidden = index === 0;
+                placeholder.textContent = name + ' 상품 콘텐츠 준비 중';
+                brandMore.textContent = index === 0 ? '브랜드 상품 더 보기' : name + ' 상품 더 보기';
+            });
+            brandTabs.appendChild(button);
+        });
+        brandTabs.firstElementChild.classList.add('is-active');
+        brandNext.addEventListener('click', () => {
+            const maxScroll = brandTabs.scrollWidth - brandTabs.clientWidth;
+            if (brandTabs.scrollLeft >= maxScroll - 5) brandTabs.scrollTo({left: 0, behavior: 'smooth'});
+            else brandTabs.scrollBy({left: Math.max(260, brandTabs.clientWidth * 0.65), behavior: 'smooth'});
         });
 
         // 찜 버튼의 선택 상태를 바꿉니다. (데모 UI, 서버 저장 기능은 아님)
