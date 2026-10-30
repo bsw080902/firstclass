@@ -1543,8 +1543,11 @@ body {
     }
 }
 
-/* NEW: Swiper 안쪽 여백(30px)과 제목의 실제 시작 위치를 일치시킴 */
+/* NEW: 제목과 상품 카드 모두 섹션의 왼쪽 시작선에 정렬 */
 .new-section .new-inner > .new-heading {
     padding-left: 0;
-    margin-left: 30px;
+    margin-left: 0;
+}
+.new-section .new-swiper {
+    padding: 30px 0;
 }
