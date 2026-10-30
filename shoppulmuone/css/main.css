@@ -127,7 +127,7 @@ body {
 .hero-sec .swiper-slide {
     width: min(760px, 40vw);
     height: 100%;
-    border-radius: 12px;
+    border-radius: 25px;
     overflow: hidden;
     filter: blur(0.6px) brightness(.995);
     opacity: .98;
