@@ -1500,8 +1500,7 @@ body {
     .best-image > img { transition: none; }
 }
 
-/* BEST: NEW 상품 카드처럼 호버 시에만 연두색 테두리 표시 */
-.best-card:hover .best-image,
-.best-card:focus-within .best-image {
+/* BEST: 가운데 활성 상품에 NEW 카드와 같은 연두색 테두리 표시 */
+.best-swiper .swiper-slide-active .best-image {
     border-color: #b6dba6;
 }
