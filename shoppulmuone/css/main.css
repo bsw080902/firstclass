@@ -1543,5 +1543,8 @@ body {
     }
 }
 
-/* NEW: 제목 시작선을 첫 번째 상품 카드와 맞춤 (Swiper 좌우 패딩 30px) */
-.new-heading { padding-left: 30px; }
+/* NEW: Swiper 안쪽 여백(30px)과 제목의 실제 시작 위치를 일치시킴 */
+.new-section .new-inner > .new-heading {
+    padding-left: 0;
+    margin-left: 30px;
+}
