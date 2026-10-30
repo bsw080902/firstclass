@@ -303,7 +303,7 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    gap: 60px;
+    gap: 48px;
     position: relative;
     left: -6px;
     margin: 0;
@@ -312,7 +312,7 @@ body {
 }
 
 .quick-menu-list li {
-    flex: 0 0 94px;
+    flex: 0 0 84px;
 }
 
 .quick-menu-list a {
@@ -324,7 +324,7 @@ body {
     text-align: center;
     text-decoration: none;
     font-family: "Pretendard Variable", sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600; /* SemiBold */
     line-height: 1.4;
     white-space: nowrap;
@@ -334,8 +334,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 94px;
-    height: 94px;
+    width: 84px;
+    height: 84px;
     border-radius: 100px;
     background-color: var(--bg-accent); /* #F5F8F3 */
     overflow: hidden;
@@ -357,16 +357,16 @@ body {
     }
 
     .quick-menu-list li {
-        flex-basis: 92px;
+        flex-basis: 82px;
     }
 
     .quick-menu-icon {
-        width: 92px;
-        height: 92px;
+        width: 82px;
+        height: 82px;
     }
 
     .quick-menu-list a {
-        font-size: 18px;
+        font-size: 16px;
         gap: 10px;
     }
 }
