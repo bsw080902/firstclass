@@ -1504,8 +1504,7 @@ body {
 .best-swiper .swiper-slide-active .best-image {
     box-shadow: 0 12px 28px rgba(33, 80, 46, .18);
 }
-/* BEST: NEW 상품 카드처럼 호버 시에만 연두색 테두리 표시 */
-.best-card:hover .best-image,
-.best-card:focus-within .best-image {
+/* BEST: 가운데로 온 상품 카드에만 연두색 스트로크 표시 */
+.best-swiper .swiper-slide-active .best-image {
     border-color: #b6dba6;
 }
