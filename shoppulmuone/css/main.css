@@ -1607,3 +1607,19 @@ body {
         margin-right: auto;
     }
 }
+
+
+/* NEW: 카드 두 장 표시 영역 고정 (기존 30px 상하 패딩 포함) */
+@media (min-width: 1200px) {
+    .new-section .new-slider-shell {
+        width: min(100%, 1420px);
+        max-width: 1420px;
+        margin-right: auto;
+    }
+    .new-section .new-swiper {
+        width: 100%;
+        max-width: none;
+        padding: 30px 0;
+        overflow: hidden;
+    }
+}
