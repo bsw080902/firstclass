@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/main.css?v=best-pagination-20261030">
+    <link rel="stylesheet" href="css/main.css?v=best-pagination-revert-20261030">
     <script src="../npm/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
@@ -669,8 +669,29 @@
         bestSwiper.on('slideChange', updateBestPagination);
         updateBestPagination();
 
-        // BEST 페이지 표시는 Figma처럼 선택된 항목을 단색 초록색으로 표시합니다.
-        // 기존 매 프레임 배경을 덮어쓰던 코드를 제거해 전환 시 색상 깜빡임을 방지합니다.
+        // 활성 버튼 자체를 채웁니다. 내부 요소/가상 요소의 표시 문제를 피합니다.
+        // Swiper 자동재생의 남은 시간에 맞춰 색상 경계를 직접 이동시킵니다.
+        let bestProgressStart = performance.now();
+        bestSwiper.on('slideChange', () => {
+            bestProgressStart = performance.now();
+        });
+        function paintBestProgress(now) {
+            const activeDot = bestPagination.querySelector('.swiper-pagination-bullet-active');
+            if (activeDot) {
+                const autoplay = bestSwiper.autoplay;
+                const remaining = autoplay && autoplay.timeLeft;
+                const ratio = autoplay && autoplay.running && Number.isFinite(remaining)
+                    ? 1 - Math.max(0, Math.min(4000, remaining)) / 4000
+                    : Math.max(0, Math.min(1, (now - bestProgressStart) / 4000));
+                const percent = (ratio * 100).toFixed(2) + '%';
+                activeDot.style.background = 'linear-gradient(to right, #009b3a 0%, #009b3a ' + percent + ', #dce8dc ' + percent + ', #dce8dc 100%)';
+            }
+            requestAnimationFrame(paintBestProgress);
+        }
+        requestAnimationFrame(paintBestProgress);
+
+        // 활성 버튼이 바뀌면 CSS의 4초 채움 애니메이션이 새로 시작됩니다.
+        // 기존 requestAnimationFrame의 인라인 transform이 CSS 애니메이션을 덮지 않도록 제거했습니다.
 
         // NEW: 카드 3개를 화면 폭에 맞춰 보여주며 순환합니다.
         const benefitsSwiper = new Swiper('.benefits-swiper', {
