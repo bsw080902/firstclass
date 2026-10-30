@@ -1597,3 +1597,19 @@ body {
         font-size: 26px;
     }
 }
+
+/* NEW: PC에서 상품 카드 정확히 두 개만 표시 */
+@media (min-width: 1200px) {
+  .new-section .new-slider-shell {
+    width: min(100%, 1420px);
+    max-width: 1420px;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  .new-section .new-swiper {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    overflow: hidden;
+  }
+}
