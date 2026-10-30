@@ -1389,7 +1389,7 @@ body {
     transition: opacity .25s ease, visibility .25s ease;
 }
 .brand-content > .brand-tabs-prev { left: -31px; }
-.brand-content > .brand-tabs-next { right: 0; }
+.brand-content > .brand-tabs-next { right: -31px; }
 .brand-content > .brand-tabs-prev img,
 .brand-content > .brand-tabs-next img { display: block; width: 62px; height: 62px; }
 .brand-tabs-prev.is-hidden,
