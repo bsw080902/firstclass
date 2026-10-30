@@ -1525,3 +1525,9 @@ body {
 .brand-tabs.is-dragging { cursor: grabbing; scroll-behavior: auto; user-select: none; }
 .brand-tabs { touch-action: pan-x; }
 .brand-tabs.is-dragging .brand-tab { user-select: none; }
+
+/* PULMUONE'S PICK: 찜·장바구니 아이콘만 소폭 축소 */
+.recommend-section .recommend-actions button,
+.recommend-section .recommend-actions button img {
+    height: 32px;
+}
