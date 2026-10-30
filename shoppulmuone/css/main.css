@@ -1616,3 +1616,14 @@ body {
     overflow: hidden;
   }
 }
+
+/* NEW: 제목 시작선을 중앙 정렬된 첫 상품 카드에 맞춤 */
+@media (min-width: 1200px) {
+  .new-section .new-inner > .new-heading {
+    width: min(100%, 1420px);
+    max-width: 1420px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+}
