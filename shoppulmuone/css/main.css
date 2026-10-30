@@ -1603,7 +1603,7 @@ body {
   .new-section .new-slider-shell {
     width: min(100%, 1420px);
     max-width: 1420px;
-    margin-left: 0;
+    margin-left: auto;
     margin-right: auto;
   }
   .new-section .new-swiper {
