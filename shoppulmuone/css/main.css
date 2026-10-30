@@ -1388,8 +1388,8 @@ body {
     visibility: visible;
     transition: opacity .25s ease, visibility .25s ease;
 }
-.brand-tabs-prev { left: -36px; }
-.brand-tabs-next { right: -36px; }
+.brand-tabs-prev { left: 8px; }
+.brand-tabs-next { right: 8px; }
 .brand-tabs-prev img,
 .brand-tabs-next img { width: 20px; height: 20px; }
 .brand-tabs-prev.is-hidden,
