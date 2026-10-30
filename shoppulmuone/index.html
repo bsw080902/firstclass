@@ -618,14 +618,15 @@
         const bestOriginalSlides = Array.from(bestWrapper.children);
         const bestOriginalCount = bestOriginalSlides.length;
         bestOriginalSlides.forEach((slide, index) => { slide.dataset.bestIndex = index; });
+        // 앞뒤 복제본도 1→2→3→4→5 순서를 유지해야 경계에서 역순으로 튀지 않습니다.
         bestOriginalSlides.forEach(slide => bestWrapper.appendChild(slide.cloneNode(true)));
-        bestOriginalSlides.forEach(slide => bestWrapper.insertBefore(slide.cloneNode(true), bestWrapper.children[bestOriginalCount]));
+        bestWrapper.prepend(...bestOriginalSlides.map(slide => slide.cloneNode(true)));
 
         const bestSwiper = new Swiper('.best-swiper', {
             slidesPerView: 'auto',
             centeredSlides: true,
             spaceBetween: 20,
-            initialSlide: bestOriginalCount + 2,
+            initialSlide: bestOriginalCount,
             loop: true,
             speed: 500,
             grabCursor: true,
