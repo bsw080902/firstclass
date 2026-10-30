@@ -1481,26 +1481,21 @@ body {
 
 /* 상품 카드 호버: 카드 크기는 유지하고 상품 이미지만 자연스럽게 확대 */
 .recommend-image > img,
-.best-image > img,
-.new-card .new-product-image {
+.best-image > img {
     transition: transform .4s ease;
 }
 .recommend-card:hover .recommend-image > img,
 .recommend-card:focus-within .recommend-image > img,
 .best-card:hover .best-image > img,
-.best-card:focus-within .best-image > img,
-.new-card:hover .new-product-image,
-.new-card:focus-within .new-product-image {
+.best-card:focus-within .best-image > img {
     transform: scale(1.06);
 }
 .best-image { overflow: hidden; }
 @media (hover: none) {
     .recommend-card:hover .recommend-image > img,
-    .best-card:hover .best-image > img,
-    .new-card:hover .new-product-image { transform: none; }
+    .best-card:hover .best-image > img { transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
     .recommend-image > img,
-    .best-image > img,
-    .new-card .new-product-image { transition: none; }
+    .best-image > img { transition: none; }
 }
