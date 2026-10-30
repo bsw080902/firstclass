@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/main.css?v=quick-menu-smaller-20261030">
+    <link rel="stylesheet" href="css/main.css?v=brand-tabs-drag-20261030">
     <script src="../npm/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
@@ -789,10 +789,12 @@
             const distance = event.clientX - brandDragStartX;
             if (Math.abs(distance) < 6 && !brandDidDrag) return;
             brandDidDrag = true;
+            brandTabs.classList.add('is-dragging');
             brandTabs.scrollLeft = brandDragStartScroll - distance;
         });
         const finishBrandDrag = () => {
             brandDragging = false;
+            brandTabs.classList.remove('is-dragging');
             if (brandDidDrag) window.setTimeout(() => { brandDidDrag = false; }, 0);
         };
         brandTabs.addEventListener('pointerup', finishBrandDrag);
