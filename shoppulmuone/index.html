@@ -389,12 +389,12 @@
                     <div class="brand-top">
                         <div class="brand-heading"><p>BRAND</p><h2 id="brand-title">풀무원의 모든 브랜드</h2></div>
                         <div class="brand-tabs-shell">
-                            <button class="brand-tabs-prev" type="button" aria-label="이전 브랜드 보기"><img src="img/Left_icon.svg" alt=""></button>
                             <div class="brand-tabs" role="group" aria-label="브랜드 선택"></div>
-                            <button class="brand-tabs-next" type="button" aria-label="다음 브랜드 보기"><img src="img/Right_icon.svg" alt=""></button>
                         </div>
                     </div>
                     <div class="brand-content">
+                        <button class="brand-tabs-prev" type="button" aria-label="이전 브랜드 보기"><img src="img/Left_icon.svg" alt=""></button>
+                        <button class="brand-tabs-next" type="button" aria-label="다음 브랜드 보기"><img src="img/Right_icon.svg" alt=""></button>
                         <div class="brand-ad"><img src="img/Brand_ad.png" alt="풀무원 - 건강한 재료로 만드는 풀무원 바른 먹거리" loading="lazy"></div>
                         <div class="brand-products">
                             <div class="brand-product-list">
@@ -417,7 +417,6 @@
                                     <p class="recommend-brand">풀무원식품</p><h3 class="recommend-name">특등급 국산콩두유 서리태 (190ml×16개입)</h3><p class="recommend-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p><p class="recommend-price"><em>10%</em> <strong>19,900원</strong></p>
                                 </article>
                             </div>
-                            <div class="brand-pagination" aria-hidden="true"><span class="is-active"></span><span></span></div>
                         </div>
                     </div>
                     <a href="#" class="brand-more">브랜드 상품 더 보기</a>
@@ -562,7 +561,7 @@
             }, { threshold: Array.from({ length: 101 }, (_, i) => i / 100) });
 
             revealSections.forEach(section => {
-                const items = section.querySelectorAll('.quick-menu-list li, .recommend-heading, .recommend-card, .best-heading, .best-swiper, .best-more, .new-heading, .new-swiper, .new-more, .daily-content, .daily-image, .benefits-heading, .benefits-slider-shell, .benefits-pagination, .benefits-more, .brand-heading, .brand-tabs-shell, .brand-ad, .brand-product, .brand-pagination, .brand-more');
+                const items = section.querySelectorAll('.quick-menu-list li, .recommend-heading, .recommend-card, .best-heading, .best-swiper, .best-more, .new-heading, .new-swiper, .new-more, .daily-content, .daily-image, .benefits-heading, .benefits-slider-shell, .benefits-pagination, .benefits-more, .brand-heading, .brand-tabs-shell, .brand-ad, .brand-product, .brand-more');
                 items.forEach((item, index) => {
                     item.classList.add('scroll-reveal-item');
                     item.style.setProperty('--reveal-delay', (index % 6) * 65 + 'ms');
