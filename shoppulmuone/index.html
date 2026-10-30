@@ -771,6 +771,39 @@
         brandPrev.addEventListener('click', () => selectBrand(selectedBrand - 1));
         brandNext.addEventListener('click', () => selectBrand(selectedBrand + 1));
         selectBrand(0);
+        // 브랜드 탭을 마우스/터치로 좌우 드래그해 탐색합니다.
+        // 드래그 직후에는 의도치 않은 브랜드 선택 클릭을 막습니다.
+        let brandDragStartX = 0;
+        let brandDragStartScroll = 0;
+        let brandDragging = false;
+        let brandDidDrag = false;
+        brandTabs.addEventListener('pointerdown', event => {
+            if (event.pointerType === 'mouse' && event.button !== 0) return;
+            brandDragging = true;
+            brandDidDrag = false;
+            brandDragStartX = event.clientX;
+            brandDragStartScroll = brandTabs.scrollLeft;
+        });
+        brandTabs.addEventListener('pointermove', event => {
+            if (!brandDragging) return;
+            const distance = event.clientX - brandDragStartX;
+            if (Math.abs(distance) < 6 && !brandDidDrag) return;
+            brandDidDrag = true;
+            brandTabs.scrollLeft = brandDragStartScroll - distance;
+        });
+        const finishBrandDrag = () => {
+            brandDragging = false;
+            if (brandDidDrag) window.setTimeout(() => { brandDidDrag = false; }, 0);
+        };
+        brandTabs.addEventListener('pointerup', finishBrandDrag);
+        brandTabs.addEventListener('pointercancel', finishBrandDrag);
+        brandTabs.addEventListener('pointerleave', finishBrandDrag);
+        brandTabs.addEventListener('click', event => {
+            if (brandDidDrag) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        }, true);
 
         // 찜 버튼의 선택 상태를 바꿉니다. (데모 UI, 서버 저장 기능은 아님)
         // BEST는 복제 슬라이드가 있으므로 이벤트 위임으로 찜 버튼을 처리합니다.
