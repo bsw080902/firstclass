@@ -1359,9 +1359,9 @@ body {
 
 /* BRAND: 500px 대표 이미지 + 300px 상품 3개, 간격 32px */
 .brand-section { padding: 95px 24px 105px; overflow: hidden; }
-.brand-inner { max-width: 1530px; margin: 0 auto; }
+.brand-inner { max-width: 1496px; margin: 0 auto; }
 .brand-top { display: flex; align-items: flex-start; gap: 32px; margin-bottom: 32px; }
-.brand-heading { flex: 0 0 400px; }
+.brand-heading { flex: 0 0 500px; }
 .brand-heading p { margin: 0 0 7px; color: var(--brand-green); font-size: 14px; font-weight: 700; }
 .brand-heading h2 { margin: 0; font-size: 24px; line-height: 1.35; }
 .brand-tabs-shell { display: flex; position: relative; flex: 1; min-width: 0; align-items: center; }
@@ -1389,7 +1389,7 @@ body {
     transition: opacity .25s ease, visibility .25s ease;
 }
 .brand-content > .brand-tabs-prev { left: -31px; }
-.brand-content > .brand-tabs-next { right: -31px; }
+.brand-content > .brand-tabs-next { right: 0; }
 .brand-content > .brand-tabs-prev img,
 .brand-content > .brand-tabs-next img { display: block; width: 62px; height: 62px; }
 .brand-tabs-prev.is-hidden,
