@@ -295,6 +295,10 @@ body {
 
 
 /* HERO 아래 빠른 메뉴: 첨부된 Figma 화면 참고 */
+.quick-menu {
+    padding: 50px 20px 60px;
+}
+
 .quick-menu-list {
     display: flex;
     align-items: flex-start;
@@ -345,6 +349,8 @@ body {
 }
 
 @media (max-width: 1024px) {
+    .quick-menu { padding: 40px 16px 56px; }
+
     .quick-menu-list {
         flex-wrap: wrap;
         gap: 28px 24px;
@@ -1024,8 +1030,8 @@ body {
 
 /* HERO 하단 컨트롤: Figma 레퍼런스처럼 한 줄로 묶기 */
 .visual .visual-controls {
-    right: calc(16% + 8px);
-    bottom: 18px;
+    right: calc(10% + 20px);
+    bottom: 20px;
     display: flex;
     align-items: center;
     gap: 12px;
