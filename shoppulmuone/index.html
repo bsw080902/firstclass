@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/main.css?v=best-pagination-fill-20261030">
+    <link rel="stylesheet" href="css/main.css?v=best-pagination-solid-20261030-2">
     <script src="../npm/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
@@ -649,6 +649,9 @@
             const dot = document.createElement('button');
             dot.type = 'button';
             dot.className = 'swiper-pagination-bullet';
+            // 비활성 원은 테두리 없이 같은 연녹색으로 완전히 채웁니다.
+            dot.style.border = 'none';
+            dot.style.backgroundColor = '#dce8dc';
             dot.setAttribute('aria-label', (index + 1) + '번째 상품으로 이동');
             dot.addEventListener('click', () => {
                 bestSwiper.slideTo(bestOriginalCount + index);
