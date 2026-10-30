@@ -565,7 +565,7 @@ body {
 .best-delivery strong { color: #639e3d; font-weight: 500; }
 .best-price { margin: 24px 0 0; text-align: right; font-size: 17px; }
 .best-price span { color: #f04452; margin-right: 6px; }
-/* BEST 페이지 표시: 선택 항목은 캡슐, 나머지는 링 형태 */
+/* BEST 페이지 표시: 선택 항목은 캡슐, 나머지는 채워진 원 형태 */
 .best-pagination { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 24px 0 18px; }
 .best-pagination .swiper-pagination-bullet {
     display: block;
@@ -574,10 +574,10 @@ body {
     height: 14px;
     padding: 0;
     margin: 0 !important;
-    border: 2px solid #dce8dc;
+    border: 0;
     border-radius: 999px;
     box-sizing: border-box;
-    background: transparent;
+    background: #dce8dc;
     opacity: 1;
     cursor: pointer;
     transition: width .3s ease, flex-basis .3s ease, background-color .3s ease, border-color .3s ease;
