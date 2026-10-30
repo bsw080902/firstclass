@@ -565,12 +565,12 @@ body {
 .best-delivery strong { color: #639e3d; font-weight: 500; }
 .best-price { margin: 24px 0 0; text-align: right; font-size: 17px; }
 .best-price span { color: #f04452; margin-right: 6px; }
-/* BEST 페이지 표시: 선택 항목은 캡슐, 나머지는 채워진 원 형태 */
+/* BEST 페이지 표시: 고정 슬롯으로 위치 이동 없이 왼쪽에서 오른쪽으로 채우기 */
 .best-pagination { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 24px 0 18px; }
 .best-pagination .swiper-pagination-bullet {
     display: block;
-    flex: 0 0 14px;
-    width: 14px;
+    flex: 0 0 30px;
+    width: 30px;
     height: 14px;
     padding: 0;
     margin: 0 !important;
@@ -580,22 +580,15 @@ body {
     background: #dce8dc;
     opacity: 1;
     cursor: pointer;
-    transition: width .3s ease, flex-basis .3s ease, background-color .3s ease, border-color .3s ease;
+    /* 모든 버튼의 자리를 30px로 고정해 활성 상태가 바뀌어도 좌우로 밀리지 않음 */
+    clip-path: circle(7px at 50% 50%);
 }
 .best-pagination .swiper-pagination-bullet-active {
-    position: relative;
-    overflow: hidden;
-    flex-basis: 30px;
-    width: 30px;
-    border: 0;
-    background: #dce8dc;
+    clip-path: inset(0 round 999px);
 }
 .best-pagination .swiper-pagination-bullet:focus-visible {
     outline: 2px solid #006e2d;
     outline-offset: 4px;
-}
-@media (prefers-reduced-motion: reduce) {
-    .best-pagination .swiper-pagination-bullet { transition: none; }
 }
 .best-more { display: table; margin: 0 auto; padding: 13px 22px; border: 1px solid #e1e8df; border-radius: 999px; background: #fff; color: #667166; font-size: 13px; text-decoration: none; }
 @media (max-width: 767px) {
