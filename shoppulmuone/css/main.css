@@ -1728,20 +1728,29 @@ body {
 }
 
 
-/* HERO 양옆 배너에 흰색 안개 효과: 가운데 두 배너는 선명하게 유지 */
+/* HERO: 배너 전체가 아니라 화면 양쪽 끝에만 흰색 페이드 적용 */
 @media (min-width: 768px) {
-  .hero-sec .visual .swiper-slide::after {
+  .hero-sec .visual::before,
+  .hero-sec .visual::after {
     content: "";
     position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: rgba(255, 255, 255, 0.28);
+    top: 0;
+    bottom: 0;
+    width: clamp(70px, 12vw, 220px);
+    z-index: 5;
     pointer-events: none;
-    opacity: 1;
-    transition: opacity .7s ease-in-out;
   }
-  .hero-sec .visual .swiper-slide-prev::after,
-  .hero-sec .visual .swiper-slide-active::after {
-    opacity: 0;
+  .hero-sec .visual::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255,255,255,.72), rgba(255,255,255,0));
+  }
+  .hero-sec .visual::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255,255,255,.72), rgba(255,255,255,0));
+  }
+  /* 기존 슬라이드 전체 블러는 해제 */
+  .hero-sec .visual .swiper-slide {
+    filter: none;
+    opacity: 1;
   }
 }
