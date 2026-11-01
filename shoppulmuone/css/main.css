@@ -1754,3 +1754,6 @@ body {
     opacity: 1;
   }
 }
+
+/* Header 바로가기 아이콘 간격: 모든 화면에서 12px */
+.header-actions { gap: 12px; }
