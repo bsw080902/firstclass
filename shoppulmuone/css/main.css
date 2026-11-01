@@ -1726,3 +1726,18 @@ body {
     gap: 6px;
   }
 }
+
+
+/* HERO 페이지 컨트롤: 뷰포트 밖으로 벗어나지 않도록 위치 고정 */
+.hero-sec > .visual .visual-controls {
+  left: auto !important;
+  right: clamp(16px, 5vw, 90px) !important;
+  bottom: 20px;
+  max-width: calc(100% - 32px);
+}
+@media (max-width: 767px) {
+  .hero-sec > .visual .visual-controls {
+    right: 16px !important;
+    bottom: 20px;
+  }
+}
