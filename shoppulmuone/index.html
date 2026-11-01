@@ -499,27 +499,6 @@
 
         });
 
-        // centeredSlides에서 active 슬라이드가 화면의 두 번째(오른쪽) 배너입니다.
-        // activeIndex + 1은 화면 밖 배너를 가리켜 컨트롤이 사라지는 원인이었습니다.
-        const heroControls = document.querySelector('.visual .visual-controls');
-        const heroViewport = document.querySelector('.hero-sec > .swiper');
-        function positionHeroControls() {
-            if (!heroControls || !heroViewport) return;
-            const activeSlide = swiperHero.slides[swiperHero.activeIndex];
-            if (!activeSlide) return;
-            const viewportRect = heroViewport.getBoundingClientRect();
-            const slideRect = activeSlide.getBoundingClientRect();
-            const inset = 20;
-            const targetLeft = slideRect.right - viewportRect.left - heroControls.offsetWidth - inset;
-            heroControls.style.right = 'auto';
-            heroControls.style.left = Math.max(0, Math.min(targetLeft, viewportRect.width - heroControls.offsetWidth)) + 'px';
-            heroControls.style.bottom = Math.max(inset, viewportRect.bottom - slideRect.bottom + inset) + 'px';
-        }
-        swiperHero.on('slideChangeTransitionEnd', positionHeroControls);
-        swiperHero.on('resize', positionHeroControls);
-        window.addEventListener('resize', positionHeroControls);
-        requestAnimationFrame(positionHeroControls);
-
         const fraction = document.querySelector('.visual .swiper-pagination');
         function updateHeroFraction() {
             const current = (swiperHero.realIndex % originalCount) + 1;
