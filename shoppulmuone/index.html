@@ -514,8 +514,8 @@
             heroControls.style.left = (slideRect.right - viewportRect.left - heroControls.offsetWidth - inset) + 'px';
             heroControls.style.bottom = (viewportRect.bottom - slideRect.bottom + inset) + 'px';
         }
-        swiperHero.on('setTranslate', positionHeroControls);
-        swiperHero.on('slideChange', positionHeroControls);
+        // 이동 중에는 좌표를 갱신하지 않아 컨트롤이 깜빡이지 않도록 합니다.
+        swiperHero.on('slideChangeTransitionEnd', positionHeroControls);
         swiperHero.on('resize', positionHeroControls);
         window.addEventListener('resize', positionHeroControls);
         requestAnimationFrame(positionHeroControls);
