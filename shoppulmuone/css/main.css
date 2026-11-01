@@ -1735,7 +1735,7 @@ body {
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: rgba(255, 255, 255, 0.38);
+    background: rgba(255, 255, 255, 0.28);
     pointer-events: none;
     opacity: 1;
     transition: opacity .7s ease-in-out;
