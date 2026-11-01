@@ -1728,30 +1728,30 @@ body {
 }
 
 
-/* HERO: 배너 전체가 아니라 화면 양쪽 끝에만 흰색 페이드 적용 */
+/* HERO: 양옆 미리보기 이미지 전체에 흰색 블러 적용 (중앙 2장은 선명하게) */
 @media (min-width: 768px) {
-  .hero-sec .visual::before,
-  .hero-sec .visual::after {
+  .hero-sec .visual .swiper-slide {
+    filter: blur(2px) brightness(.995);
+    opacity: .98;
+  }
+  .hero-sec .visual .swiper-slide::after {
     content: "";
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: clamp(70px, 12vw, 220px);
-    z-index: 5;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.28);
     pointer-events: none;
+    opacity: 1;
+    transition: opacity .7s ease-in-out;
   }
-  .hero-sec .visual::before {
-    left: 0;
-    background: linear-gradient(to right, rgba(255,255,255,.72), rgba(255,255,255,0));
-  }
-  .hero-sec .visual::after {
-    right: 0;
-    background: linear-gradient(to left, rgba(255,255,255,.72), rgba(255,255,255,0));
-  }
-  /* 기존 슬라이드 전체 블러는 해제 */
-  .hero-sec .visual .swiper-slide {
+  .hero-sec .visual .swiper-slide-prev,
+  .hero-sec .visual .swiper-slide-active {
     filter: none;
     opacity: 1;
+  }
+  .hero-sec .visual .swiper-slide-prev::after,
+  .hero-sec .visual .swiper-slide-active::after {
+    opacity: 0;
   }
 }
 
