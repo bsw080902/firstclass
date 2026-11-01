@@ -1669,3 +1669,32 @@ body {
     font-size: clamp(12px, 1.56vw, 16px);
   }
 }
+
+
+/* 모바일 HERO 바로가기: 6개 항목을 한 줄에 배치 */
+@media (max-width: 767px) {
+  .quick-menu {
+    padding: 32px 16px 40px;
+  }
+  .quick-menu-list {
+    left: 0;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: clamp(3px, 1.4vw, 10px);
+  }
+  .quick-menu-list li {
+    flex: 0 1 calc((100% - 5 * clamp(3px, 1.4vw, 10px)) / 6);
+    min-width: 0;
+  }
+  .quick-menu-icon {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+  .quick-menu-list a {
+    gap: 7px;
+    font-size: clamp(9px, 2.4vw, 13px);
+    white-space: nowrap;
+  }
+}
