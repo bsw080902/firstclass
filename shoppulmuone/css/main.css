@@ -1705,7 +1705,7 @@ body {
   .hero-sec + .quick-menu .quick-menu-list {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 6px;
+    gap: 12px;
     width: 100%;
     left: 0;
     flex-wrap: nowrap;
