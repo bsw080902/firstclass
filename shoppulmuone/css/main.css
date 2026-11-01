@@ -1698,3 +1698,31 @@ body {
     white-space: nowrap;
   }
 }
+
+
+/* 모바일 바로가기 6열 고정: 기존 wrap 규칙보다 우선 적용 */
+@media screen and (max-width: 767px) {
+  .hero-sec + .quick-menu .quick-menu-list {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 6px;
+    width: 100%;
+    left: 0;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+  }
+  .hero-sec + .quick-menu .quick-menu-list > li {
+    width: 100%;
+    min-width: 0;
+    flex: none;
+  }
+  .hero-sec + .quick-menu .quick-menu-icon {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+  .hero-sec + .quick-menu .quick-menu-list a {
+    font-size: clamp(9px, 2.5vw, 12px);
+    gap: 6px;
+  }
+}
