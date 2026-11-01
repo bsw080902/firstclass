@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/main.css?v=hero-full-side-blur-20261101">
+    <link rel="stylesheet" href="css/main.css?v=wish-color-20261101">
     <script src="../npm/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
@@ -844,6 +844,8 @@
             if (!button) return;
             const selected = button.getAttribute('aria-pressed') === 'true';
             button.setAttribute('aria-pressed', String(!selected));
+            const wishImage = button.querySelector('img');
+            if (wishImage) wishImage.src = !selected ? 'img/Heart_button_active.svg' : 'img/Heart_button.svg';
         });
     </script>
 </body>
