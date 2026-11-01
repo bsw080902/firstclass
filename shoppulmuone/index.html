@@ -499,6 +499,27 @@
 
         });
 
+        // HERO 페이지 컨트롤을 화면에 보이는 두 번째 배너의 오른쪽 아래에 고정합니다.
+        const heroControls = document.querySelector('.visual .visual-controls');
+        const heroViewport = document.querySelector('.hero-sec > .swiper');
+        function positionHeroControls() {
+            if (!heroControls || !heroViewport) return;
+            const slides = swiperHero.slides;
+            const secondSlide = slides[swiperHero.activeIndex + 1];
+            if (!secondSlide) return;
+            const viewportRect = heroViewport.getBoundingClientRect();
+            const slideRect = secondSlide.getBoundingClientRect();
+            const inset = 20;
+            heroControls.style.right = 'auto';
+            heroControls.style.left = (slideRect.right - viewportRect.left - heroControls.offsetWidth - inset) + 'px';
+            heroControls.style.bottom = (viewportRect.bottom - slideRect.bottom + inset) + 'px';
+        }
+        swiperHero.on('setTranslate', positionHeroControls);
+        swiperHero.on('slideChange', positionHeroControls);
+        swiperHero.on('resize', positionHeroControls);
+        window.addEventListener('resize', positionHeroControls);
+        requestAnimationFrame(positionHeroControls);
+
         const fraction = document.querySelector('.visual .swiper-pagination');
         function updateHeroFraction() {
             const current = (swiperHero.realIndex % originalCount) + 1;
