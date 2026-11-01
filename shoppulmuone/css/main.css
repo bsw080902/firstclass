@@ -129,7 +129,7 @@ body {
     height: 100%;
     border-radius: 25px;
     overflow: hidden;
-    filter: blur(0.6px) brightness(.995);
+    filter: blur(2px) brightness(.995);
     opacity: .98;
     transition: filter .7s ease-in-out, opacity .7s ease-in-out;
 }
