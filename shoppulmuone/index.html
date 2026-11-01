@@ -499,22 +499,22 @@
 
         });
 
-        // HERO 페이지 컨트롤을 화면에 보이는 두 번째 배너의 오른쪽 아래에 고정합니다.
+        // centeredSlides에서 active 슬라이드가 화면의 두 번째(오른쪽) 배너입니다.
+        // activeIndex + 1은 화면 밖 배너를 가리켜 컨트롤이 사라지는 원인이었습니다.
         const heroControls = document.querySelector('.visual .visual-controls');
         const heroViewport = document.querySelector('.hero-sec > .swiper');
         function positionHeroControls() {
             if (!heroControls || !heroViewport) return;
-            const slides = swiperHero.slides;
-            const secondSlide = slides[swiperHero.activeIndex + 1];
-            if (!secondSlide) return;
+            const activeSlide = swiperHero.slides[swiperHero.activeIndex];
+            if (!activeSlide) return;
             const viewportRect = heroViewport.getBoundingClientRect();
-            const slideRect = secondSlide.getBoundingClientRect();
+            const slideRect = activeSlide.getBoundingClientRect();
             const inset = 20;
+            const targetLeft = slideRect.right - viewportRect.left - heroControls.offsetWidth - inset;
             heroControls.style.right = 'auto';
-            heroControls.style.left = (slideRect.right - viewportRect.left - heroControls.offsetWidth - inset) + 'px';
-            heroControls.style.bottom = (viewportRect.bottom - slideRect.bottom + inset) + 'px';
+            heroControls.style.left = Math.max(0, Math.min(targetLeft, viewportRect.width - heroControls.offsetWidth)) + 'px';
+            heroControls.style.bottom = Math.max(inset, viewportRect.bottom - slideRect.bottom + inset) + 'px';
         }
-        // 이동 중에는 좌표를 갱신하지 않아 컨트롤이 깜빡이지 않도록 합니다.
         swiperHero.on('slideChangeTransitionEnd', positionHeroControls);
         swiperHero.on('resize', positionHeroControls);
         window.addEventListener('resize', positionHeroControls);
