@@ -1630,3 +1630,42 @@ body {
     box-sizing: border-box;
   }
 }
+
+
+/* HERO 아래 바로가기: 화면 너비에 따라 아이콘과 간격을 유동적으로 축소 */
+@media (min-width: 1025px) {
+  .quick-menu-list {
+    gap: clamp(16px, 2.5vw, 48px);
+  }
+  .quick-menu-list li {
+    flex: 0 1 clamp(56px, 4.375vw, 84px);
+    min-width: 0;
+  }
+  .quick-menu-icon {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+  .quick-menu-list a {
+    gap: clamp(7px, 0.625vw, 12px);
+    font-size: clamp(12px, 0.833vw, 16px);
+  }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .quick-menu-list {
+    flex-wrap: nowrap;
+    gap: clamp(12px, 2vw, 24px);
+  }
+  .quick-menu-list li {
+    flex: 0 1 82px;
+    min-width: 0;
+  }
+  .quick-menu-icon {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+  .quick-menu-list a {
+    font-size: clamp(12px, 1.56vw, 16px);
+  }
+}
