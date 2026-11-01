@@ -499,6 +499,33 @@
 
         });
 
+        // 현재 화면에 완전히 보이는 HERO 배너 중 두 번째 배너의 우하단에 고정합니다.
+        // Swiper loop는 DOM 순서를 바꾸므로 activeIndex + 1로 찾지 않습니다.
+        const heroViewport = document.querySelector('.hero-sec > .visual');
+        const heroControls = heroViewport.querySelector('.visual-controls');
+        function alignHeroControls() {
+            const viewport = heroViewport.getBoundingClientRect();
+            const slides = Array.from(heroViewport.querySelectorAll('.swiper-slide'));
+            const visibleSlides = slides.map(slide => ({ rect: slide.getBoundingClientRect() }))
+                .filter(({ rect }) => rect.width > 0 && rect.left >= viewport.left - 2 && rect.right <= viewport.right + 2)
+                .sort((a, b) => a.rect.left - b.rect.left);
+            // PC에서는 왼쪽에서 두 번째 배너, 모바일에서는 화면에 보이는 배너.
+            const target = visibleSlides[1] || visibleSlides[0] || slides.map(slide => slide.getBoundingClientRect())
+                .filter(rect => rect.right > viewport.left && rect.left < viewport.right)
+                .sort((a, b) => (Math.min(b.right, viewport.right) - Math.max(b.left, viewport.left)) - (Math.min(a.right, viewport.right) - Math.max(a.left, viewport.left)))[0];
+            if (!target) return;
+            const rect = target.rect || target;
+            const inset = 20;
+            const left = rect.right - viewport.left - heroControls.offsetWidth - inset;
+            heroControls.style.right = 'auto';
+            heroControls.style.left = Math.max(0, Math.min(left, viewport.width - heroControls.offsetWidth - inset)) + 'px';
+            heroControls.style.bottom = Math.max(inset, viewport.bottom - rect.bottom + inset) + 'px';
+        }
+        swiperHero.on('slideChangeTransitionEnd', alignHeroControls);
+        swiperHero.on('resize', alignHeroControls);
+        window.addEventListener('resize', alignHeroControls);
+        requestAnimationFrame(alignHeroControls);
+
         const fraction = document.querySelector('.visual .swiper-pagination');
         function updateHeroFraction() {
             const current = (swiperHero.realIndex % originalCount) + 1;
