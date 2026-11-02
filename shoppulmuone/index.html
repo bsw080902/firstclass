@@ -559,6 +559,8 @@
         });
 
         // 카테고리 클릭 시 패널을 열고 닫습니다. 아이콘과 글씨 색상도 함께 유지합니다.
+        const categoryLink = document.querySelector('.category-link');
+        const categoryPanel = document.querySelector('#category-panel');
         // 모바일에서는 패널을 body로 옮겨 헤더 높이/레이아웃의 제한 없이 화면에 표시합니다.
         const categoryOriginalParent = document.querySelector('.header-nav');
         function placeCategoryPanel() {
@@ -570,9 +572,6 @@
         }
         window.addEventListener('resize', placeCategoryPanel);
         placeCategoryPanel();
-
-        const categoryLink = document.querySelector('.category-link');
-        const categoryPanel = document.querySelector('#category-panel');
         categoryLink.addEventListener('click', (event) => {
             event.preventDefault();
             const open = !categoryLink.classList.contains('is-active');
