@@ -1,0 +1,40 @@
+/* 베스트 서브페이지 전용 — 메인 CSS를 수정하지 않습니다. */
+.best-page{padding:0 24px 100px;background:var(--bg-default);color:var(--text-primary)}
+.best-page-inner{max-width:1600px;margin:auto}
+.best-breadcrumb{display:flex;align-items:center;gap:10px;padding:30px 0;color:var(--text-secondary);font-size:13px}
+.best-breadcrumb a{color:inherit;text-decoration:none}
+.best-breadcrumb a:hover,.best-breadcrumb a:focus-visible{color:var(--action-primary)}
+.best-page-title{padding:30px 0 48px}
+.best-page-eyebrow{color:var(--brand-green);font-size:14px;font-weight:700;margin:0 0 8px}
+.best-page-title h1{font-size:36px;line-height:1.35;font-weight:700;margin:0 0 12px}
+.best-page-title>p:last-child{color:var(--text-secondary);font-size:16px;margin:0}
+.best-category-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:0 0 36px;border-bottom:1px solid var(--border-default)}
+.best-category-tabs button{border:1px solid var(--border-default);background:var(--bg-default);color:var(--text-secondary);border-radius:999px;padding:16px 12px;font:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.best-category-tabs button:hover,.best-category-tabs button:focus-visible{color:var(--brand-green);border-color:var(--brand-green)}
+.best-category-tabs button.is-active{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
+.best-category-tabs button:focus-visible,.best-wish:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
+.best-results-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:48px 0 28px}
+.best-results-head h2{font-size:28px;font-weight:700;margin:0;line-height:1.35}
+#best-count{font-size:14px;color:var(--text-secondary);margin:0}
+.best-product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:56px 30px}
+.best-product{min-width:0}
+.best-product-media{position:relative;aspect-ratio:1;border:1px solid var(--border-default);border-radius:20px;background:var(--bg-surface);overflow:hidden;display:grid;place-items:center}
+.best-placeholder{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--text-secondary);font-size:13px;text-align:center}
+.best-placeholder svg{opacity:.55}
+.best-product:hover .best-product-media,.best-product:focus-within .best-product-media{border-color:var(--brand-lime)}
+.best-product-rank{position:absolute;top:14px;left:14px;background:var(--brand-green);color:white;border-radius:10px;padding:6px 10px;font-size:13px;font-weight:700}
+.best-product-actions{position:absolute;right:12px;bottom:12px;display:flex;gap:6px;opacity:0;transform:translateY(7px);transition:opacity .2s,transform .2s}
+.best-product:hover .best-product-actions,.best-product:focus-within .best-product-actions{opacity:1;transform:none}
+.best-product-actions button{border:0;padding:0;background:transparent;cursor:pointer}
+.best-product-actions img{display:block;height:32px;width:auto}
+.best-product-info{padding-top:16px}
+.best-product-brand{font-size:13px;color:#858585;margin:0 0 6px}
+.best-product-info h3{font-size:16px;font-weight:600;line-height:1.4;margin:0;min-height:44px}
+.best-product-delivery{font-size:12px;color:var(--text-secondary);margin:10px 0 0}
+.best-product-price{display:flex;justify-content:flex-end;gap:8px;font-size:18px;margin:20px 0 0}
+.best-product-price strong{font-weight:700}
+.best-demo-note{color:var(--text-secondary);font-size:12px;margin:48px 0 0}
+@media(max-width:1024px){.best-product-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 20px}}
+@media(max-width:767px){.best-page{padding:0 16px 72px}.best-breadcrumb{padding:20px 0}.best-page-title{padding:18px 0 32px}.best-page-title h1{font-size:28px}.best-page-title>p:last-child{font-size:14px}.best-category-tabs{gap:8px;padding-bottom:24px}.best-category-tabs button{font-size:12px;padding:12px 4px;line-height:1.3}.best-results-head{margin:32px 0 20px}.best-results-head h2{font-size:23px}.best-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 14px}.best-product-media{border-radius:16px}.best-product-info h3{font-size:14px;min-height:40px}.best-product-price{font-size:16px;margin-top:14px}.best-product-actions{right:6px;bottom:6px}.best-product-actions img{height:25px}.best-product-rank{top:8px;left:8px;font-size:11px}}
+@media(hover:none){.best-product-actions{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.best-category-tabs button,.best-product-actions{transition:none}}
