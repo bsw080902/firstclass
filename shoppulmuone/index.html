@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/main.css?v=mobile-category-search-align-20261102">
+    <link rel="stylesheet" href="css/main.css?v=mobile-category-fullscreen-20261102">
     <script src="../npm/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
@@ -567,10 +567,12 @@
             categoryLink.classList.toggle('is-active', open);
             categoryLink.setAttribute('aria-expanded', String(open));
             categoryPanel.classList.toggle('is-open', open);
+            document.body.classList.toggle('mobile-category-open', open);
         });
         // 메뉴 밖을 클릭하거나 Esc를 누르면 닫힙니다.
         function closeCategoryPanel() {
             categoryPanel.classList.remove('is-open');
+            document.body.classList.remove('mobile-category-open');
             categoryLink.classList.remove('is-active');
             categoryLink.setAttribute('aria-expanded', 'false');
             document.querySelector('.mobile-category').setAttribute('aria-expanded', 'false');
