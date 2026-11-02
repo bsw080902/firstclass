@@ -5,12 +5,12 @@
   top: 12px;
   right: 16px;
   box-sizing: border-box;
-  width: 206px;
+  width: 244px;
   margin: 0;
-  padding: 6px 8px;
+  padding: 8px 10px;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 9px;
   background: rgba(255,255,255,.94);
   color: #242424;
   border: 1px solid #c9c9c9;
@@ -20,7 +20,7 @@
 }
 .theme-switcher label {
   flex: none;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -29,13 +29,13 @@
   flex: 1;
   width: 0;
   min-width: 0;
-  height: 29px;
+  height: 35px;
   padding: 0 3px;
   color: #222;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font: 500 11px "Noto Sans KR", sans-serif;
+  font: 500 12px "Noto Sans KR", sans-serif;
   cursor: pointer;
 }
 .theme-switcher select:focus-visible {
@@ -59,8 +59,8 @@
   .theme-switcher {
     top: 76px;
     right: 12px;
-    width: 180px;
-    padding: 5px 7px;
+    width: 210px;
+    padding: 7px 9px;
   }
   #wrap main { padding-top: 82px; }
 }
