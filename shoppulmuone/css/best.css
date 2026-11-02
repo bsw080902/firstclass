@@ -16,9 +16,9 @@
 .best-results-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:48px 0 28px}
 .best-results-head h2{font-size:28px;font-weight:700;margin:0;line-height:1.35}
 #best-count{font-size:14px;color:var(--text-secondary);margin:0}
-.best-product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:56px 30px}
+.best-product-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:56px 20px}
 .best-product{min-width:0}
-.best-product-media{position:relative;aspect-ratio:1;border:1px solid var(--border-default);border-radius:20px;background:var(--bg-surface);overflow:hidden;display:grid;place-items:center}
+.best-product-media{position:relative;width:100%;max-width:300px;aspect-ratio:1;border:1px solid var(--border-default);border-radius:20px;background:var(--bg-surface);overflow:hidden;display:grid;place-items:center}
 .best-placeholder{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--text-secondary);font-size:13px;text-align:center}
 .best-placeholder svg{opacity:.55}
 .best-product:hover .best-product-media,.best-product:focus-within .best-product-media{border-color:var(--brand-lime)}
