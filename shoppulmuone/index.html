@@ -418,7 +418,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="brand-more">브랜드 상품 더 보기</a>
+                    <a href="#" class="brand-more" aria-label="브랜드 상품 더 보기"><img src="img/Brand_icon.svg" alt=""></a>
                 </div>
             </section>
         </main>
@@ -800,7 +800,7 @@
             brandAd.hidden = index !== 0;
             brandPlaceholder.hidden = index === 0;
             brandPlaceholder.textContent = brandNames[index] + ' 상품 콘텐츠 준비 중';
-            brandMore.textContent = index === 0 ? '브랜드 상품 더 보기' : brandNames[index] + ' 상품 더 보기';
+            brandMore.setAttribute('aria-label', index === 0 ? '브랜드 상품 더 보기' : brandNames[index] + ' 상품 더 보기');
             updateBrandArrows();
         }
         brandNames.forEach((name, index) => {
