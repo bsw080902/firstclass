@@ -1,0 +1,136 @@
+/* Glassmorphism — 수업 메모: 반투명 유리, 배경 blur, 밝은 테두리 */
+:root {
+  --glass-ink: #392b52;
+  --glass-purple: #7940b3;
+  --glass-border: rgba(255,255,255,.72);
+  --glass-surface: rgba(255,255,255,.35);
+}
+html { min-height: 100%; }
+body {
+  min-height: 100vh;
+  color: var(--glass-ink);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 183, 216, .95), transparent 35%),
+    radial-gradient(circle at 85% 15%, rgba(147, 196, 255, .9), transparent 37%),
+    radial-gradient(circle at 75% 80%, rgba(183, 143, 246, .9), transparent 43%),
+    linear-gradient(135deg, #d7c3fb, #b8e9ef 52%, #f8c8e0);
+  background-attachment: fixed;
+}
+#wrap {
+  background: rgba(255,255,255,.16);
+  border-left: 1px solid rgba(255,255,255,.5);
+  border-right: 1px solid rgba(255,255,255,.5);
+  box-shadow: 0 16px 65px rgba(55,40,90,.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+header {
+  background: rgba(255,255,255,.28);
+  border-bottom: 1px solid var(--glass-border);
+  color: var(--glass-ink);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+header h1 { font-weight: 800; }
+.prev_btn::before { border-color: var(--glass-ink); }
+main { padding-top: 30px; }
+.title {
+  width: fit-content;
+  max-width: 100%;
+  margin: 12px auto 44px;
+  padding: 20px 34px;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 24px;
+  background: rgba(255,255,255,.32);
+  box-shadow: 0 10px 35px rgba(72,42,121,.12), inset 0 1px 0 rgba(255,255,255,.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.email { color: var(--glass-ink); }
+.input_box + .input_box { margin-top: 14px; }
+.input_box input {
+  height: 54px;
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: 16px;
+  background: rgba(255,255,255,.48);
+  box-shadow: 0 8px 25px rgba(60,42,93,.08), inset 0 1px 0 rgba(255,255,255,.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--glass-ink);
+}
+.input_box input::placeholder { color: #675c7a; font-weight: 500; }
+.input_box input:focus {
+  outline: 2px solid rgba(121,64,179,.65);
+  outline-offset: 2px;
+  border-color: #fff;
+}
+.pw_btn { top: 12px; }
+.login_option label { color: var(--glass-ink); }
+.login_option .check + span::before {
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 7px;
+  background: rgba(255,255,255,.55);
+  box-shadow: 0 3px 12px rgba(60,42,93,.12);
+}
+.login_option .check:checked + span::before {
+  background: var(--glass-purple);
+  border-color: rgba(255,255,255,.85);
+}
+.login_btn {
+  margin-top: 24px;
+  height: 54px;
+  border: 1px solid rgba(255,255,255,.75);
+  border-radius: 18px;
+  background: rgba(123,0,160,.82);
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(79,30,113,.22), inset 0 1px 0 rgba(255,255,255,.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background .2s ease, transform .2s ease;
+}
+.login_btn:disabled {
+  background: rgba(255,255,255,.4);
+  color: #675c7a;
+  box-shadow: 0 5px 16px rgba(60,42,93,.08);
+  cursor: not-allowed;
+}
+.login_btn:not(:disabled):hover { background: rgba(123,0,160,.95); transform: translateY(-2px); }
+.login_link a { color: var(--glass-ink); }
+.login_link a + a { border-color: rgba(255,255,255,.65); }
+.login_link a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.sns_login {
+  margin-top: 40px;
+  padding: 24px 16px 28px;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 24px;
+  background: rgba(255,255,255,.28);
+  box-shadow: 0 12px 38px rgba(72,42,121,.12), inset 0 1px 0 rgba(255,255,255,.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.sns_login > p { margin-bottom: 24px; color: var(--glass-ink); font-weight: 700; }
+.sns_login > p::before,
+.sns_login > p::after { background: rgba(255,255,255,.75); }
+.sns_list { flex-wrap: wrap; }
+.sns_list a {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 16px;
+  background: rgba(255,255,255,.4);
+  box-shadow: 0 5px 18px rgba(60,42,93,.1);
+}
+.sns_list a img { width: 43px; height: 43px; }
+.prev_btn:focus-visible, .pw_btn:focus-visible,
+.login_btn:focus-visible, .login_link a:focus-visible, .sns_list a:focus-visible {
+  outline: 2px solid var(--glass-purple);
+  outline-offset: 3px;
+}
+@media (max-width: 360px) {
+  .title { padding: 16px 24px; }
+  .sns_login { padding-left: 10px; padding-right: 10px; }
+}
+@supports not (backdrop-filter: blur(12px)) {
+  #wrap { background: rgba(255,255,255,.72); }
+  .title, .sns_login { background: rgba(255,255,255,.8); }
+}
