@@ -10,7 +10,7 @@
 .best-page-title>p:last-child{color:var(--text-secondary);font-size:16px;margin:0}
 .best-category-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:0 0 36px;border-bottom:1px solid var(--border-default)}
 .best-category-tabs button{border:1px solid var(--border-default);background:var(--bg-default);color:var(--text-secondary);border-radius:999px;padding:16px 12px;font:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
-.best-category-tabs button:hover,.best-category-tabs button:focus-visible{color:var(--brand-green);border-color:var(--brand-green);transform:translateY(-2px)}
+.best-category-tabs button:hover,.best-category-tabs button:focus-visible{transform:translateY(-2px)}
 .best-category-tabs button.is-active{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
 .best-category-tabs button.is-active:hover,.best-category-tabs button.is-active:focus-visible{color:#fff}
 .best-category-tabs button:focus-visible,.best-wish:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
