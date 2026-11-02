@@ -1879,3 +1879,35 @@ body {
   .mobile-tabbar .mobile-tab.is-current { color: #009333; font-weight: 700; }
   .mobile-tabbar .mobile-tab.is-current img { width: 28px; height: 28px; }
 }
+
+
+/* 모바일 하단 카테고리: 기존 2단 메뉴를 화면에 맞게 펼침 */
+@media (max-width: 767px) {
+  .header-nav .category-panel {
+    position: fixed;
+    top: 112px;
+    bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    min-height: 0;
+    padding: 24px 16px;
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 2px minmax(0, 1fr);
+    column-gap: 12px;
+    overflow-y: auto;
+    align-items: start;
+    background: #fff;
+  }
+  .header-nav .category-panel-left,
+  .header-nav .category-panel-right { gap: 18px; justify-content: flex-start; }
+  .header-nav .category-panel .category-item { width: 100%; min-height: 44px; height: auto; font-size: 14px; }
+  .header-nav .category-panel-divider { width: 2px; height: 100%; min-height: 220px; align-self: stretch; }
+  .header-nav .category-panel-right a { width: 100%; min-height: 44px; display: flex; justify-content: center; align-items: center; font-size: 13px; white-space: normal; text-align: center; }
+  .mobile-tabbar .mobile-search img { width: 28px; height: 28px; }
+}
