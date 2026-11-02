@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/main.css?v=mobile-figma-tabbar-20261102">
+    <link rel="stylesheet" href="css/main.css?v=mobile-category-search-align-20261102">
     <script src="../npm/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
@@ -573,6 +573,7 @@
             categoryPanel.classList.remove('is-open');
             categoryLink.classList.remove('is-active');
             categoryLink.setAttribute('aria-expanded', 'false');
+            document.querySelector('.mobile-category').setAttribute('aria-expanded', 'false');
         }
         document.addEventListener('click', (event) => {
             if (categoryPanel.classList.contains('is-open') && !categoryLink.contains(event.target) && !categoryPanel.contains(event.target)) closeCategoryPanel();
@@ -859,8 +860,11 @@
             if (wishImage) wishImage.src = !selected ? 'img/Heart_button_active.svg?v=filled-heart-e04453-3' : 'img/Heart_button.svg';
         });
         // 모바일 하단 메뉴는 기존 헤더의 카테고리/검색 기능을 재사용합니다.
-        document.querySelector('.mobile-category').addEventListener('click', () => {
+        document.querySelector('.mobile-category').addEventListener('click', (event) => {
+            event.stopPropagation(); // 하단 탭 클릭이 바깥 영역 클릭으로 처리되지 않게 함
             document.querySelector('.category-link').click();
+            const open = document.querySelector('.category-panel').classList.contains('is-open');
+            event.currentTarget.setAttribute('aria-expanded', String(open));
         });
         document.querySelector('.mobile-search').addEventListener('click', () => {
             const search = document.querySelector('.header-search');
