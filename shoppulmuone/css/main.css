@@ -1998,3 +1998,7 @@ body {
   body > #category-panel .category-panel-right a:hover { color: #009333; }
   body > #category-panel.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
 }
+
+/* 브랜드 더보기 SVG: 링크 중앙 정렬 및 원본 이미지 비율 유지 */
+.brand-more { padding: 0; border: 0; line-height: 0; }
+.brand-more img { display: block; max-width: 100%; height: auto; }
