@@ -1961,3 +1961,40 @@ body {
     min-height: 100%;
   }
 }
+
+
+/* 모바일 카테고리 패널: 헤더 밖에서 실제 화면 크기를 기준으로 배치 */
+@media (max-width: 767px) {
+  body > #category-panel {
+    position: fixed;
+    inset: 112px 0 calc(68px + env(safe-area-inset-bottom, 0px)) 0;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    min-height: 0;
+    padding: 24px 16px;
+    box-sizing: border-box;
+    border: 0;
+    border-top: 1px solid #e0e8df;
+    border-radius: 0;
+    box-shadow: none;
+    background: #fff;
+    z-index: 90;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 2px minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: stretch;
+    overflow-y: auto;
+  }
+  body > #category-panel .category-panel-left,
+  body > #category-panel .category-panel-right { justify-content: flex-start; gap: 18px; }
+  body > #category-panel .category-item { width: 100%; min-height: 44px; height: auto; font-size: 14px; }
+  body > #category-panel .category-panel-divider { width: 2px; height: 100%; min-height: 100%; align-self: stretch; }
+  body > #category-panel .category-panel-right a {
+    width: 100%; min-height: 44px; display: flex; justify-content: center;
+    align-items: center; color: #68756a; font-size: 13px; font-weight: 500;
+    white-space: normal; text-align: center; text-decoration: none;
+  }
+  body > #category-panel .category-panel-right a:hover { color: #009333; }
+  body > #category-panel.is-open { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+}
