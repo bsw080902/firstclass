@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/main.css?v=mobile-category-fullscreen-20261102">
+    <link rel="stylesheet" href="css/main.css?v=mobile-category-viewport-fix-20261102">
     <script src="../npm/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
@@ -559,6 +559,18 @@
         });
 
         // 카테고리 클릭 시 패널을 열고 닫습니다. 아이콘과 글씨 색상도 함께 유지합니다.
+        // 모바일에서는 패널을 body로 옮겨 헤더 높이/레이아웃의 제한 없이 화면에 표시합니다.
+        const categoryOriginalParent = document.querySelector('.header-nav');
+        function placeCategoryPanel() {
+            if (window.matchMedia('(max-width: 767px)').matches) {
+                if (categoryPanel.parentElement !== document.body) document.body.appendChild(categoryPanel);
+            } else if (categoryPanel.parentElement !== categoryOriginalParent) {
+                categoryOriginalParent.insertBefore(categoryPanel, categoryOriginalParent.querySelector('.best-link'));
+            }
+        }
+        window.addEventListener('resize', placeCategoryPanel);
+        placeCategoryPanel();
+
         const categoryLink = document.querySelector('.category-link');
         const categoryPanel = document.querySelector('#category-panel');
         categoryLink.addEventListener('click', (event) => {
