@@ -1,0 +1,174 @@
+/* Neo Brutalism | theVenti login redesign
+   기존 login.css 다음에 로드되는 추가 스타일시트 */
+:root {
+  --neo-black: #171717;
+  --neo-purple: #a760ff;
+  --neo-yellow: #ffe552;
+  --neo-cyan: #58e4ec;
+  --neo-pink: #ff80c5;
+  --neo-paper: #f6f1e7;
+  --neo-shadow: 5px 5px 0 var(--neo-black);
+}
+
+body {
+  background: var(--neo-yellow);
+  color: var(--neo-black);
+}
+
+#wrap {
+  background: var(--neo-paper);
+  border-left: 3px solid var(--neo-black);
+  border-right: 3px solid var(--neo-black);
+  box-sizing: border-box;
+}
+
+header {
+  background: var(--neo-purple);
+  color: var(--neo-black);
+  border-bottom: 3px solid var(--neo-black);
+}
+header h1 {
+  font-size: 2.3rem;
+  font-weight: 900;
+  letter-spacing: -.06em;
+}
+.prev_btn::before {
+  border-color: var(--neo-black);
+}
+.prev_btn:focus-visible,
+.pw_btn:focus-visible,
+.login_btn:focus-visible,
+.login_link a:focus-visible,
+.sns_list a:focus-visible {
+  outline: 3px dashed var(--neo-black);
+  outline-offset: 5px;
+}
+
+main {
+  padding-top: 30px;
+}
+.title {
+  position: relative;
+  margin: 14px auto 42px;
+  width: max-content;
+  max-width: 100%;
+  padding: 17px 30px;
+  background: var(--neo-yellow);
+  border: 3px solid var(--neo-black);
+  box-shadow: var(--neo-shadow);
+  transform: rotate(-2deg);
+}
+.title::after {
+  content: "";
+  position: absolute;
+  right: -14px;
+  top: -17px;
+  width: 25px;
+  height: 25px;
+  background: var(--neo-pink);
+  border: 3px solid var(--neo-black);
+  border-radius: 50%;
+}
+.brand_logo { width: 150px; }
+
+.email {
+  margin-bottom: 12px;
+  font-size: 1.6rem;
+  color: var(--neo-black);
+  font-weight: 900;
+}
+.input_box + .input_box { margin-top: 16px; }
+.input_box input {
+  height: 56px;
+  border: 3px solid var(--neo-black);
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 4px 4px 0 var(--neo-black);
+  color: var(--neo-black);
+  font-weight: 600;
+}
+.input_box input::placeholder { color: #777; font-weight: 500; }
+.input_box input:focus {
+  border-color: var(--neo-black);
+  outline: 3px solid var(--neo-purple);
+  outline-offset: 2px;
+  box-shadow: 4px 4px 0 var(--neo-black);
+}
+.pw_btn { top: 13px; color: var(--neo-black); }
+
+.login_option { margin-top: 24px; }
+.login_option label { color: var(--neo-black); font-weight: 800; }
+.login_option .check + span::before {
+  border: 2px solid var(--neo-black);
+  border-radius: 0;
+  background: white;
+  box-shadow: 2px 2px 0 var(--neo-black);
+}
+.login_option .check:checked + span::before {
+  background: var(--neo-cyan);
+  border-color: var(--neo-black);
+}
+.login_option .check:checked + span::after { border-color: var(--neo-black); }
+
+.login_btn {
+  margin-top: 28px;
+  height: 58px;
+  border: 3px solid var(--neo-black);
+  border-radius: 0;
+  box-shadow: var(--neo-shadow);
+  background: var(--neo-purple);
+  color: var(--neo-black);
+  font-weight: 900;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.login_btn:disabled {
+  background: #d9d2dc;
+  color: #615c63;
+  cursor: not-allowed;
+  box-shadow: 4px 4px 0 var(--neo-black);
+}
+.login_btn:not(:disabled):hover {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0 var(--neo-black);
+  background: var(--neo-pink);
+}
+.login_btn:not(:disabled):active {
+  transform: translate(5px, 5px);
+  box-shadow: 0 0 0 var(--neo-black);
+}
+.login_link { margin-top: 26px; font-weight: 800; }
+.login_link a + a { border-left: 2px solid var(--neo-black); }
+.login_link a:hover { color: #7b00a0; text-decoration: underline; text-underline-offset: 4px; }
+
+.sns_login {
+  margin-top: 48px;
+  padding: 22px 15px 26px;
+  background: var(--neo-cyan);
+  border: 3px solid var(--neo-black);
+  box-shadow: var(--neo-shadow);
+}
+.sns_login > p { margin-bottom: 22px; font-weight: 900; color: var(--neo-black); }
+.sns_login > p::before,
+.sns_login > p::after { height: 2px; background: var(--neo-black); }
+.sns_list { flex-wrap: wrap; }
+.sns_list a {
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--neo-black);
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 3px 3px 0 var(--neo-black);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.sns_list a:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--neo-black); }
+.sns_list a img { width: 43px; height: 43px; }
+
+@media (max-width: 360px) {
+  .title { padding: 14px 20px; }
+  .login_option { gap: 12px; }
+  .login_option label { font-size: 1.3rem; }
+  .sns_login { padding-left: 10px; padding-right: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .login_btn, .sns_list a { transition: none; }
+}
