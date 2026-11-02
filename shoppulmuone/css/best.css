@@ -9,7 +9,7 @@
 .best-page-eyebrow{color:var(--brand-green);font-size:14px;font-weight:700;margin:0 0 8px}
 .best-page-title h1{font-size:36px;line-height:1.35;font-weight:700;margin:0 0 12px}
 .best-page-title>p:last-child{color:var(--text-secondary);font-size:16px;margin:0}
-.best-category-tabs{position:relative;isolation:isolate;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:0 0 36px;border-bottom:1px solid var(--border-default)}
+.best-category-tabs{position:relative;isolation:isolate;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:0 0 36px;border-bottom:none}
 .best-category-tabs::before{content:"";position:absolute;z-index:-1;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:var(--bg-surface)}
 .best-category-tabs button{border:1px solid var(--border-default);background:var(--bg-default);color:var(--text-secondary);border-radius:999px;padding:16px 12px;font:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .2s}
 .best-category-tabs button:hover,.best-category-tabs button:focus-visible{transform:translateY(-2px)}
