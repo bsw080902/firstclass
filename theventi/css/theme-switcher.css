@@ -1,0 +1,47 @@
+/* 테마와 관계없이 동일하게 보이는 디자인 비교 선택기 */
+.theme-switcher {
+  box-sizing: border-box;
+  width: min(100% - 40px, 600px);
+  margin: 22px auto 0;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  background: #fff;
+  color: #242424;
+  border: 2px solid #252525;
+  border-radius: 12px;
+  box-shadow: 0 5px 0 rgba(0,0,0,.2);
+  font-family: "Noto Sans KR", sans-serif;
+}
+.theme-switcher label {
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.theme-switcher select {
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 165px;
+  height: 42px;
+  padding: 0 36px 0 12px;
+  color: #222;
+  background: #f7f7f7;
+  border: 1px solid #555;
+  border-radius: 8px;
+  font: 600 14px "Noto Sans KR", sans-serif;
+  cursor: pointer;
+}
+.theme-switcher select:focus-visible { outline: 3px solid #6842c7; outline-offset: 3px; }
+.theme-switcher p {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #555;
+}
+@media (max-width: 420px) {
+  .theme-switcher { gap: 8px; padding: 12px; }
+  .theme-switcher select { width: 100%; flex-basis: 100%; }
+}
