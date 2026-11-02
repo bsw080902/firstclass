@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../npm/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="../font/css/pretendardvariable.css">
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/main.css?v=wish-pink-e04453-2">
+    <link rel="stylesheet" href="css/main.css?v=mobile-figma-tabbar-20261102">
     <script src="../npm/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
@@ -422,6 +422,17 @@
                 </div>
             </section>
         </main>
+
+        <!-- 모바일 전용 하단 탭바: PC에서는 숨김 -->
+        <nav class="mobile-tabbar" aria-label="모바일 빠른 메뉴">
+            <button type="button" class="mobile-tab mobile-category" aria-label="카테고리 열기">
+                <img src="img/Menu_icon.svg" alt=""><span>카테고리</span>
+            </button>
+            <a class="mobile-tab" href="#" aria-label="장바구니"><img src="img/BigCart_icon.svg" alt=""><span>장바구니</span></a>
+            <a class="mobile-tab is-current" href="index.html" aria-current="page"><img src="img/Home_icon.svg" alt=""><span>홈</span></a>
+            <button type="button" class="mobile-tab mobile-search" aria-label="검색 열기"><img src="img/Search_icon.svg" alt=""><span>검색</span></button>
+            <a class="mobile-tab" href="#" aria-label="마이페이지"><img src="img/Mypage_icon.svg" alt=""><span>마이</span></a>
+        </nav>
 
         <footer class="site-footer">
             <nav class="footer-nav" aria-label="푸터 메뉴">
@@ -846,6 +857,15 @@
             button.setAttribute('aria-pressed', String(!selected));
             const wishImage = button.querySelector('img');
             if (wishImage) wishImage.src = !selected ? 'img/Heart_button_active.svg?v=filled-heart-e04453-3' : 'img/Heart_button.svg';
+        });
+        // 모바일 하단 메뉴는 기존 헤더의 카테고리/검색 기능을 재사용합니다.
+        document.querySelector('.mobile-category').addEventListener('click', () => {
+            document.querySelector('.category-link').click();
+        });
+        document.querySelector('.mobile-search').addEventListener('click', () => {
+            const search = document.querySelector('.header-search');
+            search.classList.toggle('mobile-search-open');
+            if (search.classList.contains('mobile-search-open')) search.querySelector('input').focus();
         });
     </script>
 </body>
