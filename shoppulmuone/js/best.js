@@ -17,7 +17,7 @@ title.textContent=group.label+' 베스트';count.textContent='총 '+group.items.
 grid.replaceChildren();
 group.items.forEach((name,i)=>{
 const article=document.createElement('article');article.className='best-product';
-article.innerHTML='<div class="best-product-media"><span class="best-product-rank">'+(i+1)+'</span>'+placeholder+'<div class="best-product-actions"><button type="button" class="best-wish" aria-pressed="false" aria-label="찜하기"><img src="img/Heart_button.svg" alt=""></button><button type="button" class="best-cart" aria-label="장바구니 담기"><img src="img/Cart_button.svg" alt=""></button></div></div><div class="best-product-info"><p class="best-product-brand">풀무원 · 예시 상품</p><h3></h3><p class="best-product-delivery">상품 정보 준비 중</p><p class="best-product-price"><strong>가격 준비 중</strong></p></div>';
+article.innerHTML='<div class="best-product-media"><span class="best-product-rank">'+(i+1)+'</span>'+placeholder+'<div class="best-product-actions"><button type="button" class="best-wish" aria-pressed="false" aria-label="찜하기"><img class="best-wish-default" src="img/Heart_button.svg" alt=""><img class="best-wish-selected" src="img/Heart_button_active.svg" alt=""></button><button type="button" class="best-cart" aria-label="장바구니 담기"><img src="img/Cart_button.svg" alt=""></button></div></div><div class="best-product-info"><p class="best-product-brand">풀무원 · 예시 상품</p><h3></h3><p class="best-product-delivery">상품 정보 준비 중</p><p class="best-product-price"><strong>가격 준비 중</strong></p></div>';
 article.querySelector('h3').textContent=name;
 article.querySelector('.best-wish').setAttribute('aria-label',name+' 찜하기');
 article.querySelector('.best-cart').setAttribute('aria-label',name+' 장바구니 담기');
@@ -26,7 +26,7 @@ grid.appendChild(article);
 document.querySelectorAll('.best-category-tabs button').forEach(btn=>{const active=btn.dataset.category===key;btn.classList.toggle('is-active',active);btn.setAttribute('aria-pressed',String(active));});
 }
 document.querySelectorAll('.best-category-tabs button').forEach(btn=>btn.addEventListener('click',()=>render(btn.dataset.category)));
-grid.addEventListener('click',e=>{const wish=e.target.closest('.best-wish');if(wish){const on=wish.getAttribute('aria-pressed')!=='true';wish.setAttribute('aria-pressed',String(on));wish.querySelector('img').src=on?'img/Heart_button_active.svg':'img/Heart_button.svg';}});
+grid.addEventListener('click',e=>{const wish=e.target.closest('.best-wish');if(wish){const on=wish.getAttribute('aria-pressed')!=='true';wish.setAttribute('aria-pressed',String(on));wish.classList.toggle('is-selected',on);}});
 render('fresh');
 const panel=document.querySelector('#category-panel'),trigger=document.querySelector('.category-link'),mobile=document.querySelector('.mobile-category');
 function close(){panel.classList.remove('is-open');trigger.classList.remove('is-active');trigger.setAttribute('aria-expanded','false');mobile.setAttribute('aria-expanded','false');document.body.classList.remove('mobile-category-open');}
