@@ -22,6 +22,8 @@
 @media(max-width:1024px){.new-list-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:767px){.new-page-inner{padding:0 16px}.new-page-title h1{font-size:28px}.new-page .new-section{padding-top:30px}.new-all-products{padding:48px 0 72px}.new-all-heading{align-items:start;flex-direction:column}.new-all-heading h2{font-size:23px}.new-list-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}.new-list-image{border-radius:14px}.new-list-info h3{font-size:14px}}
 
+/* 상단 경로도 제목 및 Swiper 카드와 같은 왼쪽 기준선으로 정렬 */
+.new-page .best-breadcrumb{box-sizing:border-box;width:min(100%,1420px);margin-left:auto;margin-right:auto}
 /* 신상품 상단 소개 영역: 상품 카드 바깥에만 연한 브랜드 배경 */
 .new-page-title{position:relative;isolation:isolate;box-sizing:border-box;width:min(100%,1420px);margin:0 auto;padding:30px 0 44px}
 .new-page-title::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:var(--bg-surface)}
