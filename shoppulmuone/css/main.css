@@ -2002,3 +2002,8 @@ body {
 /* 브랜드 더보기 SVG: 링크 중앙 정렬 및 원본 이미지 비율 유지 */
 .brand-more { padding: 0; border: 0; line-height: 0; }
 .brand-more img { display: block; max-width: 100%; height: auto; }
+
+/* 신상품 페이지 이동 링크가 주변 슬라이더/레이어보다 위에서 클릭되도록 보장 */
+.header-nav > a[href="new.html"]{position:relative;z-index:2;pointer-events:auto}
+.new-section .new-more[href="new.html"]{position:relative;z-index:12;pointer-events:auto;cursor:pointer}
+.new-section .new-more[href="new.html"] img{pointer-events:none}
