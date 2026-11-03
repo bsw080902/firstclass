@@ -35,8 +35,7 @@
 .new-page .new-list-info p{font-size:13px;margin:0 0 6px}
 .new-page .new-list-info h3{font-weight:600;min-height:44px}
 .new-page .new-list-info span{display:block;margin-top:10px}
-.new-page .new-product-actions{opacity:0;visibility:hidden;transform:translateY(7px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease}
-.new-page .new-card:hover .new-product-actions,.new-page .new-card:focus-within .new-product-actions{opacity:1;visibility:visible;transform:none}
+.new-page .new-section .new-product-actions{opacity:1;visibility:visible;transform:none}
 @media(hover:none){.new-page .new-product-actions,.new-page .best-product-actions{opacity:1;visibility:visible;transform:none}}
 @media(max-width:1024px){.new-page .new-list-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 20px}}
 @media(max-width:767px){.new-page-title{padding:22px 0 32px}.new-page .new-list-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 14px}.new-page .new-list-info h3{min-height:40px}}
