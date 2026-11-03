@@ -21,3 +21,23 @@
 .new-list-info span{font-size:12px;color:var(--text-secondary)}
 @media(max-width:1024px){.new-list-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:767px){.new-page-inner{padding:0 16px}.new-page-title h1{font-size:28px}.new-page .new-section{padding-top:30px}.new-all-products{padding:48px 0 72px}.new-all-heading{align-items:start;flex-direction:column}.new-all-heading h2{font-size:23px}.new-list-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}.new-list-image{border-radius:14px}.new-list-info h3{font-size:14px}}
+
+/* 신상품 상단 소개 영역: 상품 카드 바깥에만 연한 브랜드 배경 */
+.new-page-title{position:relative;isolation:isolate;padding:34px 0 46px}
+.new-page-title::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:var(--bg-surface)}
+.new-page .new-section{background:#fff;padding-top:36px}
+/* 메인 신상품 슬라이더는 유지하되 서브페이지에서는 컴팩트하게 표시 */
+@media(min-width:1200px){.new-page .new-section .new-slider-shell{width:min(100%,1420px)}.new-page .new-swiper .swiper-slide{width:440px;flex:0 0 440px}.new-page .new-card-bottom{height:170px;min-height:0;padding:14px;gap:14px}.new-page .new-card .new-product-image{width:130px;height:130px;flex:0 0 130px}.new-page .new-product-info{padding-bottom:55px}.new-page .new-product-info h4{font-size:14px}.new-page .new-product-purchase{font-size:13px}}
+/* 베스트 상품과 동일한 호버 액션과 상품 카드 크기 */
+.new-page .new-list-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:56px 20px}
+.new-page .new-list-image{display:grid;place-items:center;max-width:300px;border:1px solid var(--border-default);background:var(--bg-surface);position:relative}
+.new-page .new-list-image img{object-fit:contain}
+.new-page .new-list-info{padding:16px 0 0}
+.new-page .new-list-info p{font-size:13px;margin:0 0 6px}
+.new-page .new-list-info h3{font-weight:600;min-height:44px}
+.new-page .new-list-info span{display:block;margin-top:10px}
+.new-page .new-product-actions{opacity:0;visibility:hidden;transform:translateY(7px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease}
+.new-page .new-card:hover .new-product-actions,.new-page .new-card:focus-within .new-product-actions{opacity:1;visibility:visible;transform:none}
+@media(hover:none){.new-page .new-product-actions,.new-page .best-product-actions{opacity:1;visibility:visible;transform:none}}
+@media(max-width:1024px){.new-page .new-list-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 20px}}
+@media(max-width:767px){.new-page-title{padding:22px 0 32px}.new-page .new-list-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 14px}.new-page .new-list-info h3{min-height:40px}}
