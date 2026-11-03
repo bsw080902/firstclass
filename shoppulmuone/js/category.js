@@ -94,4 +94,4 @@ tabs.forEach(btn=>btn.addEventListener("click",()=>showCategory(btn.dataset.cate
 grid.addEventListener("click",e=>{const wish=e.target.closest(".best-wish");if(wish){const on=wish.getAttribute("aria-pressed")!=="true";wish.setAttribute("aria-pressed",String(on));wish.classList.toggle("is-selected",on)}});
 const params=new URLSearchParams(location.search),initial=params.get("group");
 const key=initial==="all"||Object.hasOwn(categories,initial)?initial:"all",sub=Number(params.get("sub"));
-showCategory(key,Number.isInteger(sub)&&sub>=0&&sub<Object.keys(categories[key]).length?sub:0);
+showCategory(key,key==="all"?0:(Number.isInteger(sub)&&sub>=0&&sub<Object.keys(categories[key]).length?sub:0));
