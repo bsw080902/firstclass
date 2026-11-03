@@ -64,6 +64,16 @@ function renderCards(names){
  requestAnimationFrame(()=>requestAnimationFrame(()=>grid.classList.add("is-revealed")));
 }
 function showCategory(key,selected=0,minor="전체"){
+ if(key==="all"){
+  tabs.forEach(btn=>{const active=btn.dataset.category==="all";btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active))});
+  subtabs.replaceChildren();
+  minorTabs.classList.remove("is-revealed");minorTabs.replaceChildren();
+  minorPanel.classList.add("is-collapsed");minorPanel.setAttribute("aria-hidden","true");
+  heading.textContent="전체상품";
+  const names=Object.values(examples).flat();
+  renderCards([...new Set(names)].slice(0,20));
+  return;
+ }
  const names=Object.keys(categories[key]);
  const index=Math.max(0,Math.min(selected,names.length-1));
  const middle=names[index], details=categories[key][middle], hasDetails=details.length>0;
@@ -83,5 +93,5 @@ function showCategory(key,selected=0,minor="전체"){
 tabs.forEach(btn=>btn.addEventListener("click",()=>showCategory(btn.dataset.category)));
 grid.addEventListener("click",e=>{const wish=e.target.closest(".best-wish");if(wish){const on=wish.getAttribute("aria-pressed")!=="true";wish.setAttribute("aria-pressed",String(on));wish.classList.toggle("is-selected",on)}});
 const params=new URLSearchParams(location.search),initial=params.get("group");
-const key=Object.hasOwn(categories,initial)?initial:"fresh",sub=Number(params.get("sub"));
+const key=initial==="all"||Object.hasOwn(categories,initial)?initial:"all",sub=Number(params.get("sub"));
 showCategory(key,Number.isInteger(sub)&&sub>=0&&sub<Object.keys(categories[key]).length?sub:0);
