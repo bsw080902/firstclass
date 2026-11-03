@@ -25,7 +25,7 @@
 /* 상단 경로도 제목 및 Swiper 카드와 같은 왼쪽 기준선으로 정렬 */
 .new-page .best-breadcrumb{box-sizing:border-box;width:min(100%,1420px);margin-left:auto;margin-right:auto}
 /* 신상품 상단 소개 영역: 상품 카드 바깥에만 연한 브랜드 배경 */
-.new-page-title{position:relative;isolation:isolate;box-sizing:border-box;width:min(100%,1420px);margin:0 auto;padding:30px 0 44px}
+.new-page-title{position:relative;isolation:isolate;box-sizing:border-box;width:min(100%,1420px);margin:0 auto;padding:30px 0 40px}
 .new-page-title::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:var(--bg-surface)}
 .new-page .new-section{background:var(--bg-surface);padding-top:0}
 /* 상단 Swiper 카드 크기와 간격은 메인페이지 main.css 설정을 그대로 사용 */
