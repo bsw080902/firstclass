@@ -16,7 +16,7 @@
 .best-category-tabs button.is-active{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
 .best-category-tabs button.is-active:hover,.best-category-tabs button.is-active:focus-visible{color:#fff}
 .best-category-tabs button:focus-visible,.best-wish:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
-.best-subcategories{display:flex;flex-wrap:nowrap;align-items:center;gap:16px;padding:24px 0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.best-subcategories{display:flex;flex-wrap:nowrap;align-items:center;gap:16px;padding:22px 0 26px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
 .best-subcategories{max-height:110px;opacity:1;transform:translateY(0);visibility:visible;transition:max-height .35s ease,padding .35s ease,opacity .25s ease,transform .35s ease,visibility .35s ease}
 .best-subcategories.is-empty{max-height:0;padding-top:0;padding-bottom:0;opacity:0;transform:translateY(-10px);visibility:hidden;pointer-events:none}
 .best-subcategories::-webkit-scrollbar{display:none}
@@ -24,7 +24,7 @@
 .best-subcategories button:hover,.best-subcategories button:focus-visible{transform:translateY(-3px);border-color:var(--brand-lime);filter:brightness(.98)}
 .best-subcategories button.is-active{font-weight:700;background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
 .best-subcategories button:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
-@media(max-width:767px){.best-subcategories{gap:10px;padding:18px 0}.best-subcategories button{font-size:12px;padding:11px 18px}}
+@media(max-width:767px){.best-subcategories{gap:10px;padding:16px 0 20px}.best-subcategories button{font-size:12px;padding:11px 18px}}
 .best-results-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:48px 0 28px}
 .best-results-head h2{font-size:28px;font-weight:700;margin:0;line-height:1.35}
 #best-count{font-size:14px;color:var(--text-secondary);margin:0}
