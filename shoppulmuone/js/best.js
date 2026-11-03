@@ -6,10 +6,13 @@ meal:{label:'간편식 · 반찬',items:['담백한 만두','한끼 볶음밥','
 processed:{label:'가공식품',items:['고소한 견과류','통밀 크래커','순한 양념 소스','건강한 시리얼','식물성 음료','간편 파스타면','과일 주스','담백한 스낵']},
 living:{label:'생활용품',items:['주방 세정제','친환경 수세미','생활 세제','키친타월','다용도 행주','주방 보관 용기','핸드워시','생활용품 세트']}
 };
+const subcategoryData={fresh:['두부','콩나물','달걀','과일','채소','쌀','정육','수산'],meal:['만두','피자','떡볶이','면요리','반찬','김치'],processed:['양념','소스','오일','과자·견과·베이커리','생수·음료·유제품','건강식품'],living:['반려동물','생활','주방','뷰티용품','가전제품']};
+const subcategories=document.querySelector('#best-subcategories');
 const grid=document.querySelector('#best-products'),count=document.querySelector('#best-count'),title=document.querySelector('#best-category-title');
 const placeholder='<span class="best-placeholder"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="2"/><path d="m3 17 6-5 4 3 3-3 5 5"/></svg>상품 이미지 준비 중</span>';
 function render(key){
 const group=groups[key];if(!group)return;
+subcategories.replaceChildren(...subcategoryData[key].map(label=>{const button=document.createElement('button');button.type='button';button.textContent=label;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>{subcategories.querySelectorAll('button').forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active));});});return button;}));
 title.textContent=group.label+' 베스트';count.textContent='총 '+group.items.length+'개';
 grid.replaceChildren();
 group.items.forEach((name,i)=>{
