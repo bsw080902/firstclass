@@ -33,7 +33,7 @@
                         <div class="category-panel" id="category-panel" aria-label="상품 카테고리">
                             <div class="category-panel-left">
                                 <a href="category.html?group=all" class="category-all-link">전체상품</a>
-                                <button type="button" class="category-item is-selected">신선식품</button>
+                                <button type="button" class="category-item">신선식품</button>
                                 <button type="button" class="category-item">간편식 · 반찬</button>
                                 <button type="button" class="category-item">가공식품</button>
                                 <button type="button" class="category-item">생활용품</button>
@@ -621,7 +621,7 @@
                     return link;
                 }));
             });
-            button.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
+            button.setAttribute('aria-pressed', 'false');
         });
 
         // 아래로 스크롤하면 헤더를 숨기고, 위로 스크롤하면 다시 보여줍니다.
