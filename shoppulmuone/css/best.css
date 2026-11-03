@@ -25,7 +25,7 @@
 .best-subcategories button.is-active{font-weight:700;background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
 .best-subcategories button:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
 @media(max-width:767px){.best-subcategories{gap:10px;padding:16px 0 20px}.best-subcategories button{font-size:12px;padding:11px 18px}}
-.best-results-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:48px 0 26px}
+.best-results-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:48px 0 22px}
 .best-results-head h2{font-size:28px;font-weight:700;margin:0;line-height:1.35}
 #best-count{font-size:14px;color:var(--text-secondary);margin:0}
 .best-product-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:56px 20px}
