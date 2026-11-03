@@ -2007,3 +2007,17 @@ body {
 .header-nav > a[href="new.html"]{position:relative;z-index:2;pointer-events:auto}
 .new-section .new-more[href="new.html"]{position:relative;z-index:12;pointer-events:auto;cursor:pointer}
 .new-section .new-more[href="new.html"] img{pointer-events:none}
+
+/* 전체상품 링크를 아래 대분류 버튼과 같은 크기·정렬·호버 스타일로 통일 */
+.category-panel .category-panel-left .category-all-link{
+  display:flex;align-items:center;justify-content:center;
+  width:142px;height:40px;box-sizing:border-box;padding:0;
+  border:0;border-radius:10px;background:transparent;
+  color:#6b7b6f;font:inherit;font-size:15px;font-weight:400;
+  text-decoration:none;cursor:pointer;
+  transition:background .2s ease,color .2s ease;
+}
+.category-panel .category-panel-left .category-all-link:hover,
+.category-panel .category-panel-left .category-all-link:focus-visible{
+  background:transparent;color:#009333;
+}
