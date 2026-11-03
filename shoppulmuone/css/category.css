@@ -21,3 +21,10 @@
 .category-page .category-minor-tabs button.is-active{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff;font-weight:700}
 .category-page .category-minor-tabs button:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
 @media(max-width:767px){.category-page .category-minor-panel{padding:16px;border-radius:20px}.category-page .category-minor-tabs button{font-size:12px;padding:11px 18px}}
+
+/* 중분류 hover: 소분류와 동일하게 배경 채움 없이 테두리 + 살짝 떠오르는 효과 */
+.category-page .category-subtabs button{transition:transform .25s ease,filter .25s ease,background-color .25s ease,border-color .25s ease,color .25s ease}
+.category-page .category-subtabs button:not(.is-active):hover,
+.category-page .category-subtabs button:not(.is-active):focus-visible{background:var(--bg-default);color:var(--text-secondary);border-color:var(--brand-lime);transform:translateY(-3px);filter:brightness(.98)}
+.category-page .category-subtabs button.is-active:hover,
+.category-page .category-subtabs button.is-active:focus-visible{transform:translateY(-3px);filter:brightness(.98)}
