@@ -39,3 +39,15 @@
 @media(hover:none){.new-page .new-product-actions,.new-page .best-product-actions{opacity:1;visibility:visible;transform:none}}
 @media(max-width:1024px){.new-page .new-list-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 20px}}
 @media(max-width:767px){.new-page-title{padding:18px 0 32px}.new-page .new-list-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 14px}.new-page .new-list-info h3{min-height:40px}}
+
+/* 전체 신상품 카드: 메인페이지 추천상품 카드와 동일한 호버/버튼 스타일 */
+.new-page .new-list-card .new-list-image{background:#f6f6f6;border:0;border-radius:20px}
+.new-page .new-list-card:hover .new-list-image,.new-page .new-list-card:focus-within .new-list-image{border:0}
+.new-page .new-list-card .best-product-actions{right:12px;bottom:12px;gap:6px;opacity:0;visibility:hidden;transform:translateY(7px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease}
+.new-page .new-list-card:hover .best-product-actions,.new-page .new-list-card:focus-within .best-product-actions{opacity:1;visibility:visible;transform:translateY(0)}
+.new-page .new-list-card .best-product-actions button{display:inline-flex;align-items:center;justify-content:center;height:36px;border-radius:18px}
+.new-page .new-list-card .best-product-actions button img{height:36px;width:auto}
+.new-page .new-list-card .best-product-actions button:hover,.new-page .new-list-card .best-product-actions button:focus-visible{filter:brightness(.97)}
+.new-page .new-list-card .new-list-info{padding-top:16px}
+@media(hover:none){.new-page .new-list-card .best-product-actions{opacity:1;visibility:visible;transform:none}}
+@media(max-width:767px){.new-page .new-list-card .new-list-image{border-radius:16px}}
