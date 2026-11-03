@@ -10,3 +10,14 @@
 .category-minor-tabs button:hover,.category-minor-tabs button:focus-visible{border-color:#009333;color:#009333}
 .category-minor-tabs button.is-active{background:#009333;border-color:#009333;color:#fff;font-weight:600}
 @media(max-width:767px){.category-minor-panel{padding:18px 16px;margin-bottom:24px;border-radius:14px}.category-minor-tabs{gap:8px}.category-minor-tabs button{font-size:13px;padding:9px 14px}.category-minor-heading>span:last-child{font-size:12px}}
+
+/* BEST 페이지의 브랜드 컬러와 pill radius를 동일하게 사용 */
+.category-page .category-main-tabs button.is-active{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
+.category-page .category-subtabs button.is-active{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
+.category-page .category-subtabs button:hover,.category-page .category-subtabs button:focus-visible{border-color:var(--brand-lime)}
+.category-page .category-minor-panel{background:var(--bg-surface);border-color:var(--border-default);border-radius:20px;padding:22px 26px;margin-bottom:32px}
+.category-page .category-minor-tabs button{border:1px solid var(--border-default);border-radius:999px;background:var(--bg-default);color:var(--text-secondary);padding:13px 24px;font-size:14px;transition:transform .25s ease,filter .25s ease,background-color .25s ease,border-color .25s ease,color .25s ease}
+.category-page .category-minor-tabs button:hover,.category-page .category-minor-tabs button:focus-visible{transform:translateY(-3px);border-color:var(--brand-lime);filter:brightness(.98)}
+.category-page .category-minor-tabs button.is-active{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff;font-weight:700}
+.category-page .category-minor-tabs button:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
+@media(max-width:767px){.category-page .category-minor-panel{padding:16px;border-radius:20px}.category-page .category-minor-tabs button{font-size:12px;padding:11px 18px}}
