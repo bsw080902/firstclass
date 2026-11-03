@@ -37,3 +37,8 @@
 .category-page .best-product-media{overflow:hidden}
 .category-page .best-product-actions{z-index:2}
 @media(prefers-reduced-motion:reduce){.category-page .category-product-grid,.category-page .category-minor-tabs{transition:none;transform:none}}
+
+/* 소분류가 없는 중분류는 필터 패널을 부드럽게 접고, 다시 선택하면 펼칩니다. */
+.category-page .category-minor-panel{max-height:220px;opacity:1;overflow:hidden;visibility:visible;transition:max-height .36s ease,opacity .28s ease,padding .36s ease,margin .36s ease,border-width .36s ease,visibility 0s}
+.category-page .category-minor-panel.is-collapsed{max-height:0;opacity:0;visibility:hidden;pointer-events:none;padding-top:0;padding-bottom:0;margin-top:0;margin-bottom:0;border-width:0;transition:max-height .36s ease,opacity .28s ease,padding .36s ease,margin .36s ease,border-width .36s ease,visibility 0s .36s}
+@media(prefers-reduced-motion:reduce){.category-page .category-minor-panel,.category-page .category-minor-panel.is-collapsed{transition:none}}
