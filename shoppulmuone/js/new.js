@@ -15,4 +15,6 @@ document.querySelector('.header-search').addEventListener('submit',e=>e.preventD
 
 if(typeof Swiper!=='undefined')new Swiper('.new-swiper',{slidesPerView:'auto',spaceBetween:20,watchOverflow:true,grabCursor:true,pagination:{el:'.new-pagination',clickable:true},navigation:{nextEl:'.new-next',prevEl:'.new-prev'},breakpoints:{768:{spaceBetween:24},1200:{spaceBetween:46}}});
 document.querySelectorAll('.new-page .recommend-wish').forEach(btn=>btn.addEventListener('click',()=>{const active=btn.getAttribute('aria-pressed')!=='true';btn.setAttribute('aria-pressed',String(active));}));
+document.querySelectorAll('.new-list-card').forEach(card=>{const name=card.querySelector('h3')?.textContent||'상품';card.querySelector('.best-wish')?.setAttribute('aria-label',name+' 찜하기');card.querySelector('.best-cart')?.setAttribute('aria-label',name+' 장바구니 담기');});
+document.querySelector('.new-list-grid')?.addEventListener('click',e=>{const btn=e.target.closest('.best-wish');if(!btn)return;const selected=btn.getAttribute('aria-pressed')!=='true';btn.setAttribute('aria-pressed',String(selected));btn.classList.toggle('is-selected',selected);});
 });
