@@ -59,3 +59,9 @@
 @media(prefers-reduced-motion:reduce){.best-subcategories button{transition:none}.best-subcategories button:hover,.best-subcategories button:focus-visible{transform:none}}
 
 @media(prefers-reduced-motion:reduce){.best-wish .best-wish-default,.best-wish .best-wish-selected{transition:none}}
+
+/* 메인페이지 추천상품과 동일한 이미지 호버 확대 효과 */
+.best-page .best-product-media > img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s ease;transform-origin:center center}
+.best-page .best-product:hover .best-product-media > img,
+.best-page .best-product:focus-within .best-product-media > img{transform:scale(1.06)}
+@media(prefers-reduced-motion:reduce){.best-page .best-product-media > img{transition:none}.best-page .best-product:hover .best-product-media > img,.best-page .best-product:focus-within .best-product-media > img{transform:none}}
