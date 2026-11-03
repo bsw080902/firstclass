@@ -1,1 +1,8 @@
-document.addEventListener("DOMContentLoaded",()=>{const links=[...document.querySelectorAll(".support-tabs a")];function update(){const hash=location.hash||"#faq";links.forEach(a=>{const active=a.getAttribute("href")===hash;a.classList.toggle("is-active",active);if(active)a.setAttribute("aria-current","location");else a.removeAttribute("aria-current")})}window.addEventListener("hashchange",update);update();const form=document.querySelector("#support-form");form?.addEventListener("submit",e=>{e.preventDefault();document.querySelector("#support-message").textContent="학습용 화면이므로 문의가 실제로 전송되지는 않습니다."})});
+document.addEventListener("DOMContentLoaded",()=>{
+  // 탭은 페이지 내부 링크로만 동작하며, 클릭 후 선택 상태를 고정하지 않습니다.
+  const form=document.querySelector("#support-form");
+  form?.addEventListener("submit",e=>{
+    e.preventDefault();
+    document.querySelector("#support-message").textContent="학습용 화면이므로 문의가 실제로 전송되지는 않습니다.";
+  });
+});
