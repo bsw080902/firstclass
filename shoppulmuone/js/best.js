@@ -13,7 +13,8 @@ const grid=document.querySelector('#best-products'),count=document.querySelector
 const placeholder='<span class="best-placeholder"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="2"/><path d="m3 17 6-5 4 3 3-3 5 5"/></svg>상품 이미지 준비 중</span>';
 function render(key){
 const group=groups[key];if(!group)return;
-subcategories.hidden=key==='all';
+subcategories.classList.toggle('is-empty',key==='all');
+subcategories.setAttribute('aria-hidden',String(key==='all'));
 subcategories.replaceChildren(...(subcategoryData[key]||[]).map(label=>{const button=document.createElement('button');button.type='button';button.textContent=label;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>{subcategories.querySelectorAll('button').forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active));});});return button;}));
 title.textContent=group.label+' 베스트';count.textContent='총 '+group.items.length+'개';
 grid.replaceChildren();
