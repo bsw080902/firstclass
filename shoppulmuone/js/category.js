@@ -1,9 +1,9 @@
 /* 카테고리 3단계 필터 + BEST 상품 카드 예시 */
 const categories={
 fresh:{"두부 · 콩나물 · 달걀":["두부","콩나물","달걀"],"과일 · 채소 · 쌀":["과일","채소","쌀"],"정육 · 수산":["정육","수산"]},
-meal:{"만두 · 피자 · 떡볶이":["만두","피자","떡볶이"],"면요리":["국수","우동","파스타"],"반찬 · 김치":["반찬","김치"]},
-processed:{"양념 · 소스 · 오일":["양념","소스","오일"],"과자 · 견과 · 베이커리":["과자","견과","베이커리"],"생수 · 음료 · 유제품":["생수","음료","유제품"],"건강식품":["건강식품"]},
-living:{"반려동물":["반려동물용품"],"생활 · 주방 · 뷰티용품":["생활용품","주방용품","뷰티용품"],"가전제품":["가전제품"]}
+meal:{"만두 · 피자 · 떡볶이":["만두","피자","떡볶이"],"면요리":[],"반찬 · 김치":["반찬","김치"]},
+processed:{"양념 · 소스 · 오일":["양념","소스","오일"],"과자 · 견과 · 베이커리":["과자","견과","베이커리"],"생수 · 음료 · 유제품":["생수","음료","유제품"],"건강식품":[]},
+living:{"반려동물":[],"생활 · 주방 · 뷰티용품":["생활용품","주방용품","뷰티용품"],"가전제품":[]}
 };
 const examples={
 "두부":["국산 콩두부","담백한 부침두부","고소한 순두부","단단한 찌개두부","유기농 두부"],
@@ -41,6 +41,7 @@ const examples={
 const tabs=document.querySelectorAll(".category-main-tabs button");
 const subtabs=document.querySelector("#category-subtabs");
 const minorTabs=document.querySelector("#category-minor-tabs");
+const minorPanel=document.querySelector(".category-minor-panel");
 const heading=document.querySelector("#category-title");
 const grid=document.querySelector("#category-products");
 const placeholder='<span class="best-placeholder"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="2"/><path d="m3 17 6-5 4 3 3-3 5 5"/></svg>상품 이미지 준비 중</span>';
@@ -65,15 +66,18 @@ function renderCards(names){
 function showCategory(key,selected=0,minor="전체"){
  const names=Object.keys(categories[key]);
  const index=Math.max(0,Math.min(selected,names.length-1));
- const middle=names[index], options=["전체",...categories[key][middle]];
+ const middle=names[index], details=categories[key][middle], hasDetails=details.length>0;
+ const options=hasDetails?["전체",...details]:[];
  const current=options.includes(minor)?minor:"전체";
  tabs.forEach(btn=>{const active=btn.dataset.category===key;btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active))});
  subtabs.replaceChildren(...names.map((name,i)=>makeButton(name,i===index,()=>showCategory(key,i))));
  minorTabs.classList.remove("is-revealed");
  minorTabs.replaceChildren(...options.map(name=>makeButton(name,name===current,()=>showCategory(key,index,name))));
- requestAnimationFrame(()=>requestAnimationFrame(()=>minorTabs.classList.add("is-revealed")));
+ minorPanel.classList.toggle("is-collapsed",!hasDetails);
+ minorPanel.setAttribute("aria-hidden",String(!hasDetails));
+ if(hasDetails)requestAnimationFrame(()=>requestAnimationFrame(()=>minorTabs.classList.add("is-revealed")));
  heading.textContent=current==="전체"?middle:current;
- const products=current==="전체"?categories[key][middle].flatMap(label=>examples[label]||[label+" 상품"]):examples[current]||[current+" 상품"];
+ const products=!hasDetails?(examples[middle]||[middle+" 상품"]):current==="전체"?details.flatMap(label=>examples[label]||[label+" 상품"]):examples[current]||[current+" 상품"];
  renderCards([...new Set(products)].slice(0,10));
 }
 tabs.forEach(btn=>btn.addEventListener("click",()=>showCategory(btn.dataset.category)));
