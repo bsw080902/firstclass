@@ -17,7 +17,8 @@
 .best-category-tabs button.is-active:hover,.best-category-tabs button.is-active:focus-visible{color:#fff}
 .best-category-tabs button:focus-visible,.best-wish:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
 .best-subcategories{display:flex;flex-wrap:nowrap;align-items:center;gap:16px;padding:22px 0 26px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
-.best-subcategories[hidden]{display:none}
+.best-subcategories{max-height:110px;opacity:1;transform:translateY(0);visibility:visible;transition:max-height .35s ease,padding .35s ease,opacity .25s ease,transform .35s ease,visibility .35s ease}
+.best-subcategories.is-empty{max-height:0;padding-top:0;padding-bottom:0;opacity:0;transform:translateY(-10px);visibility:hidden;pointer-events:none}
 .best-subcategories::-webkit-scrollbar{display:none}
 .best-subcategories button{flex:0 0 auto;white-space:nowrap;border:1px solid var(--border-default);border-radius:999px;background:var(--bg-default);padding:13px 24px;color:var(--text-secondary);font:inherit;font-size:14px;cursor:pointer;transition:transform .25s ease,filter .25s ease,background-color .25s ease,border-color .25s ease,color .25s ease}
 .best-subcategories button:hover,.best-subcategories button:focus-visible{transform:translateY(-3px);border-color:var(--brand-lime);filter:brightness(.98)}
