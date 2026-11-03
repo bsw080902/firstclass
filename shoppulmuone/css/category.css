@@ -46,3 +46,6 @@
 /* 전체상품을 포함한 5개 대분류 */
 .category-page .category-main-tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
 @media(max-width:767px){.category-page .category-main-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* 전체상품에서는 중분류 빈 상자를 표시하지 않음 */
+.category-page .category-subtabs:empty{display:none}
