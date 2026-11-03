@@ -37,6 +37,11 @@
 .best-product:hover .best-product-actions,.best-product:focus-within .best-product-actions{opacity:1;transform:none}
 .best-product-actions button{border:0;padding:0;background:transparent;cursor:pointer}
 .best-product-actions img{display:block;height:32px;width:auto}
+.best-wish{position:relative;display:block;line-height:0}
+.best-wish .best-wish-selected{position:absolute;inset:0;opacity:0}
+.best-wish .best-wish-default,.best-wish .best-wish-selected{transition:opacity .25s ease}
+.best-wish.is-selected .best-wish-default{opacity:0}
+.best-wish.is-selected .best-wish-selected{opacity:1}
 .best-product-info{padding-top:16px}
 .best-product-brand{font-size:13px;color:#858585;margin:0 0 6px}
 .best-product-info h3{font-size:16px;font-weight:600;line-height:1.4;margin:0;min-height:44px}
@@ -50,3 +55,5 @@
 @media(prefers-reduced-motion:reduce){.best-category-tabs button,.best-product-actions{transition:none}.best-category-tabs button:hover,.best-category-tabs button:focus-visible{transform:none}}
 
 @media(prefers-reduced-motion:reduce){.best-subcategories button{transition:none}.best-subcategories button:hover,.best-subcategories button:focus-visible{transform:none}}
+
+@media(prefers-reduced-motion:reduce){.best-wish .best-wish-default,.best-wish .best-wish-selected{transition:none}}
