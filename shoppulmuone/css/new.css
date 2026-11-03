@@ -23,7 +23,7 @@
 @media(max-width:767px){.new-page-inner{padding:0 16px}.new-page-title h1{font-size:28px}.new-page .new-section{padding-top:30px}.new-all-products{padding:48px 0 72px}.new-all-heading{align-items:start;flex-direction:column}.new-all-heading h2{font-size:23px}.new-list-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}.new-list-image{border-radius:14px}.new-list-info h3{font-size:14px}}
 
 /* 신상품 상단 소개 영역: 상품 카드 바깥에만 연한 브랜드 배경 */
-.new-page-title{position:relative;isolation:isolate;padding:30px 0 48px}
+.new-page-title{position:relative;isolation:isolate;padding:30px 0 44px}
 .new-page-title::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:var(--bg-surface)}
 .new-page .new-section{background:var(--bg-surface);padding-top:0}
 /* 상단 Swiper 카드 크기와 간격은 메인페이지 main.css 설정을 그대로 사용 */
