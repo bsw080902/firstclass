@@ -65,3 +65,17 @@
 .best-page .best-product:hover .best-product-media > img,
 .best-page .best-product:focus-within .best-product-media > img{transform:scale(1.06)}
 @media(prefers-reduced-motion:reduce){.best-page .best-product-media > img{transition:none}.best-page .best-product:hover .best-product-media > img,.best-page .best-product:focus-within .best-product-media > img{transform:none}}
+
+/* BEST 상품 카드: 메인페이지 추천상품 카드의 UI/호버 규칙 적용 */
+.best-page .best-product-media{border:0;background:#f6f6f6}
+.best-page .best-product:hover .best-product-media,.best-page .best-product:focus-within .best-product-media{border-color:transparent}
+.best-page .best-product-actions{right:12px;bottom:12px;gap:6px;opacity:0;visibility:hidden;transform:translateY(7px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease}
+.best-page .best-product:hover .best-product-actions,.best-page .best-product:focus-within .best-product-actions{opacity:1;visibility:visible;transform:translateY(0)}
+.best-page .best-product-actions button{display:inline-flex;align-items:center;justify-content:center;width:auto;height:36px;border:0;border-radius:18px;padding:0;background:transparent;cursor:pointer}
+.best-page .best-product-actions button img{display:block;width:auto;height:36px}
+.best-page .best-product-actions button:hover,.best-page .best-product-actions button:focus-visible{filter:brightness(.97)}
+.best-page .best-product-brand{margin-bottom:3px}
+.best-page .best-product-info h3{line-height:1.4}
+.best-page .best-product-delivery{margin-top:9px;color:#858585}
+.best-page .best-product-price{margin-top:26px;align-items:baseline}
+@media(hover:none){.best-page .best-product-actions{opacity:1;visibility:visible;transform:none}}
