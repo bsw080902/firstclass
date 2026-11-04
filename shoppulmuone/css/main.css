@@ -2024,6 +2024,6 @@ body {
 
 /* 혜택 메뉴: 두 항목 간 간격은 유지하고 남는 세로 여백만 축소 */
 /* 혜택과 일일배달 드롭다운의 상하·좌우 패딩을 동일하게 적용 */
-.benefit-menu:not(.daily-menu) .benefit-panel,
+.benefit-menu:not(.daily-menu) .benefit-panel{padding:30px}
 .daily-menu .daily-panel{padding:22px 10px}
 .benefit-menu:not(.daily-menu) .benefit-panel{gap:48px;justify-content:center}
