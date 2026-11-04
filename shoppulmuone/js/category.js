@@ -50,7 +50,17 @@ function makeButton(label,active,onClick){
  button.classList.toggle("is-active",active);button.setAttribute("aria-pressed",String(active));
  button.addEventListener("click",onClick);return button;
 }
+let activeSort="popular";
+let currentNames=[];
+const sortButtons=document.querySelectorAll(".category-sort button");
 function renderCards(names){
+ currentNames=[...names];
+ drawCards();
+}
+function drawCards(){
+ const names=[...currentNames];
+ // 예시 상품에는 가격·할인율·리뷰·별점 데이터가 없으므로 임의의 순위를 만들지 않습니다.
+ if(activeSort==="new")names.reverse();
  grid.classList.remove("is-revealed");
  grid.replaceChildren();
  names.forEach(name=>{
@@ -93,6 +103,11 @@ function showCategory(key,selected=0,minor="전체"){
  const products=!hasDetails?(examples[middle]||[middle+" 상품"]):current==="전체"?details.flatMap(label=>examples[label]||[label+" 상품"]):examples[current]||[current+" 상품"];
  renderCards([...new Set(products)].slice(0,10));
 }
+sortButtons.forEach(btn=>btn.addEventListener("click",()=>{
+ activeSort=btn.dataset.sort;
+ sortButtons.forEach(item=>{const selected=item===btn;item.classList.toggle("is-active",selected);item.setAttribute("aria-pressed",String(selected));});
+ drawCards();
+}));
 tabs.forEach(btn=>btn.addEventListener("click",()=>showCategory(btn.dataset.category)));
 grid.addEventListener("click",e=>{const wish=e.target.closest(".best-wish");if(wish){const on=wish.getAttribute("aria-pressed")!=="true";wish.setAttribute("aria-pressed",String(on));wish.classList.toggle("is-selected",on)}});
 const params=new URLSearchParams(location.search),initial=params.get("group");
