@@ -65,3 +65,11 @@
 .new-page .new-list-info .new-list-price strong{font-weight:700}
 .new-page .new-list-info .new-list-price .new-list-discount{font-size:17px;font-weight:700;color:#f04452}
 @media(max-width:767px){.new-page .new-list-info .new-list-price{font-size:16px}.new-page .new-list-info .new-list-price .new-list-discount{font-size:15px}}
+
+/* 베스트 상품 카드 레퍼런스와 동일한 정보 배치 */
+.new-page .new-list-card .new-list-info{display:flex;flex-direction:column;min-height:154px}
+.new-page .new-list-card .new-list-info h3{margin:0;line-height:1.4}
+.new-page .new-list-card .new-list-delivery{font-size:12px;color:#858585;margin:9px 0 0}
+.new-page .new-list-card .new-list-price{justify-content:flex-end;align-items:baseline;margin-top:auto;padding-top:26px;gap:8px}
+.new-page .new-list-card .new-list-price .new-list-discount{color:#f04452;font-weight:600}
+@media(max-width:767px){.new-page .new-list-card .new-list-info{min-height:155px}.new-page .new-list-card .new-list-price{padding-top:14px}}
