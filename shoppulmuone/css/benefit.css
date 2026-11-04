@@ -82,3 +82,7 @@
 .benefit-page .benefit-section{opacity:0;transform:translateY(12px);transition:opacity .35s ease,transform .35s ease}
 .benefit-page .benefit-section.is-revealed{opacity:1;transform:translateY(0)}
 @media(prefers-reduced-motion:reduce){.benefit-page .benefit-tabs button,.benefit-page .benefit-section{transition:none;transform:none}}
+
+/* 전체 / 기획전 / 이벤트 세 개 탭을 동일한 너비로 배치 */
+.benefit-page .benefit-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:767px){.benefit-page .benefit-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}}
