@@ -72,3 +72,13 @@
 }
 /* 링크 이동 직전에도 눌림으로 인해 이동 효과가 해제되지 않도록 처리 */
 @media(prefers-reduced-motion:reduce){.benefit-page .benefit-tabs a:active{transform:none}}
+
+/* BEST와 동일하게 페이지 이동 없이 탭 전환 */
+.benefit-page .benefit-tabs button{display:flex;justify-content:center;align-items:center;width:100%;box-sizing:border-box;border:1px solid var(--border-default);border-radius:999px;background:var(--bg-default);color:var(--text-secondary);padding:16px 12px;font:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:transform .25s ease,filter .25s ease,background-color .25s ease,border-color .25s ease,color .25s ease}
+.benefit-page .benefit-tabs button:hover,.benefit-page .benefit-tabs button:focus-visible{transform:translateY(-3px);filter:brightness(.98)}
+.benefit-page .benefit-tabs button.is-active{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
+.benefit-page .benefit-tabs button:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
+.benefit-page .benefit-section[hidden]{display:none}
+.benefit-page .benefit-section{opacity:0;transform:translateY(12px);transition:opacity .35s ease,transform .35s ease}
+.benefit-page .benefit-section.is-revealed{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.benefit-page .benefit-tabs button,.benefit-page .benefit-section{transition:none;transform:none}}
