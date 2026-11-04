@@ -2049,9 +2049,15 @@ body {
 @media(prefers-reduced-motion:reduce){.benefit-menu:not(.daily-menu) .benefit-panel{transition:none}}
 
 /* 카테고리: 처음엔 1차 메뉴만, 선택 후 오른쪽 세부 메뉴가 펼쳐짐 */
-.category-panel{width:205px;grid-template-columns:142px;column-gap:0;transition:width .28s ease,opacity .25s ease,transform .25s ease,visibility .25s ease}
+.category-panel{width:205px;grid-template-columns:minmax(0,1fr);column-gap:0;transition:width .28s ease,opacity .25s ease,transform .25s ease,visibility .25s ease}
 .category-panel.has-subcategory{width:430px;grid-template-columns:142px 3px minmax(0,1fr);column-gap:30px}
 .category-panel-divider,.category-panel-right{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility .2s ease}
 .category-panel.has-subcategory .category-panel-divider,.category-panel.has-subcategory .category-panel-right{opacity:1;visibility:visible;pointer-events:auto;transition-delay:.1s}
 @media(max-width:600px){.category-panel{width:205px;grid-template-columns:minmax(0,1fr)}.category-panel.has-subcategory{width:min(430px,calc(100vw - 32px));grid-template-columns:minmax(110px,1fr) 2px minmax(115px,1fr);column-gap:12px}}
 @media(prefers-reduced-motion:reduce){.category-panel,.category-panel-divider,.category-panel-right{transition:none}}
+
+/* 접힌 상태에서도 양쪽 30px 패딩을 유지하고 메뉴를 중앙 정렬 */
+.category-panel:not(.has-subcategory){padding-left:30px;padding-right:30px}
+.category-panel:not(.has-subcategory) .category-panel-left{min-width:0;align-items:center}
+.category-panel:not(.has-subcategory) .category-panel-left .category-item{width:100%}
+@media(max-width:600px){.category-panel:not(.has-subcategory){padding-left:16px;padding-right:16px}}
