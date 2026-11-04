@@ -2,8 +2,8 @@
 document.addEventListener('DOMContentLoaded',()=>{
 // 메인 페이지 BEST 슬라이더의 이미지·문구·가격을 그대로 사용합니다.
 const bestProducts=[
-{name:'채소습관 케일&사과 (130ml)',image:'Best1.png',brand:'풀무원',price:'4,950원',discount:'10%',category:'fresh'},
-{name:'100% 당근즙 (130ml)',image:'Best2.png',brand:'풀무원',price:'4,950원',discount:'10%',category:'fresh'},
+{name:'채소습관 케일&사과 (130ml)',image:'Best1.png',brand:'풀무원',price:'4,950원',discount:'10%',category:'processed',subcategory:'생수·음료·유제품'},
+{name:'100% 당근즙 (130ml)',image:'Best2.png',brand:'풀무원',price:'4,950원',discount:'10%',category:'processed',subcategory:'생수·음료·유제품'},
 {name:'시그니처 밸런스 식단 (1일1식)',image:'Best3.png',brand:'풀무원',price:'8,280원',discount:'10%',category:'meal',subcategory:'반찬'},
 {name:'특등급 국산콩 두부칩 오리지널 (40g)',image:'Best4.png',brand:'풀무원식품',price:'4,950원',discount:'10%',category:'processed',subcategory:'과자·견과·베이커리'},
 {name:'채소습관 양배추&브로콜리 (130ml)',image:'Best5.png',brand:'풀무원녹즙',price:'4,950원',discount:'10%',category:'processed'}
