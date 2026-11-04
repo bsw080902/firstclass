@@ -86,3 +86,12 @@
 /* 전체 / 기획전 / 이벤트 세 개 탭을 동일한 너비로 배치 */
 .benefit-page .benefit-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:767px){.benefit-page .benefit-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* 메인 BENEFITS 기획전 카드 재사용: 두 장을 나란히 표시 */
+.benefit-page .benefit-promotion-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.benefit-page .benefit-promotion-grid .benefit-card{min-width:0}
+.benefit-page .benefit-promotion-grid .benefit-card-visual{height:236px}
+.benefit-page .benefit-promotion-grid .benefit-card-visual>img{object-fit:contain;object-position:right center}
+.benefit-page .benefit-promotion-grid .benefit-card-footer{height:116px}
+.benefit-page .benefit-detail-label{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;padding:11px 20px;border:1px solid var(--border-default);border-radius:999px;color:var(--text-secondary);font-size:14px}
+@media(max-width:767px){.benefit-page .benefit-promotion-grid{grid-template-columns:1fr;gap:16px}.benefit-page .benefit-promotion-grid .benefit-card-visual{height:210px}.benefit-page .benefit-promotion-grid .benefit-card-copy{padding-left:20px}.benefit-page .benefit-promotion-grid .benefit-card-copy h3{font-size:18px}.benefit-page .benefit-promotion-grid .benefit-card-footer{padding:16px;height:auto;min-height:100px}}
