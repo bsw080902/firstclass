@@ -62,3 +62,13 @@
     animation:benefit-tab-fill .35s ease-out both;
   }
 }
+
+/* BEST처럼 포인터가 버튼 위에 있는 동안 상승 상태를 유지 */
+.benefit-page .benefit-tabs a:hover,
+.benefit-page .benefit-tabs a:active,
+.benefit-page .benefit-tabs a:focus-visible{
+  transform:translateY(-3px);
+  filter:brightness(.98);
+}
+/* 링크 이동 직전에도 눌림으로 인해 이동 효과가 해제되지 않도록 처리 */
+@media(prefers-reduced-motion:reduce){.benefit-page .benefit-tabs a:active{transform:none}}
