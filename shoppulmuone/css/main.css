@@ -2075,3 +2075,8 @@ body {
 .category-panel .category-panel-left,.category-panel:not(.has-subcategory) .category-panel-left{width:142px;min-width:142px;align-items:stretch;justify-content:center;gap:15px}
 .category-panel .category-panel-left > .category-all-link,.category-panel .category-panel-left > .category-item,.category-panel:not(.has-subcategory) .category-panel-left .category-item{width:142px;flex:0 0 40px;height:40px;margin:0}
 @media(max-width:600px){.category-panel,.category-panel:not(.has-subcategory){width:174px;padding:30px 16px;grid-template-columns:142px}.category-panel.has-subcategory{width:min(430px,calc(100vw - 32px));padding:30px 16px;grid-template-columns:142px 2px minmax(0,1fr);column-gap:12px}}
+
+/* 선택 전후 글자 위치 고정: 굵기 변경으로 인한 글자 폭 이동 방지 */
+.category-panel .category-panel-left .category-item,
+.category-panel .category-panel-left .category-item.is-selected{font-weight:500;text-align:center}
+.category-panel .category-panel-left > .category-all-link{font-weight:500;text-align:center}
