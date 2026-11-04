@@ -60,7 +60,7 @@
 .category-page .category-sort{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:0}
 .category-page .category-sort button{position:relative;border:0;background:transparent;padding:8px 10px;color:#888;font:inherit;font-size:13px;cursor:pointer;white-space:nowrap}
 .category-page .category-sort button+button::before{content:"·";position:absolute;left:-3px;color:#c9c9c9}
-.category-page .category-sort button.is-active{background:var(--brand-lime);color:#fff;font-weight:600}
+.category-page .category-sort button.is-active{background:transparent;color:var(--brand-lime);font-weight:600}
 
 .category-page .category-sort button:not(.is-active):hover,.category-page .category-sort button:not(.is-active):focus-visible{color:var(--brand-green)}
 .category-page .category-sort button:focus-visible{outline:2px solid var(--brand-green);outline-offset:2px;border-radius:4px}
