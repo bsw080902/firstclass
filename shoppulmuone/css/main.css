@@ -2102,3 +2102,12 @@ body {
   .category-panel:not(.has-subcategory) .category-panel-left,
   .category-panel.has-subcategory .category-panel-left{top:30px;bottom:30px;left:16px}
 }
+
+/* 좌측 메뉴는 고정, 구분선과 세부 메뉴는 오른쪽 독립 영역에 배치 */
+.category-panel,.category-panel.has-subcategory{display:block}
+.category-panel .category-panel-divider{position:absolute;left:202px;top:50%;transform:translateY(-50%);margin:0}
+.category-panel .category-panel-right{position:absolute;left:235px;right:30px;top:40px;bottom:40px;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:space-around}
+@media(max-width:600px){
+ .category-panel .category-panel-divider{left:170px}
+ .category-panel .category-panel-right{left:184px;right:16px;top:30px;bottom:30px}
+}
