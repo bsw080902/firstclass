@@ -6,7 +6,7 @@ const bestProducts=[
 {name:'100% 당근즙 (130ml)',image:'Best2.png',brand:'풀무원',price:'4,950원',discount:'10%',category:'fresh'},
 {name:'시그니처 밸런스 식단 (1일1식)',image:'Best3.png',brand:'풀무원',price:'8,280원',discount:'10%',category:'meal'},
 {name:'로제빈 우먼밸런스 (3개월분)',image:'Best4.png',brand:'풀무원',price:'4,950원',discount:'10%',category:'processed'},
-{name:'풀무원 인기 상품',image:'Best5.png',brand:'풀무원',price:'4,950원',discount:'10%',category:'processed'}
+{name:'채소습관 양배추&브로콜리 (130ml)',image:'Best5.png',brand:'풀무원녹즙',price:'4,950원',discount:'10%',category:'processed'}
 ];
 const groups={
 all:{label:'전체',items:bestProducts},
