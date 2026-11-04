@@ -44,7 +44,7 @@
 
 /* 전체 신상품 카드: 메인페이지 추천상품 카드와 동일한 호버/버튼 스타일 */
 .new-page .new-list-card .new-list-image{background:#f6f6f6;border:1px solid #e5e5e5;border-radius:20px}
-.new-page .new-list-card:hover .new-list-image,.new-page .new-list-card:focus-within .new-list-image{border-color:#d6d6d6}
+.new-page .new-list-card:hover .new-list-image,.new-page .new-list-card:focus-within .new-list-image{border-color:#e5e5e5}
 .new-page .new-list-card .best-product-actions{right:12px;bottom:12px;gap:6px;opacity:0;visibility:hidden;transform:translateY(7px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease}
 .new-page .new-list-card:hover .best-product-actions,.new-page .new-list-card:focus-within .best-product-actions{opacity:1;visibility:visible;transform:translateY(0)}
 .new-page .new-list-card .best-product-actions button{display:inline-flex;align-items:center;justify-content:center;height:36px;border-radius:18px}
