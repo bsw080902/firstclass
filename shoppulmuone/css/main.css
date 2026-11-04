@@ -455,7 +455,7 @@ body {
 .benefit-panel {
     position: absolute; top: calc(100% + 18px); left: 50%;
     transform: translate(-50%, -7px);
-    width: 150px; height: 254px; box-sizing: border-box;
+    width: 150px; height: auto; box-sizing: border-box;
     padding: 22px 10px; background: #fff;
     border: 1px solid #e1e8e1; border-radius: 15px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, .16);
@@ -2021,3 +2021,6 @@ body {
 .category-panel .category-panel-left .category-all-link:focus-visible{
   background:transparent;color:#009333;
 }
+
+/* 혜택 메뉴: 두 항목 간 간격은 유지하고 남는 세로 여백만 축소 */
+.benefit-menu:not(.daily-menu) .benefit-panel{gap:48px;justify-content:center}
