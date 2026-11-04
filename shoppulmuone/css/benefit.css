@@ -10,3 +10,7 @@
 .benefit-tabs a{transition:transform .25s ease,filter .25s ease,background-color .25s ease,border-color .25s ease,color .25s ease}
 .benefit-tabs a:hover,.benefit-tabs a:focus-visible{transform:translateY(-3px);filter:brightness(.98)}
 @media(prefers-reduced-motion:reduce){.benefit-tabs a{transition:none}.benefit-tabs a:hover,.benefit-tabs a:focus-visible{transform:none}}
+
+/* 혜택 하위 페이지: 현재 선택된 기획전/이벤트 버튼은 hover 해제 후에도 Fill 유지 */
+.benefit-page .benefit-tabs a.is-active,
+.benefit-page .benefit-tabs a[aria-current="page"]{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
