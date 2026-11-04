@@ -2061,3 +2061,9 @@ body {
 .category-panel:not(.has-subcategory) .category-panel-left{min-width:0;align-items:center}
 .category-panel:not(.has-subcategory) .category-panel-left .category-item{width:100%}
 @media(max-width:600px){.category-panel:not(.has-subcategory){padding-left:16px;padding-right:16px}}
+
+/* 접힘/펼침 모두 1차 카테고리의 세로 간격을 동일하게 유지 */
+.category-panel .category-panel-left{justify-content:center;gap:15px}
+.category-panel .category-panel-left > .category-all-link,
+.category-panel .category-panel-left > .category-item{box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex:0 0 40px;height:40px;margin:0}
+.category-panel .category-panel-left > .category-item:first-child{margin-bottom:0}
