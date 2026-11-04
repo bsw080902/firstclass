@@ -21,3 +21,32 @@
 .benefit-page .benefit-tabs a:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
 .benefit-page .benefit-tabs a.is-active,.benefit-page .benefit-tabs a[aria-current="page"]{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
 @media(prefers-reduced-motion:reduce){.benefit-page .benefit-tabs a{transition:none}.benefit-page .benefit-tabs a:hover,.benefit-page .benefit-tabs a:focus-visible{transform:none}}
+
+/* BEST 대분류 버튼과 속성 통일: 크기, 패딩, 라운드, 타이포, 호버, 포커스, 활성 상태 */
+.benefit-page .benefit-tabs a{
+  box-sizing:border-box;
+  min-height:0;
+  padding:16px 12px;
+  border:1px solid var(--border-default);
+  border-radius:999px;
+  background:var(--bg-default);
+  color:var(--text-secondary);
+  font:inherit;
+  font-size:16px;
+  font-weight:600;
+  line-height:normal;
+  cursor:pointer;
+  text-decoration:none;
+  transition:transform .25s ease,filter .25s ease,background-color .25s ease,border-color .25s ease,color .25s ease;
+}
+.benefit-page .benefit-tabs a:hover,
+.benefit-page .benefit-tabs a:focus-visible{transform:translateY(-3px);filter:brightness(.98)}
+.benefit-page .benefit-tabs a.is-active,
+.benefit-page .benefit-tabs a[aria-current="page"]{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
+.benefit-page .benefit-tabs a.is-active:hover,
+.benefit-page .benefit-tabs a.is-active:focus-visible,
+.benefit-page .benefit-tabs a[aria-current="page"]:hover,
+.benefit-page .benefit-tabs a[aria-current="page"]:focus-visible{color:#fff}
+.benefit-page .benefit-tabs a:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
+@media(max-width:767px){.benefit-page .benefit-tabs a{font-size:16px;min-height:0;padding:16px 12px}}
+@media(prefers-reduced-motion:reduce){.benefit-page .benefit-tabs a{transition:none}.benefit-page .benefit-tabs a:hover,.benefit-page .benefit-tabs a:focus-visible{transform:none}}
