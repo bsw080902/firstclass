@@ -95,3 +95,11 @@
 .benefit-page .benefit-promotion-grid .benefit-card-footer{height:116px}
 .benefit-page .benefit-detail-label{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;padding:11px 20px;border:1px solid var(--border-default);border-radius:999px;color:var(--text-secondary);font-size:14px}
 @media(max-width:767px){.benefit-page .benefit-promotion-grid{grid-template-columns:1fr;gap:16px}.benefit-page .benefit-promotion-grid .benefit-card-visual{height:210px}.benefit-page .benefit-promotion-grid .benefit-card-copy{padding-left:20px}.benefit-page .benefit-promotion-grid .benefit-card-copy h3{font-size:18px}.benefit-page .benefit-promotion-grid .benefit-card-footer{padding:16px;height:auto;min-height:100px}}
+
+/* 전체 탭: 기획전·이벤트 제목 구분 없이 카드 4개를 연속 2열로 표시 */
+.benefit-page .benefit-content .benefit-inner{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}
+.benefit-page .benefit-content .benefit-section:not([hidden]),
+.benefit-page .benefit-content .benefit-promotion-grid{display:contents}
+.benefit-page .benefit-content .benefit-section[hidden]{display:none}
+.benefit-page .benefit-content .benefit-section-head{display:none}
+@media(max-width:767px){.benefit-page .benefit-content .benefit-inner{grid-template-columns:1fr;gap:16px}}
