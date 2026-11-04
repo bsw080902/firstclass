@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded',()=>{
    });
   });
   visibleCards.forEach((card,index)=>card.style.setProperty('--benefit-card-index',index));
-  requestAnimationFrame(()=>requestAnimationFrame(()=>visibleCards.forEach(card=>card.classList.add('is-revealed'))));
+  // 이미 화면에 보이던 카드도 시작 상태를 확정해 전환 효과를 다시 실행합니다.
+  visibleCards.forEach(card=>{void card.offsetWidth;});
+  requestAnimationFrame(()=>visibleCards.forEach(card=>card.classList.add('is-revealed')));
   if(updateUrl)history.replaceState(null,'','#'+key);
  }
  tabs.forEach(button=>button.addEventListener('click',()=>selectTab(button.dataset.benefitTab)));
