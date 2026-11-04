@@ -2111,3 +2111,17 @@ body {
  .category-panel .category-panel-divider{left:170px}
  .category-panel .category-panel-right{left:184px;right:16px;top:30px;bottom:30px}
 }
+
+/* 왼쪽 카테고리: BEST처럼 마우스를 올리면 부드럽게 3px 상승 */
+.category-panel .category-panel-left .category-item{
+  transition:transform .25s ease,background-color .2s ease,color .2s ease;
+}
+.category-panel .category-panel-left .category-item:hover,
+.category-panel .category-panel-left .category-item:focus-visible{
+  transform:translateY(-3px);
+}
+@media(prefers-reduced-motion:reduce){
+  .category-panel .category-panel-left .category-item{transition:none}
+  .category-panel .category-panel-left .category-item:hover,
+  .category-panel .category-panel-left .category-item:focus-visible{transform:none}
+}
