@@ -54,3 +54,14 @@
 .category-page .category-subtabs{opacity:0;transform:translateY(10px);transition:opacity .32s ease,transform .32s ease}
 .category-page .category-subtabs.is-revealed{opacity:1;transform:translateY(0)}
 @media(prefers-reduced-motion:reduce){.category-page .category-subtabs{transition:none;transform:none;opacity:1}}
+
+/* 카테고리 상품 목록 우측 정렬 메뉴 */
+.category-page .category-list-head{flex-wrap:wrap}
+.category-page .category-sort{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:0}
+.category-page .category-sort button{position:relative;border:0;background:transparent;padding:8px 10px;color:#888;font:inherit;font-size:13px;cursor:pointer;white-space:nowrap}
+.category-page .category-sort button+button::before{content:"·";position:absolute;left:-3px;color:#c9c9c9}
+.category-page .category-sort button.is-active{color:var(--text-primary);font-weight:600}
+.category-page .category-sort button.is-active::after{content:"✓";position:absolute;left:-3px;color:var(--text-primary)}
+.category-page .category-sort button:hover,.category-page .category-sort button:focus-visible{color:var(--brand-green)}
+.category-page .category-sort button:focus-visible{outline:2px solid var(--brand-green);outline-offset:2px;border-radius:4px}
+@media(max-width:767px){.category-page .category-sort{justify-content:flex-start;width:100%;overflow-x:auto;flex-wrap:nowrap}.category-page .category-sort button{font-size:12px;padding:8px 9px}}
