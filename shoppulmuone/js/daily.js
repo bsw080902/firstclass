@@ -18,17 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateFromHash() {
     const id = decodeURIComponent(location.hash.slice(1));
     activate(id);
-    if (ids.includes(id)) {
-      const tabs = document.querySelector('.daily-tabs');
-      if (tabs) tabs.scrollIntoView({ block: 'start', behavior: 'instant' });
-    }
   }
   links.forEach(link => link.addEventListener('click', event => {
     const id = link.hash.slice(1);
     if (!ids.includes(id)) return;
     event.preventDefault();
-    if (location.hash !== '#' + id) location.hash = id;
-    else updateFromHash();
+    if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
+    activate(id);
   }));
   window.addEventListener('hashchange', updateFromHash);
   updateFromHash();
