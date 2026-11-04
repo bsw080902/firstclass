@@ -59,8 +59,9 @@
 .category-page .category-list-head{flex-wrap:wrap}
 .category-page .category-sort{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:0}
 .category-page .category-sort button{position:relative;border:0;background:transparent;padding:8px 10px;color:#888;font:inherit;font-size:13px;cursor:pointer;white-space:nowrap;transition:transform .2s ease}
-.category-page .category-sort button+button::before{content:"·";position:absolute;left:-3px;color:#c9c9c9}
+.category-page .category-sort button::before{content:"·";position:absolute;left:-3px;color:#c9c9c9}
 .category-page .category-sort button.is-active{background:transparent;color:var(--brand-lime);font-weight:600}
+.category-page .category-sort button.is-active::after{content:"✓";position:absolute;left:-3px;color:var(--brand-lime)}
 
 .category-page .category-sort button:hover,.category-page .category-sort button:focus-visible{transform:translateY(-3px)}
 .category-page .category-sort button:focus-visible{outline:2px solid var(--brand-green);outline-offset:2px;border-radius:4px}
