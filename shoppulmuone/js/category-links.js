@@ -41,3 +41,17 @@ document.addEventListener("DOMContentLoaded",()=>{
   });
  });
 });
+
+/* 카테고리 패널에서 마우스가 벗어나면 세부 메뉴를 접고 선택 상태 해제 */
+document.addEventListener("DOMContentLoaded",()=>{
+ const panel=document.querySelector("#category-panel");
+ if(!panel)return;
+ panel.addEventListener("pointerleave",event=>{
+  if(event.pointerType!=="mouse")return;
+  panel.classList.remove("has-subcategory");
+  panel.querySelectorAll(".category-panel-left .category-item").forEach(button=>{
+   button.classList.remove("is-selected");
+   button.setAttribute("aria-pressed","false");
+  });
+ });
+});
