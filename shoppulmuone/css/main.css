@@ -2027,3 +2027,21 @@ body {
 .benefit-menu:not(.daily-menu) .benefit-panel{width:150px;height:152px;padding:30px 10px}
 .daily-menu .daily-panel{padding:22px 10px}
 .benefit-menu:not(.daily-menu) .benefit-panel{gap:48px;justify-content:center}
+
+/* 혜택 드롭다운: 아래에서 자연스럽게 올라오고 BEST 메뉴와 같은 초록색 Hover */
+.benefit-menu:not(.daily-menu) .benefit-panel{
+  transform:translate(-50%, 10px);
+  transition:opacity .3s ease,transform .3s ease,visibility .3s ease;
+}
+.benefit-menu:not(.daily-menu):hover .benefit-panel,
+.benefit-menu:not(.daily-menu):focus-within .benefit-panel{
+  transform:translate(-50%, 0);
+}
+.header-nav .benefit-menu:not(.daily-menu) .benefit-panel a:hover,
+.header-nav .benefit-menu:not(.daily-menu) .benefit-panel a:focus-visible{color:#009333}
+@media(max-width:1024px){
+  .benefit-menu:not(.daily-menu) .benefit-panel{transform:translate(0,10px)}
+  .benefit-menu:not(.daily-menu):hover .benefit-panel,
+  .benefit-menu:not(.daily-menu):focus-within .benefit-panel{transform:translate(0,0)}
+}
+@media(prefers-reduced-motion:reduce){.benefit-menu:not(.daily-menu) .benefit-panel{transition:none}}
