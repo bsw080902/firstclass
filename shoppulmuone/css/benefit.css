@@ -50,3 +50,15 @@
 .benefit-page .benefit-tabs a:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
 @media(max-width:767px){.benefit-page .benefit-tabs a{font-size:16px;min-height:0;padding:16px 12px}}
 @media(prefers-reduced-motion:reduce){.benefit-page .benefit-tabs a{transition:none}.benefit-page .benefit-tabs a:hover,.benefit-page .benefit-tabs a:focus-visible{transform:none}}
+
+/* 페이지 이동 후 선택된 탭의 Fill이 자연스럽게 채워지도록 전환 */
+@keyframes benefit-tab-fill{
+  from{background-color:var(--bg-default);border-color:var(--border-default);color:var(--text-secondary)}
+  to{background-color:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
+}
+@media(prefers-reduced-motion:no-preference){
+  .benefit-page .benefit-tabs a.is-active,
+  .benefit-page .benefit-tabs a[aria-current="page"]{
+    animation:benefit-tab-fill .35s ease-out both;
+  }
+}
