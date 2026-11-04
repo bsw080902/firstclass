@@ -5,3 +5,8 @@
 
 /* 현재 선택한 혜택 탭은 마우스를 떼어도 Fill 유지 */
 .benefit-tabs a.is-active,.benefit-tabs a[aria-current="page"]{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
+
+/* BEST 카테고리 탭과 동일한 Hover: 살짝 위로 이동 + 밝기 변화 */
+.benefit-tabs a{transition:transform .25s ease,filter .25s ease,background-color .25s ease,border-color .25s ease,color .25s ease}
+.benefit-tabs a:hover,.benefit-tabs a:focus-visible{transform:translateY(-3px);filter:brightness(.98)}
+@media(prefers-reduced-motion:reduce){.benefit-tabs a{transition:none}.benefit-tabs a:hover,.benefit-tabs a:focus-visible{transform:none}}
