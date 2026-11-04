@@ -59,3 +59,9 @@
 .new-page .new-list-card:hover .new-list-image > img,
 .new-page .new-list-card:focus-within .new-list-image > img{transform:scale(1.06)}
 @media(prefers-reduced-motion:reduce){.new-page .new-list-card .new-list-image > img{transition:none}.new-page .new-list-card:hover .new-list-image > img,.new-page .new-list-card:focus-within .new-list-image > img{transform:none}}
+
+/* 전체 신상품 가격 및 할인율 */
+.new-page .new-list-info .new-list-price{display:flex;align-items:baseline;gap:8px;margin:10px 0 0;font-size:18px;color:var(--text-primary)}
+.new-page .new-list-info .new-list-price strong{font-weight:700}
+.new-page .new-list-info .new-list-price .new-list-discount{font-size:17px;font-weight:700;color:var(--brand-green)}
+@media(max-width:767px){.new-page .new-list-info .new-list-price{font-size:16px}.new-page .new-list-info .new-list-price .new-list-discount{font-size:15px}}
