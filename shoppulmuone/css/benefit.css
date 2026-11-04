@@ -103,3 +103,8 @@
 .benefit-page .benefit-content .benefit-section[hidden]{display:none}
 .benefit-page .benefit-content .benefit-section-head{display:none}
 @media(max-width:767px){.benefit-page .benefit-content .benefit-inner{grid-template-columns:1fr;gap:16px}}
+
+/* 필터 변경 시 실제 카드에 등장 효과 적용 (display:contents 섹션 대신 카드 자체 애니메이션) */
+.benefit-page .benefit-content .benefit-card{opacity:0;transform:translateY(18px);transition:opacity .4s ease,transform .4s ease;transition-delay:calc(var(--benefit-card-index,0) * 55ms)}
+.benefit-page .benefit-content .benefit-card.is-revealed{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.benefit-page .benefit-content .benefit-card{opacity:1;transform:none;transition:none}}
