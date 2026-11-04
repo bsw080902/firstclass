@@ -66,6 +66,7 @@ function renderCards(names){
 function showCategory(key,selected=0,minor="전체"){
  if(key==="all"){
   tabs.forEach(btn=>{const active=btn.dataset.category==="all";btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active))});
+  subtabs.classList.remove("is-revealed");
   subtabs.replaceChildren();
   minorTabs.classList.remove("is-revealed");minorTabs.replaceChildren();
   minorPanel.classList.add("is-collapsed");minorPanel.setAttribute("aria-hidden","true");
@@ -80,7 +81,9 @@ function showCategory(key,selected=0,minor="전체"){
  const options=hasDetails?["전체",...details]:[];
  const current=options.includes(minor)?minor:"전체";
  tabs.forEach(btn=>{const active=btn.dataset.category===key;btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active))});
+ subtabs.classList.remove("is-revealed");
  subtabs.replaceChildren(...names.map((name,i)=>makeButton(name,i===index,()=>showCategory(key,i))));
+ requestAnimationFrame(()=>requestAnimationFrame(()=>subtabs.classList.add("is-revealed")));
  minorTabs.classList.remove("is-revealed");
  minorTabs.replaceChildren(...options.map(name=>makeButton(name,name===current,()=>showCategory(key,index,name))));
  minorPanel.classList.toggle("is-collapsed",!hasDetails);
