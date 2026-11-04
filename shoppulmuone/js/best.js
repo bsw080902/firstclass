@@ -5,7 +5,7 @@ const bestProducts=[
 {name:'채소습관 케일&사과 (130ml)',image:'Best1.png',brand:'풀무원',price:'4,950원',discount:'10%',category:'fresh'},
 {name:'100% 당근즙 (130ml)',image:'Best2.png',brand:'풀무원',price:'4,950원',discount:'10%',category:'fresh'},
 {name:'시그니처 밸런스 식단 (1일1식)',image:'Best3.png',brand:'풀무원',price:'8,280원',discount:'10%',category:'meal'},
-{name:'로제빈 우먼밸런스 (3개월분)',image:'Best4.png',brand:'풀무원',price:'4,950원',discount:'10%',category:'processed'},
+{name:'특등급 국산콩 두부칩 오리지널 (40g)',image:'Best4.png',brand:'풀무원식품',price:'4,950원',discount:'10%',category:'processed',subcategory:'과자·견과·베이커리'},
 {name:'채소습관 양배추&브로콜리 (130ml)',image:'Best5.png',brand:'풀무원녹즙',price:'4,950원',discount:'10%',category:'processed'}
 ];
 const groups={
@@ -20,12 +20,17 @@ const subcategories=document.querySelector('#best-subcategories');
 const grid=document.querySelector('#best-products'),count=document.querySelector('#best-count'),title=document.querySelector('#best-category-title');
 function render(key){
 const group=groups[key];if(!group)return;
+let selectedSubcategory=null;
 subcategories.classList.toggle('is-empty',key==='all');
 subcategories.setAttribute('aria-hidden',String(key==='all'));
-subcategories.replaceChildren(...(subcategoryData[key]||[]).map(label=>{const button=document.createElement('button');button.type='button';button.textContent=label;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>{subcategories.querySelectorAll('button').forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active));});});return button;}));
-title.textContent=group.label+' 베스트';count.textContent='총 '+group.items.length+'개';
+subcategories.replaceChildren(...(subcategoryData[key]||[]).map(label=>{const button=document.createElement('button');button.type='button';button.textContent=label;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>{subcategories.querySelectorAll('button').forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active));});selectedSubcategory=label;renderProducts();});return button;}));
+title.textContent=group.label+' 베스트';renderProducts();
+function renderProducts(){
 grid.replaceChildren();
-group.items.forEach((product,i)=>{
+const visibleItems=selectedSubcategory?group.items.filter(product=>product.subcategory===selectedSubcategory):group.items;
+count.textContent='총 '+visibleItems.length+'개';
+
+visibleItems.forEach((product,i)=>{
 const article=document.createElement('article');article.className='best-product';
 article.innerHTML='<div class="best-product-media"><span class="best-product-rank">'+(i+1)+'</span><img src="img/'+product.image+'" alt=""><div class="best-product-actions"><button type="button" class="best-wish" aria-pressed="false"><img class="best-wish-default" src="img/Heart_button.svg" alt=""><img class="best-wish-selected" src="img/Heart_button_active.svg" alt=""></button><button type="button" class="best-cart"><img src="img/Cart_button.svg" alt=""></button></div></div><div class="best-product-info"><p class="best-product-brand"></p><h3></h3><p class="best-product-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p><p class="best-product-price"><span class="best-product-discount"></span><strong></strong></p></div>';
 article.querySelector('.best-product-media > img').alt=product.name;
@@ -37,6 +42,7 @@ article.querySelector('.best-wish').setAttribute('aria-label',product.name+' 찜
 article.querySelector('.best-cart').setAttribute('aria-label',product.name+' 장바구니 담기');
 grid.appendChild(article);
 });
+}
 document.querySelectorAll('.best-category-tabs button').forEach(btn=>{const active=btn.dataset.category===key;btn.classList.toggle('is-active',active);btn.setAttribute('aria-pressed',String(active));});
 }
 document.querySelectorAll('.best-category-tabs button').forEach(btn=>btn.addEventListener('click',()=>render(btn.dataset.category)));
