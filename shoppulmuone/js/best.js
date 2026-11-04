@@ -1,16 +1,23 @@
 /* 베스트 전용: 메인페이지 JS에 의존하지 않도록 독립적으로 초기화 */
 document.addEventListener('DOMContentLoaded',()=>{
+// 메인 페이지 BEST 슬라이더의 이미지·문구·가격을 그대로 사용합니다.
+const bestProducts=[
+{name:'채소습관 케일&사과 (130ml)',image:'Best1.png',brand:'풀무원',price:'4,950원',discount:'10%',category:'fresh'},
+{name:'100% 당근즙 (130ml)',image:'Best2.png',brand:'풀무원',price:'4,950원',discount:'10%',category:'fresh'},
+{name:'시그니처 밸런스 식단 (1일1식)',image:'Best3.png',brand:'풀무원',price:'8,280원',discount:'10%',category:'meal'},
+{name:'로제빈 우먼밸런스 (3개월분)',image:'Best4.png',brand:'풀무원',price:'4,950원',discount:'10%',category:'processed'},
+{name:'풀무원 인기 상품',image:'Best5.png',brand:'풀무원',price:'4,950원',discount:'10%',category:'processed'}
+];
 const groups={
-fresh:{label:'신선식품',items:['국산 콩두부','아삭한 콩나물','신선한 채소 모음','무항생제 달걀','유기농 샐러드 채소','신선 과일 세트','제철 버섯 모음','친환경 쌀']},
-meal:{label:'간편식 · 반찬',items:['담백한 만두','한끼 볶음밥','정성 담은 김치','간편 국물요리','고소한 두부조림','가정식 반찬 세트','간편 떡볶이','든든한 한끼 도시락']},
-processed:{label:'가공식품',items:['고소한 견과류','통밀 크래커','순한 양념 소스','건강한 시리얼','식물성 음료','간편 파스타면','과일 주스','담백한 스낵']},
-living:{label:'생활용품',items:['주방 세정제','친환경 수세미','생활 세제','키친타월','다용도 행주','주방 보관 용기','핸드워시','생활용품 세트']}
+all:{label:'전체',items:bestProducts},
+fresh:{label:'신선식품',items:bestProducts.filter(p=>p.category==='fresh')},
+meal:{label:'간편식 · 반찬',items:bestProducts.filter(p=>p.category==='meal')},
+processed:{label:'가공식품',items:bestProducts.filter(p=>p.category==='processed')},
+living:{label:'생활용품',items:bestProducts.filter(p=>p.category==='living')}
 };
-groups.all={label:'전체',items:Object.values(groups).flatMap(group=>group.items)};
 const subcategoryData={fresh:['두부','콩나물','달걀','과일','채소','쌀','정육','수산'],meal:['만두','피자','떡볶이','면요리','반찬','김치'],processed:['양념','소스','오일','과자·견과·베이커리','생수·음료·유제품','건강식품'],living:['반려동물','생활','주방','뷰티용품','가전제품']};
 const subcategories=document.querySelector('#best-subcategories');
 const grid=document.querySelector('#best-products'),count=document.querySelector('#best-count'),title=document.querySelector('#best-category-title');
-const placeholder='<span class="best-placeholder"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="2"/><path d="m3 17 6-5 4 3 3-3 5 5"/></svg>상품 이미지 준비 중</span>';
 function render(key){
 const group=groups[key];if(!group)return;
 subcategories.classList.toggle('is-empty',key==='all');
@@ -18,12 +25,16 @@ subcategories.setAttribute('aria-hidden',String(key==='all'));
 subcategories.replaceChildren(...(subcategoryData[key]||[]).map(label=>{const button=document.createElement('button');button.type='button';button.textContent=label;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>{subcategories.querySelectorAll('button').forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active));});});return button;}));
 title.textContent=group.label+' 베스트';count.textContent='총 '+group.items.length+'개';
 grid.replaceChildren();
-group.items.forEach((name,i)=>{
+group.items.forEach((product,i)=>{
 const article=document.createElement('article');article.className='best-product';
-article.innerHTML='<div class="best-product-media"><span class="best-product-rank">'+(i+1)+'</span>'+placeholder+'<div class="best-product-actions"><button type="button" class="best-wish" aria-pressed="false" aria-label="찜하기"><img class="best-wish-default" src="img/Heart_button.svg" alt=""><img class="best-wish-selected" src="img/Heart_button_active.svg" alt=""></button><button type="button" class="best-cart" aria-label="장바구니 담기"><img src="img/Cart_button.svg" alt=""></button></div></div><div class="best-product-info"><p class="best-product-brand">풀무원 · 예시 상품</p><h3></h3><p class="best-product-delivery">상품 정보 준비 중</p><p class="best-product-price"><strong>가격 준비 중</strong></p></div>';
-article.querySelector('h3').textContent=name;
-article.querySelector('.best-wish').setAttribute('aria-label',name+' 찜하기');
-article.querySelector('.best-cart').setAttribute('aria-label',name+' 장바구니 담기');
+article.innerHTML='<div class="best-product-media"><span class="best-product-rank">'+(i+1)+'</span><img src="img/'+product.image+'" alt=""><div class="best-product-actions"><button type="button" class="best-wish" aria-pressed="false"><img class="best-wish-default" src="img/Heart_button.svg" alt=""><img class="best-wish-selected" src="img/Heart_button_active.svg" alt=""></button><button type="button" class="best-cart"><img src="img/Cart_button.svg" alt=""></button></div></div><div class="best-product-info"><p class="best-product-brand"></p><h3></h3><p class="best-product-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p><p class="best-product-price"><span class="best-product-discount"></span><strong></strong></p></div>';
+article.querySelector('.best-product-media > img').alt=product.name;
+article.querySelector('.best-product-brand').textContent=product.brand;
+article.querySelector('h3').textContent=product.name;
+article.querySelector('.best-product-discount').textContent=product.discount;
+article.querySelector('.best-product-price strong').textContent=product.price;
+article.querySelector('.best-wish').setAttribute('aria-label',product.name+' 찜하기');
+article.querySelector('.best-cart').setAttribute('aria-label',product.name+' 장바구니 담기');
 grid.appendChild(article);
 });
 document.querySelectorAll('.best-category-tabs button').forEach(btn=>{const active=btn.dataset.category===key;btn.classList.toggle('is-active',active);btn.setAttribute('aria-pressed',String(active));});
