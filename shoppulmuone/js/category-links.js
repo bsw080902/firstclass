@@ -17,3 +17,15 @@ document.addEventListener("DOMContentLoaded",()=>{
  document.addEventListener("click",e=>{if(!trigger.contains(e.target)&&!panel.contains(e.target)&&!e.target.closest(".mobile-category"))close()});
  document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
 });
+
+/* 1차 카테고리만 먼저 표시하고, 선택 시 세부 메뉴를 오른쪽으로 펼칩니다. */
+document.addEventListener("DOMContentLoaded",()=>{
+ const panel=document.querySelector("#category-panel");
+ const trigger=document.querySelector(".category-link");
+ if(!panel||!trigger)return;
+ const reset=()=>{panel.classList.remove("has-subcategory");panel.querySelectorAll(".category-item.is-selected").forEach(button=>{button.classList.remove("is-selected");button.setAttribute("aria-pressed","false")})};
+ reset();
+ panel.querySelectorAll(".category-panel-left .category-item").forEach(button=>button.addEventListener("click",()=>panel.classList.add("has-subcategory"),true));
+ trigger.addEventListener("click",()=>{if(!panel.classList.contains("is-open"))reset()},true);
+ document.querySelector(".mobile-category")?.addEventListener("click",()=>{if(!panel.classList.contains("is-open"))reset()},true);
+});
