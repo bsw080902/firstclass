@@ -79,3 +79,7 @@
 .best-page .best-product-delivery{margin-top:9px;color:#858585}
 .best-page .best-product-price{margin-top:26px;align-items:baseline}
 @media(hover:none){.best-page .best-product-actions{opacity:1;visibility:visible;transform:none}}
+
+/* 메인 BEST 영역과 동일한 할인율·배송일 표현 */
+.best-page .best-product-price .best-product-discount{color:#f04452;font-weight:600}
+.best-page .best-product-delivery strong{color:#639e3d;font-weight:500}
