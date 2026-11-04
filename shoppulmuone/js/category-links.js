@@ -29,3 +29,15 @@ document.addEventListener("DOMContentLoaded",()=>{
  trigger.addEventListener("click",()=>{if(!panel.classList.contains("is-open"))reset()},true);
  document.querySelector(".mobile-category")?.addEventListener("click",()=>{if(!panel.classList.contains("is-open"))reset()},true);
 });
+
+/* PC에서는 왼쪽 카테고리에 마우스를 올리는 즉시 세부 메뉴 표시 (터치는 기존 클릭 유지) */
+document.addEventListener("DOMContentLoaded",()=>{
+ const panel=document.querySelector("#category-panel");
+ if(!panel)return;
+ panel.querySelectorAll(".category-panel-left .category-item").forEach(button=>{
+  button.addEventListener("pointerenter",event=>{
+   if(event.pointerType!=="mouse"||!panel.classList.contains("is-open"))return;
+   button.click();
+  });
+ });
+});
