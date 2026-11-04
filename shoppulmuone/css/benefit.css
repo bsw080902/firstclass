@@ -2,3 +2,6 @@
 /* 혜택 탭 클릭 시 해당 콘텐츠까지 부드럽게 스크롤 */
 @media (prefers-reduced-motion: no-preference){html:has(.benefit-page){scroll-behavior:smooth}}
 .benefit-page .benefit-section{scroll-margin-top:32px}
+
+/* 현재 선택한 혜택 탭은 마우스를 떼어도 Fill 유지 */
+.benefit-tabs a.is-active,.benefit-tabs a[aria-current="page"]{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
