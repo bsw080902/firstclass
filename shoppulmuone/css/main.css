@@ -435,6 +435,8 @@ body {
     transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
 }
 .category-panel-left { display: flex; flex-direction: column; justify-content: space-between; }
+/* 전체상품과 신선식품 사이 간격을 조금 더 확보 */
+.category-panel-left .category-item:first-child { margin-bottom: 12px; }
 .category-panel .category-item {
     width: 142px; height: 40px; border: 0; border-radius: 10px;
     background: transparent; color: #6b7b6f; font: inherit; font-size: 15px;
