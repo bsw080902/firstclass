@@ -426,7 +426,7 @@ body {
 
 .category-panel {
     position: absolute; top: calc(100% + 12px); left: 8px;
-    width: 430px; height: 300px; box-sizing: border-box;
+    width: 430px; height: 350px; box-sizing: border-box;
     padding: 40px 30px; background: #fff; border: 1px solid #e0e8df;
     border-radius: 20px; box-shadow: 0 14px 36px rgba(0, 0, 0, .18);
     display: grid; grid-template-columns: 142px 3px 1fr; column-gap: 30px;
@@ -436,7 +436,7 @@ body {
 }
 .category-panel-left { display: flex; flex-direction: column; justify-content: space-between; }
 /* 전체상품과 신선식품 사이 간격을 조금 더 확보 */
-.category-panel-left .category-item:first-child { margin-bottom: 12px; }
+.category-panel-left .category-item:first-child { margin-bottom: 30px; }
 .category-panel .category-item {
     width: 142px; height: 40px; border: 0; border-radius: 10px;
     background: transparent; color: #6b7b6f; font: inherit; font-size: 15px;
