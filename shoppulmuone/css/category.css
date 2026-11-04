@@ -49,3 +49,8 @@
 
 /* 전체상품에서는 중분류 빈 상자를 표시하지 않음 */
 .category-page .category-subtabs:empty{display:none}
+
+/* 2번째 중분류 메뉴도 카테고리 전환 시 부드럽게 등장 */
+.category-page .category-subtabs{opacity:0;transform:translateY(10px);transition:opacity .32s ease,transform .32s ease}
+.category-page .category-subtabs.is-revealed{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.category-page .category-subtabs{transition:none;transform:none;opacity:1}}
