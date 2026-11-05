@@ -88,3 +88,27 @@
  .category-page .category-minor-tabs button:hover,
  .category-page .category-minor-tabs button.is-active:hover{transform:none;filter:none}
 }
+
+/* 중분류·소분류 버튼: 클릭 시 움직임 제거, 호버 시 Stroke만 표시 */
+.category-page .category-subtabs button,
+.category-page .category-minor-tabs button,
+.category-page .category-subtabs button:hover,
+.category-page .category-minor-tabs button:hover,
+.category-page .category-subtabs button:focus-visible,
+.category-page .category-minor-tabs button:focus-visible,
+.category-page .category-subtabs button.is-active:hover,
+.category-page .category-minor-tabs button.is-active:hover{
+ transform:none;
+ filter:none;
+ outline:none;
+}
+.category-page .category-subtabs button:not(.is-active):hover,
+.category-page .category-minor-tabs button:not(.is-active):hover{
+ background:var(--bg-default);
+ color:var(--text-secondary);
+ border-color:var(--brand-lime);
+}
+.category-page .category-subtabs button.is-active:hover,
+.category-page .category-minor-tabs button.is-active:hover{
+ border-color:var(--brand-lime);
+}
