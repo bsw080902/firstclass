@@ -1,0 +1,15 @@
+/* 브랜드 전용 페이지: 메인 브랜드 상품 카드 디자인을 그리드로 확장 */
+.brand-page .brand-section{padding:34px 24px 100px;overflow:visible}
+.brand-page .brand-inner{max-width:1496px}
+.brand-page .brand-top{margin-bottom:32px}
+.brand-page .brand-heading h1{font-size:24px;line-height:1.35;margin:0}
+.brand-page .brand-catalog{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:28px 20px;align-items:start}
+.brand-page .brand-ad{grid-column:span 2;grid-row:span 1;width:100%;height:auto;aspect-ratio:1/1;min-width:0;flex:none}
+.brand-page .brand-product{min-width:0;width:100%;flex:none}
+.brand-page .brand-product-image{width:100%;height:auto;aspect-ratio:1/1}
+.brand-page .brand-product .recommend-price{margin-top:22px}
+.brand-page .brand-empty{padding:70px 20px;text-align:center;color:var(--text-secondary);background:var(--bg-surface);border-radius:20px}
+.brand-page .brand-empty[hidden],.brand-page .brand-catalog[hidden]{display:none}
+@media(max-width:1100px){.brand-page .brand-heading{flex-basis:260px}.brand-page .brand-catalog{grid-template-columns:repeat(3,minmax(0,1fr))}.brand-page .brand-ad{grid-column:span 2}}
+@media(max-width:767px){.brand-page .brand-section{padding:30px 16px 70px}.brand-page .brand-top{gap:18px}.brand-page .brand-catalog{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}.brand-page .brand-ad{grid-column:span 2;max-width:100%;aspect-ratio:2/1}.brand-page .brand-product .recommend-name{font-size:13px}.brand-page .brand-product .recommend-price{margin-top:16px}}
+@media(prefers-reduced-motion:reduce){.brand-page .brand-tab{transition:none}}
