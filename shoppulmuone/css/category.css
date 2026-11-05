@@ -160,3 +160,45 @@
 /* 메인 추천상품과 동일한 배송 안내 색상 */
 .category-page .best-product-delivery{color:#858585}
 .category-page .best-product-delivery strong{color:var(--brand-lime);font-weight:600}
+
+/* Figma 720:2742 — 소분류 필터만 원본 디자인에 맞춤 */
+.category-page .category-minor-panel{
+ width:max-content;
+ max-width:100%;
+ margin:0 0 32px;
+ padding:5px;
+ background:#fff;
+ border:1px solid var(--border-default);
+ border-radius:50px;
+}
+.category-page .category-minor-tabs{
+ display:flex;
+ flex-wrap:wrap;
+ justify-content:flex-start;
+ align-items:center;
+ gap:20px;
+}
+.category-page .category-minor-tabs button{
+ box-sizing:border-box;
+ flex:0 0 100px;
+ width:100px;
+ height:50px;
+ padding:10px 20px;
+ border:1px solid transparent;
+ border-radius:50px;
+ background:transparent;
+ color:#68756a;
+ font-size:14px;
+ font-weight:500;
+}
+.category-page .category-minor-tabs button.is-active{
+ background:var(--brand-lime);
+ border-color:var(--brand-lime);
+ color:#fff;
+ font-weight:500;
+}
+@media(max-width:767px){
+ .category-page .category-minor-panel{padding:5px;border-radius:30px}
+ .category-page .category-minor-tabs{gap:4px}
+ .category-page .category-minor-tabs button{flex:0 0 auto;width:auto;min-width:64px;height:44px;padding:10px 14px;font-size:13px}
+}
