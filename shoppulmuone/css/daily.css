@@ -90,3 +90,13 @@
 
 /* 일일배달 탭은 JS가 hidden으로 표시를 관리하므로 혜택 페이지 reveal 클래스에 의존하지 않음 */
 .benefit-page.daily-page .benefit-content .benefit-section:not([hidden]){opacity:1;transform:none}
+
+/* 일일배달: 베스트 상품 카드 디자인 재사용 */
+.daily-page .daily-product-grid{margin-top:26px;grid-template-columns:repeat(5,minmax(0,1fr))}
+.daily-page .daily-product-grid .best-product-media>img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.daily-page .daily-product-grid .best-product:hover .best-product-media>img,.daily-page .daily-product-grid .best-product:focus-within .best-product-media>img{transform:scale(1.06)}
+.daily-page .daily-product-grid .best-product-price{font-size:15px}
+@media(max-width:1024px){.daily-page .daily-product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:767px){.daily-page .daily-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 14px}}
+@media(hover:none){.daily-page .daily-product-grid .best-product-actions{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.daily-page .daily-product-grid .best-product-media>img{transition:none}}
