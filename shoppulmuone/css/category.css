@@ -68,3 +68,23 @@
 @media(max-width:767px){.category-page .category-sort{justify-content:flex-start;width:100%;overflow-x:auto;flex-wrap:nowrap}.category-page .category-sort button{font-size:12px;padding:8px 9px}}
 
 @media(prefers-reduced-motion:reduce){.category-page .category-sort button{transition:none}.category-page .category-sort button:hover,.category-page .category-sort button:focus-visible{transform:none}}
+
+/* 중분류/소분류: 위로 뜨는 동작은 마우스 호버 중에만 적용 */
+.category-page .category-subtabs button,
+.category-page .category-minor-tabs button{transform:none}
+.category-page .category-subtabs button:focus-visible,
+.category-page .category-subtabs button.is-active:focus-visible,
+.category-page .category-minor-tabs button:focus-visible,
+.category-page .category-minor-tabs button.is-active:focus-visible{transform:none;filter:none}
+@media(hover:hover) and (pointer:fine){
+ .category-page .category-subtabs button:hover,
+ .category-page .category-subtabs button.is-active:hover,
+ .category-page .category-minor-tabs button:hover,
+ .category-page .category-minor-tabs button.is-active:hover{transform:translateY(-3px)}
+}
+@media(hover:none){
+ .category-page .category-subtabs button:hover,
+ .category-page .category-subtabs button.is-active:hover,
+ .category-page .category-minor-tabs button:hover,
+ .category-page .category-minor-tabs button.is-active:hover{transform:none;filter:none}
+}
