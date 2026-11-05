@@ -63,3 +63,14 @@
 .daily-page .subscription-notice{width:100%;box-sizing:border-box;margin-top:28px}
 @media(max-width:1000px){.daily-page .subscription-banner{min-height:340px;padding:36px}.daily-page .subscription-banner img{max-height:270px}}
 @media(max-width:650px){.daily-page .subscription-banner{min-height:0;padding:28px 22px}.daily-page .subscription-banner img{width:100%;max-width:100%;max-height:220px}}
+
+/* 정기구독 안내: 참고 화면처럼 배너 아래 배송지 / 주문 / 로그인 안내 3열 */
+.daily-page .subscription-section .subscription-banner{min-height:0;aspect-ratio:auto;padding:55px clamp(32px,6%,90px);overflow:hidden}
+.daily-page .subscription-section .subscription-banner-content{flex:1 1 44%}
+.daily-page .subscription-section .subscription-banner img{flex:0 1 52%;width:52%;max-width:52%;max-height:320px}
+.daily-page .subscription-section .subscription-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.9fr) minmax(0,1.15fr);align-items:start;gap:32px;margin-top:38px}
+.daily-page .subscription-section .subscription-delivery,.daily-page .subscription-section .subscription-order,.daily-page .subscription-section .subscription-notice{min-width:0}
+.daily-page .subscription-section .subscription-notice{align-self:start;margin:31px 0 0;padding:12px 0 20px;gap:10px}
+.daily-page .subscription-section .subscription-notice p{line-height:1.5}
+@media(max-width:1100px){.daily-page .subscription-section .subscription-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.daily-page .subscription-section .subscription-notice{grid-column:1/-1;grid-row:1;margin:0;padding:8px 0 16px}}
+@media(max-width:650px){.daily-page .subscription-section .subscription-layout{grid-template-columns:1fr;gap:26px}.daily-page .subscription-section .subscription-notice{grid-column:1;grid-row:1}.daily-page .subscription-section .subscription-banner{padding:28px 22px}}
