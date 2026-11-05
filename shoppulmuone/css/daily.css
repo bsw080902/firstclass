@@ -116,9 +116,7 @@
 @media(max-width:1024px){.benefit-page.daily-page .daily-product-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 20px}}
 @media(max-width:767px){.benefit-page.daily-page .benefit-content .benefit-inner>.benefit-section:not([hidden])>.benefit-section-head{display:block}.benefit-page.daily-page .daily-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 14px}}
 
-/* 탭 전환: 콘텐츠가 아래에서 부드럽게 등장하고 카드가 순차적으로 나타남 */
-.benefit-page.daily-page .benefit-content .benefit-section.daily-enter:not([hidden]){animation:daily-section-enter .48s ease-out both}
-.benefit-page.daily-page .daily-enter .best-product{animation:daily-card-enter .48s ease-out both;animation-delay:calc(var(--daily-card-index,0) * 55ms)}
-@keyframes daily-section-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@keyframes daily-card-enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:reduce){.benefit-page.daily-page .benefit-content .benefit-section.daily-enter:not([hidden]),.benefit-page.daily-page .daily-enter .best-product{animation:none}}
+
+/* 베스트 페이지와 동일한 카드 등장 애니메이션 */
+.benefit-page.daily-page .daily-enter .best-product{animation:best-card-enter .42s ease-out both;animation-delay:calc(var(--best-card-index,0) * 55ms)}
+@media(prefers-reduced-motion:reduce){.benefit-page.daily-page .daily-enter .best-product{animation:none}}
