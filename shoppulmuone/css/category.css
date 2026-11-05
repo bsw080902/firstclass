@@ -230,3 +230,8 @@
  .category-page .category-subtabs button{font-size:13px;padding:11px 15px}
  .category-page .category-minor-tabs button{font-size:13px;padding:11px 16px}
 }
+
+/* 하위 카테고리 메뉴 왼쪽 정렬 */
+.category-page .category-subtabs{justify-content:flex-start}
+.category-page .category-minor-panel{margin-left:0;margin-right:auto}
+.category-page .category-minor-tabs{justify-content:flex-start}
