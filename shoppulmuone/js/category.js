@@ -73,11 +73,14 @@ function drawCards(){
  });
  requestAnimationFrame(()=>requestAnimationFrame(()=>grid.classList.add("is-revealed")));
 }
+let renderedCategory=null;
+let renderedMiddle=null;
 function showCategory(key,selected=0,minor="전체"){
  if(key==="all"){
   tabs.forEach(btn=>{const active=btn.dataset.category==="all";btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active))});
   subtabs.classList.remove("is-revealed");
   subtabs.replaceChildren();
+  renderedCategory="all";renderedMiddle=null;
   minorTabs.classList.remove("is-revealed");minorTabs.replaceChildren();
   minorPanel.classList.add("is-collapsed");minorPanel.setAttribute("aria-hidden","true");
   heading.textContent="전체상품";
@@ -91,11 +94,25 @@ function showCategory(key,selected=0,minor="전체"){
  const options=hasDetails?["전체",...details]:[];
  const current=options.includes(minor)?minor:"전체";
  tabs.forEach(btn=>{const active=btn.dataset.category===key;btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active))});
- subtabs.classList.remove("is-revealed");
- subtabs.replaceChildren(...names.map((name,i)=>makeButton(name,i===index,()=>showCategory(key,i))));
- requestAnimationFrame(()=>requestAnimationFrame(()=>subtabs.classList.add("is-revealed")));
- minorTabs.classList.remove("is-revealed");
- minorTabs.replaceChildren(...options.map(name=>makeButton(name,name===current,()=>showCategory(key,index,name))));
+ // 같은 카테고리 안에서는 기존 버튼을 재사용해 클릭 중 호버가 끊기지 않게 합니다.
+ if(renderedCategory!==key){
+  subtabs.classList.remove("is-revealed");
+  subtabs.replaceChildren(...names.map((name,i)=>makeButton(name,i===index,()=>showCategory(key,i))));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>subtabs.classList.add("is-revealed")));
+ }else{
+  subtabs.querySelectorAll("button").forEach((btn,i)=>{
+   const active=i===index;btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active));
+  });
+ }
+ if(renderedCategory!==key||renderedMiddle!==middle){
+  minorTabs.classList.remove("is-revealed");
+  minorTabs.replaceChildren(...options.map(name=>makeButton(name,name===current,()=>showCategory(key,index,name))));
+ }else{
+  minorTabs.querySelectorAll("button").forEach(btn=>{
+   const active=btn.textContent===current;btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active));
+  });
+ }
+ renderedCategory=key;renderedMiddle=middle;
  minorPanel.classList.toggle("is-collapsed",!hasDetails);
  minorPanel.setAttribute("aria-hidden",String(!hasDetails));
  if(hasDetails)requestAnimationFrame(()=>requestAnimationFrame(()=>minorTabs.classList.add("is-revealed")));
