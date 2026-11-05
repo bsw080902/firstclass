@@ -173,3 +173,17 @@
 
 /* 주문 형태 셀렉트: 좌우 여백 통일 및 화살표 고정 표시 */
 .benefit-page.daily-page .subscription-order-select{box-sizing:border-box;appearance:none;-webkit-appearance:none;padding:0 44px 0 20px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2300933b' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 20px center;background-size:16px 16px}
+
+/* 메인 BEST 카드 스타일을 일일배달 전체의 추가 상품 4종에 적용 */
+.benefit-page.daily-page .daily-main-best-card{min-width:0}
+.benefit-page.daily-page .daily-main-best-image{aspect-ratio:1/1;background:#fff;border:1px solid #dde5dc;border-radius:20px;overflow:hidden;position:relative;transition:border-color .4s ease}
+.benefit-page.daily-page .daily-main-best-image>img{width:100%;height:100%;object-fit:cover;border-radius:17px;transition:transform .4s ease}
+.benefit-page.daily-page .daily-main-best-card:hover .daily-main-best-image>img{transform:scale(1.06)}
+.benefit-page.daily-page .daily-main-best-info{padding-top:22px}
+.benefit-page.daily-page .daily-main-best-info .best-product-brand{font-size:12px;color:#888;margin:0 0 4px}
+.benefit-page.daily-page .daily-main-best-info h3{font-size:16px;font-weight:600;line-height:1.35}
+.benefit-page.daily-page .daily-main-best-info .best-product-delivery{font-size:12px;color:#888;margin-top:12px}
+.benefit-page.daily-page .daily-main-best-info .best-product-delivery strong{color:#639e3d;font-weight:500}
+.benefit-page.daily-page .daily-main-best-info .best-product-price{margin-top:24px;text-align:right;font-size:17px;justify-content:flex-end}
+.benefit-page.daily-page .daily-main-best-info .best-product-discount{color:#f04452;margin-right:6px}
+@media(prefers-reduced-motion:reduce){.benefit-page.daily-page .daily-main-best-image,.benefit-page.daily-page .daily-main-best-image>img{transition:none}}
