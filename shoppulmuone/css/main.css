@@ -2128,3 +2128,9 @@ body {
   line-height:1.45;
   text-align:center;
 }
+
+/* 메인 일일배달 배너: 정기구독 혜택 라벨 */
+.daily-content .daily-benefits{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.daily-content .daily-benefits span{display:inline-flex;align-items:center;padding:8px 13px;border-radius:7px;background:#70c80d;color:#fff;font-size:14px;font-weight:700;line-height:1.2;white-space:nowrap}
+.daily-content .daily-benefits+.daily-cta{margin-top:36px}
+@media(max-width:767px){.daily-content .daily-benefits{gap:7px}.daily-content .daily-benefits span{font-size:12px;padding:7px 9px}.daily-content .daily-benefits+.daily-cta{margin-top:24px}}
