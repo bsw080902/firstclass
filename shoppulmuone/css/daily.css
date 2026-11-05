@@ -42,3 +42,15 @@
 .daily-page .subscription-banner{display:flex;align-items:center;justify-content:center;min-height:280px;padding:24px 32px;box-sizing:border-box;border-radius:24px;background:#e8f4df}
 .daily-page .subscription-banner img{display:block;width:min(100%,780px);max-height:280px;height:auto;object-fit:contain}
 @media(max-width:767px){.daily-page .subscription-banner{min-height:180px;padding:20px;border-radius:18px}.daily-page .subscription-banner img{max-height:220px}}
+
+/* 메인 일일배달 배너의 텍스트 + 이미지 구성을 정기구독 안내 폭에 맞게 축소 */
+.daily-page .subscription-banner{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:24px;width:100%;min-height:0;height:auto;aspect-ratio:1720/400;padding:36px clamp(28px,5%,72px);border-radius:24px;background:#e8f4df;overflow:hidden}
+.daily-page .subscription-banner-content{flex:1 1 42%;min-width:0}
+.daily-page .subscription-banner-eyebrow{margin:0 0 12px;color:var(--action-primary);font-size:13px;font-weight:600}
+.daily-page .subscription-banner-content h3{margin:0 0 18px;color:var(--text-primary);font-size:clamp(25px,2.5vw,36px);font-weight:700;line-height:1.25}
+.daily-page .subscription-banner-description{margin:0;color:var(--text-secondary);font-size:clamp(13px,1.1vw,16px);line-height:1.55}
+.daily-page .subscription-banner-benefits{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.daily-page .subscription-banner-benefits span{display:inline-flex;align-items:center;justify-content:center;min-height:39px;padding:0 14px;border:1px solid var(--action-primary);border-radius:999px;background:#fff;color:var(--action-primary);font-family:Inter,Pretendard,sans-serif;font-size:14px;font-weight:500;white-space:nowrap}
+.daily-page .subscription-banner img{flex:0 1 53%;width:53%;max-width:53%;max-height:280px;height:auto;object-fit:contain}
+@media(max-width:1000px){.daily-page .subscription-banner{aspect-ratio:auto;min-height:300px;padding:30px}.daily-page .subscription-banner img{width:50%;max-width:50%}.daily-page .subscription-banner-benefits{margin-top:20px}}
+@media(max-width:650px){.daily-page .subscription-banner{flex-direction:column;align-items:flex-start;min-height:0;padding:28px 22px;gap:22px;border-radius:18px}.daily-page .subscription-banner-content{width:100%;flex:auto}.daily-page .subscription-banner-content h3{font-size:27px}.daily-page .subscription-banner img{align-self:center;flex:auto;width:100%;max-width:100%;max-height:220px}.daily-page .subscription-banner-benefits span{font-size:12px;min-height:35px;padding:0 11px}}
