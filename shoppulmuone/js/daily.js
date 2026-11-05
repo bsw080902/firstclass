@@ -11,6 +11,29 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.filter(section => section && section.id !== 'subscription').forEach(section => {
       section.querySelectorAll('.best-product').forEach(card => allGrid.appendChild(card.cloneNode(true)));
     });
+    // 전체 탭 전용 상품: 기존 베스트 카드 구조 및 스타일 재사용
+    const dailyCard = document.createElement('article');
+    dailyCard.className = 'best-product';
+    dailyCard.innerHTML = `
+      <div class="best-product-media">
+        <img src="img/daily1.jpg" alt="채소습관 케일&셀러리 130ml" loading="lazy">
+        <div class="best-product-actions">
+          <button type="button" class="best-wish" aria-pressed="false" aria-label="채소습관 케일&셀러리 찜하기">
+            <img class="best-wish-default" src="img/Heart_button.svg" alt="">
+            <img class="best-wish-selected" src="img/Heart_button_active.svg" alt="">
+          </button>
+          <button type="button" class="best-cart" aria-label="채소습관 케일&셀러리 장바구니 담기">
+            <img src="img/Cart_button.svg" alt="">
+          </button>
+        </div>
+      </div>
+      <div class="best-product-info">
+        <p class="best-product-brand">풀무원녹즙</p>
+        <h3>채소습관 케일&셀러리 (130ml)</h3>
+        <p class="best-product-delivery">배송 예정일은 결제 시 확인</p>
+        <p class="best-product-price"><strong>2,300원</strong></p>
+      </div>`;
+    allGrid.prepend(dailyCard);
     intro.querySelector('.benefit-placeholder')?.remove();
     intro.appendChild(allGrid);
   }
