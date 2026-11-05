@@ -74,3 +74,7 @@
 .daily-page .subscription-section .subscription-notice p{line-height:1.5}
 @media(max-width:1100px){.daily-page .subscription-section .subscription-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.daily-page .subscription-section .subscription-notice{grid-column:1/-1;grid-row:1;margin:0;padding:8px 0 16px}}
 @media(max-width:650px){.daily-page .subscription-section .subscription-layout{grid-template-columns:1fr;gap:26px}.daily-page .subscription-section .subscription-notice{grid-column:1;grid-row:1}.daily-page .subscription-section .subscription-banner{padding:28px 22px}}
+
+/* 정기구독 배너 혜택 라벨 너비 180px 통일 */
+.daily-page .subscription-banner-benefits span{box-sizing:border-box;width:180px}
+@media(max-width:650px){.daily-page .subscription-banner-benefits span{width:180px}}
