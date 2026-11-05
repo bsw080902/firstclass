@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = ids.map(id => document.getElementById(id));
   const intro = document.getElementById('daily');
   const links = document.querySelectorAll('.daily-tabs a, .daily-panel a');
+  // 전체 탭은 기존 예시 상품 목록을 별도로 보존합니다.
+  const originalAllCards = sections.filter(section => section && section.id !== 'subscription').flatMap(section => Array.from(section.querySelectorAll('.best-product'), card => card.cloneNode(true)));
   // 카테고리별 실제 상품 카드: 전체 탭도 동일한 카드를 복제해 사용
   const products = {
     juice: [
@@ -48,8 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (intro) {
     const allGrid = document.createElement('div');
     allGrid.className = 'best-product-grid daily-product-grid';
-    sections.filter(section => section && section.id !== 'subscription').forEach(section => {
-      section.querySelectorAll('.best-product').forEach(card => allGrid.appendChild(card.cloneNode(true)));
+    originalAllCards.forEach(card => allGrid.appendChild(card));
+    // 기존 전체 탭의 첫 5개 상품과 순서를 유지
+    const featuredAll = [...products.juice, ...products.meal];
+    featuredAll.forEach((product, index) => {
+      const card = productCard(product);
+      allGrid.insertBefore(card, allGrid.children[index] || null);
     });
     intro.querySelector('.benefit-placeholder')?.remove();
     intro.appendChild(allGrid);
