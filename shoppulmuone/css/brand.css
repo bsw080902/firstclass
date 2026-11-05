@@ -76,3 +76,7 @@
 
 /* 풀무원샘물부터 브랜드 탭 두 번째 줄 시작 (PC) */
 @media(min-width:1200px){.brand-page .brand-tab-row-break{break-before:always}.brand-page .brand-tab-row-break::before{content:none}.brand-page .brand-tabs::before{content:"";flex-basis:100%;height:0;order:0}.brand-page .brand-tab-row-break{order:1}.brand-page .brand-tab-row-break~.brand-tab{order:1}}
+
+/* 명시적 줄바꿈 요소: 풀무원샘물 앞에서 새 줄 시작 */
+@media(min-width:1200px){.brand-page .brand-tabs::before{content:none}.brand-page .brand-tab,.brand-page .brand-tab~.brand-tab{order:0}.brand-page .brand-row-break{display:block;flex:0 0 100%;height:0}}
+@media(max-width:1199px){.brand-page .brand-row-break{display:none}}
