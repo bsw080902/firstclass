@@ -107,3 +107,11 @@
 .daily-page .daily-product-grid .best-product-brand{color:#858585}
 .daily-page .daily-product-grid .best-product-delivery{color:#858585}
 .daily-page .daily-product-grid .best-product-price{justify-content:flex-end;margin-top:26px;font-size:18px}
+
+/* 일일배달 상품 목록: 혜택 페이지의 2열 display:contents 해제.
+   카테고리 페이지와 동일한 5열 카드 너비 및 간격 사용 */
+.benefit-page.daily-page .benefit-content .benefit-inner>.benefit-section:not([hidden]):not(.subscription-section){display:block;grid-column:1/-1;width:100%;min-width:0;margin-bottom:70px}
+.benefit-page.daily-page .benefit-content .benefit-inner>.benefit-section:not([hidden])>.benefit-section-head{display:flex}
+.benefit-page.daily-page .daily-product-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:56px 20px;margin-top:0}
+@media(max-width:1024px){.benefit-page.daily-page .daily-product-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 20px}}
+@media(max-width:767px){.benefit-page.daily-page .benefit-content .benefit-inner>.benefit-section:not([hidden])>.benefit-section-head{display:block}.benefit-page.daily-page .daily-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 14px}}
