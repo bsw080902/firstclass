@@ -7,3 +7,33 @@
 /* 다섯 버튼을 화면 크기와 관계없이 한 줄로 유지 */
 .daily-page .daily-tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
 @media(max-width:767px){.daily-page .daily-tabs{gap:6px}.daily-page .daily-tabs a{padding:12px 4px;font-size:12px;overflow-wrap:anywhere}}
+
+/* 정기구독 안내: 기존 샵풀무원 컬러·카드·라운드 시스템 */
+.daily-page .subscription-section{width:100%;min-width:0}
+.daily-page .subscription-banner{overflow:hidden;border-radius:20px;background:#f3f9e7}
+.daily-page .subscription-banner img{display:block;width:100%;height:auto}
+.daily-page .subscription-notice{display:flex;align-items:center;gap:10px;padding:20px 4px;border-bottom:1px solid var(--border-default);color:var(--text-secondary);font-size:14px}
+.daily-page .subscription-notice span{color:var(--brand-lime);font-size:12px}
+.daily-page .subscription-notice p{margin:0}
+.daily-page .subscription-notice a{color:var(--brand-green);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.daily-page .subscription-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(290px,1fr);gap:36px;margin-top:36px}
+.daily-page .subscription-layout h3{display:flex;align-items:center;gap:9px;margin:0 0 22px;color:var(--text-primary);font-size:20px;font-weight:700}
+.daily-page .subscription-layout h3 span{color:var(--brand-green);font-size:14px}
+.daily-page .subscription-choices{display:grid;gap:12px}
+.daily-page .subscription-choice{display:flex;align-items:center;gap:20px;padding:24px;border:1px solid var(--border-default);border-radius:16px;background:var(--bg-surface);cursor:pointer;transition:border-color .2s ease,background-color .2s ease,box-shadow .2s ease}
+.daily-page .subscription-choice:has(input:checked){border-color:var(--brand-green);background:#f3faed;box-shadow:0 0 0 1px var(--brand-green)}
+.daily-page .subscription-choice input{width:18px;height:18px;flex-shrink:0;accent-color:var(--brand-green)}
+.daily-page .subscription-choice-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:#e8f4df;color:var(--brand-green);font-size:27px}
+.daily-page .subscription-choice strong{display:block;margin-bottom:6px;font-size:16px}
+.daily-page .subscription-choice small{display:block;color:var(--text-secondary);font-size:13px;line-height:1.5}
+.daily-page .subscription-helper{margin:16px 2px;color:var(--text-secondary);font-size:13px;line-height:1.6}
+.daily-page .subscription-order-card{overflow:hidden;border:1px solid var(--border-default);border-radius:18px;background:#fff;padding:24px}
+.daily-page .subscription-order-highlight{margin:0 0 18px;color:var(--brand-green);font-size:16px;font-weight:700}
+.daily-page .subscription-order-type{display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--border-default);border-radius:12px}
+.daily-page .subscription-order-type strong{color:var(--brand-green)}
+.daily-page .subscription-order-type span{font-size:13px;color:var(--text-secondary)}
+.daily-page .subscription-order-card ul{margin:20px 0;padding-left:18px;color:var(--text-secondary);font-size:13px;line-height:1.8}
+.daily-page .subscription-order-link{display:block;padding:16px 12px;border-radius:999px;background:var(--brand-lime);color:white;text-align:center;font-size:14px;font-weight:700;text-decoration:none;transition:filter .2s ease}
+.daily-page .subscription-order-link:hover{filter:brightness(.94)}
+@media(max-width:850px){.daily-page .subscription-layout{grid-template-columns:1fr;gap:28px}}
+@media(max-width:767px){.daily-page .subscription-banner{border-radius:14px}.daily-page .subscription-layout{margin-top:26px}.daily-page .subscription-layout h3{font-size:17px}.daily-page .subscription-choice{padding:16px;gap:12px}.daily-page .subscription-order-card{padding:18px}}
