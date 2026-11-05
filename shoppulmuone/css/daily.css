@@ -187,3 +187,8 @@
 .benefit-page.daily-page .daily-main-best-info .best-product-price{margin-top:24px;text-align:right;font-size:17px;justify-content:flex-end}
 .benefit-page.daily-page .daily-main-best-info .best-product-discount{color:#f04452;margin-right:6px}
 @media(prefers-reduced-motion:reduce){.benefit-page.daily-page .daily-main-best-image,.benefit-page.daily-page .daily-main-best-image>img{transition:none}}
+
+/* 메인 BEST 가격 타이포그래피와 할인율 색상을 동일하게 적용 */
+.benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-product-price{font-size:17px;font-weight:400;line-height:normal;text-align:right;margin:24px 0 0;display:flex;align-items:baseline;justify-content:flex-end;gap:0}
+.benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-product-price .best-product-discount{color:#f04452;font-size:17px;font-weight:400;margin-right:6px}
+.benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-product-price strong{font-size:17px;font-weight:700;color:#222}
