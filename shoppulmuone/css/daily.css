@@ -100,3 +100,10 @@
 @media(max-width:767px){.daily-page .daily-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 14px}}
 @media(hover:none){.daily-page .daily-product-grid .best-product-actions{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.daily-page .daily-product-grid .best-product-media>img{transition:none}}
+
+/* 상품 이미지 업로드 전: 카테고리 페이지와 같은 플레이스홀더 */
+.daily-page .daily-product-grid .best-product-media{background:#f6f6f6;border:1px solid #e5e5e5}
+.daily-page .daily-product-grid .best-placeholder{color:#909b93;font-size:12px}
+.daily-page .daily-product-grid .best-product-brand{color:#858585}
+.daily-page .daily-product-grid .best-product-delivery{color:#858585}
+.daily-page .daily-product-grid .best-product-price{justify-content:flex-end;margin-top:26px;font-size:18px}
