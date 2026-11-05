@@ -31,7 +31,7 @@ const visibleItems=selectedSubcategory?group.items.filter(product=>product.subca
 count.textContent='총 '+visibleItems.length+'개';
 
 visibleItems.forEach((product,i)=>{
-const article=document.createElement('article');article.className='best-product';
+const article=document.createElement('article');article.className='best-product';article.style.setProperty('--best-card-index',i);
 article.innerHTML='<div class="best-product-media"><span class="best-product-rank">'+(i+1)+'</span><img src="img/'+product.image+'" alt=""><div class="best-product-actions"><button type="button" class="best-wish" aria-pressed="false"><img class="best-wish-default" src="img/Heart_button.svg" alt=""><img class="best-wish-selected" src="img/Heart_button_active.svg" alt=""></button><button type="button" class="best-cart"><img src="img/Cart_button.svg" alt=""></button></div></div><div class="best-product-info"><p class="best-product-brand"></p><h3></h3><p class="best-product-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p><p class="best-product-price"><span class="best-product-discount"></span><strong></strong></p></div>';
 article.querySelector('.best-product-media > img').alt=product.name;
 article.querySelector('.best-product-brand').textContent=product.brand;
