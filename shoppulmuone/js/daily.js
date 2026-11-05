@@ -31,6 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
     activate(id);
   }));
+  document.querySelectorAll('.daily-product-grid').forEach(grid => {
+    grid.addEventListener('click', event => {
+      const wish = event.target.closest('.best-wish');
+      if (wish) {
+        const selected = wish.getAttribute('aria-pressed') !== 'true';
+        wish.setAttribute('aria-pressed', String(selected));
+        wish.classList.toggle('is-selected', selected);
+      }
+      // 장바구니는 실제 상품/장바구니 연동 전까지 동작을 연결하지 않습니다.
+    });
+  });
   window.addEventListener('hashchange', updateFromHash);
   updateFromHash();
 });
