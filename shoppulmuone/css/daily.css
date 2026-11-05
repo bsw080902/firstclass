@@ -124,3 +124,7 @@
 /* 전체 탭: 카테고리 제목 없이 상품 카드만 연속 배치 */
 .benefit-page.daily-page #daily>.benefit-section-head{display:none}
 .benefit-page.daily-page #daily>.daily-product-grid{margin-top:0}
+
+/* 일일배달 모든 탭: 상품 목록 및 정기구독 섹션 상단 제목/설명 숨김 */
+.benefit-page.daily-page .benefit-content .benefit-section>.benefit-section-head,
+.benefit-page.daily-page .benefit-content .benefit-inner>.benefit-section:not([hidden])>.benefit-section-head{display:none}
