@@ -163,3 +163,10 @@
 .daily-page .subscription-order-type span{font-size:13px;color:var(--text-secondary)}
 .daily-page .subscription-order-card ul{margin:20px 0;padding-left:18px;color:var(--text-secondary);font-size:13px;line-height:1.8}
 .daily-page .subscription-order-link{display:block;padding:16px 12px;border-radius:999px;background:var(--brand-lime);color:#fff;text-align:center;font-size:14px;font-weight:700;text-decoration:none}
+
+/* 02 주문 형태: 검정 제목, 두 가지 주문 방식 선택 */
+.benefit-page.daily-page .subscription-order-card .subscription-order-highlight{color:var(--text-primary)}
+.benefit-page.daily-page .subscription-order-type{padding:0;display:block;overflow:hidden}
+.benefit-page.daily-page .subscription-order-select{display:block;width:100%;min-height:56px;padding:0 16px;border:0;border-radius:12px;background:#fff;color:var(--brand-green);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.benefit-page.daily-page .subscription-order-select:focus-visible{outline:2px solid var(--brand-green);outline-offset:-2px}
+.benefit-page.daily-page .subscription-order-select option{background:#fff;color:var(--text-primary);font-weight:400}
