@@ -2,3 +2,7 @@
 /* 마이페이지 사이드 메뉴와 바로가기 클릭 시 섹션으로 부드럽게 이동 */
 @media (prefers-reduced-motion: no-preference){html:has(.my-page){scroll-behavior:smooth}}
 .my-page .my-section{scroll-margin-top:32px}
+
+/* 사이드 메뉴 제거 후 쇼핑 정보 콘텐츠 전체 너비 사용 */
+.my-page .my-layout{display:block}
+.my-page .my-main{width:100%;min-width:0}
