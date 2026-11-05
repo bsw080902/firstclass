@@ -38,6 +38,19 @@ const examples={
 "뷰티용품":["핸드워시","바디워시","뷰티용품 세트"],
 "가전제품":["주방 가전","소형 가전","생활 가전"]
 };
+// 베스트 및 신상품 페이지에 실제로 표시되는 상품 카드 데이터
+const catalogProducts=[
+{name:"채소습관 케일&사과 (130ml)",brand:"풀무원",image:"Best1.png",price:"4,950원",discount:"10%",delivery:"지금 결제 시 10-22 (목) 도착"},
+{name:"100% 당근즙 (130ml)",brand:"풀무원",image:"Best2.png",price:"4,950원",discount:"10%",delivery:"지금 결제 시 10-22 (목) 도착"},
+{name:"시그니처 밸런스 식단 (1일1식)",brand:"풀무원",image:"Best3.png",price:"8,280원",discount:"10%",delivery:"지금 결제 시 10-22 (목) 도착"},
+{name:"특등급 국산콩 두부칩 오리지널 (40g)",brand:"풀무원식품",image:"Best4.png",price:"4,950원",discount:"10%",delivery:"지금 결제 시 10-22 (목) 도착"},
+{name:"채소습관 양배추&브로콜리 (130ml)",brand:"풀무원녹즙",image:"Best5.png",price:"4,950원",discount:"10%",delivery:"지금 결제 시 10-22 (목) 도착"},
+{name:"[반려묘] 시원하냥 참치 헤어볼&유리너리 (165g)",brand:"풀무원아미오",image:"new_item1.jpg",price:"1,100원",discount:"38%"},
+{name:"[반려묘] 시원하냥 참치 헤어볼&유리너리 (165g)",brand:"풀무원아미오",image:"new_item2.jpg",price:"9,980원"},
+{name:"[산지직송]독도 자연산 꽃새우 500g(20~25미)",brand:"올가",image:"new_item3.jpg",price:"135,000원",discount:"9%"},
+{name:"[산지직송]햇 초사리 곱창돌김 150g(50매)",brand:"올가",image:"new_item4.jpg",price:"31,900원",discount:"8%"},
+{name:"[산지직송]11Brix 당도선별 GAP 제주 유라감귤 (2.5kg)",brand:"올가",image:"new_item5.jpg",price:"24,900원",discount:"9%"}
+];
 const tabs=document.querySelectorAll(".category-main-tabs button");
 const subtabs=document.querySelector("#category-subtabs");
 const minorTabs=document.querySelector("#category-minor-tabs");
@@ -53,6 +66,28 @@ function makeButton(label,active,onClick){
 let activeSort="popular";
 let currentNames=[];
 const sortButtons=document.querySelectorAll(".category-sort button");
+function renderCatalogProducts(){
+ currentNames=catalogProducts.map(p=>p.name);
+ grid.classList.remove("is-revealed");grid.replaceChildren();
+ const products=activeSort==="new"?[...catalogProducts].reverse():catalogProducts;
+ products.forEach((p,i)=>{
+  const article=document.createElement("article");article.className="best-product";article.style.setProperty("--best-card-index",i);
+  const media=document.createElement("div");media.className="best-product-media";
+  const img=document.createElement("img");img.src="img/"+p.image;img.alt=p.name;img.loading="lazy";media.append(img);
+  const actions=document.createElement("div");actions.className="best-product-actions";
+  actions.innerHTML='<button type="button" class="best-wish" aria-pressed="false"><img class="best-wish-default" src="img/Heart_button.svg" alt=""><img class="best-wish-selected" src="img/Heart_button_active.svg" alt=""></button><button type="button" class="best-cart"><img src="img/Cart_button.svg" alt=""></button>';
+  actions.querySelector(".best-wish").setAttribute("aria-label",p.name+" 찜하기");actions.querySelector(".best-cart").setAttribute("aria-label",p.name+" 장바구니 담기");media.append(actions);
+  const info=document.createElement("div");info.className="best-product-info";
+  const brand=document.createElement("p");brand.className="best-product-brand";brand.textContent=p.brand;
+  const name=document.createElement("h3");name.textContent=p.name;
+  const delivery=document.createElement("p");delivery.className="best-product-delivery";delivery.textContent=p.delivery||"배송 예정일은 결제 시 확인";
+  const price=document.createElement("p");price.className="best-product-price";
+  if(p.discount){const discount=document.createElement("span");discount.className="best-product-discount";discount.textContent=p.discount;price.append(discount)}
+  const amount=document.createElement("strong");amount.textContent=p.price;price.append(amount);
+  info.append(brand,name,delivery,price);article.append(media,info);grid.append(article);
+ });
+ requestAnimationFrame(()=>requestAnimationFrame(()=>grid.classList.add("is-revealed")));
+}
 function renderCards(names){
  currentNames=[...names];
  drawCards();
@@ -85,7 +120,7 @@ function showCategory(key,selected=0,minor="전체"){
   minorPanel.classList.add("is-collapsed");minorPanel.setAttribute("aria-hidden","true");
   heading.textContent="전체상품";
   const names=Object.values(examples).flat();
-  renderCards([...new Set(names)].slice(0,20));
+  renderCatalogProducts();
   return;
  }
  const names=Object.keys(categories[key]);
@@ -123,7 +158,7 @@ function showCategory(key,selected=0,minor="전체"){
 sortButtons.forEach(btn=>btn.addEventListener("click",()=>{
  activeSort=btn.dataset.sort;
  sortButtons.forEach(item=>{const selected=item===btn;item.classList.toggle("is-active",selected);item.setAttribute("aria-pressed",String(selected));});
- drawCards();
+ if(document.querySelector(".category-main-tabs button[data-category=all]")?.classList.contains("is-active"))renderCatalogProducts();else drawCards();
 }));
 tabs.forEach(btn=>btn.addEventListener("click",()=>showCategory(btn.dataset.category)));
 grid.addEventListener("click",e=>{const wish=e.target.closest(".best-wish");if(wish){const on=wish.getAttribute("aria-pressed")!=="true";wish.setAttribute("aria-pressed",String(on));wish.classList.toggle("is-selected",on)}});
