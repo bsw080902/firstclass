@@ -112,3 +112,11 @@
 .category-page .category-minor-tabs button.is-active:hover{
  border-color:var(--brand-lime);
 }
+
+/* 중·소분류: 마우스를 올리고 있는 동안 계속 3px 떠 있게 유지 */
+@media(hover:hover) and (pointer:fine){
+ .category-page .category-subtabs button:hover,
+ .category-page .category-subtabs button.is-active:hover,
+ .category-page .category-minor-tabs button:hover,
+ .category-page .category-minor-tabs button.is-active:hover{transform:translateY(-3px)}
+}
