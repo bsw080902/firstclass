@@ -44,11 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const firstExistingCard = dailyCard.nextSibling;
     extraProducts.forEach(product => {
       const card = document.createElement('article');
-      card.className = 'best-product';
+      card.className = 'best-product daily-main-best-card';
       card.innerHTML = `
-        <div class="best-product-media">
+        <div class="best-product-media daily-main-best-image">
           <img src="img/${product.image}" alt="${product.name}" loading="lazy">
-          <div class="best-product-actions">
+          <div class="best-product-actions daily-main-best-actions">
             <button type="button" class="best-wish" aria-pressed="false" aria-label="${product.name} 찜하기">
               <img class="best-wish-default" src="img/Heart_button.svg" alt="">
               <img class="best-wish-selected" src="img/Heart_button_active.svg" alt="">
@@ -58,10 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
             </button>
           </div>
         </div>
-        <div class="best-product-info">
+        <div class="best-product-info daily-main-best-info">
           <p class="best-product-brand">${product.brand}</p>
           <h3>${product.name}</h3>
-          <p class="best-product-delivery">배송 예정일은 결제 시 확인</p>
+          <p class="best-product-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p>
           <p class="best-product-price"><span class="best-product-discount">10%</span><strong>${product.price}</strong></p>
         </div>`;
       allGrid.insertBefore(card, firstExistingCard);
