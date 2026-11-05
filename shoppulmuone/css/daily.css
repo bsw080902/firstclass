@@ -140,3 +140,13 @@
 .benefit-page.daily-page .subscription-section .subscription-choice{min-width:0;min-height:160px;box-sizing:border-box;flex-direction:column;align-items:flex-start;justify-content:center;gap:14px;padding:20px}
 .benefit-page.daily-page .subscription-section .subscription-choice-icon{flex-shrink:0}
 @media(max-width:650px){.benefit-page.daily-page .subscription-section .subscription-choices{grid-template-columns:1fr}.benefit-page.daily-page .subscription-section .subscription-choice{min-height:100px;flex-direction:row;align-items:center;justify-content:flex-start}}
+
+/* 정기구독 주문 형태: 참고 이미지의 텍스트 및 구성 */
+.daily-page .subscription-order-card{padding:24px 24px 0}
+.daily-page .subscription-order-highlight{display:flex;align-items:center;gap:9px;color:#ff6739;font-size:16px}
+.daily-page .subscription-order-highlight span{font-size:23px}
+.daily-page .subscription-order-select-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.daily-page .subscription-order-select{display:block;width:100%;min-height:42px;border:1px solid #ccc;border-radius:9px;padding:0 14px;background:#fff;color:#6aaa36;font:inherit;font-size:13px}
+.daily-page .subscription-order-card ul{margin:18px 0 24px;padding-left:16px;line-height:1.65}
+.daily-page .subscription-order-footer{margin:0 -24px;padding:24px;border-top:1px solid var(--border-default)}
+.daily-page .subscription-order-submit{width:100%;min-height:48px;border:0;border-radius:9px;background:#e3e3e3;color:#fff;font:inherit;font-size:14px;font-weight:700;cursor:not-allowed}
