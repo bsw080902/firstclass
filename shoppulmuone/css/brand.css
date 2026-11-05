@@ -36,3 +36,8 @@
 .brand-page .brand-tabs-shell{overflow:visible}
 .brand-page .brand-tabs{display:flex;flex-wrap:wrap;overflow:visible;width:100%;gap:12px;scroll-behavior:auto}
 .brand-page .brand-tab{flex:0 0 auto}
+
+/* 브랜드 탭: 한 줄 고정, 넘치는 항목은 가로 스크롤 */
+.brand-page .brand-tabs-shell{min-width:0;max-width:100%;overflow:hidden}
+.brand-page .brand-tabs{display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;max-width:100%;width:100%;gap:12px;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.brand-page .brand-tab{flex:0 0 auto;white-space:nowrap}
