@@ -86,7 +86,7 @@ function renderCatalogProducts(productsSource=catalogProducts){
   const info=document.createElement("div");info.className="best-product-info";
   const brand=document.createElement("p");brand.className="best-product-brand";brand.textContent=p.brand;
   const name=document.createElement("h3");name.textContent=p.name;
-  const delivery=document.createElement("p");delivery.className="best-product-delivery";delivery.textContent=p.delivery||"배송 예정일은 결제 시 확인";
+  const delivery=document.createElement("p");delivery.className="best-product-delivery";const deliveryText=p.delivery||"배송 예정일은 결제 시 확인";const dateMatch=deliveryText.match(/^(지금 결제 시\s*)(\d{1,2}-\d{1,2}\s*\([^)]+\))(.*)$/);if(dateMatch){delivery.append(document.createTextNode(dateMatch[1]));const date=document.createElement("strong");date.textContent=dateMatch[2];delivery.append(date,document.createTextNode(dateMatch[3]));}else{delivery.textContent=deliveryText;}
   const price=document.createElement("p");price.className="best-product-price";
   if(p.discount){const discount=document.createElement("span");discount.className="best-product-discount";discount.textContent=p.discount;price.append(discount)}
   const amount=document.createElement("strong");amount.textContent=p.price;price.append(amount);
