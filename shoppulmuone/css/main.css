@@ -2158,3 +2158,8 @@ body {
 .brand-product .recommend-price{margin:24px 0 6px;text-align:right;font-size:16px;line-height:normal;font-weight:400}
 .brand-product .recommend-price em{color:#f04452;font-size:16px;font-weight:700;margin-right:5px;font-style:normal}
 .brand-product .recommend-price strong{font-size:16px;font-weight:700;color:inherit}
+
+/* BEST 가격 텍스트만 통일 */
+.best-card .best-price{font-size:16px;font-weight:400}
+.best-card .best-price span{font-size:16px;font-weight:700;color:#f04452}
+.best-card .best-price strong{font-size:16px;font-weight:700}
