@@ -159,4 +159,4 @@
 
 /* 메인 추천상품과 동일한 배송 안내 색상 */
 .category-page .best-product-delivery{color:#858585}
-.category-page .best-product-delivery strong{color:var(--brand-green);font-weight:600}
+.category-page .best-product-delivery strong{color:var(--brand-lime);font-weight:600}
