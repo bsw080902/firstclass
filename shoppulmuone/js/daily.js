@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const intro = document.getElementById('daily');
   const links = document.querySelectorAll('.daily-tabs a, .daily-panel a');
   document.querySelectorAll('.daily-product-grid').forEach(grid => {
-    grid.querySelectorAll('.best-product').forEach((card, index) => card.style.setProperty('--daily-card-index', index));
+    grid.querySelectorAll('.best-product').forEach((card, index) => card.style.setProperty('--best-card-index', index));
   });
   function activate(id) {
     const valid = ids.includes(id);
