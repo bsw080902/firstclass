@@ -67,7 +67,7 @@ let activeSort="popular";
 let currentNames=[];
 const sortButtons=document.querySelectorAll(".category-sort button");
 const beverageProducts=catalogProducts.filter(p=>["Best1.png","Best2.png","Best5.png"].includes(p.image));
-const sideDishProducts=catalogProducts.filter(p=>p.image==="Best3.png");
+const sideDishProducts=catalogProducts.filter(p=>["Best3.png","new_item4.jpg"].includes(p.image));
 const seafoodProducts=catalogProducts.filter(p=>p.image==="new_item3.jpg");
 const noodleProducts=catalogProducts.filter(p=>p.image==="new_item2.jpg");
 const fruitProducts=catalogProducts.filter(p=>p.image==="new_item5.jpg");
