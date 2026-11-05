@@ -1,7 +1,9 @@
 /* 일일배달 페이지: 기존 혜택 페이지의 디자인 시스템 재사용 */
 .daily-page .daily-tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
 .daily-page .daily-tabs a{min-height:56px;padding:16px 12px;text-align:center;line-height:normal}
-@media(max-width:1000px){.daily-page .daily-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:767px){.daily-page .daily-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 @media(max-width:767px){.daily-page .daily-tabs a{min-height:46px;padding:16px 12px}}
+
+/* 다섯 버튼을 화면 크기와 관계없이 한 줄로 유지 */
+.daily-page .daily-tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media(max-width:767px){.daily-page .daily-tabs{gap:6px}.daily-page .daily-tabs a{padding:12px 4px;font-size:12px;overflow-wrap:anywhere}}
