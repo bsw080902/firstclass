@@ -6,10 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const links = document.querySelectorAll('.daily-tabs a, .daily-panel a');
   function activate(id) {
     const valid = ids.includes(id);
+    const all = !valid;
     sections.forEach(section => { section.hidden = valid && section.id !== id; });
-    if (intro) intro.hidden = valid;
+    if (intro) intro.hidden = true;
     links.forEach(link => {
-      const selected = valid && link.hash === '#' + id;
+      const selected = link.hash === '#' + (all ? 'all' : id);
       link.classList.toggle('is-active', selected);
       if (selected) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   links.forEach(link => link.addEventListener('click', event => {
     const id = link.hash.slice(1);
-    if (!ids.includes(id)) return;
+    if (id !== 'all' && !ids.includes(id)) return;
     event.preventDefault();
     if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
     activate(id);
