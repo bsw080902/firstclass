@@ -2163,3 +2163,6 @@ body {
 .best-card .best-price{font-size:16px;font-weight:400}
 .best-card .best-price span{font-size:16px;font-weight:700;color:#f04452}
 .best-card .best-price strong{font-size:16px;font-weight:700}
+
+/* 일일배달 혜택 버튼: 위아래 여백 각각 2px 증가 */
+.daily-content .daily-benefits span{padding-top:2px;padding-bottom:2px;min-height:43px}
