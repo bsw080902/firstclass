@@ -4,6 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = ids.map(id => document.getElementById(id));
   const intro = document.getElementById('daily');
   const links = document.querySelectorAll('.daily-tabs a, .daily-panel a');
+  // 전체 탭: 카테고리별 제목 없이 모든 상품을 하나의 그리드에 나열
+  if (intro) {
+    const allGrid = document.createElement('div');
+    allGrid.className = 'best-product-grid daily-product-grid';
+    sections.filter(section => section && section.id !== 'subscription').forEach(section => {
+      section.querySelectorAll('.best-product').forEach(card => allGrid.appendChild(card.cloneNode(true)));
+    });
+    intro.querySelector('.benefit-placeholder')?.remove();
+    intro.appendChild(allGrid);
+  }
   document.querySelectorAll('.daily-product-grid').forEach(grid => {
     grid.querySelectorAll('.best-product').forEach((card, index) => card.style.setProperty('--best-card-index', index));
   });
@@ -14,14 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
       section.classList.remove('daily-enter');
       if (!section) return;
       // '전체'는 상품 카테고리만 모아 보여주며 서비스 안내는 제외합니다.
-      section.hidden = all ? section.id === 'subscription' : section.id !== id;
+      section.hidden = all || section.id !== id;
       if (!section.hidden) {
         // 같은 탭을 다시 눌러도 애니메이션이 재생되도록 초기화합니다.
         void section.offsetWidth;
         section.classList.add('daily-enter');
       }
     });
-    if (intro) intro.hidden = true;
+    if (intro) intro.hidden = !all;
     links.forEach(link => {
       const selected = link.hash === '#' + (all ? 'all' : id);
       link.classList.toggle('is-active', selected);
