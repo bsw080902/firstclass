@@ -120,3 +120,7 @@
 /* 베스트 페이지와 동일한 카드 등장 애니메이션 */
 .benefit-page.daily-page .daily-enter .best-product{animation:best-card-enter .42s ease-out both;animation-delay:calc(var(--best-card-index,0) * 55ms)}
 @media(prefers-reduced-motion:reduce){.benefit-page.daily-page .daily-enter .best-product{animation:none}}
+
+/* 전체 탭: 카테고리 제목 없이 상품 카드만 연속 배치 */
+.benefit-page.daily-page #daily>.benefit-section-head{display:none}
+.benefit-page.daily-page #daily>.daily-product-grid{margin-top:0}
