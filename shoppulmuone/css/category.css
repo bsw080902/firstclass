@@ -148,3 +148,11 @@
   border-color:var(--brand-lime);
  }
 }
+
+/* 선택된 중·소분류 탭은 호버해도 추가 Stroke를 표시하지 않음 */
+@media(hover:hover) and (pointer:fine){
+ .category-page .category-subtabs button.is-active:hover,
+ .category-page .category-minor-tabs button.is-active:hover{
+  border-color:var(--brand-lime);
+ }
+}
