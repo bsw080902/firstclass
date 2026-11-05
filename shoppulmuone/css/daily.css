@@ -192,3 +192,13 @@
 .benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-product-price{font-size:17px;font-weight:400;line-height:normal;text-align:right;margin:24px 0 0;display:flex;align-items:baseline;justify-content:flex-end;gap:0}
 .benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-product-price .best-product-discount{color:#f04452;font-size:17px;font-weight:400;margin-right:6px}
 .benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-product-price strong{font-size:17px;font-weight:700;color:#222}
+
+/* 일일배달 추가 4종: 메인 신상품 카드(순고구마칩) 타이포그래피 기준 */
+.benefit-page.daily-page .daily-product-grid .daily-main-best-info{padding-top:0}
+.benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-product-brand{margin:7px 0 4px;color:#888;font-size:11px;font-weight:400}
+.benefit-page.daily-page .daily-product-grid .daily-main-best-info h3{margin:0;font-size:15px;font-weight:650;line-height:1.25}
+.benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-product-delivery{margin:10px 0 0;color:#777;font-size:11px}
+.benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-product-delivery strong{color:#80c441;font-weight:700}
+.benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-price{margin:24px 0 6px;text-align:right;font-size:16px;line-height:normal;font-weight:400}
+.benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-price span{color:#f04452;font-size:16px;font-weight:700;margin-right:5px}
+.benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-price strong{font-size:16px;font-weight:700;color:inherit}
