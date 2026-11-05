@@ -2150,12 +2150,11 @@ body {
 /* 메인 일일배달 혜택 라벨 너비 통일 */
 .daily-content .daily-benefits span{box-sizing:border-box;width:180px}
 
-/* 메인 BEST / BRAND 상품 카드: 일일배달과 통일한 타이포그래피 */
-.best-card .best-info{padding-top:0}
-.best-card .best-brand,.brand-product .recommend-brand{margin:7px 0 4px;color:#888;font-size:11px;font-weight:400}
-.best-card .best-info h3,.brand-product .recommend-name{margin:0;font-size:15px;font-weight:650;line-height:1.25}
-.best-card .best-delivery,.brand-product .recommend-delivery{margin:10px 0 0;color:#777;font-size:11px;font-weight:400}
-.best-card .best-delivery strong,.brand-product .recommend-delivery strong{color:#80c441;font-weight:700}
-.best-card .best-price,.brand-product .recommend-price{margin:24px 0 6px;text-align:right;font-size:16px;line-height:normal;font-weight:400}
-.best-card .best-price span,.brand-product .recommend-price em{color:#f04452;font-size:16px;font-weight:700;margin-right:5px;font-style:normal}
-.best-card .best-price strong,.brand-product .recommend-price strong{font-size:16px;font-weight:700;color:inherit}
+/* BRAND 카드 타이포그래피 유지 */
+.brand-product .recommend-brand{margin:7px 0 4px;color:#888;font-size:11px;font-weight:400}
+.brand-product .recommend-name{margin:0;font-size:15px;font-weight:650;line-height:1.25}
+.brand-product .recommend-delivery{margin:10px 0 0;color:#777;font-size:11px;font-weight:400}
+.brand-product .recommend-delivery strong{color:#80c441;font-weight:700}
+.brand-product .recommend-price{margin:24px 0 6px;text-align:right;font-size:16px;line-height:normal;font-weight:400}
+.brand-product .recommend-price em{color:#f04452;font-size:16px;font-weight:700;margin-right:5px;font-style:normal}
+.brand-product .recommend-price strong{font-size:16px;font-weight:700;color:inherit}
