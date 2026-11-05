@@ -2134,3 +2134,9 @@ body {
 .daily-content .daily-benefits span{display:inline-flex;align-items:center;padding:8px 13px;border-radius:7px;background:#70c80d;color:#fff;font-size:14px;font-weight:700;line-height:1.2;white-space:nowrap}
 .daily-content .daily-benefits+.daily-cta{margin-top:36px}
 @media(max-width:767px){.daily-content .daily-benefits{gap:7px}.daily-content .daily-benefits span{font-size:12px;padding:7px 9px}.daily-content .daily-benefits+.daily-cta{margin-top:24px}}
+
+/* Figma 기준 일일배달 혜택 칩: 흰 배경, 라임 테두리, Inter Medium 14px */
+.daily-content .daily-benefits{gap:10px;margin-top:32px}
+.daily-content .daily-benefits span{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;min-height:39px;padding:0 16px;border:1px solid #80c342;border-radius:999px;background:#fff;color:#80c342;font-family:Inter, Pretendard, sans-serif;font-size:14px;font-weight:500;line-height:normal;letter-spacing:0;white-space:nowrap}
+.daily-content .daily-benefits+.daily-cta{margin-top:28px}
+@media(max-width:767px){.daily-content .daily-benefits{gap:8px;margin-top:24px}.daily-content .daily-benefits span{min-height:39px;padding:0 12px;font-size:14px}}
