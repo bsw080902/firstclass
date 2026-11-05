@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <p class="best-product-brand">${product.brand}</p>
           <h3>${product.name}</h3>
           <p class="best-product-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p>
-          <p class="best-product-price"><span class="best-product-discount">10%</span><strong>${product.price}</strong></p>
+          <p class="best-price"><span>10%</span> <strong>${product.price}</strong></p>
         </div>`;
       allGrid.insertBefore(card, firstExistingCard);
     });
