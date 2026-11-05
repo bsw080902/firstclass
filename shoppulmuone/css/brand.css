@@ -66,3 +66,10 @@
  .brand-page .brand-ad,.brand-page .brand-product-image{width:100%;height:auto;aspect-ratio:1/1}
  .brand-page .brand-ad img,.brand-page .brand-product-image>img{display:block;width:100%;height:100%;object-fit:cover}
 }
+
+/* 브랜드 탭 선택 시 상품 카드가 순차적으로 부드럽게 등장 */
+.brand-page .brand-catalog.brand-enter>.brand-ad,
+.brand-page .brand-catalog.brand-enter>.brand-product{animation:brand-item-enter .42s ease-out both;animation-delay:calc(var(--brand-item-index,0) * 55ms)}
+.brand-page .brand-empty.brand-enter{animation:brand-item-enter .42s ease-out both}
+@keyframes brand-item-enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.brand-page .brand-catalog.brand-enter>.brand-ad,.brand-page .brand-catalog.brand-enter>.brand-product,.brand-page .brand-empty.brand-enter{animation:none}}
