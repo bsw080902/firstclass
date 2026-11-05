@@ -68,6 +68,7 @@ let currentNames=[];
 const sortButtons=document.querySelectorAll(".category-sort button");
 const beverageProducts=catalogProducts.filter(p=>["Best1.png","Best2.png","Best5.png"].includes(p.image));
 const sideDishProducts=catalogProducts.filter(p=>p.image==="Best3.png");
+const seafoodProducts=catalogProducts.filter(p=>p.image==="new_item3.jpg");
 function renderCatalogProducts(productsSource=catalogProducts){
  currentNames=productsSource.map(p=>p.name);
  grid.classList.remove("is-revealed");grid.replaceChildren();
@@ -155,7 +156,9 @@ function showCategory(key,selected=0,minor="전체"){
  if(hasDetails)requestAnimationFrame(()=>requestAnimationFrame(()=>minorTabs.classList.add("is-revealed")));
  heading.textContent=current==="전체"?middle:current;
  const products=!hasDetails?(examples[middle]||[middle+" 상품"]):current==="전체"?details.flatMap(label=>examples[label]||[label+" 상품"]):examples[current]||[current+" 상품"];
- if(key==="meal" && middle==="반찬 · 김치" && (current==="전체" || current==="반찬")){
+ if(key==="fresh" && middle==="정육 · 수산" && (current==="전체" || current==="수산")){
+  renderCatalogProducts(seafoodProducts);
+ }else if(key==="meal" && middle==="반찬 · 김치" && (current==="전체" || current==="반찬")){
   renderCatalogProducts(sideDishProducts);
  }else if(key==="processed" && middle==="생수 · 음료 · 유제품" && (current==="전체" || current==="음료")){
   renderCatalogProducts(beverageProducts);
@@ -167,6 +170,7 @@ sortButtons.forEach(btn=>btn.addEventListener("click",()=>{
  activeSort=btn.dataset.sort;
  sortButtons.forEach(item=>{const selected=item===btn;item.classList.toggle("is-active",selected);item.setAttribute("aria-pressed",String(selected));});
  if(document.querySelector(".category-main-tabs button[data-category=all]")?.classList.contains("is-active"))renderCatalogProducts();
+ else if(document.querySelector(".category-main-tabs button[data-category=fresh]")?.classList.contains("is-active") && renderedMiddle==="정육 · 수산" && ["전체","수산"].includes(document.querySelector("#category-minor-tabs .is-active")?.textContent))renderCatalogProducts(seafoodProducts);
  else if(document.querySelector(".category-main-tabs button[data-category=meal]")?.classList.contains("is-active") && renderedMiddle==="반찬 · 김치" && ["전체","반찬"].includes(document.querySelector("#category-minor-tabs .is-active")?.textContent))renderCatalogProducts(sideDishProducts);
  else if(document.querySelector(".category-main-tabs button[data-category=processed]")?.classList.contains("is-active") && renderedMiddle==="생수 · 음료 · 유제품" && ["전체","음료"].includes(document.querySelector("#category-minor-tabs .is-active")?.textContent))renderCatalogProducts(beverageProducts);
  else drawCards();
