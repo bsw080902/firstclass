@@ -2112,3 +2112,19 @@ body {
  .category-panel .category-panel-right{left:184px;right:16px;top:30px;bottom:30px}
 }
 
+
+/* Figma 일일배달 드롭다운: 150×280, 상하 30px 여백과 균등한 4개 항목 */
+.header-nav .daily-menu .daily-panel{
+  width:150px;
+  height:280px;
+  padding:30px 10px;
+  box-sizing:border-box;
+  justify-content:space-between;
+  gap:0;
+}
+.header-nav .daily-menu .daily-panel a{
+  flex:0 0 auto;
+  width:100%;
+  line-height:1.45;
+  text-align:center;
+}
