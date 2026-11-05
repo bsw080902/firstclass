@@ -154,3 +154,12 @@
 /* 주문 형태 선택 박스: 열었을 때 참고 이미지처럼 항목 표시 */
 .daily-page .subscription-order-select{appearance:auto;cursor:pointer;color:#78c43b;background-color:#fff}
 .daily-page .subscription-order-select option{color:#555;background:#fff;padding:12px}
+
+/* 02 주문 형태: 참고 이미지의 기존 정기구독 혜택 카드 복원 */
+.daily-page .subscription-order-card{padding:24px}
+.daily-page .subscription-order-highlight{display:block;margin:0 0 18px;color:var(--brand-green);font-size:16px;font-weight:700}
+.daily-page .subscription-order-type{display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--border-default);border-radius:12px}
+.daily-page .subscription-order-type strong{color:var(--brand-green)}
+.daily-page .subscription-order-type span{font-size:13px;color:var(--text-secondary)}
+.daily-page .subscription-order-card ul{margin:20px 0;padding-left:18px;color:var(--text-secondary);font-size:13px;line-height:1.8}
+.daily-page .subscription-order-link{display:block;padding:16px 12px;border-radius:999px;background:var(--brand-lime);color:#fff;text-align:center;font-size:14px;font-weight:700;text-decoration:none}
