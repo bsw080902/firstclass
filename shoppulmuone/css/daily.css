@@ -150,3 +150,7 @@
 .daily-page .subscription-order-card ul{margin:18px 0 24px;padding-left:16px;line-height:1.65}
 .daily-page .subscription-order-footer{margin:0 -24px;padding:24px;border-top:1px solid var(--border-default)}
 .daily-page .subscription-order-submit{width:100%;min-height:48px;border:0;border-radius:9px;background:#e3e3e3;color:#fff;font:inherit;font-size:14px;font-weight:700;cursor:not-allowed}
+
+/* 주문 형태 선택 박스: 열었을 때 참고 이미지처럼 항목 표시 */
+.daily-page .subscription-order-select{appearance:auto;cursor:pointer;color:#78c43b;background-color:#fff}
+.daily-page .subscription-order-select option{color:#555;background:#fff;padding:12px}
