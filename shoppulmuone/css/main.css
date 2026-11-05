@@ -2146,3 +2146,6 @@ body {
 .daily-section .daily-banner:hover,.daily-section .daily-banner:focus-visible{transform:translateY(-8px);box-shadow:0 12px 26px rgba(33,80,46,.12)}
 .daily-section .daily-banner:focus-visible{outline:2px solid var(--brand-green);outline-offset:4px}
 @media(prefers-reduced-motion:reduce){.daily-section .daily-banner{transition:none}.daily-section .daily-banner:hover,.daily-section .daily-banner:focus-visible{transform:none}}
+
+/* 메인 일일배달 혜택 라벨 너비 통일 */
+.daily-content .daily-benefits span{box-sizing:border-box;width:180px}
