@@ -13,3 +13,21 @@
 @media(max-width:1100px){.brand-page .brand-heading{flex-basis:260px}.brand-page .brand-catalog{grid-template-columns:repeat(3,minmax(0,1fr))}.brand-page .brand-ad{grid-column:span 2}}
 @media(max-width:767px){.brand-page .brand-section{padding:30px 16px 70px}.brand-page .brand-top{gap:18px}.brand-page .brand-catalog{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}.brand-page .brand-ad{grid-column:span 2;max-width:100%;aspect-ratio:2/1}.brand-page .brand-product .recommend-name{font-size:13px}.brand-page .brand-product .recommend-price{margin-top:16px}}
 @media(prefers-reduced-motion:reduce){.brand-page .brand-tab{transition:none}}
+
+/* 베스트 페이지와 같은 상단 구조: 경로 / 소개 / 브랜드 탭 */
+.brand-page .brand-breadcrumb{background:#fff}
+.brand-page .brand-breadcrumb-inner{max-width:1496px;margin:auto;padding:26px 0;display:flex;gap:12px;align-items:center;color:var(--text-secondary);font-size:13px}
+.brand-page .brand-breadcrumb a{color:inherit;text-decoration:none}
+.brand-page .brand-section{padding:0 24px 100px}
+.brand-page .brand-top{display:block;position:relative;isolation:isolate;margin-bottom:40px;padding:34px 0 36px}
+.brand-page .brand-top::before{content:"";position:absolute;z-index:-1;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:var(--bg-surface)}
+.brand-page .brand-heading{margin-bottom:44px}
+.brand-page .brand-heading h1{font-size:36px}
+.brand-page .brand-heading .brand-description{margin:12px 0 0;color:var(--text-secondary);font-size:16px;font-weight:400}
+.brand-page .brand-tabs-shell{width:100%}
+.brand-page .brand-tabs{gap:12px}
+.brand-page .brand-tab{padding:16px 24px;min-height:54px}
+/* 첫 브랜드 이미지는 카드 1칸 크기로 축소 */
+.brand-page .brand-ad{grid-column:span 1;width:100%;aspect-ratio:1/1}
+@media(max-width:1100px){.brand-page .brand-ad{grid-column:span 1}.brand-page .brand-breadcrumb-inner{padding-left:16px;padding-right:16px}}
+@media(max-width:767px){.brand-page .brand-top{padding:28px 0}.brand-page .brand-heading{margin-bottom:28px}.brand-page .brand-heading h1{font-size:28px}.brand-page .brand-heading .brand-description{font-size:14px}.brand-page .brand-ad{grid-column:span 1;aspect-ratio:1/1}.brand-page .brand-tab{min-height:46px;padding:12px 18px}}
