@@ -54,3 +54,12 @@
 .daily-page .subscription-banner img{flex:0 1 53%;width:53%;max-width:53%;max-height:280px;height:auto;object-fit:contain}
 @media(max-width:1000px){.daily-page .subscription-banner{aspect-ratio:auto;min-height:300px;padding:30px}.daily-page .subscription-banner img{width:50%;max-width:50%}.daily-page .subscription-banner-benefits{margin-top:20px}}
 @media(max-width:650px){.daily-page .subscription-banner{flex-direction:column;align-items:flex-start;min-height:0;padding:28px 22px;gap:22px;border-radius:18px}.daily-page .subscription-banner-content{width:100%;flex:auto}.daily-page .subscription-banner-content h3{font-size:27px}.daily-page .subscription-banner img{align-self:center;flex:auto;width:100%;max-width:100%;max-height:220px}.daily-page .subscription-banner-benefits span{font-size:12px;min-height:35px;padding:0 11px}}
+
+/* 정기구독: 배너를 콘텐츠 전체 너비로 확장하고 텍스트/혜택이 잘리지 않도록 높이 확보 */
+.daily-page .subscription-section{display:block;width:100%;max-width:none}
+.daily-page .subscription-banner{box-sizing:border-box;width:100%;max-width:none;aspect-ratio:auto;min-height:360px;height:auto;padding:48px clamp(28px,6%,90px);overflow:visible}
+.daily-page .subscription-banner-content{flex:1 1 44%;min-width:0}
+.daily-page .subscription-banner img{flex:0 1 52%;width:52%;max-width:52%;max-height:310px}
+.daily-page .subscription-notice{width:100%;box-sizing:border-box;margin-top:28px}
+@media(max-width:1000px){.daily-page .subscription-banner{min-height:340px;padding:36px}.daily-page .subscription-banner img{max-height:270px}}
+@media(max-width:650px){.daily-page .subscription-banner{min-height:0;padding:28px 22px}.daily-page .subscription-banner img{width:100%;max-width:100%;max-height:220px}}
