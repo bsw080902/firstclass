@@ -6,3 +6,14 @@
 /* 사이드 메뉴 제거 후 쇼핑 정보 콘텐츠 전체 너비 사용 */
 .my-page .my-layout{display:block}
 .my-page .my-main{width:100%;min-width:0}
+
+/* 베스트 페이지 스타일의 마이 쇼핑 상단 및 6개 가로 탭 */
+.my-page .my-shopping-title{margin-bottom:0;padding-bottom:48px}
+.my-page .my-shortcuts{position:relative;isolation:isolate;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin:0;padding:0 0 36px}
+.my-page .my-shortcuts::before{content:"";position:absolute;z-index:-1;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:var(--bg-surface)}
+.my-page .my-shortcuts a{display:flex;align-items:center;justify-content:center;text-align:center;min-width:0;min-height:58px;border:1px solid var(--border-default);border-radius:999px;padding:12px 10px;background:var(--bg-default);color:var(--text-secondary);font-size:15px;font-weight:600;transition:background .25s,color .25s,transform .25s,border-color .25s}
+.my-page .my-shortcuts a:hover,.my-page .my-shortcuts a:focus-visible{transform:translateY(-3px);border-color:var(--brand-lime)}
+.my-page .my-shortcuts a.is-active{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
+.my-page .my-layout{padding-top:48px}
+@media(max-width:900px){.my-page .my-shortcuts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:540px){.my-page .my-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.my-page .my-shortcuts a{min-height:48px;font-size:13px;padding:10px 8px}.my-page .my-shopping-title{padding-bottom:32px}}
