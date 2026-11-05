@@ -140,3 +140,11 @@
   transform:translateY(-3px);background:var(--brand-lime);border-color:var(--brand-green);color:#fff;
  }
 }
+
+/* 선택된 중·소분류 버튼에는 호버 Stroke를 추가하지 않음 */
+@media(hover:hover) and (pointer:fine){
+ .category-page .category-subtabs button.is-active:hover,
+ .category-page .category-minor-tabs button.is-active:hover{
+  border-color:var(--brand-lime);
+ }
+}
