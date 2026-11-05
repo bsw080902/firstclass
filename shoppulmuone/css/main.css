@@ -396,7 +396,7 @@ body {
 .recommend-brand { margin: 0 0 3px; color: #858585; font-size: 13px; }
 .recommend-name { margin: 0; color: var(--text-primary); font-size: 16px; line-height: 1.4; font-weight: 600; }
 .recommend-delivery { margin: 9px 0 0; color: #858585; font-size: 12px; }
-.recommend-delivery strong { color: var(--brand-green); font-weight: 600; }
+.recommend-delivery strong { color: var(--brand-lime); font-weight: 600; }
 .recommend-price { display: flex; justify-content: flex-end; align-items: baseline; gap: 8px; margin: 26px 0 0; font-size: 18px; }
 .recommend-price strong { font-weight: 700; }
 .recommend-discount { color: #f04452; font-weight: 600; }
