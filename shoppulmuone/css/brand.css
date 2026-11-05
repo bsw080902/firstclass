@@ -36,3 +36,10 @@
 .brand-page .brand-tabs-shell{overflow:visible}
 .brand-page .brand-tabs{display:flex;flex-wrap:wrap;overflow:visible;width:100%;gap:12px;scroll-behavior:auto}
 .brand-page .brand-tab{flex:0 0 auto}
+
+/* 브랜드 대표 이미지 한 장만 PC에서 400 × 400px */
+@media(min-width:1200px){
+ .brand-page .brand-catalog{grid-template-columns:400px repeat(4,minmax(0,1fr))}
+ .brand-page .brand-ad{width:400px;height:400px;aspect-ratio:auto;grid-column:1}
+ .brand-page .brand-ad img{display:block;width:100%;height:100%;object-fit:cover}
+}
