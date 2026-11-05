@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { image: 'Best2.png', brand: '풀무원', name: '100% 당근즙 (130ml)', price: '4,950원' },
       { image: 'Best3.png', brand: '풀무원', name: '시그니처 밸런스 식단 (1일1식)', price: '8,280원' }
     ];
+    const firstExistingCard = dailyCard.nextSibling;
     extraProducts.forEach(product => {
       const card = document.createElement('article');
       card.className = 'best-product';
@@ -63,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <p class="best-product-delivery">배송 예정일은 결제 시 확인</p>
           <p class="best-product-price"><span class="best-product-discount">10%</span><strong>${product.price}</strong></p>
         </div>`;
-      allGrid.appendChild(card);
+      allGrid.insertBefore(card, firstExistingCard);
     });
 
     intro.querySelector('.benefit-placeholder')?.remove();
