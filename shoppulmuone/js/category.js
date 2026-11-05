@@ -66,10 +66,11 @@ function makeButton(label,active,onClick){
 let activeSort="popular";
 let currentNames=[];
 const sortButtons=document.querySelectorAll(".category-sort button");
-function renderCatalogProducts(){
- currentNames=catalogProducts.map(p=>p.name);
+const beverageProducts=catalogProducts.filter(p=>["Best1.png","Best2.png","Best5.png"].includes(p.image));
+function renderCatalogProducts(productsSource=catalogProducts){
+ currentNames=productsSource.map(p=>p.name);
  grid.classList.remove("is-revealed");grid.replaceChildren();
- const products=activeSort==="new"?[...catalogProducts].reverse():catalogProducts;
+ const products=activeSort==="new"?[...productsSource].reverse():productsSource;
  products.forEach((p,i)=>{
   const article=document.createElement("article");article.className="best-product";article.style.setProperty("--best-card-index",i);
   const media=document.createElement("div");media.className="best-product-media";
@@ -153,12 +154,18 @@ function showCategory(key,selected=0,minor="전체"){
  if(hasDetails)requestAnimationFrame(()=>requestAnimationFrame(()=>minorTabs.classList.add("is-revealed")));
  heading.textContent=current==="전체"?middle:current;
  const products=!hasDetails?(examples[middle]||[middle+" 상품"]):current==="전체"?details.flatMap(label=>examples[label]||[label+" 상품"]):examples[current]||[current+" 상품"];
- renderCards([...new Set(products)].slice(0,10));
+ if(key==="processed" && middle==="생수 · 음료 · 유제품" && (current==="전체" || current==="음료")){
+  renderCatalogProducts(beverageProducts);
+ }else{
+  renderCards([...new Set(products)].slice(0,10));
+ }
 }
 sortButtons.forEach(btn=>btn.addEventListener("click",()=>{
  activeSort=btn.dataset.sort;
  sortButtons.forEach(item=>{const selected=item===btn;item.classList.toggle("is-active",selected);item.setAttribute("aria-pressed",String(selected));});
- if(document.querySelector(".category-main-tabs button[data-category=all]")?.classList.contains("is-active"))renderCatalogProducts();else drawCards();
+ if(document.querySelector(".category-main-tabs button[data-category=all]")?.classList.contains("is-active"))renderCatalogProducts();
+ else if(document.querySelector(".category-main-tabs button[data-category=processed]")?.classList.contains("is-active") && renderedMiddle==="생수 · 음료 · 유제품" && ["전체","음료"].includes(document.querySelector("#category-minor-tabs .is-active")?.textContent))renderCatalogProducts(beverageProducts);
+ else drawCards();
 }));
 tabs.forEach(btn=>btn.addEventListener("click",()=>showCategory(btn.dataset.category)));
 grid.addEventListener("click",e=>{const wish=e.target.closest(".best-wish");if(wish){const on=wish.getAttribute("aria-pressed")!=="true";wish.setAttribute("aria-pressed",String(on));wish.classList.toggle("is-selected",on)}});
