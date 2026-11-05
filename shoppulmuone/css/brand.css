@@ -31,3 +31,8 @@
 .brand-page .brand-ad{grid-column:span 1;width:100%;aspect-ratio:1/1}
 @media(max-width:1100px){.brand-page .brand-ad{grid-column:span 1}.brand-page .brand-breadcrumb-inner{padding-left:16px;padding-right:16px}}
 @media(max-width:767px){.brand-page .brand-top{padding:28px 0}.brand-page .brand-heading{margin-bottom:28px}.brand-page .brand-heading h1{font-size:28px}.brand-page .brand-heading .brand-description{font-size:14px}.brand-page .brand-ad{grid-column:span 1;aspect-ratio:1/1}.brand-page .brand-tab{min-height:46px;padding:12px 18px}}
+
+/* 모든 브랜드 탭이 잘리지 않도록 줄바꿈 표시 */
+.brand-page .brand-tabs-shell{overflow:visible}
+.brand-page .brand-tabs{display:flex;flex-wrap:wrap;overflow:visible;width:100%;gap:12px;scroll-behavior:auto}
+.brand-page .brand-tab{flex:0 0 auto}
