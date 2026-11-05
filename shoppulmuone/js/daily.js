@@ -34,6 +34,38 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="best-product-price"><strong>2,300원</strong></p>
       </div>`;
     allGrid.prepend(dailyCard);
+    // 베스트 상품 4종을 일일배달 전체 목록에 추가 (기존 상품 카드 스타일 유지)
+    const extraProducts = [
+      { image: 'Best5.png', brand: '풀무원녹즙', name: '채소습관 양배추&브로콜리 (130ml)', price: '4,950원' },
+      { image: 'Best1.png', brand: '풀무원', name: '채소습관 케일&사과 (130ml)', price: '4,950원' },
+      { image: 'Best2.png', brand: '풀무원', name: '100% 당근즙 (130ml)', price: '4,950원' },
+      { image: 'Best3.png', brand: '풀무원', name: '시그니처 밸런스 식단 (1일1식)', price: '8,280원' }
+    ];
+    extraProducts.forEach(product => {
+      const card = document.createElement('article');
+      card.className = 'best-product';
+      card.innerHTML = `
+        <div class="best-product-media">
+          <img src="img/${product.image}" alt="${product.name}" loading="lazy">
+          <div class="best-product-actions">
+            <button type="button" class="best-wish" aria-pressed="false" aria-label="${product.name} 찜하기">
+              <img class="best-wish-default" src="img/Heart_button.svg" alt="">
+              <img class="best-wish-selected" src="img/Heart_button_active.svg" alt="">
+            </button>
+            <button type="button" class="best-cart" aria-label="${product.name} 장바구니 담기">
+              <img src="img/Cart_button.svg" alt="">
+            </button>
+          </div>
+        </div>
+        <div class="best-product-info">
+          <p class="best-product-brand">${product.brand}</p>
+          <h3>${product.name}</h3>
+          <p class="best-product-delivery">배송 예정일은 결제 시 확인</p>
+          <p class="best-product-price"><span class="best-product-discount">10%</span><strong>${product.price}</strong></p>
+        </div>`;
+      allGrid.appendChild(card);
+    });
+
     intro.querySelector('.benefit-placeholder')?.remove();
     intro.appendChild(allGrid);
   }
