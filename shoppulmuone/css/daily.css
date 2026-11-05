@@ -202,3 +202,16 @@
 .benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-price{margin:24px 0 6px;text-align:right;font-size:16px;line-height:normal;font-weight:400}
 .benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-price span{color:#f04452;font-size:16px;font-weight:700;margin-right:5px}
 .benefit-page.daily-page .daily-product-grid .daily-main-best-info .best-price strong{font-size:16px;font-weight:700;color:inherit}
+
+/* 일일배달 모든 상품 카드: 메인 신상품 카드와 동일한 텍스트 규격 */
+.benefit-page.daily-page .daily-product-grid .best-product-info{padding-top:0}
+.benefit-page.daily-page .daily-product-grid .best-product-brand{margin:7px 0 4px;color:#888;font-size:11px;font-weight:400}
+.benefit-page.daily-page .daily-product-grid .best-product-info h3{margin:0;font-size:15px;font-weight:650;line-height:1.25}
+.benefit-page.daily-page .daily-product-grid .best-product-delivery{margin:10px 0 0;color:#777;font-size:11px;font-weight:400}
+.benefit-page.daily-page .daily-product-grid .best-product-delivery strong{color:#80c441;font-weight:700}
+.benefit-page.daily-page .daily-product-grid .best-product-price,
+.benefit-page.daily-page .daily-product-grid .best-price{margin:24px 0 6px;text-align:right;font-size:16px;line-height:normal;font-weight:400;justify-content:flex-end}
+.benefit-page.daily-page .daily-product-grid .best-product-price .best-product-discount,
+.benefit-page.daily-page .daily-product-grid .best-price span{color:#f04452;font-size:16px;font-weight:700;margin-right:5px}
+.benefit-page.daily-page .daily-product-grid .best-product-price strong,
+.benefit-page.daily-page .daily-product-grid .best-price strong{font-size:16px;font-weight:700;color:inherit}
