@@ -23,3 +23,7 @@
 .my-page .my-shortcuts a:hover,.my-page .my-shortcuts a:focus-visible{transform:translateY(-3px);filter:brightness(.98)}
 .my-page .my-shortcuts a.is-active:hover,.my-page .my-shortcuts a.is-active:focus-visible{color:#fff}
 .my-page .my-shortcuts a:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
+
+/* 마이페이지 탭: 호버 시 테두리 없이 연두색 배경만 채우기 */
+.my-page .my-shortcuts a:hover,.my-page .my-shortcuts a:focus-visible{background:var(--brand-lime);border-color:transparent;color:#fff;filter:none;outline:none}
+.my-page .my-shortcuts a.is-active:hover,.my-page .my-shortcuts a.is-active:focus-visible{background:var(--brand-lime);border-color:transparent;color:#fff}
