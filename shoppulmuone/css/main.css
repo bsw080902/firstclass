@@ -547,7 +547,7 @@ body {
 
 /* BEST: 가운데 활성 상품만 300px에서 330px로 확대 */
 .best-section { background: #f5f8f3; padding: 72px 24px 64px; }
-.best-inner { max-width: 1610px; margin: 0 auto; }
+.best-inner { max-width: 1612px; margin: 0 auto; }
 .best-heading { margin-bottom: 12px; }
 .best-heading p { margin: 0 0 8px; color: #009333; font-size: 14px; font-weight: 700; }
 .best-heading h2 { margin: 0; font-size: 26px; font-weight: 700; }
