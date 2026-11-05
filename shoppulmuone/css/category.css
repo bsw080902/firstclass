@@ -221,3 +221,12 @@
  .category-page .category-minor-tabs{gap:4px}
  .category-page .category-minor-tabs button{font-size:12px;padding:9px 12px}
 }
+
+/* 하위 카테고리 버튼 크기 소폭 확대 */
+.category-page .category-subtabs button{font-size:14px;padding:13px 22px}
+.category-page .category-minor-tabs button{font-size:14px;padding:13px 24px}
+.category-page .category-minor-panel{padding:6px}
+@media(max-width:767px){
+ .category-page .category-subtabs button{font-size:13px;padding:11px 15px}
+ .category-page .category-minor-tabs button{font-size:13px;padding:11px 16px}
+}
