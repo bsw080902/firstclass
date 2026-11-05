@@ -120,3 +120,23 @@
  .category-page .category-minor-tabs button:hover,
  .category-page .category-minor-tabs button.is-active:hover{transform:translateY(-3px)}
 }
+
+/* 최종: 상단 카테고리 버튼과 같은 연두색 Fill/부드러운 호버 + 초록 Stroke */
+.category-page .category-subtabs button,
+.category-page .category-minor-tabs button{
+ transition:transform .25s ease,background-color .25s ease,border-color .25s ease,color .25s ease;
+}
+.category-page .category-subtabs button.is-active,
+.category-page .category-minor-tabs button.is-active{
+ background:var(--brand-lime);border-color:var(--brand-lime);color:#fff;
+}
+.category-page .category-subtabs button:focus:not(:hover),
+.category-page .category-minor-tabs button:focus:not(:hover){transform:none}
+@media(hover:hover) and (pointer:fine){
+ .category-page .category-subtabs button:hover,
+ .category-page .category-subtabs button.is-active:hover,
+ .category-page .category-minor-tabs button:hover,
+ .category-page .category-minor-tabs button.is-active:hover{
+  transform:translateY(-3px);background:var(--brand-lime);border-color:var(--brand-green);color:#fff;
+ }
+}
