@@ -17,3 +17,9 @@
 .my-page .my-layout{padding-top:48px}
 @media(max-width:900px){.my-page .my-shortcuts{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:540px){.my-page .my-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.my-page .my-shortcuts a{min-height:48px;font-size:13px;padding:10px 8px}.my-page .my-shopping-title{padding-bottom:32px}}
+
+/* 마이페이지 메뉴: 베스트 카테고리 탭과 동일한 호버/포커스 효과 */
+.my-page .my-shortcuts a{transition:transform .25s ease,filter .25s ease,background-color .25s ease,border-color .25s ease,color .25s ease}
+.my-page .my-shortcuts a:hover,.my-page .my-shortcuts a:focus-visible{transform:translateY(-3px);filter:brightness(.98)}
+.my-page .my-shortcuts a.is-active:hover,.my-page .my-shortcuts a.is-active:focus-visible{color:#fff}
+.my-page .my-shortcuts a:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
