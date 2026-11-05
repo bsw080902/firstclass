@@ -83,3 +83,8 @@
 /* 메인 BEST 영역과 동일한 할인율·배송일 표현 */
 .best-page .best-product-price .best-product-discount{color:#f04452;font-weight:600}
 .best-page .best-product-delivery strong{color:#639e3d;font-weight:500}
+
+/* 카테고리 전환 시 BEST 상품 카드가 순서대로 부드럽게 등장 */
+.best-page .best-product{animation:best-card-enter .42s ease-out both;animation-delay:calc(var(--best-card-index,0) * 55ms)}
+@keyframes best-card-enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.best-page .best-product{animation:none}}
