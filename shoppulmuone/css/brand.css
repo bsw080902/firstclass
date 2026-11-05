@@ -58,3 +58,11 @@
  .brand-page .brand-ad,.brand-page .brand-product-image{width:300px;height:300px;aspect-ratio:1/1}
  .brand-page .brand-ad img,.brand-page .brand-product-image>img{width:100%;height:100%;object-fit:cover}
 }
+
+/* PC 브랜드 목록: 대표 이미지 포함 한 줄에 정확히 5개 */
+@media(min-width:1200px){
+ .brand-page .brand-catalog{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));column-gap:20px;row-gap:28px;align-items:start}
+ .brand-page .brand-ad,.brand-page .brand-product{grid-column:auto;grid-row:auto;flex:none;width:100%;max-width:none;min-width:0}
+ .brand-page .brand-ad,.brand-page .brand-product-image{width:100%;height:auto;aspect-ratio:1/1}
+ .brand-page .brand-ad img,.brand-page .brand-product-image>img{display:block;width:100%;height:100%;object-fit:cover}
+}
