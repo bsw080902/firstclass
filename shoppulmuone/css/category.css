@@ -165,8 +165,8 @@
 .category-page .category-minor-panel{
  width:max-content;
  max-width:100%;
- margin:0 0 20px;
- padding:4px;
+ margin:0 0 32px;
+ padding:5px;
  background:#fff;
  border:1px solid var(--border-default);
  border-radius:50px;
@@ -182,8 +182,8 @@
  box-sizing:border-box;
  flex:0 0 100px;
  width:100px;
- height:42px;
- padding:6px 20px;
+ height:50px;
+ padding:10px 20px;
  border:1px solid transparent;
  border-radius:50px;
  background:transparent;
