@@ -2143,6 +2143,6 @@ body {
 
 /* 일일배달 배너 전체를 클릭 가능한 카드로: BEST 카드와 같은 상승·그림자 호버 */
 .daily-section .daily-banner{color:inherit;text-decoration:none;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease}
-.daily-section .daily-banner:hover,.daily-section .daily-banner:focus-visible{transform:translateY(-8px);box-shadow:0 20px 36px rgba(28,61,28,.14)}
+.daily-section .daily-banner:hover,.daily-section .daily-banner:focus-visible{transform:translateY(-8px);box-shadow:0 12px 26px rgba(33,80,46,.12)}
 .daily-section .daily-banner:focus-visible{outline:2px solid var(--brand-green);outline-offset:4px}
 @media(prefers-reduced-motion:reduce){.daily-section .daily-banner{transition:none}.daily-section .daily-banner:hover,.daily-section .daily-banner:focus-visible{transform:none}}
