@@ -43,3 +43,11 @@
  .brand-page .brand-ad{width:400px;height:400px;aspect-ratio:auto;grid-column:1}
  .brand-page .brand-ad img{display:block;width:100%;height:100%;object-fit:cover}
 }
+
+/* PC: 첫 줄 대표 이미지 400x400, 나머지 상품 이미지는 모두 300x300 */
+@media(min-width:1200px){
+ .brand-page .brand-catalog{display:flex;flex-wrap:wrap;align-items:flex-start;gap:28px 20px;grid-template-columns:none}
+ .brand-page .brand-ad{flex:0 0 400px;width:400px;height:400px;grid-column:auto}
+ .brand-page .brand-product{flex:0 0 300px;width:300px;max-width:300px}
+ .brand-page .brand-product-image{width:300px;height:300px;aspect-ratio:1/1}
+}
