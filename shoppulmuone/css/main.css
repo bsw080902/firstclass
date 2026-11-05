@@ -2140,3 +2140,9 @@ body {
 .daily-content .daily-benefits span{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;min-height:39px;padding:0 16px;border:1px solid #80c342;border-radius:999px;background:#fff;color:#80c342;font-family:Inter, Pretendard, sans-serif;font-size:14px;font-weight:500;line-height:normal;letter-spacing:0;white-space:nowrap}
 .daily-content .daily-benefits+.daily-cta{margin-top:28px}
 @media(max-width:767px){.daily-content .daily-benefits{gap:8px;margin-top:24px}.daily-content .daily-benefits span{min-height:39px;padding:0 12px;font-size:14px}}
+
+/* 일일배달 배너 전체를 클릭 가능한 카드로: BEST 카드와 같은 상승·그림자 호버 */
+.daily-section .daily-banner{color:inherit;text-decoration:none;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease}
+.daily-section .daily-banner:hover,.daily-section .daily-banner:focus-visible{transform:translateY(-8px);box-shadow:0 20px 36px rgba(28,61,28,.14)}
+.daily-section .daily-banner:focus-visible{outline:2px solid var(--brand-green);outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.daily-section .daily-banner{transition:none}.daily-section .daily-banner:hover,.daily-section .daily-banner:focus-visible{transform:none}}
