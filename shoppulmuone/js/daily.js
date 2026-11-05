@@ -77,7 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
         section.classList.add('daily-enter');
       }
     });
-    if (intro) intro.hidden = !all;
+    if (intro) {
+      intro.classList.remove('daily-enter');
+      intro.hidden = !all;
+      if (all) {
+        // 전체 탭도 다른 카테고리와 같은 카드 등장 효과 적용
+        void intro.offsetWidth;
+        intro.classList.add('daily-enter');
+      }
+    }
     links.forEach(link => {
       const selected = link.hash === '#' + (all ? 'all' : id);
       link.classList.toggle('is-active', selected);
