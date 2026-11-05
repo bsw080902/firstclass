@@ -7,7 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function activate(id) {
     const valid = ids.includes(id);
     const all = !valid;
-    sections.forEach(section => { section.hidden = valid && section.id !== id; });
+    sections.forEach(section => {
+      if (!section) return;
+      // '전체'는 상품 카테고리만 모아 보여주며 서비스 안내는 제외합니다.
+      section.hidden = all ? section.id === 'subscription' : section.id !== id;
+    });
     if (intro) intro.hidden = true;
     links.forEach(link => {
       const selected = link.hash === '#' + (all ? 'all' : id);
