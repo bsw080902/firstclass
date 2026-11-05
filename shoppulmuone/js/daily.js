@@ -4,13 +4,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = ids.map(id => document.getElementById(id));
   const intro = document.getElementById('daily');
   const links = document.querySelectorAll('.daily-tabs a, .daily-panel a');
+  document.querySelectorAll('.daily-product-grid').forEach(grid => {
+    grid.querySelectorAll('.best-product').forEach((card, index) => card.style.setProperty('--daily-card-index', index));
+  });
   function activate(id) {
     const valid = ids.includes(id);
     const all = !valid;
     sections.forEach(section => {
+      section.classList.remove('daily-enter');
       if (!section) return;
       // '전체'는 상품 카테고리만 모아 보여주며 서비스 안내는 제외합니다.
       section.hidden = all ? section.id === 'subscription' : section.id !== id;
+      if (!section.hidden) {
+        // 같은 탭을 다시 눌러도 애니메이션이 재생되도록 초기화합니다.
+        void section.offsetWidth;
+        section.classList.add('daily-enter');
+      }
     });
     if (intro) intro.hidden = true;
     links.forEach(link => {
