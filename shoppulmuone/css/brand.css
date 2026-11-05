@@ -73,3 +73,6 @@
 .brand-page .brand-empty.brand-enter{animation:brand-item-enter .42s ease-out both}
 @keyframes brand-item-enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.brand-page .brand-catalog.brand-enter>.brand-ad,.brand-page .brand-catalog.brand-enter>.brand-product,.brand-page .brand-empty.brand-enter{animation:none}}
+
+/* 풀무원샘물부터 브랜드 탭 두 번째 줄 시작 (PC) */
+@media(min-width:1200px){.brand-page .brand-tab-row-break{break-before:always}.brand-page .brand-tab-row-break::before{content:none}.brand-page .brand-tabs::before{content:"";flex-basis:100%;height:0;order:0}.brand-page .brand-tab-row-break{order:1}.brand-page .brand-tab-row-break~.brand-tab{order:1}}
