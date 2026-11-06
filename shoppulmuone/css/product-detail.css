@@ -39,13 +39,13 @@
 .detail-actions button:hover{transform:translateY(-2px)}
 .detail-wish{background:#fff;border:1px solid var(--border-default,#dde5dc);font-size:28px!important;color:#68756a}
 .detail-wish[aria-pressed=true]{color:#f04452}
-.detail-cart{background:#fff;border:1px solid var(--brand-lime,#80c342);color:var(--brand-green,#009333)}
+.detail-cart{background:#fff;border:1px solid var(--brand-lime,#80c342);color:var(--brand-lime,#80c342)}
 .detail-buy{background:var(--brand-lime,#80c342);border:1px solid var(--brand-lime,#80c342);color:#fff}
 .detail-status{min-height:22px;color:#68756a;font-size:13px}
 .detail-lower{padding-top:90px}
 .detail-tabs{position:relative;display:flex;align-items:stretch;border-bottom:1px solid #dde5dc;margin-bottom:45px}
 .detail-tabs button{position:relative;z-index:1;min-width:123px;padding:18px 32px;background:transparent;border:0;color:#68756a;font:inherit;font-weight:600;cursor:pointer;transition:color .25s ease}
-.detail-tabs button[aria-selected="true"]{color:var(--brand-green,#009333)}
+.detail-tabs button[aria-selected="true"]{color:var(--brand-lime,#80c342)}
 .detail-tabs button:focus-visible{outline:2px solid var(--brand-green,#009333);outline-offset:-3px;border-radius:4px}
 .detail-tab-indicator{position:absolute;bottom:-1px;left:0;height:3px;width:0;background:var(--brand-lime,#80c342);border-radius:3px 3px 0 0;transform:translateX(0);transition:transform .32s cubic-bezier(.2,.8,.2,1),width .32s cubic-bezier(.2,.8,.2,1);pointer-events:none}
 .detail-tab-panel[hidden]{display:none!important}
@@ -62,7 +62,7 @@
 /* 상품 상세 탭: 구매정보 / 상품후기 / 상품문의 / 배송 안내 */
 .detail-tabs button{flex:1;min-width:0;text-align:center;white-space:nowrap}
 .detail-tab-count{color:var(--text-secondary,#68756a);font-size:.9em;font-weight:500}
-.detail-tabs button[aria-selected="true"] .detail-tab-count{color:var(--brand-green,#009333)}
+.detail-tabs button[aria-selected="true"] .detail-tab-count{color:var(--brand-lime,#80c342)}
 @media(max-width:767px){
  .detail-tabs{gap:0}
  .detail-tabs button{padding:13px 5px;font-size:clamp(10px,2.9vw,14px);white-space:normal;word-break:keep-all}
