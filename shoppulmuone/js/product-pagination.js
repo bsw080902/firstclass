@@ -19,10 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (number) go(grid, Number(number.dataset.page));
     });
     new MutationObserver(() => refresh(grid, true)).observe(grid, {childList:true});
+    grid.addEventListener('product-filter-change', () => refresh(grid, true));
     refresh(grid, true);
   }
   function cards(grid) {
-    return Array.from(grid.children).filter(el => el.matches('article, .new-list-card, .best-product'));
+    return Array.from(grid.children).filter(el => el.matches('article, .new-list-card, .best-product') && !el.hidden);
   }
   function go(grid, target) {
     const state = states.get(grid);
@@ -41,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach((item, index) => {
       item.style.display = index >= state.page * PAGE_SIZE && index < (state.page + 1) * PAGE_SIZE ? '' : 'none';
     });
-    state.nav.hidden = pages <= 1;
-    if (pages <= 1) return;
+    state.nav.hidden = items.length === 0;
+    if (items.length === 0) return;
     const numbers = state.nav.querySelector('.product-page-numbers');
     const start = Math.max(0, Math.min(state.page - 1, pages - 4));
     const end = Math.min(pages, start + 4);
