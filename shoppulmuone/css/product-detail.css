@@ -1,0 +1,42 @@
+/* 상품 상세: 기존 샵풀무원 디자인 토큰을 활용한 반응형 화면 */
+.product-detail-page{background:var(--bg-default,#fff)}
+.detail-main{padding:0 24px 100px}
+.detail-inner{max-width:1520px;margin:0 auto}
+.detail-breadcrumb{display:flex;align-items:center;gap:13px;padding:22px 0 48px;font-size:13px;color:var(--text-secondary,#68756a)}
+.detail-breadcrumb a{color:inherit;text-decoration:none}.detail-breadcrumb a:hover{color:var(--brand-green,#009333)}
+.detail-product{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,90px);align-items:start}
+.detail-image-frame{aspect-ratio:1/1;border:1px solid var(--border-default,#dde5dc);border-radius:24px;background:#f7f9f6;display:grid;place-items:center;overflow:hidden}
+.detail-image-frame img{width:100%;height:100%;object-fit:contain}
+.detail-image-placeholder{color:#909b91;font-size:15px}
+.detail-image-note{margin:14px 0 0;font-size:12px;color:var(--text-secondary,#68756a)}
+.detail-summary{padding-top:10px}
+.detail-eyebrow{margin:0 0 20px;color:var(--brand-green,#009333);font-size:13px;font-weight:700}
+.detail-brand{margin:0 0 10px;font-size:15px;color:#68756a}
+.detail-summary h1{font-size:clamp(25px,2.3vw,36px);line-height:1.35;margin:0 0 18px;color:var(--text-primary,#17251d)}
+.detail-delivery{margin:0 0 26px;font-size:14px;color:#858585}.detail-delivery strong{color:var(--brand-lime,#80c342)}
+.detail-price-row{display:flex;gap:12px;align-items:baseline;justify-content:flex-end;margin-bottom:29px}
+.detail-price-row strong{font-size:30px;color:#17251d}
+.detail-discount{font-size:25px;font-weight:700;color:#f04452}
+.detail-rule{height:1px;background:var(--border-default,#dde5dc);margin:23px 0}
+.detail-info-line{display:grid;grid-template-columns:105px 1fr;gap:15px;align-items:start;margin:18px 0;font-size:14px;color:#68756a}
+.detail-info-line>span{font-weight:600;color:#2b352d}.detail-info-line p{margin:0;line-height:1.55}
+.detail-qty-row,.detail-total{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.detail-qty-row>label,.detail-total>span{font-size:15px;font-weight:600;color:#28352a}
+.detail-quantity{display:flex;align-items:center;border:1px solid var(--border-default,#dde5dc);border-radius:12px;overflow:hidden}
+.detail-quantity button{width:43px;height:43px;border:0;background:#fff;font-size:23px;cursor:pointer}
+.detail-quantity output{min-width:40px;text-align:center;font-weight:600}
+.detail-total{margin:28px 0}.detail-total strong{font-size:25px}
+.detail-actions{display:grid;grid-template-columns:55px 1fr 1fr;gap:10px}
+.detail-actions button{min-height:54px;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer;transition:transform .2s,background .2s}
+.detail-actions button:hover{transform:translateY(-2px)}
+.detail-wish{background:#fff;border:1px solid var(--border-default,#dde5dc);font-size:28px!important;color:#68756a}
+.detail-wish[aria-pressed=true]{color:#f04452}
+.detail-cart{background:#fff;border:1px solid var(--brand-lime,#80c342);color:var(--brand-green,#009333)}
+.detail-buy{background:var(--brand-lime,#80c342);border:1px solid var(--brand-lime,#80c342);color:#fff}
+.detail-status{min-height:22px;color:#68756a;font-size:13px}
+.detail-lower{padding-top:90px}.detail-tabs{display:flex;border-bottom:1px solid #dde5dc;margin-bottom:45px}
+.detail-tabs a{padding:18px 32px;color:#68756a;text-decoration:none;font-weight:600}.detail-tabs a:first-child{color:var(--brand-green,#009333);border-bottom:3px solid var(--brand-lime,#80c342)}
+.detail-lower h2{font-size:25px;margin:60px 0 18px}
+.detail-message{padding:50px 30px;text-align:center;background:#f6f9f5;border-radius:20px;color:#68756a;line-height:1.7}
+.detail-message strong{display:block;margin-bottom:12px;font-size:18px;color:#27362b}.detail-message p{margin:0}
+@media(max-width:767px){.detail-main{padding:0 16px 70px}.detail-breadcrumb{padding:18px 0 24px}.detail-product{grid-template-columns:1fr;gap:24px}.detail-image-frame{border-radius:18px}.detail-summary h1{font-size:26px}.detail-price-row strong{font-size:26px}.detail-actions{grid-template-columns:52px 1fr 1fr;gap:7px}.detail-actions button{font-size:13px;min-height:50px}.detail-lower{padding-top:38px}.detail-tabs a{padding:13px}.detail-message{padding:32px 18px}}
