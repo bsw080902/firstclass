@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const imgEl = card.querySelector('.best-product-media > img, .best-image > img, .recommend-image > img, .brand-product-image > img, .new-product-image, .new-list-image img, .daily-main-best-image > img, img');
   const image = imgEl?.getAttribute('src')?.split('/').pop()?.split('?')[0] || '';
   const params = new URLSearchParams({name,brand,price,discount,original,delivery,image});
+  if (card.closest('.daily-page .daily-product-grid')) params.set('daily', '1');
   window.location.href = 'product-detail.html?' + params.toString();
  });
  document.querySelectorAll(selector).forEach(card => {
