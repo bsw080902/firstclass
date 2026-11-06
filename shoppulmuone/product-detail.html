@@ -118,7 +118,21 @@
     <p class="detail-status" id="detail-status" role="status" aria-live="polite"></p>
    </section>
   </div>
-  <section class="detail-lower" aria-labelledby="detail-info-title"><div class="detail-tabs"><a href="#detail-info-title">상품 정보</a><a href="#detail-notice-title">배송 · 교환 안내</a></div><h2 id="detail-info-title">상품 정보</h2><div class="detail-message"><strong id="detail-info-name">상품 정보</strong><p>상세 상품 설명과 이미지, 인증 및 원재료 정보는 추후 추가될 예정입니다.</p></div><h2 id="detail-notice-title">배송 · 교환 안내</h2><div class="detail-message"><p>배송 조건, 교환 및 반품 기준은 현재 포트폴리오 화면에 연동되어 있지 않습니다. 실제 주문 전에는 판매처의 최신 안내를 확인해 주세요.</p></div></section>
+  <section class="detail-lower" aria-label="상품 상세 안내">
+  <div class="detail-tabs" role="tablist" aria-label="상품 상세 메뉴">
+    <button type="button" role="tab" id="detail-tab-info" aria-controls="detail-panel-info" aria-selected="true" tabindex="0">상품 정보</button>
+    <button type="button" role="tab" id="detail-tab-notice" aria-controls="detail-panel-notice" aria-selected="false" tabindex="-1">배송 · 교환 안내</button>
+    <span class="detail-tab-indicator" aria-hidden="true"></span>
+  </div>
+  <div class="detail-tab-panel" id="detail-panel-info" role="tabpanel" aria-labelledby="detail-tab-info" tabindex="0">
+    <h2 id="detail-info-title">상품 정보</h2>
+    <div class="detail-message"><strong id="detail-info-name">상품 정보</strong><p>상세 상품 설명과 이미지, 인증 및 원재료 정보는 추후 추가될 예정입니다.</p></div>
+  </div>
+  <div class="detail-tab-panel" id="detail-panel-notice" role="tabpanel" aria-labelledby="detail-tab-notice" tabindex="0" hidden>
+    <h2 id="detail-notice-title">배송 · 교환 안내</h2>
+    <div class="detail-message"><p>배송 조건, 교환 및 반품 기준은 현재 포트폴리오 화면에 연동되어 있지 않습니다. 실제 주문 전에는 판매처의 최신 안내를 확인해 주세요.</p></div>
+  </div>
+</section>
  </div>
 </main>
 
