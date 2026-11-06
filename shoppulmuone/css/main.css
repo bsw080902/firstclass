@@ -2255,3 +2255,6 @@ body {
  .product-page-numbers{gap:5px}
 }
 @media(prefers-reduced-motion:reduce){.product-page-marker{transition:none}}
+
+/* 이동 가능한 페이지가 없으면 해당 방향 화살표 숨김 */
+.product-page-arrow[hidden]{display:none!important}
