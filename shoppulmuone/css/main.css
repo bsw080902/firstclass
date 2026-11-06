@@ -2217,7 +2217,7 @@ body {
 }
 .product-page-arrow::before{
  content:"";position:absolute;top:50%;left:50%;
- width:8px;height:8px;box-sizing:border-box;
+ width:6px;height:6px;box-sizing:border-box;
  border-right:2px solid #fff;border-top:2px solid #fff;
  transform:translate(-65%,-50%) rotate(45deg);
 }
