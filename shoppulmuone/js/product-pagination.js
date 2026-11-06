@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const prev = state.nav.querySelector('[data-step="-1"]');
     const next = state.nav.querySelector('[data-step="1"]');
-    prev.disabled = state.page === 0;
-    next.disabled = state.page === pages - 1;
+    prev.hidden = state.page === 0;
+    next.hidden = state.page === pages - 1;
   }
   document.querySelectorAll(selector).forEach(init);
 });
