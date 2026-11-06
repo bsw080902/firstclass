@@ -2169,3 +2169,29 @@ body {
 
 /* 일일배달 혜택 배지 글꼴 SemiBold */
 .daily-content .daily-benefits span{font-weight:600}
+
+/* 일일배달 배너: 피그마 레퍼런스의 이너 콘텐츠 배치 */
+@media(min-width:901px){
+ .daily-section .daily-banner{
+  max-width:1516px;
+  height:352px;
+  padding:55px clamp(55px,6.9vw,105px);
+  gap:36px;
+  border-radius:20px;
+ }
+ .daily-section .daily-content{flex:0 1 490px}
+ .daily-section .daily-image{width:min(53%,700px)}
+ .daily-section .daily-content .daily-benefits{gap:8px;margin-top:38px}
+ .daily-section .daily-content .daily-benefits span{
+  width:auto;
+  min-width:148px;
+  min-height:42px;
+  padding:8px 18px;
+  border:1px solid var(--action-primary);
+  border-radius:999px;
+  background:#fff;
+  color:var(--action-primary);
+  font-size:13px;
+  font-weight:600;
+ }
+}
