@@ -1,0 +1,27 @@
+/* 상품 카드 찜 버튼: 기존 버튼 크기/위치 그대로, 하트 아이콘만 자연스럽게 교차 전환 */
+.recommend-wish,
+.best-wish { position:relative; }
+.recommend-wish > img:first-of-type,
+.recommend-wish > img.wish-active-overlay,
+.best-wish > .best-wish-default,
+.best-wish > .best-wish-selected {
+  transition:opacity .25s ease,transform .25s ease;
+  transform-origin:center center;
+}
+.recommend-wish > img:first-of-type,
+.best-wish > .best-wish-default { opacity:1;transform:scale(1); }
+.recommend-wish > img.wish-active-overlay {
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  object-fit:contain;opacity:0;transform:scale(.7);pointer-events:none;
+}
+.best-wish > .best-wish-selected {opacity:0;transform:scale(.7);pointer-events:none}
+.recommend-wish[aria-pressed="true"] > img:first-of-type,
+.best-wish[aria-pressed="true"] > .best-wish-default,
+.best-wish.is-selected > .best-wish-default {opacity:0;transform:scale(.7)}
+.recommend-wish[aria-pressed="true"] > img.wish-active-overlay,
+.best-wish[aria-pressed="true"] > .best-wish-selected,
+.best-wish.is-selected > .best-wish-selected {opacity:1;transform:scale(1)}
+@media(prefers-reduced-motion:reduce){
+ .recommend-wish > img:first-of-type,.recommend-wish > img.wish-active-overlay,
+ .best-wish > .best-wish-default,.best-wish > .best-wish-selected {transition:none}
+}
