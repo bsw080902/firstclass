@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const active = numbers.querySelector('.is-current');
     if (active) {
       requestAnimationFrame(() => {
-        marker.style.transform = 'translateX(' + active.offsetLeft + 'px)';
+        marker.style.left = active.offsetLeft + 'px';
       });
     }
     const prev = state.nav.querySelector('[data-step="-1"]');
