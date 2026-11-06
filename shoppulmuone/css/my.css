@@ -26,12 +26,12 @@
 .my-page .my-shortcuts a:hover,.my-page .my-shortcuts a:focus-visible{background:var(--brand-lime);border-color:transparent;color:#fff;filter:none;outline:none}
 .my-page .my-shortcuts a.is-active:hover,.my-page .my-shortcuts a.is-active:focus-visible{background:var(--brand-lime);border-color:transparent;color:#fff}
 
-/* 선택/클릭 상태는 채우지 않고, 마우스 호버 중에만 연두색 Fill */
+/* 현재 선택된 메뉴는 Brand/Lime Fill 유지 (클릭 후에도 표시) */
 .my-page .my-shortcuts a.is-active,
-.my-page .my-shortcuts a:active,
-.my-page .my-shortcuts a:focus-visible{background:var(--bg-default);border-color:var(--border-default);color:var(--text-secondary);filter:none}
-.my-page .my-shortcuts a:hover,
-.my-page .my-shortcuts a.is-active:hover{background:var(--brand-lime);border-color:transparent;color:#fff;filter:none}
+.my-page .my-shortcuts a.is-active:hover,
+.my-page .my-shortcuts a.is-active:focus-visible{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff;filter:none}
+.my-page .my-shortcuts a:not(.is-active):focus-visible{background:var(--bg-default);border-color:var(--border-default);color:var(--text-secondary);filter:none}
+.my-page .my-shortcuts a:not(.is-active):hover{background:var(--brand-lime);border-color:transparent;color:#fff;filter:none}
 
 /* 메뉴를 클릭하면 한 개의 콘텐츠 패널만 표시 (스크롤 이동 없음) */
 .my-page .my-section[hidden]{display:none!important}
