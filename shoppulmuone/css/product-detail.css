@@ -21,13 +21,12 @@
 .detail-rule{height:1px;background:var(--border-default,#dde5dc);margin:23px 0}
 .detail-info-line{display:grid;grid-template-columns:105px 1fr;gap:15px;align-items:start;margin:18px 0;font-size:14px;color:#68756a}
 .detail-info-line>span{font-weight:600;color:#2b352d}.detail-info-line p{margin:0;line-height:1.55}
-.detail-qty-row,.detail-total{display:flex;justify-content:space-between;align-items:center;gap:16px}
-.detail-qty-row>label,.detail-total>span{font-size:15px;font-weight:600;color:#28352a}
+.detail-qty-row{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.detail-qty-row>label{font-size:15px;font-weight:600;color:#28352a}
 .detail-quantity{display:flex;align-items:center;border:1px solid var(--border-default,#dde5dc);border-radius:12px;overflow:hidden}
 .detail-quantity button{width:43px;height:43px;border:0;background:#fff;font-size:23px;cursor:pointer}
 .detail-quantity output{min-width:40px;text-align:center;font-weight:600}
 
-.detail-total{margin:28px 0}.detail-total strong{font-size:25px}
 .detail-actions{display:grid;grid-template-columns:55px 1fr 1fr;gap:10px}
 .detail-actions button{min-height:54px;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer;transition:transform .2s,background .2s}
 .detail-actions button:hover{transform:translateY(-2px)}
