@@ -2196,16 +2196,51 @@ body {
  }
 }
 
-/* 공통 상품 페이지네이션: 활성 라임 원이 번호 사이를 이동 */
-.product-page-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;width:min(100%,480px);min-height:74px;margin:52px auto 35px;padding:8px 18px;border-radius:999px;background:#dedfdf;box-sizing:border-box}
+
+/* Figma 730:2316 — 컴팩트한 공통 상품 페이지 이동 바 */
+.product-page-nav{
+ display:flex;align-items:center;justify-content:center;gap:26px;
+ width:max-content;max-width:100%;min-height:50px;
+ margin:36px auto 32px;padding:4px 20px;
+ border-radius:50px;background:rgba(104,117,106,.2);
+ box-sizing:border-box;
+}
 .product-page-nav[hidden]{display:none!important}
-.product-page-arrow,.product-page-number{border:0;background:transparent;color:#fff;cursor:pointer;font-family:inherit;font-weight:600}
-.product-page-arrow{width:48px;height:54px;flex:none;font-size:54px;line-height:42px;display:grid;place-items:center;padding:0}
-.product-page-arrow:disabled{opacity:.3;cursor:default}
-.product-page-numbers{position:relative;display:flex;justify-content:space-around;flex:1;min-width:0}
-.product-page-number{position:relative;z-index:1;flex:1;min-width:0;height:56px;font-size:29px;transition:color .2s}
-.product-page-number.is-current{color:#fff}
-.product-page-marker{position:absolute;left:0;top:0;width:25%;height:56px;border-radius:50%;background:var(--brand-lime,#80c342);transition:transform .35s cubic-bezier(.2,.8,.2,1);pointer-events:none}
-.product-page-number:focus-visible,.product-page-arrow:focus-visible{outline:2px solid #008b3b;outline-offset:2px;border-radius:30px}
-@media(max-width:600px){.product-page-nav{width:min(100%,340px);min-height:60px;padding:6px 10px;margin:35px auto 25px}.product-page-arrow{width:34px;height:46px;font-size:38px}.product-page-number{height:46px;font-size:22px}.product-page-marker{height:46px}}
+.product-page-arrow,.product-page-number{
+ display:grid;place-items:center;appearance:none;border:0;
+ background:transparent;color:#fff;font-family:inherit;
+ font-size:12px;font-weight:600;line-height:1;
+ padding:0;cursor:pointer;
+}
+.product-page-arrow{width:24px;height:40px;flex:0 0 24px;font-size:0}
+.product-page-arrow::before{
+ content:"";display:block;width:10px;height:10px;
+ border-top:3px solid #fff;border-right:3px solid #fff;
+ transform:rotate(45deg);
+}
+.product-page-arrow[data-step="-1"]::before{transform:rotate(-135deg)}
+.product-page-arrow:disabled{opacity:.35;cursor:default}
+.product-page-numbers{
+ position:relative;display:flex;align-items:center;justify-content:center;
+ gap:16px;flex:0 0 auto;
+}
+.product-page-number{
+ position:relative;z-index:1;width:32px;height:32px;flex:0 0 32px;
+ font-size:16px;transition:color .2s;
+}
+.product-page-marker{
+ position:absolute;left:0;top:0;width:32px;height:32px;
+ border-radius:50%;background:var(--brand-lime,#80c342);
+ transform:translateX(0);transition:transform .35s cubic-bezier(.2,.8,.2,1);
+ pointer-events:none;
+}
+.product-page-number:focus-visible,.product-page-arrow:focus-visible{
+ outline:2px solid #008b3b;outline-offset:2px;border-radius:50%;
+}
+@media(max-width:600px){
+ .product-page-nav{gap:14px;min-height:46px;margin:30px auto 24px;padding:4px 12px}
+ .product-page-numbers{gap:8px}
+ .product-page-number,.product-page-marker{width:30px;height:30px}
+ .product-page-number{flex-basis:30px;font-size:14px}
+}
 @media(prefers-reduced-motion:reduce){.product-page-marker{transition:none}}
