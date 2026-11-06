@@ -53,12 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
  quantityInput.addEventListener('input', () => {
   const raw = quantityInput.value.trim();
   const entered = Number(raw);
-  if (raw !== '' && /^\\d+$/.test(raw) && entered >= 1 && entered <= 99) {
+  if (raw !== '' && /^\d+$/.test(raw) && entered >= 1 && entered <= 99) {
    quantity = entered;
    set('detail-total', priceNumber > 0 ? money(priceNumber * quantity) : '가격 준비 중');
   }
  });
  quantityInput.addEventListener('change', commitQuantity);
+ quantityInput.addEventListener('keydown', event => {
+  if (event.key === 'Enter') { commitQuantity(); quantityInput.blur(); }
+ });
  quantityInput.addEventListener('blur', commitQuantity);
  document.getElementById('qty-minus').addEventListener('click', () => { commitQuantity(); quantity = Math.max(1,quantity-1); update(); });
  document.getElementById('qty-plus').addEventListener('click', () => { commitQuantity(); quantity = Math.min(99,quantity+1); update(); });
