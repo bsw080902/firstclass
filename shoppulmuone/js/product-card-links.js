@@ -18,10 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const strong = priceEl?.querySelector('strong');
   const price = (strong?.textContent || priceEl?.textContent || '').match(/[\d,]+\s*원/)?.[0] || '';
   const discount = (priceEl?.textContent || '').match(/\d{1,2}%/)?.[0] || '';
+  const original = card.querySelector('.original-price, .regular-price, .before-price, del, s')?.textContent?.trim() || '';
   const delivery = getText(card,['.best-product-delivery','.best-delivery','.recommend-delivery','.new-product-delivery','.new-list-delivery']);
   const imgEl = card.querySelector('.best-product-media > img, .best-image > img, .recommend-image > img, .brand-product-image > img, .new-product-image, .new-list-image img, .daily-main-best-image > img, img');
   const image = imgEl?.getAttribute('src')?.split('/').pop()?.split('?')[0] || '';
-  const params = new URLSearchParams({name,brand,price,discount,delivery,image});
+  const params = new URLSearchParams({name,brand,price,discount,original,delivery,image});
   window.location.href = 'product-detail.html?' + params.toString();
  });
  document.querySelectorAll(selector).forEach(card => {
