@@ -38,13 +38,30 @@ document.addEventListener('DOMContentLoaded', () => {
   } else deliveryEl.textContent = delivery;
  }
  let quantity = 1;
+ const quantityInput = document.getElementById('detail-quantity');
  const status = document.getElementById('detail-status');
  const update = () => {
-  set('detail-quantity', String(quantity));
+  quantityInput.value = String(quantity);
   set('detail-total', priceNumber > 0 ? money(priceNumber * quantity) : '가격 준비 중');
  };
- document.getElementById('qty-minus').addEventListener('click', () => { quantity = Math.max(1,quantity-1); update(); });
- document.getElementById('qty-plus').addEventListener('click', () => { quantity = Math.min(99,quantity+1); update(); });
+ const commitQuantity = () => {
+  const raw = quantityInput.value.trim();
+  const entered = Number(raw);
+  quantity = raw !== '' && Number.isFinite(entered) ? Math.min(99, Math.max(1, Math.trunc(entered))) : 1;
+  update();
+ };
+ quantityInput.addEventListener('input', () => {
+  const raw = quantityInput.value.trim();
+  const entered = Number(raw);
+  if (raw !== '' && /^\\d+$/.test(raw) && entered >= 1 && entered <= 99) {
+   quantity = entered;
+   set('detail-total', priceNumber > 0 ? money(priceNumber * quantity) : '가격 준비 중');
+  }
+ });
+ quantityInput.addEventListener('change', commitQuantity);
+ quantityInput.addEventListener('blur', commitQuantity);
+ document.getElementById('qty-minus').addEventListener('click', () => { commitQuantity(); quantity = Math.max(1,quantity-1); update(); });
+ document.getElementById('qty-plus').addEventListener('click', () => { commitQuantity(); quantity = Math.min(99,quantity+1); update(); });
  document.getElementById('detail-wish').addEventListener('click', event => {
   const button = event.currentTarget;
   const active = button.getAttribute('aria-pressed') !== 'true';
