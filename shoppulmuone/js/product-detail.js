@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
  const brand = (q.get('brand') || '풀무원').slice(0,90);
  const price = (q.get('price') || '').slice(0,30);
  const discount = (q.get('discount') || '').slice(0,12);
+ const original = (q.get('original') || '').slice(0,30);
  const delivery = (q.get('delivery') || '').slice(0,130);
  const imageName = (q.get('image') || '').split('/').pop();
  const image = /^[a-zA-Z0-9_.%()-]+\.(png|jpg|jpeg|webp)$/i.test(imageName || '') ? 'img/' + imageName : '';
@@ -25,6 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
  if (/^\d{1,2}%$/.test(discount)) { discountEl.textContent = discount; discountEl.hidden = false; }
  const priceNumber = Number(price.replace(/[^0-9]/g, ''));
  const money = n => n.toLocaleString('ko-KR') + '원';
+ const originalNumber = Number(original.replace(/[^0-9]/g, ''));
+ const originalEl = document.getElementById('detail-original');
+ if (originalNumber > priceNumber && priceNumber > 0) {
+  originalEl.textContent = money(originalNumber);
+  originalEl.hidden = false;
+ }
  set('detail-price', priceNumber ? money(priceNumber) : '가격 준비 중');
  const deliveryEl = document.getElementById('detail-delivery');
  if (delivery) {
@@ -41,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
  const status = document.getElementById('detail-status');
  const update = () => {
   set('detail-quantity', String(quantity));
-  set('detail-total',priceNumber ? money(priceNumber * quantity) : '가격 준비 중');
  };
  document.getElementById('qty-minus').addEventListener('click', () => { quantity = Math.max(1,quantity-1); update(); });
  document.getElementById('qty-plus').addEventListener('click', () => { quantity = Math.min(99,quantity+1); update(); });
