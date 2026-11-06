@@ -27,7 +27,7 @@
 .detail-quantity button{width:43px;height:43px;border:0;background:#fff;font-size:23px;cursor:pointer}
 .detail-quantity output{min-width:40px;text-align:center;font-weight:600}
 
-.detail-actions{display:grid;grid-template-columns:55px 1fr 1fr;gap:10px}
+.detail-actions{display:grid;grid-template-columns:55px 1fr 1fr;gap:10px;margin-top:30px}
 .detail-actions button{min-height:54px;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer;transition:transform .2s,background .2s}
 .detail-actions button:hover{transform:translateY(-2px)}
 .detail-wish{background:#fff;border:1px solid var(--border-default,#dde5dc);font-size:28px!important;color:#68756a}
