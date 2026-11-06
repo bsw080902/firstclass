@@ -72,10 +72,64 @@ const seafoodProducts=catalogProducts.filter(p=>p.image==="new_item3.jpg");
 const noodleProducts=catalogProducts.filter(p=>p.image==="new_item2.jpg");
 const fruitProducts=catalogProducts.filter(p=>p.image==="new_item5.jpg");
 const petProducts=catalogProducts.filter(p=>p.image==="new_item1.jpg");
+// 필터는 실제 카드 데이터에 있는 값만 사용합니다. 미등록 인증/보관/혜택은 사실로 추정하지 않습니다.
+const filterForm=document.querySelector("#category-filter-form");
+const filterEmpty=document.querySelector("#category-filter-empty");
+const filterMessage=document.querySelector("#category-filter-message");
+function selectedFilters(name){
+ return [...filterForm.querySelectorAll('input[name="'+name+'"]:checked')].map(el=>el.value);
+}
+function filterIsActive(){
+ return !!filterForm.querySelector('input[type="checkbox"]:checked') ||
+  !!filterForm.elements.minPrice.value || !!filterForm.elements.maxPrice.value;
+}
+function applyProductFilters(source){
+ const brands=selectedFilters("brand");
+ const benefits=selectedFilters("benefit");
+ const certs=selectedFilters("cert");
+ const storage=selectedFilters("storage");
+ const min=Number(filterForm.elements.minPrice.value)||0;
+ const maxValue=filterForm.elements.maxPrice.value;
+ const max=maxValue===""?Infinity:Number(maxValue);
+ const unknown=benefits.some(x=>x!=="discount")||certs.length>0||storage.length>0;
+ filterMessage.textContent=unknown?"일부 혜택·인증·보관 정보는 상품 데이터가 미등록되어 검색 결과에 표시되지 않을 수 있습니다.":"";
+ const filtered=source.filter(p=>{
+  const amount=Number((p.price||"").replace(/[^0-9]/g,""));
+  if(brands.length&&!brands.includes(p.brand))return false;
+  if(benefits.includes("discount")&&!p.discount)return false;
+  if(benefits.includes("bundle")&&!(p.benefits||[]).includes("bundle"))return false;
+  if(benefits.includes("free")&&!(p.benefits||[]).includes("free"))return false;
+  if(certs.length&&!certs.some(x=>(p.certifications||[]).includes(x)))return false;
+  if(storage.length&&!storage.includes(p.storage))return false;
+  if((min>0||max<Infinity)&&(!amount||amount<min||amount>max))return false;
+  return true;
+ });
+ filterEmpty.hidden=filtered.length>0||!filterIsActive();
+ return filtered;
+}
+function rerenderWithFilters(){
+ const active=document.querySelector(".category-main-tabs button.is-active");
+ const key=active?.dataset.category||"all";
+ const middleIndex=[...subtabs.querySelectorAll("button")].findIndex(b=>b.classList.contains("is-active"));
+ const minor=minorTabs.querySelector(".is-active")?.textContent||"전체";
+ showCategory(key,Math.max(0,middleIndex),minor);
+}
+filterForm.addEventListener("change",rerenderWithFilters);
+filterForm.addEventListener("submit",event=>{
+ event.preventDefault();
+ const min=filterForm.elements.minPrice.value,max=filterForm.elements.maxPrice.value;
+ if(min!==""&&max!==""&&Number(min)>Number(max)){
+  filterMessage.textContent="최소가격은 최대가격보다 클 수 없습니다.";
+  return;
+ }
+ rerenderWithFilters();
+});
+filterForm.addEventListener("reset",()=>requestAnimationFrame(rerenderWithFilters));
 function renderCatalogProducts(productsSource=catalogProducts){
  currentNames=productsSource.map(p=>p.name);
  grid.classList.remove("is-revealed");grid.replaceChildren();
- const products=activeSort==="new"?[...productsSource].reverse():productsSource;
+ const filtered=applyProductFilters(productsSource);
+ const products=activeSort==="new"?[...filtered].reverse():filtered;
  products.forEach((p,i)=>{
   const article=document.createElement("article");article.className="best-product";article.style.setProperty("--best-card-index",i);
   const media=document.createElement("div");media.className="best-product-media";
@@ -99,7 +153,9 @@ function renderCards(names){
  drawCards();
 }
 function drawCards(){
- const names=[...currentNames];
+ const names=filterIsActive()?[]:[...currentNames];
+ filterEmpty.hidden=!filterIsActive();
+ if(filterIsActive())filterMessage.textContent="이 카테고리의 예시 상품에는 필터에 필요한 상세 정보가 등록되어 있지 않습니다.";
  // 예시 상품에는 가격·할인율·리뷰·별점 데이터가 없으므로 임의의 순위를 만들지 않습니다.
  if(activeSort==="new")names.reverse();
  grid.classList.remove("is-revealed");
