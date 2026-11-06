@@ -108,13 +108,12 @@
     <p class="detail-brand" id="detail-brand">풀무원</p>
     <h1 id="detail-name">상품 정보를 확인해 주세요</h1>
     <p class="detail-delivery" id="detail-delivery">배송 정보는 주문 시 확인해 주세요.</p>
-    <div class="detail-price-row"><span id="detail-discount" class="detail-discount" hidden></span><strong id="detail-price">가격 준비 중</strong></div>
+    <div class="detail-price-row" aria-label="상품 가격"><del id="detail-original" class="detail-original" hidden></del><div class="detail-sale-line"><strong id="detail-price">가격 준비 중</strong><span id="detail-discount" class="detail-discount" hidden></span></div></div>
     <div class="detail-rule"></div>
     <div class="detail-info-line"><span>배송 안내</span><p>배송 가능 지역 및 일정은 주문 시 확인해 주세요.</p></div>
     <div class="detail-info-line"><span>상품 안내</span><p>상세 성분·원산지·구성 정보는 준비 중입니다.</p></div>
     <div class="detail-rule"></div>
     <div class="detail-qty-row"><label for="detail-quantity">수량</label><div class="detail-quantity"><button type="button" id="qty-minus" aria-label="수량 감소">−</button><output id="detail-quantity" aria-live="polite">1</output><button type="button" id="qty-plus" aria-label="수량 증가">+</button></div></div>
-    <div class="detail-total"><span>총 상품 금액</span><strong id="detail-total">가격 준비 중</strong></div>
     <div class="detail-actions"><button type="button" id="detail-wish" class="detail-wish" aria-pressed="false" aria-label="찜하기">♡</button><button type="button" id="detail-cart" class="detail-cart">장바구니</button><button type="button" id="detail-buy" class="detail-buy">구매하기</button></div>
     <p class="detail-status" id="detail-status" role="status" aria-live="polite"></p>
    </section>
