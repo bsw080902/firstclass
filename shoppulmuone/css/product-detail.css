@@ -15,7 +15,7 @@
 .detail-summary h1{font-size:clamp(25px,2.3vw,36px);line-height:1.35;margin:0 0 18px;color:var(--text-primary,#17251d)}
 .detail-delivery{margin:0 0 26px;font-size:14px;color:#858585}.detail-delivery strong{color:var(--brand-lime,#80c342)}
 /* 가격 강조: 정가(있는 경우) → 판매가 → 할인율 */
-.detail-price-row{display:flex;gap:12px;align-items:baseline;justify-content:flex-end;margin-bottom:29px}
+.detail-price-row{display:flex;gap:12px;align-items:baseline;justify-content:flex-start;margin-bottom:29px}
 .detail-price-row strong{font-size:30px;color:#17251d}
 .detail-discount{font-size:25px;font-weight:700;color:#f04452}
 .detail-rule{height:1px;background:var(--border-default,#dde5dc);margin:23px 0}
