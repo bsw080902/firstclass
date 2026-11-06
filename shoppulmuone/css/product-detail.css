@@ -58,3 +58,12 @@
 @media(max-width:767px){.detail-main{padding:0 16px 70px}.detail-breadcrumb{padding:18px 0 24px}.detail-product{grid-template-columns:1fr;gap:24px}.detail-image-frame{border-radius:18px}.detail-summary h1{font-size:26px}.detail-price-row strong{font-size:26px}.detail-actions{grid-template-columns:52px 1fr 1fr;gap:7px}.detail-actions button{font-size:13px;min-height:50px}.detail-lower{padding-top:38px}.detail-tabs button{padding:13px 15px;min-width:0;flex:1;font-size:14px}.detail-message{padding:32px 18px}}
 
 @media(prefers-reduced-motion:reduce){.detail-tab-indicator{transition:none}.detail-tab-panel.is-entering{animation:none}}
+
+/* 상품 상세 탭: 구매정보 / 상품후기 / 상품문의 / 배송 안내 */
+.detail-tabs button{flex:1;min-width:0;text-align:center;white-space:nowrap}
+.detail-tab-count{color:var(--text-secondary,#68756a);font-size:.9em;font-weight:500}
+.detail-tabs button[aria-selected="true"] .detail-tab-count{color:var(--brand-green,#009333)}
+@media(max-width:767px){
+ .detail-tabs{gap:0}
+ .detail-tabs button{padding:13px 5px;font-size:clamp(10px,2.9vw,14px);white-space:normal;word-break:keep-all}
+}
