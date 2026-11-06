@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
  const price = (q.get('price') || '').slice(0,30);
  const discount = (q.get('discount') || '').slice(0,12);
  const delivery = (q.get('delivery') || '').slice(0,130);
+ const isDaily = q.get('daily') === '1';
  const imageName = (q.get('image') || '').split('/').pop();
  const image = /^[a-zA-Z0-9_.%()-]+\.(png|jpg|jpeg|webp)$/i.test(imageName || '') ? 'img/' + imageName : '';
  const set = (id, value) => { document.getElementById(id).textContent = value; };
@@ -36,6 +37,36 @@ document.addEventListener('DOMContentLoaded', () => {
     strong.textContent = match[2];
     deliveryEl.append(strong,document.createTextNode(match[3]));
   } else deliveryEl.textContent = delivery;
+ }
+ // 일일배달 상품에서 진입한 경우에만 배송 선택 UI를 표시합니다.
+ const dailyOptions = document.getElementById('detail-daily-options');
+ if (isDaily && dailyOptions) {
+  dailyOptions.hidden = false;
+  const frequencyInputs = [...dailyOptions.querySelectorAll('input[name="daily-frequency"]')];
+  const dayInputs = [...dailyOptions.querySelectorAll('.detail-daily-weekday-list input')];
+  const count = document.getElementById('daily-weekday-count');
+  const selectedFrequency = () => Number(dailyOptions.querySelector('input[name="daily-frequency"]:checked').value);
+  const updateDayCount = () => {
+   count.textContent = dayInputs.filter(input => input.checked).length + '/' + selectedFrequency() + '일 선택';
+  };
+  frequencyInputs.forEach(input => input.addEventListener('change', () => {
+   const number = selectedFrequency();
+   dayInputs.forEach((day, index) => { day.checked = index < number; });
+   updateDayCount();
+  }));
+  dayInputs.forEach(day => day.addEventListener('change', () => {
+   const countSelected = dayInputs.filter(input => input.checked);
+   const number = selectedFrequency();
+   if (countSelected.length > number) {
+    // 새 요일을 선택하면 기존 선택 중 하나를 해제합니다.
+    const previous = countSelected.find(input => input !== day);
+    if (previous) previous.checked = false;
+   } else if (countSelected.length < number) {
+    day.checked = true;
+   }
+   updateDayCount();
+  }));
+  updateDayCount();
  }
  let quantity = 1;
  const quantityInput = document.getElementById('detail-quantity');
