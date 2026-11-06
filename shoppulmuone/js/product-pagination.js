@@ -46,7 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const numbers = state.nav.querySelector('.product-page-numbers');
     const start = Math.max(0, Math.min(state.page - 1, pages - 4));
     const end = Math.min(pages, start + 4);
-    numbers.replaceChildren();
+    let marker = numbers.querySelector('.product-page-marker');
+    if (!marker) {
+      marker = document.createElement('span');
+      marker.className = 'product-page-marker';
+      marker.setAttribute('aria-hidden', 'true');
+    }
+    numbers.replaceChildren(marker);
     for (let i = start; i < end; i++) {
       const btn = document.createElement('button');
       btn.type = 'button';
@@ -59,10 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const active = numbers.querySelector('.is-current');
     if (active) {
-      const marker = document.createElement('span');
-      marker.className = 'product-page-marker';
-      marker.setAttribute('aria-hidden', 'true');
-      numbers.prepend(marker);
       requestAnimationFrame(() => {
         marker.style.transform = 'translateX(' + active.offsetLeft + 'px)';
       });
