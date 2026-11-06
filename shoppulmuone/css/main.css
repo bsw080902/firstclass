@@ -2240,7 +2240,7 @@ body {
 }
 .product-page-number.is-current{color:#fff}
 .product-page-marker{
- position:absolute;z-index:0;left:0;top:2px;
+ position:absolute;z-index:0;left:0;top:50%;margin-top:-8px;
  width:16px;height:16px;border-radius:50%;
  background:var(--brand-lime,#80c342);
  transform:translateX(0);
