@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const active = button.getAttribute('aria-pressed') !== 'true';
   button.setAttribute('aria-pressed', String(active));
   button.textContent = active ? '♥' : '♡';
-  status.textContent = active ? '찜한 상품으로 표시했어요. (화면 데모)' : '찜을 해제했어요.';
+  status.textContent = '';
  });
  document.getElementById('detail-cart').addEventListener('click',() => { status.textContent = '장바구니 기능은 현재 디자인 데모입니다. 실제 상품 저장은 연결되어 있지 않아요.'; });
  document.getElementById('detail-buy').addEventListener('click',() => { status.textContent = '실제 결제 기능은 연결되어 있지 않습니다.'; });
