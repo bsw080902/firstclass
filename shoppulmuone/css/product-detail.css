@@ -67,3 +67,21 @@
  .detail-tabs{gap:0}
  .detail-tabs button{padding:13px 5px;font-size:clamp(10px,2.9vw,14px);white-space:normal;word-break:keep-all}
 }
+
+/* 상품 상세 > 배송 · 교환 안내: 제공된 정보의 구조화된 표시 */
+.detail-notice-content{color:var(--text-primary,#17251d);text-align:left;line-height:1.8;font-size:15px;overflow-wrap:break-word}
+.detail-notice-section{margin:30px 0 48px}
+.detail-notice-section+.detail-notice-section{border-top:1px solid var(--border-default,#dde5dc);padding-top:38px}
+.detail-notice-section h3{font-size:23px;font-weight:700;margin:0 0 26px;padding-bottom:14px;border-bottom:1px solid var(--border-default,#dde5dc)}
+.detail-notice-group{margin-bottom:32px}
+.detail-notice-group h4{font-size:18px;font-weight:700;color:var(--brand-green,#009333);margin:0 0 13px}
+.detail-notice-group h5{font-size:16px;font-weight:700;margin:22px 0 10px}
+.detail-notice-group p{margin:8px 0}
+.detail-notice-list{list-style:none;padding:0;margin:8px 0 12px}
+.detail-notice-list li{position:relative;padding-left:16px;margin:6px 0;color:var(--text-secondary,#68756a)}
+.detail-notice-list li::before{content:"–";position:absolute;left:0;top:0;color:currentColor}
+.detail-notice-list strong{color:var(--text-primary,#17251d);font-weight:650}
+.detail-notice-caution{font-size:14px;color:var(--text-secondary,#68756a);line-height:1.75}
+.detail-notice-caution strong{color:var(--text-primary,#17251d)}
+.detail-notice-source{margin:30px 0 0;padding:16px 18px;border-radius:12px;background:var(--bg-surface,#f6f9f5);font-size:13px;color:var(--text-secondary,#68756a)}
+@media(max-width:767px){.detail-notice-section{margin:24px 0 36px}.detail-notice-section h3{font-size:20px}.detail-notice-group h4{font-size:17px}.detail-notice-content{font-size:14px}.detail-notice-group h5{font-size:15px}.detail-notice-caution{font-size:13px}}
