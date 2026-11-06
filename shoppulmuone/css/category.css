@@ -160,3 +160,33 @@
 /* 메인 추천상품과 동일한 배송 안내 색상 */
 .category-page .best-product-delivery{color:#858585}
 .category-page .best-product-delivery strong{color:var(--brand-lime);font-weight:600}
+
+/* 카테고리 왼쪽 필터 — 기존 컬러 토큰과 상품 카드 활용 */
+.category-page .category-results-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:36px;align-items:start}
+.category-page .category-results-main{min-width:0}
+.category-page .category-results-main .category-product-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:44px 16px}
+.category-page .category-filter{min-width:0;padding:8px 0 20px;background:#fff}
+.category-page .category-filter-top{display:flex;align-items:center;justify-content:space-between;padding:0 2px 10px}
+.category-page .category-filter-top h2{font-size:23px;margin:0;font-weight:700;color:var(--text-primary)}
+.category-page .category-filter-reset{border:0;background:none;color:var(--brand-green);font:inherit;font-size:13px;cursor:pointer}
+.category-page .category-filter-section{padding:22px 0 23px;border-bottom:1px solid var(--neutral-dark-green-black)}
+.category-page .category-filter-section summary{display:flex;align-items:center;justify-content:space-between;list-style:none;cursor:pointer;padding:0 3px;font-size:19px;font-weight:600;color:var(--text-primary)}
+.category-page .category-filter-section summary::-webkit-details-marker{display:none}
+.category-page .category-filter-section summary::after{content:"";width:12px;height:12px;flex:0 0 12px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(225deg) translate(-2px,-2px);transition:transform .2s ease}
+.category-page .category-filter-section:not([open]) summary::after{transform:rotate(45deg) translate(-2px,-2px)}
+.category-page .category-filter-options{display:grid;gap:18px;padding-top:22px}
+.category-page .category-filter-options label{display:flex;align-items:center;gap:13px;cursor:pointer;color:var(--text-primary);font-size:15px;line-height:1.4}
+.category-page .category-filter-options input{appearance:none;width:23px;height:23px;flex:0 0 23px;border:1.5px solid #bbc4bc;border-radius:6px;margin:0;background:#fff;cursor:pointer;display:grid;place-items:center}
+.category-page .category-filter-options input:checked{background:var(--brand-lime);border-color:var(--brand-lime)}
+.category-page .category-filter-options input:checked::after{content:"";width:10px;height:6px;border-left:2px solid white;border-bottom:2px solid white;transform:rotate(-45deg) translate(1px,-1px)}
+.category-page .category-filter-options input:focus-visible,.category-page .category-price-filter input:focus-visible,.category-page .category-price-filter button:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
+.category-page .category-price-filter{display:flex;gap:6px;align-items:center;padding-top:22px}
+.category-page .category-price-filter input{width:0;min-width:0;flex:1;padding:10px 5px;text-align:center;border:1px solid #cdd7cd;border-radius:10px;font:inherit;font-size:12px;box-sizing:border-box}
+.category-page .category-price-filter input::-webkit-inner-spin-button{-webkit-appearance:none}
+.category-page .category-price-filter button{border:0;border-radius:10px;background:#e9ece9;color:#68756a;flex:0 0 37px;height:38px;display:grid;place-items:center;cursor:pointer}
+.category-page .category-price-filter button:hover{background:var(--green-pale-green)}
+.category-page .category-filter-message{color:var(--text-secondary);font-size:12px;line-height:1.6;margin:15px 0 0;min-height:0}
+.category-page .category-filter-empty{padding:35px 16px;text-align:center;color:var(--text-secondary);background:var(--bg-surface);border-radius:14px}
+.category-page .category-filter-empty[hidden]{display:none}
+@media(max-width:1100px){.category-page .category-results-layout{grid-template-columns:205px minmax(0,1fr);gap:24px}.category-page .category-results-main .category-product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:767px){.category-page .category-results-layout{grid-template-columns:1fr;gap:18px}.category-page .category-filter{border:1px solid var(--border-default);border-radius:18px;padding:18px}.category-page .category-results-main .category-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 14px}.category-page .category-filter-section{padding:16px 0}.category-page .category-filter-section summary{font-size:16px}.category-page .category-filter-options{gap:13px}.category-page .category-filter-options label{font-size:14px}}
