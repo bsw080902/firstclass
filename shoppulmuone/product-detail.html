@@ -8,10 +8,10 @@
 <link rel="stylesheet" href="../font/css/pretendardvariable.css">
 <link rel="stylesheet" href="css/variables.css">
 <link rel="stylesheet" href="css/main.css?v=20261106-detail">
-<link rel="stylesheet" href="css/product-detail.css?v=20261106-wish-transition">
+<link rel="stylesheet" href="css/product-detail.css?v=20261106-daily-detail">
 <script src="js/category-links.js?v=3" defer></script>
 <script src="js/scroll-header.js?v=1" defer></script>
-<script src="js/product-detail.js?v=20261106-wish-transition" defer></script>
+<script src="js/product-detail.js?v=20261106-daily-detail" defer></script>
 </head>
 <body class="product-detail-page">
 <div id="wrap">
@@ -113,6 +113,26 @@
     <div class="detail-info-line"><span>상품 안내</span><p>상세 성분·원산지·구성 정보는 준비 중입니다.</p></div>
     <div class="detail-rule"></div>
     <div class="detail-qty-row"><label for="detail-quantity">수량</label><div class="detail-quantity"><button type="button" id="qty-minus" aria-label="수량 감소">−</button><input id="detail-quantity" name="quantity" type="number" min="1" max="99" step="1" inputmode="numeric" value="1" aria-label="상품 수량"><button type="button" id="qty-plus" aria-label="수량 증가">+</button></div></div>
+    <div class="detail-daily-options" id="detail-daily-options" hidden>
+      <fieldset class="detail-daily-frequency"><legend>주기</legend><div class="detail-daily-frequency-list" role="group" aria-label="주간 배송 횟수">
+        <label><input type="radio" name="daily-frequency" value="3" checked><span>주 3일</span></label>
+        <label><input type="radio" name="daily-frequency" value="4"><span>주 4일</span></label>
+        <label><input type="radio" name="daily-frequency" value="5"><span>주 5일</span></label>
+        <label><input type="radio" name="daily-frequency" value="6"><span>주 6일</span></label>
+      </div></fieldset>
+      <fieldset class="detail-daily-weekdays"><legend>요일 <small id="daily-weekday-count">3/3일 선택</small></legend><div class="detail-daily-weekday-list">
+        <label><input type="checkbox" value="월요일" checked><span>월요일</span></label>
+        <label><input type="checkbox" value="화요일"><span>화요일</span></label>
+        <label><input type="checkbox" value="수요일" checked><span>수요일</span></label>
+        <label><input type="checkbox" value="목요일"><span>목요일</span></label>
+        <label><input type="checkbox" value="금요일" checked><span>금요일</span></label>
+        <label><input type="checkbox" value="토요일"><span>토요일</span></label>
+      </div></fieldset>
+      <label class="detail-daily-period" for="daily-period">기간
+        <select id="daily-period"><option value="2">2주</option><option value="4" selected>4주</option><option value="8">8주</option><option value="12">12주</option></select>
+      </label>
+      <p class="detail-daily-note">배송 설정은 화면 확인용입니다. 실제 배송 가능 요일 및 결제 금액은 주문 시 확인해 주세요.</p>
+    </div>
     <div class="detail-total"><span>총 상품 금액</span><strong id="detail-total" aria-live="polite">가격 준비 중</strong></div>
     <div class="detail-actions"><button type="button" id="detail-wish" class="detail-wish" aria-pressed="false" aria-label="찜하기"><span class="detail-wish-outline" aria-hidden="true">♡</span><span class="detail-wish-filled" aria-hidden="true">♥</span></button><button type="button" id="detail-cart" class="detail-cart">장바구니</button><button type="button" id="detail-buy" class="detail-buy">구매하기</button></div>
     <p class="detail-status" id="detail-status" role="status" aria-live="polite"></p>
