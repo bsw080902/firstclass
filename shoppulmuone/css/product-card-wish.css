@@ -25,3 +25,19 @@
  .recommend-wish > img:first-of-type,.recommend-wish > img.wish-active-overlay,
  .best-wish > .best-wish-default,.best-wish > .best-wish-selected {transition:none}
 }
+
+/* 카드 호버 시 나타나는 빠른 행동 버튼: 기존 크기/배치 유지 */
+.recommend-actions,
+.best-actions {
+  transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
+}
+.recommend-actions button,
+.best-actions button {
+  transition: filter .25s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .recommend-actions,
+  .best-actions,
+  .recommend-actions button,
+  .best-actions button { transition: none; }
+}
