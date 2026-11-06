@@ -29,3 +29,8 @@
 .shared-filter-layout .category-filter-empty[hidden]{display:none}
 @media(max-width:1100px){.shared-filter-layout{grid-template-columns:205px minmax(0,1fr);gap:24px}.shared-results-content .best-product-grid,.shared-results-content .new-list-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:767px){.shared-filter-layout{grid-template-columns:1fr;gap:18px}.shared-filter-layout .category-filter{border:1px solid var(--border-default);border-radius:18px;padding:18px}.shared-filter-layout .category-filter-section{padding:16px 0}.shared-filter-layout .category-filter-section summary{font-size:16px}.shared-filter-layout .category-filter-options{gap:13px}.shared-filter-layout .category-filter-options label{font-size:14px}.shared-results-content .best-product-grid,.shared-results-content .new-list-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 14px}}
+
+/* 페이지별 기존 5열 규칙보다 필터 적용 후의 4열 상품 레이아웃 우선 */
+.new-page .shared-results-content .new-list-grid,.benefit-page.daily-page .shared-results-content .daily-product-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:44px 16px}
+@media(max-width:1100px){.new-page .shared-results-content .new-list-grid,.benefit-page.daily-page .shared-results-content .daily-product-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 16px}}
+@media(max-width:767px){.new-page .shared-results-content .new-list-grid,.benefit-page.daily-page .shared-results-content .daily-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 14px}}
