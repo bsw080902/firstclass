@@ -25,7 +25,10 @@
 .detail-qty-row>label{font-size:15px;font-weight:600;color:#28352a}
 .detail-quantity{display:flex;align-items:center;border:1px solid var(--border-default,#dde5dc);border-radius:12px;overflow:hidden}
 .detail-quantity button{width:43px;height:43px;border:0;background:#fff;font-size:23px;cursor:pointer}
-.detail-quantity output{min-width:40px;text-align:center;font-weight:600}
+.detail-quantity input{box-sizing:border-box;width:44px;min-width:0;height:43px;padding:0 2px;border:0;background:#fff;text-align:center;font:inherit;font-weight:600;color:var(--text-primary,#17251d);appearance:textfield;-moz-appearance:textfield}
+.detail-quantity input::-webkit-outer-spin-button,.detail-quantity input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.detail-quantity:focus-within{outline:2px solid var(--brand-lime,#80c342);outline-offset:2px}
+.detail-quantity input:focus{outline:none}
 
 /* 선택 수량에 따라 갱신되는 총 상품 금액 */
 .detail-total{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:28px}
