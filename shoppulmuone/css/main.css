@@ -2224,7 +2224,8 @@ body {
 .product-page-arrow[data-step="-1"]::before{
  transform:translate(-35%,-50%) rotate(-135deg);
 }
-.product-page-arrow:disabled{opacity:.35;cursor:default}
+.product-page-arrow{transition:opacity .25s ease,visibility .25s ease}
+.product-page-arrow:disabled,.product-page-arrow.is-unavailable{opacity:0;visibility:hidden;pointer-events:none;cursor:default}
 .product-page-numbers{
  position:relative;display:flex;align-items:center;justify-content:center;
  gap:5px;flex:0 0 auto;height:24px;min-height:24px;
@@ -2256,5 +2257,5 @@ body {
 }
 @media(prefers-reduced-motion:reduce){.product-page-marker{transition:none}}
 
-/* 이동 가능한 페이지가 없으면 해당 방향 화살표 숨김 */
-.product-page-arrow[hidden]{display:none!important}
+/* 화살표 공간 유지: 번호 바가 좌우로 움직이지 않도록 설정 */
+@media(prefers-reduced-motion:reduce){.product-page-arrow{transition:none}}
