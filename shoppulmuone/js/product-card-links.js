@@ -19,12 +19,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const price = (strong?.textContent || priceEl?.textContent || '').match(/[\d,]+\s*원/)?.[0] || '';
   const discount = (priceEl?.textContent || '').match(/\d{1,2}%/)?.[0] || '';
   const delivery = getText(card,['.best-product-delivery','.best-delivery','.recommend-delivery','.new-product-delivery','.new-list-delivery']);
-  const imgEl = card.querySelector('.best-product-media > img, .best-image > img, .recommend-image > img, .new-product-image, .new-list-image img, .daily-main-best-image > img, img');
+  const imgEl = card.querySelector('.best-product-media > img, .best-image > img, .recommend-image > img, .brand-product-image > img, .new-product-image, .new-list-image img, .daily-main-best-image > img, img');
   const image = imgEl?.getAttribute('src')?.split('/').pop()?.split('?')[0] || '';
   const params = new URLSearchParams({name,brand,price,discount,delivery,image});
   window.location.href = 'product-detail.html?' + params.toString();
  });
  document.querySelectorAll(selector).forEach(card => {
-   if (card.querySelector('h3, h4')) card.style.cursor = 'pointer';
+   if (!card.querySelector('h3, h4')) return;
+   card.style.cursor = 'pointer';
+   card.tabIndex = card.tabIndex < 0 ? 0 : card.tabIndex;
+   card.setAttribute('role','link');
+   card.setAttribute('aria-label', (card.querySelector('.recommend-name, h3, h4')?.textContent || '상품') + ' 상세 보기');
+ });
+ document.addEventListener('keydown', event => {
+   if (event.key !== 'Enter' && event.key !== ' ') return;
+   const card = event.target.closest(selector);
+   if (!card || event.target !== card) return;
+   event.preventDefault();
+   card.click();
  });
 });
