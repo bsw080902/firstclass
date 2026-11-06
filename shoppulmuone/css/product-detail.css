@@ -14,19 +14,23 @@
 .detail-brand{margin:0 0 10px;font-size:15px;color:#68756a}
 .detail-summary h1{font-size:clamp(25px,2.3vw,36px);line-height:1.35;margin:0 0 18px;color:var(--text-primary,#17251d)}
 .detail-delivery{margin:0 0 26px;font-size:14px;color:#858585}.detail-delivery strong{color:var(--brand-lime,#80c342)}
-.detail-price-row{display:flex;gap:12px;align-items:baseline;justify-content:flex-end;margin-bottom:29px}
-.detail-price-row strong{font-size:30px;color:#17251d}
-.detail-discount{font-size:25px;font-weight:700;color:#f04452}
+/* 가격 강조: 정가(있는 경우) → 판매가 → 할인율 */
+.detail-price-row{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:32px 0 36px;min-width:0}
+.detail-original{font-size:clamp(18px,2vw,28px);font-weight:600;color:#b8b8b8;text-decoration:line-through;text-decoration-thickness:2px}
+.detail-original[hidden],.detail-discount[hidden]{display:none!important}
+.detail-sale-line{display:flex;align-items:baseline;flex-wrap:wrap;column-gap:18px;row-gap:4px}
+.detail-sale-line strong{font-size:clamp(36px,4vw,64px);font-weight:700;line-height:1.1;letter-spacing:-.04em;color:#090909}
+.detail-discount{font-size:clamp(32px,3.8vw,62px);font-weight:700;line-height:1.1;color:#ff5c3b;letter-spacing:-.035em}
 .detail-rule{height:1px;background:var(--border-default,#dde5dc);margin:23px 0}
 .detail-info-line{display:grid;grid-template-columns:105px 1fr;gap:15px;align-items:start;margin:18px 0;font-size:14px;color:#68756a}
 .detail-info-line>span{font-weight:600;color:#2b352d}.detail-info-line p{margin:0;line-height:1.55}
-.detail-qty-row,.detail-total{display:flex;justify-content:space-between;align-items:center;gap:16px}
-.detail-qty-row>label,.detail-total>span{font-size:15px;font-weight:600;color:#28352a}
+.detail-qty-row{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.detail-qty-row>label{font-size:15px;font-weight:600;color:#28352a}
 .detail-quantity{display:flex;align-items:center;border:1px solid var(--border-default,#dde5dc);border-radius:12px;overflow:hidden}
 .detail-quantity button{width:43px;height:43px;border:0;background:#fff;font-size:23px;cursor:pointer}
 .detail-quantity output{min-width:40px;text-align:center;font-weight:600}
-.detail-total{margin:28px 0}.detail-total strong{font-size:25px}
-.detail-actions{display:grid;grid-template-columns:55px 1fr 1fr;gap:10px}
+
+.detail-actions{display:grid;grid-template-columns:55px 1fr 1fr;gap:10px;margin-top:34px}
 .detail-actions button{min-height:54px;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer;transition:transform .2s,background .2s}
 .detail-actions button:hover{transform:translateY(-2px)}
 .detail-wish{background:#fff;border:1px solid var(--border-default,#dde5dc);font-size:28px!important;color:#68756a}
@@ -39,4 +43,4 @@
 .detail-lower h2{font-size:25px;margin:60px 0 18px}
 .detail-message{padding:50px 30px;text-align:center;background:#f6f9f5;border-radius:20px;color:#68756a;line-height:1.7}
 .detail-message strong{display:block;margin-bottom:12px;font-size:18px;color:#27362b}.detail-message p{margin:0}
-@media(max-width:767px){.detail-main{padding:0 16px 70px}.detail-breadcrumb{padding:18px 0 24px}.detail-product{grid-template-columns:1fr;gap:24px}.detail-image-frame{border-radius:18px}.detail-summary h1{font-size:26px}.detail-price-row strong{font-size:26px}.detail-actions{grid-template-columns:52px 1fr 1fr;gap:7px}.detail-actions button{font-size:13px;min-height:50px}.detail-lower{padding-top:38px}.detail-tabs a{padding:13px}.detail-message{padding:32px 18px}}
+@media(max-width:767px){.detail-main{padding:0 16px 70px}.detail-breadcrumb{padding:18px 0 24px}.detail-product{grid-template-columns:1fr;gap:24px}.detail-image-frame{border-radius:18px}.detail-summary h1{font-size:26px}.detail-sale-line strong{font-size:38px}.detail-discount{font-size:34px}.detail-price-row{margin:26px 0 30px}.detail-actions{grid-template-columns:52px 1fr 1fr;gap:7px}.detail-actions button{font-size:13px;min-height:50px}.detail-lower{padding-top:38px}.detail-tabs a{padding:13px}.detail-message{padding:32px 18px}}
