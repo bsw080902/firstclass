@@ -124,7 +124,7 @@ function showCategory(key,selected=0,minor="전체"){
   renderedCategory="all";renderedMiddle=null;
   minorTabs.classList.remove("is-revealed");minorTabs.replaceChildren();
   minorPanel.classList.add("is-collapsed");minorPanel.setAttribute("aria-hidden","true");
-  heading.textContent="전체상품";
+  heading.textContent="인기";
   const names=Object.values(examples).flat();
   renderCatalogProducts();
   return;
