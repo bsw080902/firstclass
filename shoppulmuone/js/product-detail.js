@@ -54,4 +54,50 @@ document.addEventListener('DOMContentLoaded', () => {
  document.getElementById('detail-cart').addEventListener('click',() => { status.textContent = '장바구니 기능은 현재 디자인 데모입니다. 실제 상품 저장은 연결되어 있지 않아요.'; });
  document.getElementById('detail-buy').addEventListener('click',() => { status.textContent = '실제 결제 기능은 연결되어 있지 않습니다.'; });
  update();
+
+ // 상세 탭: 페이지 스크롤 없이 패널만 전환
+ const tabBar = document.querySelector('.detail-tabs');
+ const tabs = Array.from(tabBar.querySelectorAll('[role="tab"]'));
+ const underline = tabBar.querySelector('.detail-tab-indicator');
+ function positionUnderline(tab) {
+  underline.style.width = tab.offsetWidth + 'px';
+  underline.style.transform = 'translateX(' + tab.offsetLeft + 'px)';
+ }
+ function activateTab(tab, moveFocus = false) {
+  tabs.forEach(button => {
+   const isActive = button === tab;
+   button.setAttribute('aria-selected', String(isActive));
+   button.tabIndex = isActive ? 0 : -1;
+   const panel = document.getElementById(button.getAttribute('aria-controls'));
+   panel.hidden = !isActive;
+   panel.classList.remove('is-entering');
+   if (isActive) {
+    void panel.offsetWidth;
+    panel.classList.add('is-entering');
+   }
+  });
+  positionUnderline(tab);
+  if (moveFocus) tab.focus();
+ }
+ tabs.forEach((tab, index) => {
+  tab.addEventListener('click', () => activateTab(tab));
+  tab.addEventListener('keydown', event => {
+   if (!['ArrowRight','ArrowLeft','Home','End'].includes(event.key)) return;
+   event.preventDefault();
+   let target = index;
+   if (event.key === 'ArrowRight') target = (index + 1) % tabs.length;
+   if (event.key === 'ArrowLeft') target = (index - 1 + tabs.length) % tabs.length;
+   if (event.key === 'Home') target = 0;
+   if (event.key === 'End') target = tabs.length - 1;
+   activateTab(tabs[target], true);
+  });
+ });
+ // 웹 폰트 로딩과 반응형 화면 크기 변화에도 밑줄 정렬 유지
+ requestAnimationFrame(() => positionUnderline(tabs[0]));
+ window.addEventListener('resize', () => {
+  positionUnderline(tabBar.querySelector('[aria-selected="true"]'));
+ });
+ if (document.fonts?.ready) {
+  document.fonts.ready.then(() => positionUnderline(tabBar.querySelector('[aria-selected="true"]')));
+ }
 });
