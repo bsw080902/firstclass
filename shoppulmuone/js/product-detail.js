@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
  const status = document.getElementById('detail-status');
  const update = () => {
   set('detail-quantity', String(quantity));
-  set('detail-total',priceNumber ? money(priceNumber * quantity) : '가격 준비 중');
  };
  document.getElementById('qty-minus').addEventListener('click', () => { quantity = Math.max(1,quantity-1); update(); });
  document.getElementById('qty-plus').addEventListener('click', () => { quantity = Math.min(99,quantity+1); update(); });
