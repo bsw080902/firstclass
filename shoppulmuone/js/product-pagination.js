@@ -67,7 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const active = numbers.querySelector('.is-current');
     if (active) {
-      marker.style.left = active.offsetLeft + 'px';
+      const markerX = Math.max(0, Math.min(active.offsetLeft, numbers.clientWidth - marker.offsetWidth));
+      marker.style.left = markerX + 'px';
     }
     const prev = state.nav.querySelector('[data-step="-1"]');
     const next = state.nav.querySelector('[data-step="1"]');
