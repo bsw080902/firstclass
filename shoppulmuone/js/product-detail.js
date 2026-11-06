@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const button = event.currentTarget;
   const active = button.getAttribute('aria-pressed') !== 'true';
   button.setAttribute('aria-pressed', String(active));
-  button.textContent = active ? '♥' : '♡';
+  button.setAttribute('aria-label', active ? '찜 해제하기' : '찜하기');
   status.textContent = '';
  });
  document.getElementById('detail-cart').addEventListener('click',() => { status.textContent = '장바구니 기능은 현재 디자인 데모입니다. 실제 상품 저장은 연결되어 있지 않아요.'; });
