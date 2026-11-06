@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="css/main.css?v=20261106-daily-inset">
     <script src="../npm/swiper/swiper-bundle.min.js"></script>
 <script src="js/category-links.js?v=3" defer></script>
-<script src="js/scroll-header.js?v=1" defer></script></head>
+<script src="js/scroll-header.js?v=1" defer></script><link rel="stylesheet" href="css/product-card-wish.css?v=1">
+<script src="js/product-card-wish.js?v=1" defer></script>
+</head>
 <body class="home-page">
     <div id="wrap">
         <header class="site-header">
@@ -858,8 +860,7 @@
             if (!button) return;
             const selected = button.getAttribute('aria-pressed') === 'true';
             button.setAttribute('aria-pressed', String(!selected));
-            const wishImage = button.querySelector('img');
-            if (wishImage) wishImage.src = !selected ? 'img/Heart_button_active.svg?v=filled-heart-e04453-3' : 'img/Heart_button.svg';
+            // 두 장의 하트 이미지는 CSS에서 자연스럽게 교차 전환합니다.
         });
         // 모바일 하단 메뉴는 기존 헤더의 카테고리/검색 기능을 재사용합니다.
         document.querySelector('.mobile-category').addEventListener('click', (event) => {
