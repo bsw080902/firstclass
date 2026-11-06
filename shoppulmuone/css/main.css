@@ -2241,7 +2241,7 @@ body {
  background:transparent;
 }
 .product-page-marker{
- position:absolute;z-index:0;left:0;top:50%;
+ position:absolute;z-index:0;left:6px;top:50%;
  width:20px;height:16px;box-sizing:border-box;
  margin-top:-8px;border-radius:25px;
  background:var(--brand-lime,#80c342);
