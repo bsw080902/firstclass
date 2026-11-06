@@ -215,3 +215,30 @@
 .benefit-page.daily-page .daily-product-grid .best-price span{color:#f04452;font-size:16px;font-weight:700;margin-right:5px}
 .benefit-page.daily-page .daily-product-grid .best-product-price strong,
 .benefit-page.daily-page .daily-product-grid .best-price strong{font-size:16px;font-weight:700;color:inherit}
+
+/* 일일배달 상품 카드 내부 배송 옵션: 디자인 시스템의 초록색/라운드 스타일 재사용 */
+.daily-page .daily-delivery-details{margin-top:16px;border:1px solid var(--border-default);border-radius:16px;background:#fff;overflow:hidden}
+.daily-page .daily-delivery-details>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer;padding:13px 14px;color:var(--brand-green);font-size:13px;font-weight:700}
+.daily-page .daily-delivery-details>summary::-webkit-details-marker{display:none}
+.daily-page .daily-delivery-details>summary span{transition:transform .2s ease}
+.daily-page .daily-delivery-details[open]>summary span{transform:rotate(180deg)}
+.daily-page .daily-delivery-details>summary:focus-visible{outline:2px solid var(--brand-green);outline-offset:-2px}
+.daily-page .daily-delivery-fields{padding:0 12px 14px}
+.daily-page .daily-delivery-fields fieldset{min-width:0;margin:12px 0 0;padding:0;border:0}
+.daily-page .daily-delivery-fields legend,.daily-page .daily-period-label{display:block;margin:0 0 9px;color:var(--text-primary);font-size:12px;font-weight:650}
+.daily-page .daily-delivery-weekdays small{font-size:10px;color:var(--text-secondary);font-weight:400}
+.daily-page .daily-frequency-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.daily-page .daily-weekday-options{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+.daily-page .daily-frequency-options label,.daily-page .daily-weekday-options label{position:relative;min-width:0;cursor:pointer}
+.daily-page .daily-frequency-options input,.daily-page .daily-weekday-options input{position:absolute;opacity:0;width:1px;height:1px}
+.daily-page .daily-frequency-options span,.daily-page .daily-weekday-options span{display:flex;justify-content:center;align-items:center;min-height:31px;border:1px solid var(--border-default);border-radius:8px;background:var(--bg-default);color:var(--text-secondary);font-size:11px;transition:background .2s,border-color .2s,color .2s}
+.daily-page .daily-frequency-options input:checked+span,.daily-page .daily-weekday-options input:checked+span{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff;font-weight:700}
+.daily-page .daily-frequency-options input:focus-visible+span,.daily-page .daily-weekday-options input:focus-visible+span{outline:2px solid var(--brand-green);outline-offset:2px}
+.daily-page .daily-period-label{margin-top:15px}
+.daily-page .daily-delivery-period{display:block;margin-top:8px;width:100%;min-height:36px;box-sizing:border-box;border:1px solid var(--border-default);border-radius:9px;padding:0 9px;background:#fff;color:var(--text-primary);font:inherit;font-size:12px}
+.daily-page .daily-order-total{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px;margin-top:18px;padding-top:12px;border-top:1px solid var(--border-default);font-size:12px}
+.daily-page .daily-order-total strong{font-size:17px;color:var(--brand-green);font-weight:700}
+.daily-page .daily-estimate-note{margin:8px 0 12px;font-size:10px;line-height:1.5;color:var(--text-secondary)}
+.daily-page .daily-delivery-cta{display:flex;justify-content:center;align-items:center;min-height:39px;padding:7px;border-radius:999px;background:var(--brand-lime);color:#fff;text-decoration:none;font-size:12px;font-weight:700;box-sizing:border-box}
+.daily-page .daily-delivery-cta:hover,.daily-page .daily-delivery-cta:focus-visible{filter:brightness(.95)}
+@media(prefers-reduced-motion:reduce){.daily-page .daily-delivery-details>summary span,.daily-page .daily-frequency-options span,.daily-page .daily-weekday-options span{transition:none}}
