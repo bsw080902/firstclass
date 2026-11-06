@@ -67,7 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const active = numbers.querySelector('.is-current');
     if (active) {
-      const markerX = Math.max(0, Math.min(active.offsetLeft, numbers.clientWidth - marker.offsetWidth));
+      const trackStyle = getComputedStyle(numbers);
+      const leftInset = parseFloat(trackStyle.paddingLeft) || 0;
+      const rightInset = parseFloat(trackStyle.paddingRight) || 0;
+      const markerX = Math.max(leftInset, Math.min(active.offsetLeft, numbers.clientWidth - marker.offsetWidth - rightInset));
       marker.style.left = markerX + 'px';
     }
     const prev = state.nav.querySelector('[data-step="-1"]');
