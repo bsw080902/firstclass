@@ -8,10 +8,10 @@
 <link rel="stylesheet" href="../font/css/pretendardvariable.css">
 <link rel="stylesheet" href="css/variables.css">
 <link rel="stylesheet" href="css/main.css?v=20261106-detail">
-<link rel="stylesheet" href="css/product-detail.css?v=20261106-delivery-notice">
+<link rel="stylesheet" href="css/product-detail.css?v=20261106-wish-transition">
 <script src="js/category-links.js?v=3" defer></script>
 <script src="js/scroll-header.js?v=1" defer></script>
-<script src="js/product-detail.js?v=20261106-no-wish-message" defer></script>
+<script src="js/product-detail.js?v=20261106-wish-transition" defer></script>
 </head>
 <body class="product-detail-page">
 <div id="wrap">
@@ -114,7 +114,7 @@
     <div class="detail-rule"></div>
     <div class="detail-qty-row"><label for="detail-quantity">수량</label><div class="detail-quantity"><button type="button" id="qty-minus" aria-label="수량 감소">−</button><input id="detail-quantity" name="quantity" type="number" min="1" max="99" step="1" inputmode="numeric" value="1" aria-label="상품 수량"><button type="button" id="qty-plus" aria-label="수량 증가">+</button></div></div>
     <div class="detail-total"><span>총 상품 금액</span><strong id="detail-total" aria-live="polite">가격 준비 중</strong></div>
-    <div class="detail-actions"><button type="button" id="detail-wish" class="detail-wish" aria-pressed="false" aria-label="찜하기">♡</button><button type="button" id="detail-cart" class="detail-cart">장바구니</button><button type="button" id="detail-buy" class="detail-buy">구매하기</button></div>
+    <div class="detail-actions"><button type="button" id="detail-wish" class="detail-wish" aria-pressed="false" aria-label="찜하기"><span class="detail-wish-outline" aria-hidden="true">♡</span><span class="detail-wish-filled" aria-hidden="true">♥</span></button><button type="button" id="detail-cart" class="detail-cart">장바구니</button><button type="button" id="detail-buy" class="detail-buy">구매하기</button></div>
     <p class="detail-status" id="detail-status" role="status" aria-live="polite"></p>
    </section>
   </div>
