@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   function refresh(grid, reset) {
     const state = states.get(grid);
+    if (reset) state.nav.classList.remove('is-ready');
     const items = cards(grid);
     if (reset && (items.length !== state.count || items[0] !== state.first)) state.page = 0;
     state.count = items.length;
@@ -66,9 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const active = numbers.querySelector('.is-current');
     if (active) {
-      requestAnimationFrame(() => {
-        marker.style.left = active.offsetLeft + 'px';
-      });
+      marker.style.left = active.offsetLeft + 'px';
     }
     const prev = state.nav.querySelector('[data-step="-1"]');
     const next = state.nav.querySelector('[data-step="1"]');
@@ -76,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     next.disabled = state.page === pages - 1;
     prev.classList.toggle('is-unavailable', prev.disabled);
     next.classList.toggle('is-unavailable', next.disabled);
+    if (reset) requestAnimationFrame(() => requestAnimationFrame(() => state.nav.classList.add('is-ready')));
   }
   document.querySelectorAll(selector).forEach(init);
 });
