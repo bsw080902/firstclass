@@ -27,6 +27,10 @@
 .detail-quantity button{width:43px;height:43px;border:0;background:#fff;font-size:23px;cursor:pointer}
 .detail-quantity output{min-width:40px;text-align:center;font-weight:600}
 
+/* 선택 수량에 따라 갱신되는 총 상품 금액 */
+.detail-total{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:28px}
+.detail-total span{font-size:15px;font-weight:600;color:#28352a}
+.detail-total strong{font-size:26px;font-weight:700;color:var(--text-primary,#17251d);text-align:right}
 .detail-actions{display:grid;grid-template-columns:55px 1fr 1fr;gap:10px;margin-top:30px}
 .detail-actions button{min-height:54px;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer;transition:transform .2s,background .2s}
 .detail-actions button:hover{transform:translateY(-2px)}
