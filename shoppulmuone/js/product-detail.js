@@ -49,7 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateDayCount = () => {
    count.textContent = dayInputs.filter(input => input.checked).length + '/' + selectedFrequency() + '일 선택';
   };
+  const frequencyList = dailyOptions.querySelector('.detail-daily-frequency-list');
+  const moveFrequencyHighlight = () => {
+   const index = frequencyInputs.findIndex(input => input.checked);
+   frequencyList.style.setProperty('--frequency-offset', (Math.max(0,index) * 100) + '%');
+  };
+  moveFrequencyHighlight();
   frequencyInputs.forEach(input => input.addEventListener('change', () => {
+   moveFrequencyHighlight();
    const number = selectedFrequency();
    dayInputs.forEach((day, index) => { day.checked = index < number; });
    updateDayCount();
