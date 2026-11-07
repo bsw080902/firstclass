@@ -97,18 +97,21 @@
 .detail-daily-options fieldset{border:0;margin:0 0 25px;padding:0;min-width:0}
 .detail-daily-options legend,.detail-daily-period{display:block;margin:0 0 12px;font-size:15px;font-weight:650;color:var(--text-primary,#17251d)}
 .detail-daily-options legend small{font-size:12px;font-weight:400;color:var(--text-secondary,#68756a);margin-left:6px}
-.detail-daily-frequency-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;padding:5px;border:1px solid var(--border-default,#dde5dc);border-radius:999px}
+.detail-daily-frequency-list{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;padding:5px;border:1px solid var(--border-default,#dde5dc);border-radius:999px}
+.detail-daily-frequency-list::before{content:"";position:absolute;top:5px;bottom:5px;left:5px;width:calc((100% - 10px)/4);border-radius:999px;background:var(--brand-lime,#80c342);transform:translateX(var(--frequency-offset,0%));transition:transform .32s cubic-bezier(.22,1,.36,1);pointer-events:none}
+.detail-daily-frequency-list label{z-index:1}
 .detail-daily-weekday-list{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
 .detail-daily-frequency-list label,.detail-daily-weekday-list label{position:relative;min-width:0;cursor:pointer}
 .detail-daily-frequency-list input,.detail-daily-weekday-list input{position:absolute;opacity:0;width:1px;height:1px}
 .detail-daily-frequency-list span,.detail-daily-weekday-list span{display:flex;justify-content:center;align-items:center;min-height:46px;padding:0 5px;box-sizing:border-box;font-size:14px;font-weight:600;color:var(--text-secondary,#68756a);transition:color .2s ease,background-color .2s ease,border-color .2s ease}
 .detail-daily-frequency-list span{border-radius:999px}
 .detail-daily-weekday-list span{min-height:44px;border:1px solid var(--border-default,#dde5dc);border-radius:999px;font-size:13px;white-space:nowrap}
-.detail-daily-frequency-list input:checked+span,.detail-daily-weekday-list input:checked+span{background:var(--brand-lime,#80c342);color:#fff;border-color:var(--brand-lime,#80c342)}
+.detail-daily-frequency-list input:checked+span{background:transparent;color:#fff}
+.detail-daily-weekday-list input:checked+span{background:var(--brand-lime,#80c342);color:#fff;border-color:var(--brand-lime,#80c342)}
 .detail-daily-frequency-list input:focus-visible+span,.detail-daily-weekday-list input:focus-visible+span{outline:2px solid var(--brand-green,#009333);outline-offset:2px}
 .detail-daily-period{margin-bottom:0}
 .detail-daily-period select{display:block;margin-top:12px;width:100%;min-height:48px;box-sizing:border-box;border:1px solid var(--border-default,#dde5dc);border-radius:14px;padding:0 18px;background:#fff;color:var(--text-secondary,#68756a);font:inherit;font-size:15px;cursor:pointer}
 .detail-daily-period select:focus-visible{outline:2px solid var(--brand-green,#009333);outline-offset:2px}
 .detail-daily-note{margin:12px 0 0;color:var(--text-secondary,#68756a);font-size:12px;line-height:1.5}
 @media(max-width:767px){.detail-daily-frequency-list span{font-size:12px;min-height:40px}.detail-daily-weekday-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.detail-daily-weekday-list span{font-size:12px;min-height:40px}}
-@media(prefers-reduced-motion:reduce){.detail-daily-frequency-list span,.detail-daily-weekday-list span{transition:none}}
+@media(prefers-reduced-motion:reduce){.detail-daily-frequency-list span,.detail-daily-weekday-list span,.detail-daily-frequency-list::before{transition:none}}
