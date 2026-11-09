@@ -23,7 +23,9 @@ const group=groups[key];if(!group)return;
 let selectedSubcategory=null;
 subcategories.classList.toggle('is-empty',key==='all');
 subcategories.setAttribute('aria-hidden',String(key==='all'));
-subcategories.replaceChildren(...(subcategoryData[key]||[]).map(label=>{const button=document.createElement('button');button.type='button';button.textContent=label;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>{subcategories.querySelectorAll('button').forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active));});selectedSubcategory=label;renderProducts();});return button;}));
+subcategories.classList.remove('is-revealed');
+subcategories.replaceChildren(...(subcategoryData[key]||[]).map((label,index)=>{const button=document.createElement('button');button.style.setProperty('--best-sub-index',index);button.type='button';button.textContent=label;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>{subcategories.querySelectorAll('button').forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active));});selectedSubcategory=label;renderProducts();});return button;}));
+if(key!=='all') requestAnimationFrame(()=>requestAnimationFrame(()=>subcategories.classList.add('is-revealed')));
 title.textContent=group.label+' 베스트';renderProducts();
 function renderProducts(){
 grid.replaceChildren();
