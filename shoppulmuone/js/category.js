@@ -211,7 +211,11 @@ function showCategory(key,selected=0,minor="전체"){
  // 같은 카테고리 안에서는 기존 버튼을 재사용해 클릭 중 호버가 끊기지 않게 합니다.
  if(renderedCategory!==key){
   subtabs.classList.remove("is-revealed");
-  subtabs.replaceChildren(...names.map((name,i)=>makeMiddleButton(name,i===index,()=>showCategory(key,i),middleIcons[key][i])));
+  subtabs.replaceChildren(...names.map((name,i)=>{
+   const button=makeMiddleButton(name,i===index,()=>showCategory(key,i),middleIcons[key][i]);
+   button.style.setProperty("--category-enter-index",i);
+   return button;
+  }));
   requestAnimationFrame(()=>requestAnimationFrame(()=>subtabs.classList.add("is-revealed")));
  }else{
   subtabs.querySelectorAll("button").forEach((btn,i)=>{
@@ -220,7 +224,11 @@ function showCategory(key,selected=0,minor="전체"){
  }
  if(renderedCategory!==key||renderedMiddle!==middle){
   minorTabs.classList.remove("is-revealed");
-  minorTabs.replaceChildren(...options.map(name=>makeButton(name,name===current,()=>showCategory(key,index,name))));
+  minorTabs.replaceChildren(...options.map((name,i)=>{
+   const button=makeButton(name,name===current,()=>showCategory(key,index,name));
+   button.style.setProperty("--category-enter-index",i);
+   return button;
+  }));
  }else{
   minorTabs.querySelectorAll("button").forEach(btn=>{
    const active=btn.textContent===current;btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active));
