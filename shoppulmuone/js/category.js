@@ -74,7 +74,7 @@ function makeMiddleButton(label,active,onClick,iconName){
  const button=makeButton(label,active,onClick);
  button.classList.add("category-icon-tab");
  const icon=document.createElement("span");icon.className="category-icon-tab-circle";
- const image=document.createElement("img");image.src="img/"+iconName;image.alt="";image.width=52;image.height=52;
+ const image=document.createElement("img");image.src="img/"+iconName+"?v=secondary-68756a";image.alt="";image.width=52;image.height=52;
  icon.append(image);
  const caption=document.createElement("span");caption.className="category-icon-tab-label";caption.textContent=label;
  button.replaceChildren(icon,caption);
