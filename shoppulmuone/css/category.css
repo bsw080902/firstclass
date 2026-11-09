@@ -274,37 +274,40 @@
 .category-page .category-subtabs .category-icon-tab.is-active .category-icon-tab-label{
  color:var(--brand-lime);
 }
+/* 상단 카테고리 탭과 동일: hover에는 살짝 상승 + 밝기 변화만 적용.
+   선택 상태(.is-active)의 라임색 배경/흰색 SVG는 그대로 유지합니다. */
 @media(hover:hover) and (pointer:fine){
- .category-page .category-subtabs .category-icon-tab:hover{
+ .category-page .category-subtabs button.category-icon-tab:hover{
   transform:translateY(-3px);
+  filter:brightness(.98);
+  background:transparent;
+  box-shadow:none;
  }
- .category-page .category-subtabs .category-icon-tab:hover .category-icon-tab-circle{
+ .category-page .category-subtabs button.category-icon-tab:not(.is-active):hover .category-icon-tab-circle{
+  background:#fff;
+  border-color:var(--border-default);
+ }
+ .category-page .category-subtabs button.category-icon-tab:not(.is-active):hover .category-icon-tab-label{
+  color:var(--text-secondary);
+ }
+ .category-page .category-subtabs button.category-icon-tab:not(.is-active):hover .category-icon-tab-circle img{
+  filter:none;
+ }
+ .category-page .category-subtabs button.category-icon-tab.is-active:hover .category-icon-tab-circle{
   background:var(--brand-lime);
-  border-color:var(--brand-green);
- }
- .category-page .category-subtabs .category-icon-tab.is-active:hover .category-icon-tab-circle{
   border-color:var(--brand-lime);
  }
- .category-page .category-subtabs .category-icon-tab:hover .category-icon-tab-label{
+ .category-page .category-subtabs button.category-icon-tab.is-active:hover .category-icon-tab-circle img{
+  filter:brightness(0) invert(1);
+ }
+ .category-page .category-subtabs button.category-icon-tab.is-active:hover .category-icon-tab-label{
   color:var(--brand-lime);
  }
 }
-.category-page .category-subtabs .category-icon-tab:focus-visible{
+.category-page .category-subtabs button.category-icon-tab:focus-visible{
  outline:2px solid var(--brand-green);
  outline-offset:4px;
  border-radius:10px;
-}
-/* 호버 시 버튼 배경의 흐린 사각형 제거, SVG 흰색 표시 */
-.category-page .category-subtabs button.category-icon-tab:not(.is-active):hover,
-.category-page .category-subtabs button.category-icon-tab.is-active:hover{
- background:transparent;
- filter:none;
- box-shadow:none;
-}
-@media(hover:hover) and (pointer:fine){
- .category-page .category-subtabs button.category-icon-tab:hover .category-icon-tab-circle img{
-  filter:brightness(0) invert(1);
- }
 }
 @media(max-width:767px){
  .category-page .category-subtabs .category-icon-tab,
