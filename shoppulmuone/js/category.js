@@ -63,6 +63,23 @@ function makeButton(label,active,onClick){
  button.classList.toggle("is-active",active);button.setAttribute("aria-pressed",String(active));
  button.addEventListener("click",onClick);return button;
 }
+// 중분류별 아이콘: 기존 카테고리/필터 구조와 이벤트 유지
+const middleIcons={
+ fresh:["fresh_egg.svg","fresh_apple.svg","fresh_fish.svg"],
+ meal:["easy_dumpling.svg","easy_noodle.svg","easy_kimchi.svg"],
+ processed:["food_salt.svg","food_snack.svg","food_drink.svg","food_health.svg"],
+ living:["life_animal.svg","life_kitchen.svg","life_electronic.svg"]
+};
+function makeMiddleButton(label,active,onClick,iconName){
+ const button=makeButton(label,active,onClick);
+ button.classList.add("category-icon-tab");
+ const icon=document.createElement("span");icon.className="category-icon-tab-circle";
+ const image=document.createElement("img");image.src="img/"+iconName;image.alt="";image.width=52;image.height=52;
+ icon.append(image);
+ const caption=document.createElement("span");caption.className="category-icon-tab-label";caption.textContent=label;
+ button.replaceChildren(icon,caption);
+ return button;
+}
 let activeSort="popular";
 let currentNames=[];
 const sortButtons=document.querySelectorAll(".category-sort button");
@@ -194,7 +211,7 @@ function showCategory(key,selected=0,minor="전체"){
  // 같은 카테고리 안에서는 기존 버튼을 재사용해 클릭 중 호버가 끊기지 않게 합니다.
  if(renderedCategory!==key){
   subtabs.classList.remove("is-revealed");
-  subtabs.replaceChildren(...names.map((name,i)=>makeButton(name,i===index,()=>showCategory(key,i))));
+  subtabs.replaceChildren(...names.map((name,i)=>makeMiddleButton(name,i===index,()=>showCategory(key,i),middleIcons[key][i])));
   requestAnimationFrame(()=>requestAnimationFrame(()=>subtabs.classList.add("is-revealed")));
  }else{
   subtabs.querySelectorAll("button").forEach((btn,i)=>{
