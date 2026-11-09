@@ -97,8 +97,8 @@
 }
 .best-page .best-subcategories:not(.is-revealed) button { opacity:0; }
 .best-page .best-subcategories.is-revealed button {
- animation:best-subcategory-enter .5s cubic-bezier(.22,1,.36,1) both;
- animation-delay:calc(var(--best-sub-index,0) * 75ms);
+ animation:best-subcategory-enter .4s cubic-bezier(.22,1,.36,1) both;
+ animation-delay:calc(var(--best-sub-index,0) * 60ms);
 }
 @media(prefers-reduced-motion:reduce) {
  .best-page .best-subcategories:not(.is-revealed) button { opacity:1; }
