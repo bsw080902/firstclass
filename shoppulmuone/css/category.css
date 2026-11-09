@@ -294,6 +294,18 @@
  outline-offset:4px;
  border-radius:10px;
 }
+/* 호버 시 버튼 배경의 흐린 사각형 제거, SVG 흰색 표시 */
+.category-page .category-subtabs button.category-icon-tab:not(.is-active):hover,
+.category-page .category-subtabs button.category-icon-tab.is-active:hover{
+ background:transparent;
+ filter:none;
+ box-shadow:none;
+}
+@media(hover:hover) and (pointer:fine){
+ .category-page .category-subtabs button.category-icon-tab:hover .category-icon-tab-circle img{
+  filter:brightness(0) invert(1);
+ }
+}
 @media(max-width:767px){
  .category-page .category-subtabs .category-icon-tab,
  .category-page .category-subtabs .category-icon-tab.is-active,
