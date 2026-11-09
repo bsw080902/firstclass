@@ -340,8 +340,8 @@
 .category-page .category-subtabs.is-revealed .category-icon-tab-circle,
 .category-page .category-subtabs.is-revealed .category-icon-tab-label,
 .category-page .category-minor-tabs.is-revealed button{
- animation:category-choice-appear .38s cubic-bezier(.22,1,.36,1) both;
- animation-delay:calc(var(--category-enter-index,0) * 55ms);
+ animation:category-choice-appear .6s cubic-bezier(.22,1,.36,1) both;
+ animation-delay:calc(var(--category-enter-index,0) * 90ms);
 }
 @media(prefers-reduced-motion:reduce){
  .category-page .category-subtabs.is-revealed .category-icon-tab-circle,
