@@ -189,10 +189,12 @@ function drawCards(){
 }
 let renderedCategory=null;
 let renderedMiddle=null;
+let iconTransitionId=0;
 function showCategory(key,selected=0,minor="전체"){
  if(key==="all"){
   tabs.forEach(btn=>{const active=btn.dataset.category==="all";btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active))});
-  subtabs.classList.remove("is-revealed");
+  ++iconTransitionId;
+  subtabs.classList.remove("is-revealed","is-switching");
   subtabs.replaceChildren();
   renderedCategory="all";renderedMiddle=null;
   minorTabs.classList.remove("is-revealed");minorTabs.replaceChildren();
@@ -210,13 +212,31 @@ function showCategory(key,selected=0,minor="전체"){
  tabs.forEach(btn=>{const active=btn.dataset.category===key;btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active))});
  // 같은 카테고리 안에서는 기존 버튼을 재사용해 클릭 중 호버가 끊기지 않게 합니다.
  if(renderedCategory!==key){
+  const transitionId=++iconTransitionId;
+  // 교체되는 SVG가 로딩되는 동안 이전/새 아이콘이 겹쳐 보이지 않도록 숨깁니다.
   subtabs.classList.remove("is-revealed");
+  subtabs.classList.add("is-switching");
   subtabs.replaceChildren(...names.map((name,i)=>{
    const button=makeMiddleButton(name,i===index,()=>showCategory(key,i),middleIcons[key][i]);
    button.style.setProperty("--category-enter-index",i);
    return button;
   }));
-  requestAnimationFrame(()=>requestAnimationFrame(()=>subtabs.classList.add("is-revealed")));
+  const images=[...subtabs.querySelectorAll(".category-icon-tab-circle img")];
+  Promise.all(images.map(image=>{
+   if(image.decode) return image.decode().catch(()=>{});
+   if(image.complete) return Promise.resolve();
+   return new Promise(resolve=>{
+    image.addEventListener("load",resolve,{once:true});
+    image.addEventListener("error",resolve,{once:true});
+   });
+  })).then(()=>{
+   if(transitionId!==iconTransitionId) return;
+   requestAnimationFrame(()=>{
+    if(transitionId!==iconTransitionId) return;
+    subtabs.classList.remove("is-switching");
+    subtabs.classList.add("is-revealed");
+   });
+  });
  }else{
   subtabs.querySelectorAll("button").forEach((btn,i)=>{
    const active=i===index;btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active));
