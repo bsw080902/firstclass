@@ -206,3 +206,8 @@
     padding-bottom: 40px;
   }
 }
+
+/* 인기 탭: 일일배달처럼 상단 탭 영역과 필터 사이 간격 확보 */
+.category-page:has(.category-main-tabs button[data-category="all"].is-active) .category-results-layout {
+  margin-top: 32px;
+}
