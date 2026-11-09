@@ -350,3 +350,10 @@
   animation:none;
  }
 }
+
+
+/* SVG 교체 직후 화면에 순간 노출되는 현상 방지 */
+.category-page .category-subtabs.is-switching{
+ opacity:0!important;
+ transition:none!important;
+}
