@@ -256,27 +256,7 @@
  width:64px;
  height:64px;
  object-fit:contain;
- opacity:0;
-}
-.category-page .category-subtabs .category-icon-tab-circle{
- position:relative;
-}
-.category-page .category-subtabs .category-icon-tab-circle::after{
- content:"";
- position:absolute;
- width:64px;
- height:64px;
- background:var(--text-secondary,#68756a);
- -webkit-mask-image:var(--category-svg);
- mask-image:var(--category-svg);
- -webkit-mask-size:contain;
- mask-size:contain;
- -webkit-mask-position:center;
- mask-position:center;
- -webkit-mask-repeat:no-repeat;
- mask-repeat:no-repeat;
- transition:background-color .25s ease;
- pointer-events:none;
+ transition:filter .25s ease;
 }
 .category-page .category-subtabs .category-icon-tab-label{
  text-align:center;
@@ -288,8 +268,8 @@
  background:var(--brand-lime);
  border-color:var(--brand-lime);
 }
-.category-page .category-subtabs .category-icon-tab.is-active .category-icon-tab-circle::after{
- background:#fff;
+.category-page .category-subtabs .category-icon-tab.is-active .category-icon-tab-circle img{
+ filter:brightness(0) invert(1);
 }
 .category-page .category-subtabs .category-icon-tab.is-active .category-icon-tab-label{
  color:var(--brand-lime);
@@ -310,15 +290,15 @@
  .category-page .category-subtabs button.category-icon-tab:not(.is-active):hover .category-icon-tab-label{
   color:var(--text-secondary);
  }
- .category-page .category-subtabs button.category-icon-tab:not(.is-active):hover .category-icon-tab-circle::after{
-  background:var(--text-secondary,#68756a);
+ .category-page .category-subtabs button.category-icon-tab:not(.is-active):hover .category-icon-tab-circle img{
+  filter:none;
  }
  .category-page .category-subtabs button.category-icon-tab.is-active:hover .category-icon-tab-circle{
   background:var(--brand-lime);
   border-color:var(--brand-lime);
  }
- .category-page .category-subtabs button.category-icon-tab.is-active:hover .category-icon-tab-circle::after{
-  background:#fff;
+ .category-page .category-subtabs button.category-icon-tab.is-active:hover .category-icon-tab-circle img{
+  filter:brightness(0) invert(1);
  }
  .category-page .category-subtabs button.category-icon-tab.is-active:hover .category-icon-tab-label{
   color:var(--brand-lime);
@@ -341,5 +321,5 @@
 @media(prefers-reduced-motion:reduce){
  .category-page .category-subtabs .category-icon-tab-circle,
  .category-page .category-subtabs .category-icon-tab-label,
- .category-page .category-subtabs .category-icon-tab-circle::after{transition:none}
+ .category-page .category-subtabs .category-icon-tab-circle img{transition:none}
 }
