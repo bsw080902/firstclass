@@ -213,6 +213,12 @@
 }
 
 
+/* 비선택 상태 SVG는 원본 #68756A 색상을 그대로 표시.
+   선택된 상태의 흰색 필터는 아래 기존 규칙을 유지. */
+.category-page .category-subtabs button.category-icon-tab:not(.is-active) .category-icon-tab-circle img{
+ filter:none;
+ opacity:1;
+}
 /* 카테고리 중분류: Figma 747:2402 원형 SVG 아이콘 + 하단 텍스트
    기존 0.25초 호버 상승 애니메이션은 유지 */
 .category-page .category-subtabs{
