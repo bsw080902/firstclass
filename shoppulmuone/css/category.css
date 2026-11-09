@@ -211,3 +211,95 @@
 .category-page:has(.category-main-tabs button[data-category="all"].is-active) .category-results-layout {
   margin-top: 32px;
 }
+
+
+/* 카테고리 중분류: Figma 747:2402 원형 SVG 아이콘 + 하단 텍스트
+   기존 0.25초 호버 상승 애니메이션은 유지 */
+.category-page .category-subtabs{
+ gap:15px;
+ align-items:flex-start;
+}
+.category-page .category-subtabs .category-icon-tab,
+.category-page .category-subtabs .category-icon-tab.is-active,
+.category-page .category-subtabs .category-icon-tab:hover,
+.category-page .category-subtabs .category-icon-tab.is-active:hover,
+.category-page .category-subtabs .category-icon-tab:focus-visible{
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ gap:10px;
+ flex:0 0 108px;
+ min-width:0;
+ padding:0;
+ border:0;
+ border-radius:0;
+ background:transparent;
+ color:var(--text-secondary);
+ font-size:12px;
+ font-weight:600;
+ line-height:1.35;
+}
+.category-page .category-subtabs .category-icon-tab-circle{
+ display:grid;
+ place-items:center;
+ width:60px;
+ height:60px;
+ box-sizing:border-box;
+ flex:none;
+ border:1px solid var(--border-default);
+ border-radius:50%;
+ background:#fff;
+ transition:background-color .25s ease,border-color .25s ease;
+}
+.category-page .category-subtabs .category-icon-tab-circle img{
+ display:block;
+ width:52px;
+ height:52px;
+ object-fit:contain;
+}
+.category-page .category-subtabs .category-icon-tab-label{
+ text-align:center;
+ color:var(--text-secondary);
+ overflow-wrap:break-word;
+ transition:color .25s ease;
+}
+.category-page .category-subtabs .category-icon-tab.is-active .category-icon-tab-circle{
+ background:var(--brand-lime);
+ border-color:var(--brand-lime);
+}
+.category-page .category-subtabs .category-icon-tab.is-active .category-icon-tab-label{
+ color:var(--brand-lime);
+}
+@media(hover:hover) and (pointer:fine){
+ .category-page .category-subtabs .category-icon-tab:hover{
+  transform:translateY(-3px);
+ }
+ .category-page .category-subtabs .category-icon-tab:hover .category-icon-tab-circle{
+  background:var(--brand-lime);
+  border-color:var(--brand-green);
+ }
+ .category-page .category-subtabs .category-icon-tab.is-active:hover .category-icon-tab-circle{
+  border-color:var(--brand-lime);
+ }
+ .category-page .category-subtabs .category-icon-tab:hover .category-icon-tab-label{
+  color:var(--brand-lime);
+ }
+}
+.category-page .category-subtabs .category-icon-tab:focus-visible{
+ outline:2px solid var(--brand-green);
+ outline-offset:4px;
+ border-radius:10px;
+}
+@media(max-width:767px){
+ .category-page .category-subtabs .category-icon-tab,
+ .category-page .category-subtabs .category-icon-tab.is-active,
+ .category-page .category-subtabs .category-icon-tab:hover,
+ .category-page .category-subtabs .category-icon-tab:focus-visible{
+  flex-basis:98px;
+  font-size:12px;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ .category-page .category-subtabs .category-icon-tab-circle,
+ .category-page .category-subtabs .category-icon-tab-label{transition:none}
+}
