@@ -20,7 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const discount = (priceEl?.textContent || '').match(/\d{1,2}%/)?.[0] || '';
   const original = card.querySelector('.original-price, .regular-price, .before-price, del, s')?.textContent?.trim() || '';
   const delivery = getText(card,['.best-product-delivery','.best-delivery','.recommend-delivery','.new-product-delivery','.new-list-delivery']);
-  const imgEl = card.querySelector('.best-product-media > img, .best-image > img, .recommend-image > img, .brand-product-image > img, .new-product-image, .new-list-image img, .daily-main-best-image > img, img');
+  // NEW 카드의 첫 번째 이미지는 광고용이므로, 하단 상품 썸네일을 우선 사용합니다.
+  const imgEl = card.matches('.new-card')
+   ? card.querySelector('.new-card-bottom .new-product-image')
+   : card.querySelector('.best-product-media > img, .best-image > img, .recommend-image > img, .brand-product-image > img, .new-product-image, .new-list-image img, .daily-main-best-image > img, img');
   const image = imgEl?.getAttribute('src')?.split('/').pop()?.split('?')[0] || '';
   const params = new URLSearchParams({name,brand,price,discount,original,delivery,image});
   if (card.closest('.daily-page .daily-product-grid')) params.set('daily', '1');
