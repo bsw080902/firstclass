@@ -370,8 +370,8 @@
  opacity:0;
 }
 .category-page .category-minor-tabs.is-revealed button {
- animation-duration:.7s;
- animation-delay:calc(var(--category-enter-index,0) * 100ms);
+ animation-duration:.5s;
+ animation-delay:calc(var(--category-enter-index,0) * 75ms);
 }
 @media (prefers-reduced-motion:reduce) {
  .category-page .category-minor-tabs:not(.is-revealed) button {opacity:1}
