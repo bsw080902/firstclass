@@ -357,3 +357,21 @@
  opacity:0!important;
  transition:none!important;
 }
+
+/* 3단계 세부메뉴: 부모/자식의 이중 이동을 제거해 텍스트 겹침 방지 */
+.category-page .category-minor-tabs,
+.category-page .category-minor-tabs.is-revealed {
+ opacity:1;
+ transform:none;
+ transition:none;
+}
+.category-page .category-minor-tabs:not(.is-revealed) button {
+ opacity:0;
+}
+.category-page .category-minor-tabs.is-revealed button {
+ animation-duration:.7s;
+ animation-delay:calc(var(--category-enter-index,0) * 100ms);
+}
+@media (prefers-reduced-motion:reduce) {
+ .category-page .category-minor-tabs:not(.is-revealed) button {opacity:1}
+}
