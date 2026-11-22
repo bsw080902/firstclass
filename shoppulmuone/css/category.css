@@ -262,7 +262,8 @@
  width:64px;
  height:64px;
  object-fit:contain;
- transition:filter .25s ease;
+ /* filter를 보간하면 brightness(0) 단계에서 검게 보이므로 즉시 전환 */
+ transition:none;
 }
 .category-page .category-subtabs .category-icon-tab-label{
  text-align:center;
