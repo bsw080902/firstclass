@@ -706,22 +706,26 @@
         bestSwiper.on('slideChange', updateBestPagination);
         updateBestPagination();
 
-        // 활성 버튼 자체를 채웁니다. 내부 요소/가상 요소의 표시 문제를 피합니다.
-        // Swiper 자동재생의 남은 시간에 맞춰 색상 경계를 직접 이동시킵니다.
+        // 전환 직전 Swiper의 timeLeft가 0에 가까워져 새 점이 순간적으로
+        // 모두 초록색으로 칠해지는 현상을 방지합니다.
+        const bestAutoplayDelay = 4000;
+        const bestProgressBackground = percent =>
+            'linear-gradient(to right, #009b3a 0%, #009b3a ' + percent +
+            '%, #dce8dc ' + percent + '%, #dce8dc 100%)';
         let bestProgressStart = performance.now();
         bestSwiper.on('slideChange', () => {
             bestProgressStart = performance.now();
+            // 다른 점으로 활성 상태가 바뀐 바로 그 프레임에 0%로 초기화합니다.
+            const activeDot = bestPagination.querySelector('.swiper-pagination-bullet-active');
+            if (activeDot) activeDot.style.background = bestProgressBackground(0);
         });
         function paintBestProgress(now) {
             const activeDot = bestPagination.querySelector('.swiper-pagination-bullet-active');
             if (activeDot) {
-                const autoplay = bestSwiper.autoplay;
-                const remaining = autoplay && autoplay.timeLeft;
-                const ratio = autoplay && autoplay.running && Number.isFinite(remaining)
-                    ? 1 - Math.max(0, Math.min(4000, remaining)) / 4000
-                    : Math.max(0, Math.min(1, (now - bestProgressStart) / 4000));
-                const percent = (ratio * 100).toFixed(2) + '%';
-                activeDot.style.background = 'linear-gradient(to right, #009b3a 0%, #009b3a ' + percent + ', #dce8dc ' + percent + ', #dce8dc 100%)';
+                // 이전 슬라이드의 timeLeft를 사용하지 않고 현재 슬라이드의
+                // 실제 경과 시간만 사용해 0%에서 자연스럽게 채웁니다.
+                const ratio = Math.max(0, Math.min(1, (now - bestProgressStart) / bestAutoplayDelay));
+                activeDot.style.background = bestProgressBackground((ratio * 100).toFixed(2));
             }
             requestAnimationFrame(paintBestProgress);
         }
