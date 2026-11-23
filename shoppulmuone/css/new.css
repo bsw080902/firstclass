@@ -73,3 +73,19 @@
 .new-page .new-list-card .new-list-price{justify-content:flex-end;align-items:baseline;margin-top:auto;padding-top:26px;gap:8px}
 .new-page .new-list-card .new-list-price .new-list-discount{color:#f04452;font-weight:600}
 @media(max-width:767px){.new-page .new-list-card .new-list-info{min-height:155px}.new-page .new-list-card .new-list-price{padding-top:14px}}
+
+
+/* 신상품 페이지 상단 카드: 메인 NEW / 일일배달 배너와 동일한 호버 */
+.new-page .new-swiper .new-card{
+ transition:transform .3s ease,box-shadow .3s ease;
+}
+@media(hover:hover) and (pointer:fine){
+ .new-page .new-swiper .new-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 12px 26px rgba(33,80,46,.12);
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ .new-page .new-swiper .new-card{transition:none}
+ .new-page .new-swiper .new-card:hover{transform:none}
+}
