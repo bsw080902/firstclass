@@ -1011,3 +1011,14 @@
  content:none !important;
  display:none !important;
 }
+
+/* 모바일: 구형 사이드바의 테두리가 펼친 필터 안에 남지 않도록 제거 */
+@media(max-width:767px){
+ .category-page .category-toolbar > .category-filter-popover .category-filter{
+  border:0;
+  border-radius:0;
+  padding:0;
+  box-shadow:none;
+  background:transparent;
+ }
+}
