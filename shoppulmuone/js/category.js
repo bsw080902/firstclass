@@ -56,6 +56,47 @@ const subtabs=document.querySelector("#category-subtabs");
 const minorTabs=document.querySelector("#category-minor-tabs");
 const minorPanel=document.querySelector(".category-minor-panel");
 const heading=document.querySelector("#category-title");
+const bannerTitle=document.querySelector("#category-banner-title");
+const detailRow=document.querySelector("#category-detail-row");
+const middlePicker=document.querySelector(".category-middle-picker");
+const middleTrigger=document.querySelector("#category-middle-trigger");
+const middleLabel=document.querySelector("#category-middle-label");
+const middleIcon=document.querySelector("#category-middle-icon");
+const toolbarCount=document.querySelector("#category-total-count");
+const filterTrigger=document.querySelector("#category-filter-trigger");
+const sortTrigger=document.querySelector("#category-sort-trigger");
+const sortLabel=document.querySelector("#category-sort-label");
+const filterCount=document.querySelector("#category-filter-count");
+const filterControl=document.querySelector(".category-filter-control");
+const sortControl=document.querySelector(".category-sort-control");
+const filterPopover=document.querySelector("#category-filter-panel");
+const sortPopover=document.querySelector("#category-sort-panel");
+function closeCategoryMenus(){
+ middlePicker.classList.remove("is-open");
+ filterControl.classList.remove("is-open");
+ sortControl.classList.remove("is-open");
+ for(const trigger of [middleTrigger,filterTrigger,sortTrigger])trigger.setAttribute("aria-expanded","false");
+ for(const panel of [subtabs,filterPopover,sortPopover])panel.inert=true;
+}
+function toggleCategoryMenu(type){
+ const control=type==="middle"?middlePicker:type==="filter"?filterControl:sortControl;
+ const trigger=type==="middle"?middleTrigger:type==="filter"?filterTrigger:sortTrigger;
+ const shouldOpen=!control.classList.contains("is-open");
+ closeCategoryMenus();
+ if(shouldOpen){control.classList.add("is-open");trigger.setAttribute("aria-expanded","true");(type==="middle"?subtabs:type==="filter"?filterPopover:sortPopover).inert=false;}
+}
+middleTrigger.addEventListener("click",()=>toggleCategoryMenu("middle"));
+filterTrigger.addEventListener("click",()=>toggleCategoryMenu("filter"));
+sortTrigger.addEventListener("click",()=>toggleCategoryMenu("sort"));
+document.addEventListener("pointerdown",e=>{if(!e.target.closest(".category-middle-picker,.category-toolbar-actions"))closeCategoryMenus()});
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape"){
+  const current=document.querySelector('.category-middle-picker.is-open #category-middle-trigger,.category-filter-control.is-open #category-filter-trigger,.category-sort-control.is-open #category-sort-trigger');
+  closeCategoryMenus();current?.focus();
+ }
+});
+function updateCategoryTotal(){toolbarCount.textContent=grid.querySelectorAll(".best-product").length+"개의"}
+
 const grid=document.querySelector("#category-products");
 const placeholder='<span class="best-placeholder"><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="2"/><path d="m3 17 6-5 4 3 3-3 5 5"/></svg>상품 이미지 준비 중</span>';
 function makeButton(label,active,onClick){
@@ -93,6 +134,17 @@ const petProducts=catalogProducts.filter(p=>p.image==="new_item1.jpg");
 const filterForm=document.querySelector("#category-filter-form");
 const filterEmpty=document.querySelector("#category-filter-empty");
 const filterMessage=document.querySelector("#category-filter-message");
+function updateCategoryFilterBadge(){
+ const total=filterForm.querySelectorAll('input[type="checkbox"]:checked').length +
+  [filterForm.elements.minPrice,filterForm.elements.maxPrice].filter(el=>el.value!=="").length;
+ filterCount.hidden=total===0;filterCount.textContent=String(total);
+}
+filterForm.addEventListener("input",updateCategoryFilterBadge);
+filterForm.addEventListener("change",updateCategoryFilterBadge);
+filterForm.addEventListener("reset",()=>requestAnimationFrame(updateCategoryFilterBadge));
+updateCategoryFilterBadge();
+closeCategoryMenus();
+
 function selectedFilters(name){
  return [...filterForm.querySelectorAll('input[name="'+name+'"]:checked')].map(el=>el.value);
 }
@@ -163,6 +215,7 @@ function renderCatalogProducts(productsSource=catalogProducts){
   const amount=document.createElement("strong");amount.textContent=p.price;price.append(amount);
   info.append(brand,name,delivery,price);article.append(media,info);grid.append(article);
  });
+ updateCategoryTotal();
  requestAnimationFrame(()=>requestAnimationFrame(()=>grid.classList.add("is-revealed")));
 }
 function renderCards(names){
@@ -185,6 +238,7 @@ function drawCards(){
  article.querySelector(".best-cart").setAttribute("aria-label",name+" 장바구니 담기");
  grid.append(article);
  });
+ updateCategoryTotal();
  requestAnimationFrame(()=>requestAnimationFrame(()=>grid.classList.add("is-revealed")));
 }
 let renderedCategory=null;
@@ -192,6 +246,8 @@ let renderedMiddle=null;
 let iconTransitionId=0;
 function showCategory(key,selected=0,minor="전체"){
  if(key==="all"){
+  bannerTitle.textContent="인기";
+  detailRow.classList.add("is-empty");closeCategoryMenus();
   tabs.forEach(btn=>{const active=btn.dataset.category==="all";btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active))});
   ++iconTransitionId;
   subtabs.classList.remove("is-revealed","is-switching");
@@ -204,9 +260,14 @@ function showCategory(key,selected=0,minor="전체"){
   renderCatalogProducts();
   return;
  }
+ bannerTitle.textContent=[...tabs].find(btn=>btn.dataset.category===key)?.textContent.trim()||"카테고리";
+ detailRow.classList.remove("is-empty");
  const names=Object.keys(categories[key]);
  const index=Math.max(0,Math.min(selected,names.length-1));
  const middle=names[index], details=categories[key][middle], hasDetails=details.length>0;
+ middleLabel.textContent=middle;
+ middleIcon.src="img/"+middleIcons[key][index]+"?v=20261109-secondary-2";
+ closeCategoryMenus();
  const options=hasDetails?["전체",...details]:[];
  const current=options.includes(minor)?minor:"전체";
  tabs.forEach(btn=>{const active=btn.dataset.category===key;btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active))});
@@ -278,6 +339,7 @@ function showCategory(key,selected=0,minor="전체"){
 }
 sortButtons.forEach(btn=>btn.addEventListener("click",()=>{
  activeSort=btn.dataset.sort;
+ sortLabel.textContent=btn.textContent.trim();closeCategoryMenus();
  sortButtons.forEach(item=>{const selected=item===btn;item.classList.toggle("is-active",selected);item.setAttribute("aria-pressed",String(selected));});
  if(document.querySelector(".category-main-tabs button[data-category=all]")?.classList.contains("is-active"))renderCatalogProducts();
  else if(document.querySelector(".category-main-tabs button[data-category=living]")?.classList.contains("is-active") && renderedMiddle==="반려동물")renderCatalogProducts(petProducts);
@@ -291,5 +353,5 @@ sortButtons.forEach(btn=>btn.addEventListener("click",()=>{
 tabs.forEach(btn=>btn.addEventListener("click",()=>showCategory(btn.dataset.category)));
 grid.addEventListener("click",e=>{const wish=e.target.closest(".best-wish");if(wish){const on=wish.getAttribute("aria-pressed")!=="true";wish.setAttribute("aria-pressed",String(on));wish.classList.toggle("is-selected",on)}});
 const params=new URLSearchParams(location.search),initial=params.get("group");
-const key=initial==="all"||Object.hasOwn(categories,initial)?initial:"all",sub=Number(params.get("sub"));
+const key=initial==="all"||Object.hasOwn(categories,initial)?initial:"fresh",sub=Number(params.get("sub"));
 showCategory(key,key==="all"?0:(Number.isInteger(sub)&&sub>=0&&sub<Object.keys(categories[key]).length?sub:0));
