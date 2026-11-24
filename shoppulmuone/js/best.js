@@ -30,7 +30,7 @@ title.textContent=group.label+' 베스트';renderProducts();
 function renderProducts(){
 grid.replaceChildren();
 const visibleItems=selectedSubcategory?group.items.filter(product=>product.subcategory===selectedSubcategory):group.items;
-count.textContent='총 '+visibleItems.length+'개';
+count.replaceChildren(document.createTextNode('총 '),Object.assign(document.createElement('strong'),{textContent:visibleItems.length+'개의'}),document.createTextNode(' 상품이 있습니다.'));
 
 visibleItems.forEach((product,i)=>{
 const article=document.createElement('article');article.className='best-product';article.style.setProperty('--best-card-index',i);
