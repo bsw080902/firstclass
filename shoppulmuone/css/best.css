@@ -237,3 +237,40 @@
 @media(prefers-reduced-motion:reduce){
  .best-page:not(.category-page) .best-category-tabs button{transition:none}
 }
+
+
+/* 베스트 상단/상품 크기를 카테고리 PC 레이아웃(1120px, 4열)에 맞춤 */
+@media (min-width: 901px) {
+ .best-page:not(.category-page) .best-page-inner { max-width:1120px; }
+ .best-page:not(.category-page) .best-page-title { padding-top:122px; padding-bottom:34px; }
+ .best-page:not(.category-page) .best-page-title h1 { font-size:32px; }
+ .best-page:not(.category-page) .best-category-tabs { gap:14px; margin-bottom:34px; }
+ .best-page:not(.category-page) .best-category-tabs button {
+  min-width:150px;
+  min-height:50px;
+  padding:0 22px;
+  font-size:16px;
+ }
+ .best-page:not(.category-page) .best-results-head {
+  max-width:1120px;
+  min-height:92px;
+  padding:18px 42px;
+  margin-bottom:42px;
+  border-radius:18px;
+ }
+ .best-page:not(.category-page) #best-count { font-size:15px; }
+}
+.best-page:not(.category-page) .best-product-grid {
+ display:grid;
+ grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:36px 16px;
+}
+.best-page:not(.category-page) .best-product-media { max-width:none; }
+@media (min-width:768px) and (max-width:900px) {
+ .best-page:not(.category-page) .best-product-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+ .best-page:not(.category-page) .best-category-tabs button { min-height:44px; font-size:15px; }
+ .best-page:not(.category-page) .best-results-head { max-width:100%; min-height:82px; }
+}
+@media (max-width:767px) {
+ .best-page:not(.category-page) .best-product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px 12px; }
+}
