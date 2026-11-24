@@ -770,3 +770,27 @@
  .category-page .category-toolbar > .category-filter-popover .category-filter-options label{font-size:13px;gap:8px}
  .category-page .category-toolbar > .category-filter-popover .category-price-filter input{width:116px;height:42px}
 }
+
+
+/* 필터 전체 행에 동일한 5열 기준선을 사용합니다.
+   기존 3열/5열을 따로 계산해 열 시작점이 어긋나는 문제를 해결합니다. */
+@media (min-width: 901px) {
+ .category-page .category-toolbar > .category-filter-popover .category-filter-options,
+ .category-page .category-toolbar > .category-filter-popover .category-filter-section:nth-of-type(3) .category-filter-options {
+  display:grid;
+  grid-template-columns:24% 24% 19% 15% minmax(0,1fr);
+  column-gap:0;
+  row-gap:12px;
+  width:100%;
+  min-width:0;
+ }
+ .category-page .category-toolbar > .category-filter-popover .category-filter-options label {
+  min-width:0;
+  max-width:100%;
+  align-items:center;
+ }
+ .category-page .category-toolbar > .category-filter-popover .category-filter-options label span{
+  min-width:0;
+  overflow-wrap:anywhere;
+ }
+}
