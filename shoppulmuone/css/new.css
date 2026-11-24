@@ -89,6 +89,3 @@
  .new-page .new-swiper .new-card{transition:none}
  .new-page .new-swiper .new-card:hover{transform:none}
 }
-
-/* 신상품: 사이드 필터 제거 후에도 기존 4열 상품 카드 배치 유지 */
-@media(min-width:1025px){.new-page .new-list-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:44px 16px}}
