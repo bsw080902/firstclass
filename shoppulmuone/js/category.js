@@ -71,6 +71,9 @@ const filterControl=document.querySelector(".category-filter-control");
 const sortControl=document.querySelector(".category-sort-control");
 const filterPopover=document.querySelector("#category-filter-panel");
 const sortPopover=document.querySelector("#category-sort-panel");
+const categoryToolbar=document.querySelector(".category-toolbar");
+// 필터는 드롭다운이 아닌 정보 바 내부의 확장 영역으로 배치합니다.
+categoryToolbar.append(filterPopover);
 function closeCategoryMenus(){
  middlePicker.classList.remove("is-open");
  filterControl.classList.remove("is-open");
@@ -88,7 +91,7 @@ function toggleCategoryMenu(type){
 middleTrigger.addEventListener("click",()=>toggleCategoryMenu("middle"));
 filterTrigger.addEventListener("click",()=>toggleCategoryMenu("filter"));
 sortTrigger.addEventListener("click",()=>toggleCategoryMenu("sort"));
-document.addEventListener("pointerdown",e=>{if(!e.target.closest(".category-middle-picker,.category-toolbar-actions"))closeCategoryMenus()});
+document.addEventListener("pointerdown",e=>{if(!e.target.closest(".category-middle-picker,.category-toolbar-actions,.category-toolbar > .category-filter-popover"))closeCategoryMenus()});
 document.addEventListener("keydown",e=>{
  if(e.key==="Escape"){
   const current=document.querySelector('.category-middle-picker.is-open #category-middle-trigger,.category-filter-control.is-open #category-filter-trigger,.category-sort-control.is-open #category-sort-trigger');
