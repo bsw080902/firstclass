@@ -564,14 +564,14 @@
  opacity:0;
  visibility:hidden;
  pointer-events:none;
- transition:max-height .45s cubic-bezier(.22,1,.36,1),opacity .3s ease,visibility 0s linear .45s;
+ transition:max-height .75s ease-in-out,opacity .5s ease,visibility 0s linear .75s;
 }
 .category-page .category-toolbar:has(.category-filter-control.is-open) > .category-filter-popover{
- max-height:950px;
+ max-height:600px;
  opacity:1;
  visibility:visible;
  pointer-events:auto;
- transition:max-height .5s cubic-bezier(.22,1,.36,1),opacity .3s ease,visibility 0s;
+ transition:max-height .85s ease-in-out,opacity .6s ease,visibility 0s;
 }
 .category-page .category-toolbar > .category-filter-popover .category-filter{
  display:block;
@@ -671,7 +671,7 @@
  .category-page .category-toolbar > .category-filter-popover .category-filter-options label{font-size:13px}
  .category-page .category-toolbar > .category-filter-popover .category-price-filter input{width:110px}
  .category-page .category-toolbar:has(.category-filter-control.is-open) > .category-filter-popover{
-  max-height:1300px;
+  max-height:950px;
  }
 }
 @media(prefers-reduced-motion:reduce){
