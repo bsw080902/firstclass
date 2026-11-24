@@ -91,7 +91,12 @@ function toggleCategoryMenu(type){
 middleTrigger.addEventListener("click",()=>toggleCategoryMenu("middle"));
 filterTrigger.addEventListener("click",()=>toggleCategoryMenu("filter"));
 sortTrigger.addEventListener("click",()=>toggleCategoryMenu("sort"));
-document.addEventListener("pointerdown",e=>{if(!e.target.closest(".category-middle-picker,.category-toolbar-actions,.category-toolbar > .category-filter-popover"))closeCategoryMenus()});
+document.addEventListener("pointerdown",e=>{
+ if(e.target.closest(".category-middle-picker,.category-toolbar-actions,.category-toolbar > .category-filter-popover"))return;
+ // 페이지의 다른 곳을 클릭해도 필터는 유지합니다. 필터 버튼을 다시 눌러 닫을 수 있습니다.
+ if(filterControl.classList.contains("is-open"))return;
+ closeCategoryMenus();
+});
 document.addEventListener("keydown",e=>{
  if(e.key==="Escape"){
   const current=document.querySelector('.category-middle-picker.is-open #category-middle-trigger,.category-filter-control.is-open #category-filter-trigger,.category-sort-control.is-open #category-sort-trigger');
@@ -180,11 +185,18 @@ function applyProductFilters(source){
  return filtered;
 }
 function rerenderWithFilters(){
+ // 필터 항목 선택 시 상품만 갱신하고, 열려 있던 필터 패널은 닫지 않습니다.
+ const wasFilterOpen=filterControl.classList.contains("is-open");
  const active=document.querySelector(".category-main-tabs button.is-active");
  const key=active?.dataset.category||"all";
  const middleIndex=[...subtabs.querySelectorAll("button")].findIndex(b=>b.classList.contains("is-active"));
  const minor=minorTabs.querySelector(".is-active")?.textContent||"전체";
  showCategory(key,Math.max(0,middleIndex),minor);
+ if(wasFilterOpen){
+  filterControl.classList.add("is-open");
+  filterTrigger.setAttribute("aria-expanded","true");
+  filterPopover.inert=false;
+ }
 }
 filterForm.addEventListener("change",rerenderWithFilters);
 filterForm.addEventListener("submit",event=>{
