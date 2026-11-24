@@ -898,8 +898,7 @@
 /* SVG가 투명 배경의 img라 내부 도형에만 색상 필터가 적용됩니다. */
 .category-page .category-middle-picker .category-subtabs button.category-icon-tab.is-active .category-icon-tab-circle img,
 .category-page .category-middle-picker .category-subtabs button.category-icon-tab.is-active:hover .category-icon-tab-circle img,
-.category-page .category-middle-picker .category-subtabs button.category-icon-tab.is-active:focus-visible .category-icon-tab-circle img,
-.category-page #category-middle-trigger img{
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab.is-active:focus-visible .category-icon-tab-circle img{
  background:transparent!important;
  opacity:1;
  filter:brightness(0) saturate(100%) invert(72%) sepia(42%) saturate(602%) hue-rotate(43deg) brightness(94%) contrast(90%);
@@ -914,4 +913,14 @@
 .category-page .category-middle-picker .category-subtabs button.category-icon-tab.is-active:focus-visible .category-icon-tab-label{
  color:var(--brand-lime);
  font-weight:700;
+}
+
+/* 닫힌 중분류 선택 버튼은 SVG를 글씨와 같은 검정 계열로 고정 */
+.category-page #category-middle-trigger img,
+.category-page #category-middle-trigger:hover img,
+.category-page #category-middle-trigger:focus-visible img{
+ filter:brightness(0);
+ opacity:1;
+ background:transparent;
+ transition:none;
 }
