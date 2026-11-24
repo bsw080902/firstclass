@@ -495,3 +495,39 @@
  .category-page .category-filter-popover{right:0;width:min(350px,calc(100vw - 32px))}
 }
 @media(prefers-reduced-motion:reduce){.category-page .category-sort-trigger svg{transition:none}}
+
+
+/* 2026-11-24 카테고리 상단 UI 전체 크기 조정 (구조/기능 유지) */
+@media(min-width:901px){
+ .category-page .category-page-inner{max-width:1120px}
+ .category-page .category-selection-banner{min-height:120px;margin-bottom:36px}
+ .category-page .category-selection-banner h1{font-size:32px}
+ .category-page .category-section-title{font-size:23px;margin-bottom:18px}
+ .category-page .category-main-tabs{gap:14px}
+ .category-page .category-main-tabs button{min-height:50px;padding:14px 12px;font-size:16px}
+ .category-page .category-detail-row{gap:28px;min-height:54px;margin:34px 0 48px}
+ .category-page .category-detail-separator{height:33px}
+ .category-page #category-middle-trigger{min-width:235px;min-height:50px;padding:10px 17px;font-size:16px;gap:11px}
+ .category-page #category-middle-trigger img{width:26px;height:26px}
+ .category-page .category-minor-tabs{gap:11px}
+ .category-page .category-minor-tabs button{font-size:15px;min-height:42px;padding:10px 20px}
+ .category-page .category-toolbar{min-height:92px;padding:18px 26px 18px 42px;margin-bottom:42px;border-radius:18px}
+ .category-page .category-total{font-size:15px}
+ .category-page .category-toolbar-actions{gap:26px}
+ .category-page .category-sort-trigger{font-size:16px;padding:12px 8px}
+ .category-page .category-filter-trigger{min-height:58px;padding:0 26px;font-size:17px}
+ .category-page .category-middle-picker .category-subtabs .category-icon-tab,
+ .category-page .category-middle-picker .category-subtabs .category-icon-tab:hover,
+ .category-page .category-middle-picker .category-subtabs .category-icon-tab.is-active,
+ .category-page .category-middle-picker .category-subtabs .category-icon-tab.is-active:hover{font-size:15px;min-height:46px}
+ .category-page .category-sort-popover{width:205px}
+ .category-page .category-sort-popover .category-sort button,
+ .category-page .category-sort-popover .category-sort button:hover,
+ .category-page .category-sort-popover .category-sort button:focus-visible{font-size:15px}
+ .category-page .category-filter-popover{width:420px}
+}
+@media(min-width:768px) and (max-width:900px){
+ .category-page .category-main-tabs button{min-height:44px;font-size:15px}
+ .category-page .category-selection-banner h1{font-size:30px}
+ .category-page .category-toolbar{min-height:82px}
+}
