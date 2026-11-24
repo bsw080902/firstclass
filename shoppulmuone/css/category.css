@@ -867,3 +867,51 @@
  outline:2px solid var(--brand-green);
  outline-offset:-2px;
 }
+
+
+/* 선택한 중분류만 아이콘/텍스트를 라임색으로 표시. 배경은 항상 투명. */
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab,
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab.is-active,
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab:hover,
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab.is-active:hover,
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab:focus-visible {
+ background:transparent!important;
+ box-shadow:none!important;
+ filter:none!important;
+ transform:none!important;
+}
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab .category-icon-tab-circle,
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab.is-active .category-icon-tab-circle,
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab:hover .category-icon-tab-circle {
+ background:transparent!important;
+ border:0!important;
+ box-shadow:none!important;
+}
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab .category-icon-tab-circle img,
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab:hover .category-icon-tab-circle img,
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab:focus-visible .category-icon-tab-circle img{
+ background:transparent!important;
+ opacity:1;
+ filter:brightness(0);
+ transition:none;
+}
+/* SVG가 투명 배경의 img라 내부 도형에만 색상 필터가 적용됩니다. */
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab.is-active .category-icon-tab-circle img,
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab.is-active:hover .category-icon-tab-circle img,
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab.is-active:focus-visible .category-icon-tab-circle img,
+.category-page #category-middle-trigger img{
+ background:transparent!important;
+ opacity:1;
+ filter:brightness(0) saturate(100%) invert(72%) sepia(42%) saturate(602%) hue-rotate(43deg) brightness(94%) contrast(90%);
+}
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab .category-icon-tab-label,
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab:hover .category-icon-tab-label,
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab:focus-visible .category-icon-tab-label{
+ color:var(--text-primary);
+}
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab.is-active .category-icon-tab-label,
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab.is-active:hover .category-icon-tab-label,
+.category-page .category-middle-picker .category-subtabs button.category-icon-tab.is-active:focus-visible .category-icon-tab-label{
+ color:var(--brand-lime);
+ font-weight:700;
+}
