@@ -1004,3 +1004,10 @@
   font-size:14px;
  }
 }
+
+/* 정렬 메뉴: 선택 항목 오른쪽 체크 표시 완전히 숨김 */
+.category-page .category-sort-control .category-sort button::after,
+.category-page .category-sort-control .category-sort button.is-active::after {
+ content:none !important;
+ display:none !important;
+}
