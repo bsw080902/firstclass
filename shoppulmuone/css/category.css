@@ -924,3 +924,83 @@
  background:transparent;
  transition:none;
 }
+
+
+/* 인기순 드롭다운: 첨부 시안처럼 가운데 정렬된 세로형 메뉴 */
+.category-page .category-sort-control .category-sort-popover{
+ left:50%;
+ right:auto;
+ top:calc(100% + 16px);
+ transform:translateX(-50%);
+ width:178px;
+ padding:12px 8px;
+ box-sizing:border-box;
+ border:1px solid var(--border-default);
+ border-radius:22px;
+ background:#fff;
+ box-shadow:0 5px 8px rgba(32,49,36,.18);
+}
+.category-page .category-sort-control .category-sort{
+ display:flex;
+ flex-direction:column;
+ gap:0;
+ align-items:stretch;
+ overflow:visible;
+ width:100%;
+}
+.category-page .category-sort-control .category-sort button,
+.category-page .category-sort-control .category-sort button:hover,
+.category-page .category-sort-control .category-sort button:focus-visible{
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ width:100%;
+ min-height:51px;
+ padding:10px 4px;
+ box-sizing:border-box;
+ text-align:center;
+ white-space:nowrap;
+ font:inherit;
+ font-size:16px;
+ font-weight:500;
+ color:var(--text-secondary);
+ border:0;
+ border-radius:9px;
+ background:transparent;
+ transform:none;
+ filter:none;
+ box-shadow:none;
+}
+.category-page .category-sort-control .category-sort button::before,
+.category-page .category-sort-control .category-sort button::after{
+ content:none;
+}
+.category-page .category-sort-control .category-sort button.is-active,
+.category-page .category-sort-control .category-sort button.is-active:hover,
+.category-page .category-sort-control .category-sort button.is-active:focus-visible{
+ color:var(--brand-lime);
+ background:transparent;
+ font-weight:600;
+}
+.category-page .category-sort-control .category-sort button:not(.is-active):hover{
+ color:var(--text-primary);
+ background:transparent;
+}
+.category-page .category-sort-control .category-sort button:focus-visible{
+ outline:2px solid var(--brand-green);
+ outline-offset:-2px;
+}
+@media(max-width:767px){
+ .category-page .category-sort-control .category-sort-popover{
+  width:160px;
+  top:calc(100% + 10px);
+  border-radius:18px;
+  padding:8px;
+ }
+ .category-page .category-sort-control .category-sort button,
+ .category-page .category-sort-control .category-sort button:hover,
+ .category-page .category-sort-control .category-sort button:focus-visible{
+  min-height:44px;
+  font-size:14px;
+ }
+}
