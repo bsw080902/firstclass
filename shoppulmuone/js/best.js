@@ -15,21 +15,13 @@ meal:{label:'간편식 · 반찬',items:bestProducts.filter(p=>p.category==='mea
 processed:{label:'가공식품',items:bestProducts.filter(p=>p.category==='processed')},
 living:{label:'생활용품',items:bestProducts.filter(p=>p.category==='living')}
 };
-const subcategoryData={fresh:['두부','콩나물','달걀','과일','채소','쌀','정육','수산'],meal:['만두','피자','떡볶이','면요리','반찬','김치'],processed:['양념','소스','오일','과자·견과·베이커리','생수·음료·유제품','건강식품'],living:['반려동물','생활','주방','뷰티용품','가전제품']};
-const subcategories=document.querySelector('#best-subcategories');
 const grid=document.querySelector('#best-products'),count=document.querySelector('#best-count'),title=document.querySelector('#best-category-title');
 function render(key){
 const group=groups[key];if(!group)return;
-let selectedSubcategory=null;
-subcategories.classList.toggle('is-empty',key==='all');
-subcategories.setAttribute('aria-hidden',String(key==='all'));
-subcategories.classList.remove('is-revealed');
-subcategories.replaceChildren(...(subcategoryData[key]||[]).map((label,index)=>{const button=document.createElement('button');button.style.setProperty('--best-sub-index',index);button.type='button';button.textContent=label;button.setAttribute('aria-pressed','false');button.addEventListener('click',()=>{subcategories.querySelectorAll('button').forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active));});selectedSubcategory=label;renderProducts();});return button;}));
-if(key!=='all') requestAnimationFrame(()=>requestAnimationFrame(()=>subcategories.classList.add('is-revealed')));
 title.textContent=group.label+' 베스트';renderProducts();
 function renderProducts(){
 grid.replaceChildren();
-const visibleItems=selectedSubcategory?group.items.filter(product=>product.subcategory===selectedSubcategory):group.items;
+const visibleItems=group.items;
 count.replaceChildren(document.createTextNode('총 '),Object.assign(document.createElement('strong'),{textContent:visibleItems.length+'개의'}),document.createTextNode(' 상품이 있습니다.'));
 
 visibleItems.forEach((product,i)=>{
