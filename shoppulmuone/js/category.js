@@ -83,32 +83,6 @@ function makeMiddleButton(label,active,onClick,iconName){
 let activeSort="popular";
 let currentNames=[];
 const sortButtons=document.querySelectorAll(".category-sort button");
-const selectedLabel=document.querySelector("#category-selected-label");
-const filterTrigger=document.querySelector("#category-filter-trigger");
-const sortTrigger=document.querySelector("#category-sort-trigger");
-const filterControl=document.querySelector(".category-filter-control");
-const sortControl=document.querySelector(".category-sort-control");
-const filterPanel=document.querySelector("#category-filter-panel");
-const sortPanel=document.querySelector("#category-sort-panel");
-const sortLabel=document.querySelector("#category-sort-label");
-const filterCount=document.querySelector("#category-filter-count");
-filterControl.append(filterPanel);
-sortControl.append(sortPanel);
-function toggleToolbarMenu(menu){
- const f=menu==="filter",s=menu==="sort";
- filterControl.classList.toggle("is-open",f);
- sortControl.classList.toggle("is-open",s);
- filterTrigger.setAttribute("aria-expanded",String(f));
- sortTrigger.setAttribute("aria-expanded",String(s));
- filterPanel.inert=!f;
- sortPanel.inert=!s;
-}
-filterTrigger.addEventListener("click",()=>toggleToolbarMenu(filterControl.classList.contains("is-open")?null:"filter"));
-sortTrigger.addEventListener("click",()=>toggleToolbarMenu(sortControl.classList.contains("is-open")?null:"sort"));
-document.addEventListener("pointerdown",e=>{if(!e.target.closest(".category-toolbar-actions"))toggleToolbarMenu(null)});
-document.addEventListener("keydown",e=>{if(e.key==="Escape"){const target=filterControl.classList.contains("is-open")?filterTrigger:sortControl.classList.contains("is-open")?sortTrigger:null;toggleToolbarMenu(null);target?.focus()}});
-toggleToolbarMenu(null);
-
 const beverageProducts=catalogProducts.filter(p=>["Best1.png","Best2.png","Best5.png"].includes(p.image));
 const sideDishProducts=catalogProducts.filter(p=>["Best3.png","new_item4.jpg"].includes(p.image));
 const seafoodProducts=catalogProducts.filter(p=>p.image==="new_item3.jpg");
@@ -119,17 +93,6 @@ const petProducts=catalogProducts.filter(p=>p.image==="new_item1.jpg");
 const filterForm=document.querySelector("#category-filter-form");
 const filterEmpty=document.querySelector("#category-filter-empty");
 const filterMessage=document.querySelector("#category-filter-message");
-function syncFilterBadge(){
- const selected=filterForm.querySelectorAll('input[type="checkbox"]:checked').length +
-  [filterForm.elements.minPrice,filterForm.elements.maxPrice].filter(x=>x.value!=="").length;
- filterCount.hidden=selected===0;
- filterCount.textContent=String(selected);
-}
-filterForm.addEventListener("input",syncFilterBadge);
-filterForm.addEventListener("change",syncFilterBadge);
-filterForm.addEventListener("reset",()=>requestAnimationFrame(syncFilterBadge));
-syncFilterBadge();
-
 function selectedFilters(name){
  return [...filterForm.querySelectorAll('input[name="'+name+'"]:checked')].map(el=>el.value);
 }
@@ -229,7 +192,6 @@ let renderedMiddle=null;
 let iconTransitionId=0;
 function showCategory(key,selected=0,minor="전체"){
  if(key==="all"){
-  selectedLabel.textContent="인기";
   tabs.forEach(btn=>{const active=btn.dataset.category==="all";btn.classList.toggle("is-active",active);btn.setAttribute("aria-pressed",String(active))});
   ++iconTransitionId;
   subtabs.classList.remove("is-revealed","is-switching");
@@ -242,7 +204,6 @@ function showCategory(key,selected=0,minor="전체"){
   renderCatalogProducts();
   return;
  }
- selectedLabel.textContent=[...tabs].find(b=>b.dataset.category===key)?.textContent.trim()||"카테고리";
  const names=Object.keys(categories[key]);
  const index=Math.max(0,Math.min(selected,names.length-1));
  const middle=names[index], details=categories[key][middle], hasDetails=details.length>0;
@@ -317,8 +278,6 @@ function showCategory(key,selected=0,minor="전체"){
 }
 sortButtons.forEach(btn=>btn.addEventListener("click",()=>{
  activeSort=btn.dataset.sort;
- sortLabel.textContent=btn.textContent.trim();
- toggleToolbarMenu(null);
  sortButtons.forEach(item=>{const selected=item===btn;item.classList.toggle("is-active",selected);item.setAttribute("aria-pressed",String(selected));});
  if(document.querySelector(".category-main-tabs button[data-category=all]")?.classList.contains("is-active"))renderCatalogProducts();
  else if(document.querySelector(".category-main-tabs button[data-category=living]")?.classList.contains("is-active") && renderedMiddle==="반려동물")renderCatalogProducts(petProducts);
