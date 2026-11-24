@@ -1022,3 +1022,94 @@
   background:transparent;
  }
 }
+
+
+/* 대분류 5개: pill 대신 언더라인 탭. 선택 시 선이 중앙에서 좌우로 확장 */
+.category-page .category-main-tabs,
+.category-page:has(.category-main-tabs button[data-category="all"].is-active) .category-main-tabs{
+ display:grid;
+ grid-template-columns:repeat(5,minmax(0,1fr));
+ align-items:stretch;
+ gap:12px;
+ padding:0 0 5px;
+ margin:0;
+ border-bottom:1px solid var(--border-default);
+ background:transparent;
+}
+.category-page .category-main-tabs button,
+.category-page .category-main-tabs button.is-active,
+.category-page .category-main-tabs button:hover,
+.category-page .category-main-tabs button:focus-visible,
+.category-page .category-main-tabs button.is-active:hover,
+.category-page .category-main-tabs button.is-active:focus-visible{
+ position:relative;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ min-width:0;
+ min-height:54px;
+ padding:13px 8px 15px;
+ border:0;
+ border-radius:0;
+ background:transparent;
+ box-shadow:none;
+ filter:none;
+ transform:none;
+ font:inherit;
+ font-size:16px;
+ font-weight:500;
+ color:var(--text-secondary);
+ cursor:pointer;
+ transition:color .25s ease;
+}
+.category-page .category-main-tabs button.is-active,
+.category-page .category-main-tabs button.is-active:hover,
+.category-page .category-main-tabs button.is-active:focus-visible{
+ color:var(--brand-lime);
+ font-weight:700;
+}
+.category-page .category-main-tabs button:not(.is-active):hover{color:var(--text-primary)}
+.category-page .category-main-tabs button::after{
+ content:"";
+ position:absolute;
+ height:3px;
+ left:0;
+ right:0;
+ bottom:-6px;
+ border-radius:3px;
+ background:var(--brand-lime);
+ transform:scaleX(0);
+ transform-origin:center center;
+ transition:transform .42s cubic-bezier(.22,1,.36,1);
+ pointer-events:none;
+}
+.category-page .category-main-tabs button.is-active::after{transform:scaleX(1)}
+.category-page .category-main-tabs button:focus-visible{
+ outline:2px solid var(--brand-green);
+ outline-offset:-3px;
+}
+@media(max-width:767px){
+ .category-page .category-main-tabs,
+ .category-page:has(.category-main-tabs button[data-category="all"].is-active) .category-main-tabs{
+  display:flex;
+  gap:0;
+  overflow-x:auto;
+  padding-bottom:5px;
+  scrollbar-width:none;
+ }
+ .category-page .category-main-tabs::-webkit-scrollbar{display:none}
+ .category-page .category-main-tabs button,
+ .category-page .category-main-tabs button.is-active,
+ .category-page .category-main-tabs button:hover,
+ .category-page .category-main-tabs button:focus-visible{
+  flex:0 0 auto;
+  min-width:102px;
+  min-height:46px;
+  padding:11px 10px 13px;
+  font-size:13px;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ .category-page .category-main-tabs button,
+ .category-page .category-main-tabs button::after{transition:none}
+}
