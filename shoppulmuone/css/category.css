@@ -794,3 +794,76 @@
   overflow-wrap:anywhere;
  }
 }
+
+
+/* 중분류 드롭다운 전용: 구형 원형 아이콘의 라임 fill·filter·hover 전환 차단 */
+.category-page .category-middle-picker .category-subtabs .category-icon-tab,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab.is-active,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab:hover,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab.is-active:hover,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab:focus-visible{
+ display:flex;
+ flex-direction:row;
+ align-items:center;
+ justify-content:flex-start;
+ transform:none;
+ filter:none;
+ box-shadow:none;
+ transition:none;
+ color:var(--text-primary);
+ border:0;
+ border-radius:9px;
+ outline:none;
+ background:transparent;
+}
+.category-page .category-middle-picker .category-subtabs .category-icon-tab:hover,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab:focus-visible{
+ background:var(--bg-surface);
+}
+.category-page .category-middle-picker .category-subtabs .category-icon-tab.is-active,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab.is-active:hover{
+ background:var(--bg-surface);
+}
+/* 선택/호버 중에도 원형 초록 fill이 잠깐 나타나지 않도록 명시적으로 고정 */
+.category-page .category-middle-picker .category-subtabs .category-icon-tab .category-icon-tab-circle,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab.is-active .category-icon-tab-circle,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab:hover .category-icon-tab-circle,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab:focus-visible .category-icon-tab-circle{
+ display:grid;
+ place-items:center;
+ width:25px;
+ height:25px;
+ flex:0 0 25px;
+ border:0;
+ border-radius:0;
+ background:transparent;
+ box-shadow:none;
+ transition:none;
+}
+.category-page .category-middle-picker .category-subtabs .category-icon-tab .category-icon-tab-circle img,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab.is-active .category-icon-tab-circle img,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab:hover .category-icon-tab-circle img,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab:focus-visible .category-icon-tab-circle img,
+.category-page #category-middle-trigger img{
+ display:block;
+ width:24px;
+ height:24px;
+ opacity:.85;
+ filter:brightness(0);
+ transition:none;
+ animation:none;
+}
+.category-page .category-middle-picker .category-subtabs .category-icon-tab .category-icon-tab-label,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab.is-active .category-icon-tab-label,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab:hover .category-icon-tab-label,
+.category-page .category-middle-picker .category-subtabs .category-icon-tab:focus-visible .category-icon-tab-label{
+ color:var(--text-primary);
+ font-weight:500;
+ transition:none;
+ animation:none;
+}
+.category-page .category-middle-picker .category-subtabs .category-icon-tab.is-active .category-icon-tab-label{font-weight:700}
+.category-page .category-middle-picker .category-subtabs .category-icon-tab:focus-visible{
+ outline:2px solid var(--brand-green);
+ outline-offset:-2px;
+}
