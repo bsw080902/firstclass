@@ -2379,8 +2379,9 @@ html,body{
  .site-header .header-actions{
   position:absolute;
   right:100px;
-  top:50%;
-  transform:translateY(-50%);
+  /* 높이가 변하는 부모의 50%를 매 프레임 재계산하지 않고 묶음 전체를 이동 */
+  top:43px;
+  transform:translate3d(0,0,0);
   display:flex;
   flex-wrap:nowrap;
   align-items:center;
@@ -2388,7 +2389,11 @@ html,body{
   gap:12px;
   height:34px;
   margin:0;
-  transition:none;
+  transition:transform .32s cubic-bezier(.22,1,.36,1);
+  will-change:transform;
+ }
+ .site-header.is-compact .header-actions{
+  transform:translate3d(0,-22px,0);
  }
  .site-header .header-actions > a,
  .site-header .header-actions > .header-action-menu{
@@ -2457,4 +2462,9 @@ html,body{
  .site-header.is-compact .header-nav {
   transition:none;
  }
+}
+
+/* 접근성: 움직임 최소화 선호 시 묶음 이동 애니메이션 생략 */
+@media(min-width:1025px) and (prefers-reduced-motion:reduce){
+ .site-header .header-actions{transition:none}
 }
