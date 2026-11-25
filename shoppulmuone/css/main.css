@@ -2288,3 +2288,21 @@ body {
   visibility:visible;
  }
 }
+
+/* Sticky 헤더 안정화: reset의 overflow-x:hidden이 body를 스크롤 컨테이너로 만들어
+   position:sticky가 뷰포트에 붙지 않는 현상을 방지합니다. */
+html,body{
+ overflow-x:clip;
+}
+.site-header,.site-header.is-hidden{
+ position:sticky;
+ top:0;
+ transform:none;
+}
+@media(max-width:767px){
+ .mobile-tabbar{
+  position:fixed;
+  inset:auto 0 0 0;
+  z-index:100;
+ }
+}
