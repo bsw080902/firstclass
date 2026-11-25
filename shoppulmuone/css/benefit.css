@@ -111,7 +111,7 @@
 
 
 /* 혜택 리디자인: 쿠폰 배너 + 가운데서 펼쳐지는 언더라인 탭 */
-.benefit-page .benefit-hero{
+.benefit-page:not(.daily-page) .benefit-hero{
  min-height:300px;
  box-sizing:border-box;
  display:flex;
@@ -127,7 +127,7 @@
  background-size:cover;
  background-repeat:no-repeat;
 }
-.benefit-page .benefit-hero p{
+.benefit-page:not(.daily-page) .benefit-hero p{
  margin:0;
  font-size:16px;
  line-height:1.5;
@@ -135,7 +135,7 @@
  color:#fff;
  text-shadow:0 1px 3px rgba(20,60,0,.13);
 }
-.benefit-page .benefit-hero h1{
+.benefit-page:not(.daily-page) .benefit-hero h1{
  margin:0;
  font-size:36px;
  line-height:1.3;
@@ -143,15 +143,15 @@
  color:#fff;
  text-shadow:0 1px 3px rgba(20,60,0,.13);
 }
-.benefit-page .benefit-tab-area{
+.benefit-page:not(.daily-page) .benefit-tab-area{
  padding:18px 0 0;
  background:#fff;
 }
-.benefit-page .benefit-tab-area .benefit-inner{
+.benefit-page:not(.daily-page) .benefit-tab-area .benefit-inner{
  max-width:1120px;
  margin:0 auto;
 }
-.benefit-page .benefit-tabs{
+.benefit-page:not(.daily-page) .benefit-tabs{
  display:grid;
  grid-template-columns:repeat(3,minmax(0,1fr));
  align-items:stretch;
@@ -160,11 +160,11 @@
  padding:0 0 5px;
  border-bottom:1px solid var(--border-default);
 }
-.benefit-page .benefit-tabs button,
-.benefit-page .benefit-tabs button:hover,
-.benefit-page .benefit-tabs button:focus-visible,
-.benefit-page .benefit-tabs button.is-active,
-.benefit-page .benefit-tabs button.is-active:hover{
+.benefit-page:not(.daily-page) .benefit-tabs button,
+.benefit-page:not(.daily-page) .benefit-tabs button:hover,
+.benefit-page:not(.daily-page) .benefit-tabs button:focus-visible,
+.benefit-page:not(.daily-page) .benefit-tabs button.is-active,
+.benefit-page:not(.daily-page) .benefit-tabs button.is-active:hover{
  position:relative;
  display:flex;
  align-items:center;
@@ -183,15 +183,15 @@
  color:var(--text-secondary);
  transition:color .25s ease;
 }
-.benefit-page .benefit-tabs button.is-active,
-.benefit-page .benefit-tabs button.is-active:hover{
+.benefit-page:not(.daily-page) .benefit-tabs button.is-active,
+.benefit-page:not(.daily-page) .benefit-tabs button.is-active:hover{
  color:var(--brand-lime);
  font-weight:700;
 }
-.benefit-page .benefit-tabs button:not(.is-active):hover{
+.benefit-page:not(.daily-page) .benefit-tabs button:not(.is-active):hover{
  color:var(--text-primary);
 }
-.benefit-page .benefit-tabs button::after{
+.benefit-page:not(.daily-page) .benefit-tabs button::after{
  content:"";
  position:absolute;
  bottom:-6px;
@@ -205,39 +205,39 @@
  transition:transform .42s cubic-bezier(.22,1,.36,1);
  pointer-events:none;
 }
-.benefit-page .benefit-tabs button.is-active::after{transform:scaleX(1)}
-.benefit-page .benefit-tabs button:focus-visible{
+.benefit-page:not(.daily-page) .benefit-tabs button.is-active::after{transform:scaleX(1)}
+.benefit-page:not(.daily-page) .benefit-tabs button:focus-visible{
  outline:2px solid var(--brand-green);
  outline-offset:-3px;
 }
-.benefit-page .benefit-content{padding-top:48px}
+.benefit-page:not(.daily-page) .benefit-content{padding-top:48px}
 @media(max-width:767px){
- .benefit-page .benefit-hero{
+ .benefit-page:not(.daily-page) .benefit-hero{
   min-height:230px;
   padding:28px 16px 18px;
   background-position:center center;
  }
- .benefit-page .benefit-hero p{font-size:12px}
- .benefit-page .benefit-hero h1{font-size:28px}
- .benefit-page .benefit-tab-area{padding-top:10px}
- .benefit-page .benefit-tabs{gap:0}
- .benefit-page .benefit-tabs button,
- .benefit-page .benefit-tabs button:hover,
- .benefit-page .benefit-tabs button:focus-visible,
- .benefit-page .benefit-tabs button.is-active{
+ .benefit-page:not(.daily-page) .benefit-hero p{font-size:12px}
+ .benefit-page:not(.daily-page) .benefit-hero h1{font-size:28px}
+ .benefit-page:not(.daily-page) .benefit-tab-area{padding-top:10px}
+ .benefit-page:not(.daily-page) .benefit-tabs{gap:0}
+ .benefit-page:not(.daily-page) .benefit-tabs button,
+ .benefit-page:not(.daily-page) .benefit-tabs button:hover,
+ .benefit-page:not(.daily-page) .benefit-tabs button:focus-visible,
+ .benefit-page:not(.daily-page) .benefit-tabs button.is-active{
   min-height:50px;
   padding:12px 7px;
   font-size:14px;
  }
- .benefit-page .benefit-content{padding-top:32px}
+ .benefit-page:not(.daily-page) .benefit-content{padding-top:32px}
 }
 @media(prefers-reduced-motion:reduce){
- .benefit-page .benefit-tabs button,
- .benefit-page .benefit-tabs button::after{transition:none}
+ .benefit-page:not(.daily-page) .benefit-tabs button,
+ .benefit-page:not(.daily-page) .benefit-tabs button::after{transition:none}
 }
 
 /* 1920×230 원본 배너 전체 표시: cover 확대/상하 잘림 방지 */
-.benefit-page .benefit-hero{
+.benefit-page:not(.daily-page) .benefit-hero{
  width:100%;
  height:230px;
  min-height:0;
@@ -254,18 +254,18 @@
  background-repeat:no-repeat;
  overflow:hidden;
 }
-.benefit-page .benefit-hero p{
+.benefit-page:not(.daily-page) .benefit-hero p{
  font-size:16px;
  line-height:1.5;
  margin:0;
 }
-.benefit-page .benefit-hero h1{
+.benefit-page:not(.daily-page) .benefit-hero h1{
  font-size:36px;
  line-height:1.25;
  margin:0;
 }
 @media(max-width:767px){
- .benefit-page .benefit-hero{
+ .benefit-page:not(.daily-page) .benefit-hero{
   height:190px;
   min-height:0;
   padding:0 16px;
@@ -275,13 +275,13 @@
   text-align:left;
   background-size:100% 100%;
  }
- .benefit-page .benefit-hero p{font-size:12px}
- .benefit-page .benefit-hero h1{font-size:28px}
+ .benefit-page:not(.daily-page) .benefit-hero p{font-size:12px}
+ .benefit-page:not(.daily-page) .benefit-hero h1{font-size:28px}
 }
 
 
 /* Figma Frame 310: 원본 Couponbackground.png의 실제 비율 1920x517 유지 */
-.benefit-page .benefit-hero{
+.benefit-page:not(.daily-page) .benefit-hero{
  width:100%;
  height:auto;
  min-height:0;
@@ -301,14 +301,14 @@
  background-repeat:no-repeat;
  overflow:hidden;
 }
-.benefit-page .benefit-hero p{
+.benefit-page:not(.daily-page) .benefit-hero p{
  margin:0;
  font-size:clamp(12px,1.05vw,18px);
  line-height:1.4;
  color:#fff;
  font-weight:500;
 }
-.benefit-page .benefit-hero h1{
+.benefit-page:not(.daily-page) .benefit-hero h1{
  margin:0;
  font-size:clamp(24px,1.9vw,36px);
  line-height:1.3;
@@ -316,7 +316,7 @@
  font-weight:700;
 }
 @media(max-width:767px){
- .benefit-page .benefit-hero{
+ .benefit-page:not(.daily-page) .benefit-hero{
   width:100%;
   height:auto;
   min-height:230px;
@@ -329,6 +329,6 @@
   background-size:auto 100%;
   background-position:center center;
  }
- .benefit-page .benefit-hero p{font-size:12px}
- .benefit-page .benefit-hero h1{font-size:26px}
+ .benefit-page:not(.daily-page) .benefit-hero p{font-size:12px}
+ .benefit-page:not(.daily-page) .benefit-hero h1{font-size:26px}
 }
