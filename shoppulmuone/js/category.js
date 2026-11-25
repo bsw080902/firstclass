@@ -110,8 +110,9 @@ function setFilterOpen(open){
  document.body.classList.toggle("category-filter-visible",open);
  filterPopover.inert=!open;
  filterPopover.setAttribute("aria-hidden",String(!open));
- if(open) filterClose.focus();
- else (filterPreviousFocus?.isConnected?filterPreviousFocus:filterTrigger).focus();
+ // 포커스 때문에 화면이 상단 필터 버튼으로 이동하지 않도록 함
+ if(open) filterClose.focus({preventScroll:true});
+ else (filterPreviousFocus?.isConnected?filterPreviousFocus:filterTrigger).focus({preventScroll:true});
 }
 function closeCategoryMenus(){
  middlePicker.classList.remove("is-open");
