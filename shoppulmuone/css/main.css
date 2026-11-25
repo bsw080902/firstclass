@@ -2416,3 +2416,45 @@ html,body{
 @media(min-width:1025px) and (max-width:1280px){
  .site-header .header-actions{right:30px}
 }
+
+
+/* PC GNB: 같은 위치를 기준으로 위로 사라지고 아래로 나타나는 슬라이드 */
+@media (min-width:1025px) {
+ .site-header .header-center {
+  /* 검색창 아래 메뉴가 일반 흐름에 영향을 주지 않도록 고정 좌표 사용 */
+  position:absolute;
+  left:50%;
+  top:14px;
+  transform:translateX(-50%);
+ }
+ .site-header .header-nav,
+ .site-header.is-compact .header-nav {
+  position:absolute;
+  left:50%;
+  top:57px;
+  width:max-content;
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translate(-50%,0);
+  transition:transform .32s cubic-bezier(.22,1,.36,1),
+             opacity .28s ease,
+             visibility 0s;
+  will-change:transform,opacity;
+ }
+ .site-header.is-compact .header-nav {
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translate(-50%,-30px);
+  transition:transform .32s cubic-bezier(.22,1,.36,1),
+             opacity .28s ease,
+             visibility 0s linear .32s;
+ }
+}
+@media (min-width:1025px) and (prefers-reduced-motion:reduce) {
+ .site-header .header-nav,
+ .site-header.is-compact .header-nav {
+  transition:none;
+ }
+}
