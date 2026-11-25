@@ -235,3 +235,46 @@
  .benefit-page .benefit-tabs button,
  .benefit-page .benefit-tabs button::after{transition:none}
 }
+
+/* 1920×230 원본 배너 전체 표시: cover 확대/상하 잘림 방지 */
+.benefit-page .benefit-hero{
+ width:100%;
+ height:230px;
+ min-height:0;
+ padding:0 24px 0 max(24px,calc((100% - 1120px)/2));
+ box-sizing:border-box;
+ display:flex;
+ flex-direction:column;
+ align-items:flex-start;
+ justify-content:center;
+ gap:10px;
+ text-align:left;
+ background-size:100% 100%;
+ background-position:center;
+ background-repeat:no-repeat;
+ overflow:hidden;
+}
+.benefit-page .benefit-hero p{
+ font-size:16px;
+ line-height:1.5;
+ margin:0;
+}
+.benefit-page .benefit-hero h1{
+ font-size:36px;
+ line-height:1.25;
+ margin:0;
+}
+@media(max-width:767px){
+ .benefit-page .benefit-hero{
+  height:190px;
+  min-height:0;
+  padding:0 16px;
+  align-items:flex-start;
+  justify-content:center;
+  gap:8px;
+  text-align:left;
+  background-size:100% 100%;
+ }
+ .benefit-page .benefit-hero p{font-size:12px}
+ .benefit-page .benefit-hero h1{font-size:28px}
+}
