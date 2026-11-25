@@ -1319,3 +1319,9 @@ body.category-filter-visible{overflow:hidden}
   -webkit-backdrop-filter:none;
  }
 }
+
+/* PC 필터 열림: 배경 스크롤 허용, 스크롤바 너비 변동 방지 */
+@media (min-width:768px) {
+ body.category-filter-visible { overflow:auto; }
+ .category-filter-backdrop.is-open { touch-action:auto; }
+}
