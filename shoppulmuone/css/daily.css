@@ -442,3 +442,62 @@
   font-size:12px;
  }
 }
+
+
+/* 상품 탭: 카탈로그 스타일의 상품 수 안내 바 / PC 4열 카드
+   정기구독 안내는 기존 구성 유지 */
+.benefit-page.daily-page .benefit-content > .benefit-inner{
+ max-width:1200px;
+}
+.benefit-page.daily-page .daily-results-bar{
+ grid-column:1 / -1;
+ width:100%;
+ max-width:1120px;
+ margin:0 auto 42px;
+ min-height:92px;
+ display:flex;
+ align-items:center;
+ box-sizing:border-box;
+ padding:18px 42px;
+ border-radius:18px;
+ background:var(--bg-surface);
+}
+.benefit-page.daily-page .daily-results-bar[hidden]{display:none!important}
+.benefit-page.daily-page .daily-results-bar p{
+ margin:0;
+ color:var(--text-primary);
+ font-size:15px;
+ font-weight:600;
+}
+.benefit-page.daily-page .daily-results-bar strong{
+ color:var(--brand-lime);
+ font-weight:700;
+}
+.benefit-page.daily-page .benefit-content .benefit-inner > .benefit-section:not([hidden]):not(.subscription-section){
+ margin:0 auto 70px;
+ max-width:1120px;
+}
+.benefit-page.daily-page .daily-product-grid{
+ display:grid;
+ grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:44px 16px;
+}
+@media(max-width:1024px){
+ .benefit-page.daily-page .daily-product-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:40px 16px;
+ }
+}
+@media(max-width:767px){
+ .benefit-page.daily-page .daily-results-bar{
+  min-height:64px;
+  padding:14px 20px;
+  margin-bottom:32px;
+  border-radius:16px;
+ }
+ .benefit-page.daily-page .daily-results-bar p{font-size:13px}
+ .benefit-page.daily-page .daily-product-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:32px 14px;
+ }
+}
