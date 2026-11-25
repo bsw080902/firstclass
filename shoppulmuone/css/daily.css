@@ -378,3 +378,37 @@
  .benefit-page.daily-page .daily-tabs a,
  .benefit-page.daily-page .daily-tabs a::after{transition:none}
 }
+
+
+/* 일일배달 언더라인 탭: benefit.css의 초록 Fill 및 benefit-tab-fill 애니메이션 상속 차단 */
+.benefit-page.daily-page .daily-tab-area .daily-tabs a,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a:hover,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a:focus-visible,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active:hover,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active:focus-visible,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a[aria-current="page"],
+.benefit-page.daily-page .daily-tab-area .daily-tabs a[aria-current="page"]:hover,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a[aria-current="page"]:focus-visible{
+ background:transparent;
+ background-color:transparent;
+ border-color:transparent;
+ border-width:0;
+ border-radius:0;
+ box-shadow:none;
+ transform:none;
+ filter:none;
+ animation:none;
+}
+.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active:hover,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active:focus-visible,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a[aria-current="page"],
+.benefit-page.daily-page .daily-tab-area .daily-tabs a[aria-current="page"]:hover,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a[aria-current="page"]:focus-visible{
+ color:var(--brand-lime);
+ font-weight:700;
+}
+.benefit-page.daily-page .daily-tab-area .daily-tabs a:not(.is-active):hover{
+ color:var(--text-primary);
+}
