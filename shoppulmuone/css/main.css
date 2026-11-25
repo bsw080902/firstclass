@@ -2371,3 +2371,48 @@ html,body{
 @media(prefers-reduced-motion:reduce){
  .site-header,.site-header .header-nav{transition:none}
 }
+
+
+/* PC 축소 헤더: 우측 아이콘 네 개를 하나의 위치 기준과 속도로 이동 */
+@media(min-width:1025px){
+ .site-header .header-inner{position:relative}
+ .site-header .header-actions{
+  position:absolute;
+  right:100px;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  flex-wrap:nowrap;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  height:34px;
+  margin:0;
+  transition:none;
+ }
+ .site-header .header-actions > a,
+ .site-header .header-actions > .header-action-menu{
+  flex:0 0 33px;
+  width:33px;
+  height:34px;
+  min-width:33px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+ }
+ .site-header .header-actions > .header-action-menu > a{
+  width:33px;
+  height:34px;
+ }
+ .site-header .header-actions > a > img,
+ .site-header .header-actions > .header-action-menu > a > img{
+  display:block;
+  max-width:33px;
+  max-height:33px;
+  object-fit:contain;
+  transition:filter 0s;
+ }
+}
+@media(min-width:1025px) and (max-width:1280px){
+ .site-header .header-actions{right:30px}
+}
