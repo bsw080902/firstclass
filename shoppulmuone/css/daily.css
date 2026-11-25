@@ -276,7 +276,76 @@
  max-height:310px;
  object-fit:contain;
 }
-.benefit-page.daily-page .daily-tab-area{background:#fff;padding:20px 24px 0}
+/* 카테고리 페이지 언더라인 탭 속성과 일치 (5개 탭 / 기존 앵커 기능 유지) */
+.benefit-page.daily-page .daily-tab-area{
+ background:#fff;
+ padding:20px 24px 0;
+}
+.benefit-page.daily-page .daily-tabs{
+ max-width:1120px;
+ margin:0 auto;
+ display:grid;
+ grid-template-columns:repeat(5,minmax(0,1fr));
+ align-items:stretch;
+ gap:12px;
+ padding:0 0 5px;
+ border-bottom:1px solid var(--border-default);
+ background:transparent;
+}
+.benefit-page.daily-page .daily-tabs a,
+.benefit-page.daily-page .daily-tabs a.is-active,
+.benefit-page.daily-page .daily-tabs a:hover,
+.benefit-page.daily-page .daily-tabs a:focus-visible,
+.benefit-page.daily-page .daily-tabs a.is-active:hover,
+.benefit-page.daily-page .daily-tabs a.is-active:focus-visible{
+ position:relative;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ min-width:0;
+ min-height:54px;
+ padding:13px 8px 15px;
+ border:0;
+ border-radius:0;
+ background:transparent;
+ box-shadow:none;
+ filter:none;
+ transform:none;
+ font:inherit;
+ font-size:16px;
+ font-weight:500;
+ color:var(--text-secondary);
+ text-decoration:none;
+ text-align:center;
+ cursor:pointer;
+ transition:color .25s ease;
+}
+.benefit-page.daily-page .daily-tabs a.is-active,
+.benefit-page.daily-page .daily-tabs a.is-active:hover,
+.benefit-page.daily-page .daily-tabs a.is-active:focus-visible{
+ color:var(--brand-lime);
+ font-weight:700;
+}
+.benefit-page.daily-page .daily-tabs a:not(.is-active):hover{color:var(--text-primary)}
+.benefit-page.daily-page .daily-tabs a::after{
+ content:"";
+ position:absolute;
+ height:3px;
+ left:0;
+ right:0;
+ bottom:-6px;
+ border-radius:3px;
+ background:var(--brand-lime);
+ transform:scaleX(0);
+ transform-origin:center center;
+ transition:transform .42s cubic-bezier(.22,1,.36,1);
+ pointer-events:none;
+}
+.benefit-page.daily-page .daily-tabs a.is-active::after{transform:scaleX(1)}
+.benefit-page.daily-page .daily-tabs a:focus-visible{
+ outline:2px solid var(--brand-green);
+ outline-offset:-3px;
+}
 @media(max-width:900px){
  .benefit-page.daily-page .daily-hero{padding:38px 20px}
  .benefit-page.daily-page .daily-hero-inner{gap:20px;grid-template-columns:1fr 1.2fr;min-height:260px}
@@ -291,8 +360,57 @@
  .benefit-page.daily-page .daily-hero-benefits{justify-content:center;margin-top:18px}
  .benefit-page.daily-page .daily-hero-image{max-width:520px;max-height:220px}
  .benefit-page.daily-page .daily-tab-area{padding:14px 16px 0}
+ .benefit-page.daily-page .daily-tabs{
+  display:flex;flex-wrap:nowrap;justify-content:flex-start;
+  overflow-x:auto;gap:0;scrollbar-width:none;
+ }
+ .benefit-page.daily-page .daily-tabs::-webkit-scrollbar{display:none}
+ .benefit-page.daily-page .daily-tabs a,
+ .benefit-page.daily-page .daily-tabs a:hover,
+ .benefit-page.daily-page .daily-tabs a:focus-visible,
+ .benefit-page.daily-page .daily-tabs a.is-active{
+  flex:0 0 auto;min-width:102px;min-height:46px;
+  padding:11px 10px 13px;
+  font-size:13px;white-space:nowrap;overflow-wrap:normal;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ .benefit-page.daily-page .daily-tabs a,
+ .benefit-page.daily-page .daily-tabs a::after{transition:none}
+}
 
 
+/* 일일배달 언더라인 탭: benefit.css의 초록 Fill 및 benefit-tab-fill 애니메이션 상속 차단 */
+.benefit-page.daily-page .daily-tab-area .daily-tabs a,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a:hover,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a:focus-visible,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active:hover,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active:focus-visible,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a[aria-current="page"],
+.benefit-page.daily-page .daily-tab-area .daily-tabs a[aria-current="page"]:hover,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a[aria-current="page"]:focus-visible{
+ background:transparent;
+ background-color:transparent;
+ border-color:transparent;
+ border-width:0;
+ border-radius:0;
+ box-shadow:none;
+ transform:none;
+ filter:none;
+ animation:none;
+}
+.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active:hover,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active:focus-visible,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a[aria-current="page"],
+.benefit-page.daily-page .daily-tab-area .daily-tabs a[aria-current="page"]:hover,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a[aria-current="page"]:focus-visible{
+ color:var(--brand-lime);
+ font-weight:700;
+}
+.benefit-page.daily-page .daily-tab-area .daily-tabs a:not(.is-active):hover{
+ color:var(--text-primary);
 }
 
 /* HERO 혜택 칩 크기를 정기구독 안내 배너의 칩과 일치 */
@@ -382,92 +500,4 @@
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:32px 14px;
  }
-}
-
-
-/* 일일배달 전용 탭: 모든 상태에서 크기와 테두리 고정 */
-.benefit-page.daily-page .daily-tab-area .daily-tabs {
-  max-width:1120px;
-  margin:0 auto;
-  display:flex;
-  align-items:stretch;
-  gap:24px;
-  padding:0;
-  border:0;
-  background:transparent;
-}
-.benefit-page.daily-page .daily-category-group {
-  display:flex;
-  flex:1 1 auto;
-  min-width:0;
-  border:1px solid var(--border-default);
-  border-radius:999px;
-  overflow:hidden;
-}
-.benefit-page.daily-page .daily-tab-area .daily-tabs a {
-  box-sizing:border-box;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex:1 0 auto;
-  min-width:0;
-  min-height:48px;
-  padding:0 clamp(16px,2.5vw,40px);
-  font-size:16px;
-  font-weight:500;
-  line-height:normal;
-  white-space:nowrap;
-  text-align:center;
-  text-decoration:none;
-  border:0;
-  border-radius:0;
-  background:#fff;
-  color:var(--text-secondary);
-  cursor:pointer;
-  transition:background-color .25s ease,border-color .25s ease,color .25s ease,box-shadow .25s ease;
-}
-.benefit-page.daily-page .daily-tab-area .daily-tabs .daily-category-group a + a {
-  border-left:1px solid var(--border-default);
-}
-.benefit-page.daily-page .daily-tab-area .daily-tabs a.daily-subscription-tab {
-  flex:0 0 auto;
-  border:1px solid var(--border-default);
-  border-radius:999px;
-}
-/* 베스트 대분류 호버: 흰 배경 유지, 초록 글씨와 라임 테두리.
-   연결된 탭은 inset 테두리로 표현해 너비와 높이가 변하지 않도록 함. */
-.benefit-page.daily-page .daily-tab-area .daily-tabs a:not(.is-active):hover {
-  background:#fff;
-  color:var(--brand-green);
-  box-shadow:inset 0 0 0 1px var(--brand-lime);
-  transform:none;
-  filter:none;
-}
-.benefit-page.daily-page .daily-tab-area .daily-tabs a.daily-subscription-tab:not(.is-active):hover {
-  border-color:var(--brand-lime);
-  box-shadow:none;
-}
-.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active:hover {
-  background:var(--brand-lime);
-  color:#fff;
-  transform:none;
-  filter:none;
-}
-.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active {
-  background:var(--brand-lime);
-  color:#fff;
-}
-.benefit-page.daily-page .daily-tab-area .daily-tabs a:focus-visible {
-  outline:2px solid var(--brand-green);
-  outline-offset:-3px;
-}
-@media(max-width:900px) {
-  .benefit-page.daily-page .daily-tab-area .daily-tabs {flex-wrap:wrap;gap:12px}
-  .benefit-page.daily-page .daily-category-group {flex:1 1 100%;overflow-x:auto;scrollbar-width:none}
-  .benefit-page.daily-page .daily-category-group::-webkit-scrollbar {display:none}
-  .benefit-page.daily-page .daily-tab-area .daily-tabs a {padding:0 18px;font-size:14px;min-height:46px}
-  .benefit-page.daily-page .daily-tab-area .daily-tabs a.daily-subscription-tab {margin-left:auto}
-}
-@media(prefers-reduced-motion:reduce) {
-  .benefit-page.daily-page .daily-tab-area .daily-tabs a {transition:none}
 }
