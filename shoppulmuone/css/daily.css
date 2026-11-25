@@ -412,3 +412,33 @@
 .benefit-page.daily-page .daily-tab-area .daily-tabs a:not(.is-active):hover{
  color:var(--text-primary);
 }
+
+/* HERO 혜택 칩 크기를 정기구독 안내 배너의 칩과 일치 */
+.benefit-page.daily-page .daily-hero-benefits span{
+ box-sizing:border-box;
+ flex:0 0 180px;
+ width:180px;
+ min-height:39px;
+ padding:0 14px;
+ font-family:Inter,Pretendard,sans-serif;
+ font-size:14px;
+ font-weight:500;
+}
+@media(max-width:900px){
+ .benefit-page.daily-page .daily-hero-benefits span{
+  flex-basis:180px;
+  width:180px;
+  min-height:39px;
+  padding:0 14px;
+  font-size:14px;
+ }
+}
+@media(max-width:650px){
+ .benefit-page.daily-page .daily-hero-benefits span{
+  flex-basis:180px;
+  width:180px;
+  min-height:35px;
+  padding:0 11px;
+  font-size:12px;
+ }
+}
