@@ -2468,3 +2468,70 @@ html,body{
 @media(min-width:1025px) and (prefers-reduced-motion:reduce){
  .site-header .header-actions{transition:none}
 }
+
+
+/* PC 헤더 최종 동작: GNB가 검색창 뒤로 미끄러져 들어가며 사라짐
+   header-center의 top/height를 애니메이션 중 바꾸지 않아 아래로 튀는 현상 방지 */
+@media (min-width:1025px) {
+ .site-header .header-center,
+ .site-header.is-compact .header-center{
+  position:absolute;
+  left:50%;
+  top:14px;
+  height:auto;
+  width:auto;
+  gap:15px;
+  transform:translateX(-50%);
+ }
+ /* 검색창 위쪽 불투명 마스크: 메뉴가 이 영역 뒤로 들어가도록 함 */
+ .site-header .header-center::before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  top:-14px;
+  left:50%;
+  width:calc(100% + 32px);
+  height:57px;
+  transform:translateX(-50%);
+  background:var(--bg-default);
+  pointer-events:none;
+ }
+ .site-header .header-search,
+ .site-header.is-compact .header-search{
+  position:relative;
+  z-index:3;
+  height:42px;
+  flex:0 0 42px;
+  margin:0;
+  transition:transform .32s cubic-bezier(.4,0,.2,1);
+ }
+ .site-header .header-search{transform:translateY(0)}
+ .site-header.is-compact .header-search{transform:translateY(3px)}
+ .site-header .header-nav,
+ .site-header.is-compact .header-nav{
+  position:absolute;
+  z-index:1;
+  left:50%;
+  top:57px;
+  width:max-content;
+  opacity:1;
+  transform:translate3d(-50%,0,0);
+  transition:transform .32s cubic-bezier(.4,0,.2,1),
+             visibility 0s;
+ }
+ .site-header .header-nav{
+  visibility:visible;
+  pointer-events:auto;
+ }
+ .site-header.is-compact .header-nav{
+  visibility:hidden;
+  pointer-events:none;
+  transform:translate3d(-50%,-48px,0);
+  transition:transform .32s cubic-bezier(.4,0,.2,1),
+             visibility 0s linear .32s;
+ }
+}
+@media (min-width:1025px) and (prefers-reduced-motion:reduce){
+ .site-header .header-nav,.site-header.is-compact .header-nav,
+ .site-header .header-search{transition:none}
+}
