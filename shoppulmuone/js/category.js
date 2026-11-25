@@ -71,38 +71,95 @@ const filterControl=document.querySelector(".category-filter-control");
 const sortControl=document.querySelector(".category-sort-control");
 const filterPopover=document.querySelector("#category-filter-panel");
 const sortPopover=document.querySelector("#category-sort-panel");
-const categoryToolbar=document.querySelector(".category-toolbar");
-// 필터는 드롭다운이 아닌 정보 바 내부의 확장 영역으로 배치합니다.
-categoryToolbar.append(filterPopover);
+// 필터 패널을 페이지 바깥으로 이동해 PC 사이드 드로어/모바일 바텀시트로 사용합니다.
+const filterBackdrop=document.createElement("div");
+filterBackdrop.className="category-filter-backdrop";
+filterBackdrop.setAttribute("aria-hidden","true");
+document.body.append(filterBackdrop,filterPopover);
+filterPopover.classList.add("category-filter-drawer");
+filterPopover.setAttribute("role","dialog");
+filterPopover.setAttribute("aria-modal","true");
+filterPopover.setAttribute("aria-label","상품 필터");
+filterPopover.setAttribute("aria-hidden","true");
+filterPopover.inert=true;
+const filterHandle=document.createElement("div");
+filterHandle.className="category-filter-handle";
+filterHandle.setAttribute("aria-hidden","true");
+filterPopover.prepend(filterHandle);
+const filterHeader=filterPopover.querySelector(".category-filter-top");
+const filterClose=document.createElement("button");
+filterClose.type="button";
+filterClose.className="category-filter-close";
+filterClose.setAttribute("aria-label","필터 닫기");
+filterClose.innerHTML='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 5 19 19M19 5 5 19"/></svg>';
+filterHeader.append(filterClose);
+const filterTitle=filterHeader.querySelector("h2");
+const filterReset=filterHeader.querySelector(".category-filter-reset");
+filterHeader.insertBefore(filterReset,filterClose);
+const keepSections=filterPopover.querySelectorAll(".category-filter-section");
+keepSections.forEach(section=>section.open=true);
+let filterPreviousFocus=null;
+function setFilterOpen(open){
+ const isOpen=filterControl.classList.contains("is-open");
+ if(open===isOpen)return;
+ if(open) filterPreviousFocus=document.activeElement;
+ filterControl.classList.toggle("is-open",open);
+ filterTrigger.setAttribute("aria-expanded",String(open));
+ filterPopover.classList.toggle("is-open",open);
+ filterBackdrop.classList.toggle("is-open",open);
+ document.body.classList.toggle("category-filter-visible",open);
+ filterPopover.inert=!open;
+ filterPopover.setAttribute("aria-hidden",String(!open));
+ if(open) filterClose.focus();
+ else (filterPreviousFocus?.isConnected?filterPreviousFocus:filterTrigger).focus();
+}
 function closeCategoryMenus(){
  middlePicker.classList.remove("is-open");
- filterControl.classList.remove("is-open");
  sortControl.classList.remove("is-open");
- for(const trigger of [middleTrigger,filterTrigger,sortTrigger])trigger.setAttribute("aria-expanded","false");
- for(const panel of [subtabs,filterPopover,sortPopover])panel.inert=true;
+ middleTrigger.setAttribute("aria-expanded","false");
+ sortTrigger.setAttribute("aria-expanded","false");
+ subtabs.inert=true;
+ sortPopover.inert=true;
 }
 function toggleCategoryMenu(type){
- const control=type==="middle"?middlePicker:type==="filter"?filterControl:sortControl;
- const trigger=type==="middle"?middleTrigger:type==="filter"?filterTrigger:sortTrigger;
+ const control=type==="middle"?middlePicker:sortControl;
+ const trigger=type==="middle"?middleTrigger:sortTrigger;
+ const panel=type==="middle"?subtabs:sortPopover;
  const shouldOpen=!control.classList.contains("is-open");
  closeCategoryMenus();
- if(shouldOpen){control.classList.add("is-open");trigger.setAttribute("aria-expanded","true");(type==="middle"?subtabs:type==="filter"?filterPopover:sortPopover).inert=false;}
+ if(shouldOpen){
+  control.classList.add("is-open");
+  trigger.setAttribute("aria-expanded","true");
+  panel.inert=false;
+ }
 }
 middleTrigger.addEventListener("click",()=>toggleCategoryMenu("middle"));
-filterTrigger.addEventListener("click",()=>toggleCategoryMenu("filter"));
 sortTrigger.addEventListener("click",()=>toggleCategoryMenu("sort"));
-document.addEventListener("pointerdown",e=>{
- if(e.target.closest(".category-middle-picker,.category-toolbar-actions,.category-toolbar > .category-filter-popover"))return;
- // 페이지의 다른 곳을 클릭해도 필터는 유지합니다. 필터 버튼을 다시 눌러 닫을 수 있습니다.
- if(filterControl.classList.contains("is-open"))return;
+filterTrigger.addEventListener("click",()=>{
  closeCategoryMenus();
+ setFilterOpen(!filterControl.classList.contains("is-open"));
 });
-document.addEventListener("keydown",e=>{
- if(e.key==="Escape"){
-  const current=document.querySelector('.category-middle-picker.is-open #category-middle-trigger,.category-filter-control.is-open #category-filter-trigger,.category-sort-control.is-open #category-sort-trigger');
-  closeCategoryMenus();current?.focus();
+filterClose.addEventListener("click",()=>setFilterOpen(false));
+filterBackdrop.addEventListener("click",()=>setFilterOpen(false));
+document.addEventListener("pointerdown",event=>{
+ if(filterControl.classList.contains("is-open"))return;
+ if(!event.target.closest(".category-middle-picker,.category-toolbar-actions"))closeCategoryMenus();
+});
+document.addEventListener("keydown",event=>{
+ if(event.key==="Escape"){
+  if(filterControl.classList.contains("is-open")){setFilterOpen(false);return;}
+  const target=document.querySelector('.category-middle-picker.is-open #category-middle-trigger,.category-sort-control.is-open #category-sort-trigger');
+  closeCategoryMenus();target?.focus();
+ }
+ if(event.key==="Tab"&&filterControl.classList.contains("is-open")){
+  const focusable=[...filterPopover.querySelectorAll('button:not([disabled]),input:not([disabled]),summary,[tabindex]:not([tabindex="-1"])')].filter(el=>el.getClientRects().length);
+  if(!focusable.length)return;
+  const first=focusable[0],last=focusable[focusable.length-1];
+  if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+  else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
  }
 });
+closeCategoryMenus();
 function updateCategoryTotal(){toolbarCount.textContent=grid.querySelectorAll(".best-product").length+"개의"}
 
 const grid=document.querySelector("#category-products");
