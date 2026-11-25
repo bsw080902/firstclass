@@ -100,29 +100,58 @@ const keepSections=filterPopover.querySelectorAll(".category-filter-section");
 keepSections.forEach(section=>section.open=true);
 let filterPreviousFocus=null;
 let filterOpenScrollY=0;
+let filterBodyStyle=null;
 function setFilterOpen(open){
  const isOpen=filterControl.classList.contains("is-open");
  if(open===isOpen)return;
  if(open){
   filterPreviousFocus=document.activeElement;
-  filterOpenScrollY=window.scrollY;
+  filterOpenScrollY=window.scrollY || document.documentElement.scrollTop || 0;
+  // overflow:hidden만 사용하면 일부 브라우저에서 페이지가 맨 위로 이동합니다.
+  // 현재 뷰포트 위치를 고정해 드로어가 열려 있는 동안 보던 화면을 유지합니다.
+  filterBodyStyle={
+   position:document.body.style.position,
+   top:document.body.style.top,
+   left:document.body.style.left,
+   right:document.body.style.right,
+   width:document.body.style.width,
+   overflow:document.body.style.overflow
+  };
+  Object.assign(document.body.style,{
+   position:"fixed",
+   top:`-${filterOpenScrollY}px`,
+   left:"0",
+   right:"0",
+   width:"100%",
+   overflow:"hidden"
+  });
  }
  filterControl.classList.toggle("is-open",open);
  filterTrigger.setAttribute("aria-expanded",String(open));
  filterPopover.classList.toggle("is-open",open);
  filterBackdrop.classList.toggle("is-open",open);
- document.body.classList.toggle("category-filter-visible",open);
  filterPopover.inert=!open;
  filterPopover.setAttribute("aria-hidden",String(!open));
- // 포커스를 버튼으로 돌릴 때 브라우저가 버튼 위치로 자동 스크롤하지 않게 합니다.
- if(open) filterClose.focus({preventScroll:true});
- else {
-  (filterPreviousFocus?.isConnected?filterPreviousFocus:filterTrigger).focus({preventScroll:true});
-  // 바깥 배경 클릭으로 닫더라도 사용자가 보던 상품 위치를 유지합니다.
-  if(Math.abs(window.scrollY-filterOpenScrollY)>1){
-   window.scrollTo({top:filterOpenScrollY,behavior:"instant"});
+ if(open){
+  filterClose.focus({preventScroll:true});
+ }else{
+  // 포커스 이동으로 인한 자동 스크롤을 방지하고, 고정 전의 스크롤을 복원합니다.
+  const previous=filterBodyStyle;
+  if(previous){
+   Object.assign(document.body.style,previous);
+   filterBodyStyle=null;
   }
+  document.body.classList.remove("category-filter-visible");
+  window.scrollTo({top:filterOpenScrollY,left:0,behavior:"instant"});
+  (filterPreviousFocus?.isConnected?filterPreviousFocus:filterTrigger).focus({preventScroll:true});
+  // 브라우저가 fixed 해제 후 레이아웃을 늦게 계산하는 경우를 보완합니다.
+  requestAnimationFrame(()=>{
+   if(!filterControl.classList.contains("is-open") && Math.abs(window.scrollY-filterOpenScrollY)>1){
+    window.scrollTo({top:filterOpenScrollY,left:0,behavior:"instant"});
+   }
+  });
  }
+ if(open)document.body.classList.add("category-filter-visible");
 }
 function closeCategoryMenus(){
  middlePicker.classList.remove("is-open");
