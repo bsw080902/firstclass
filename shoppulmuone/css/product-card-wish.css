@@ -41,3 +41,56 @@
   .recommend-actions button,
   .best-actions button { transition: none; }
 }
+
+
+/* 모바일 상품 카드: PC와 같은 우측 하단 정렬, 작은 화면에 맞춘 SVG 버튼 크기 */
+@media (max-width:767px) {
+  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) :is(.recommend-actions,.best-actions,.best-product-actions) {
+    position:absolute;
+    left:auto;
+    right:8px;
+    bottom:8px;
+    width:auto;
+    max-width:calc(100% - 16px);
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:4px;
+  }
+  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) :is(.recommend-actions,.best-actions,.best-product-actions) button,
+  body .new-card .new-product-actions button,
+  body .new-page .new-product-actions button {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 auto;
+    width:auto;
+    height:22px;
+    padding:0;
+    border:0;
+    background:transparent;
+    line-height:0;
+  }
+  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) :is(.recommend-actions,.best-actions,.best-product-actions) button img,
+  body .new-card .new-product-actions button img,
+  body .new-page .new-product-actions button img {
+    display:block;
+    width:auto;
+    height:22px;
+    max-width:none;
+    object-fit:contain;
+  }
+  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) .recommend-wish > img.wish-active-overlay,
+  body .new-product-actions .recommend-wish > img.wish-active-overlay {
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+  }
+  body .new-card .new-product-actions,
+  body .new-page .new-product-actions {
+    justify-content:flex-end;
+    gap:4px;
+  }
+}
