@@ -188,7 +188,7 @@ function rerenderWithFilters(){
  // 필터 항목 선택 시 상품만 갱신하고, 열려 있던 필터 패널은 닫지 않습니다.
  const wasFilterOpen=filterControl.classList.contains("is-open");
  const active=document.querySelector(".category-main-tabs button.is-active");
- const key=active?.dataset.category||"all";
+ const key=active?.dataset.category||"fresh";
  const middleIndex=[...subtabs.querySelectorAll("button")].findIndex(b=>b.classList.contains("is-active"));
  const minor=minorTabs.querySelector(".is-active")?.textContent||"전체";
  showCategory(key,Math.max(0,middleIndex),minor);
@@ -368,5 +368,5 @@ sortButtons.forEach(btn=>btn.addEventListener("click",()=>{
 tabs.forEach(btn=>btn.addEventListener("click",()=>showCategory(btn.dataset.category)));
 grid.addEventListener("click",e=>{const wish=e.target.closest(".best-wish");if(wish){const on=wish.getAttribute("aria-pressed")!=="true";wish.setAttribute("aria-pressed",String(on));wish.classList.toggle("is-selected",on)}});
 const params=new URLSearchParams(location.search),initial=params.get("group");
-const key=initial==="all"||Object.hasOwn(categories,initial)?initial:"fresh",sub=Number(params.get("sub"));
+const key=Object.hasOwn(categories,initial)?initial:"fresh",sub=Number(params.get("sub"));
 showCategory(key,key==="all"?0:(Number.isInteger(sub)&&sub>=0&&sub<Object.keys(categories[key]).length?sub:0));

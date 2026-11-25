@@ -44,7 +44,7 @@
 @media(prefers-reduced-motion:reduce){.category-page .category-minor-panel,.category-page .category-minor-panel.is-collapsed{transition:none}}
 
 /* 전체상품을 포함한 5개 대분류 */
-.category-page .category-main-tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
+.category-page .category-main-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:767px){.category-page .category-main-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* 전체상품에서는 중분류 빈 상자를 표시하지 않음 */
@@ -383,7 +383,7 @@
 .category-page .category-selection-banner{display:grid;place-items:center;min-height:100px;margin:0 -24px 28px;background:var(--bg-surface)}
 .category-page .category-selection-banner h1{font-size:28px;line-height:1.3;font-weight:700;color:var(--text-primary);margin:0}
 .category-page .category-section-title{font-size:20px;line-height:1.4;color:var(--text-primary);margin:0 0 14px;font-weight:700}
-.category-page .category-main-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;padding:0;margin:0;background:transparent}
+.category-page .category-main-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:0;margin:0;background:transparent}
 .category-page .category-main-tabs::before{content:none}
 .category-page .category-main-tabs button{padding:12px 8px;min-height:40px;font-size:14px;background:#fff;border:1px solid var(--border-default);border-radius:999px}
 .category-page .category-main-tabs button.is-active{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff}
@@ -1028,7 +1028,7 @@
 .category-page .category-main-tabs,
 .category-page:has(.category-main-tabs button[data-category="all"].is-active) .category-main-tabs{
  display:grid;
- grid-template-columns:repeat(5,minmax(0,1fr));
+ grid-template-columns:repeat(4,minmax(0,1fr));
  align-items:stretch;
  gap:12px;
  padding:0 0 5px;
