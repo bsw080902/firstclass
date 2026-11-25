@@ -1279,3 +1279,21 @@ body.category-filter-visible{overflow:hidden}
   box-sizing:border-box;
  }
 }
+
+/* PC 카탈로그 상품 안내바: 상품 개수는 왼쪽, 정렬+필터는 전체 바의 가로 중앙 */
+@media (min-width: 901px) {
+ .category-page .category-toolbar {
+  position:relative;
+ }
+ .category-page .category-toolbar-actions {
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:26px;
+  margin:0;
+ }
+}
