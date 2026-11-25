@@ -2576,7 +2576,7 @@ html,body{
 .home-page .best-image{width:100%;height:auto;aspect-ratio:1}
 .home-page .new-section .new-slider-shell{width:min(100%,1420px);max-width:100%}
 .home-page .new-section .new-swiper{width:100%;min-width:0}
-.home-page .new-swiper .swiper-slide{flex-shrink:0;height:auto}
+.home-page .new-swiper .swiper-slide{flex:0 0 auto;height:auto;min-width:0}
 .home-page .new-card{width:100%;height:100%;box-sizing:border-box;display:flex;flex-direction:column}
 .home-page .new-card-top{height:auto;aspect-ratio:2.77/1}
 .home-page .new-card-bottom{height:auto;min-height:0;flex:1;gap:clamp(12px,1.4vw,24px);padding:clamp(12px,1.4vw,22px)}
