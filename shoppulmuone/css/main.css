@@ -2535,3 +2535,110 @@ html,body{
  .site-header .header-nav,.site-header.is-compact .header-nav,
  .site-header .header-search{transition:none}
 }
+
+
+/* Responsive layout: preserve desktop maxima, scale cards with their containers. */
+@media (min-width:1025px){
+ .site-header .header-inner{box-sizing:border-box;padding-inline:clamp(24px,5.2vw,100px)}
+ .site-header .header-actions{right:clamp(24px,5.2vw,100px)}
+ .site-header .header-search,.site-header.is-compact .header-search{width:min(480px,36vw);box-sizing:border-box}
+}
+@media (min-width:768px) and (max-width:1024px){
+ .site-header .header-inner{box-sizing:border-box;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;padding:12px 24px}
+ .site-header{height:120px}
+ .site-header .header-center{position:static;transform:none;order:0;width:100%;min-width:0;gap:12px}
+ .site-header .header-search{width:min(100%,480px);box-sizing:border-box}
+ .site-header .header-nav{width:auto;flex-wrap:nowrap;gap:clamp(8px,1.4vw,16px);padding:0}
+ .site-header .header-nav .best-link{gap:8px}
+ .site-header .header-actions{gap:8px}
+ .site-header .header-logo img{width:clamp(95px,12vw,120px)}
+}
+.footer-company,.footer-support{min-width:0;overflow-wrap:anywhere}
+.footer-certifications{flex-wrap:wrap}
+@media(min-width:768px) and (max-width:1024px){
+ .footer-main-inner{gap:24px;padding:40px 24px}
+ .footer-support{flex:0 1 38%}
+}
+
+/* Home: widths are based on available space, not the original Figma canvas. */
+.home-page .recommend-inner,.home-page .best-inner,.home-page .new-inner,
+.home-page .benefits-inner,.home-page .brand-inner{min-width:0;width:100%;box-sizing:border-box}
+.home-page .recommend-list{gap:clamp(12px,1.35vw,26px)}
+.home-page .recommend-card{flex:0 0 clamp(150px,17.45%,300px)}
+.home-page .recommend-card-featured{flex-basis:clamp(200px,23.26%,400px)}
+.home-page .recommend-image,.home-page .recommend-card-featured .recommend-image{
+ width:100%;height:auto;aspect-ratio:1;box-sizing:border-box
+}
+.home-page .recommend-card article,.home-page .brand-product{min-width:0;overflow-wrap:anywhere}
+.home-page .recommend-price{flex-wrap:wrap}
+.home-page .best-swiper .swiper-slide{width:clamp(160px,18.6%,300px);height:auto}
+.home-page .best-card{width:100%;min-width:0}
+.home-page .best-image{width:100%;height:auto;aspect-ratio:1}
+.home-page .new-section .new-slider-shell{width:min(100%,1420px);max-width:100%}
+.home-page .new-section .new-swiper{width:100%;min-width:0}
+.home-page .new-swiper .swiper-slide{flex-shrink:0;height:auto}
+.home-page .new-card{width:100%;height:100%;box-sizing:border-box;display:flex;flex-direction:column}
+.home-page .new-card-top{height:auto;aspect-ratio:2.77/1}
+.home-page .new-card-bottom{height:auto;min-height:0;flex:1;gap:clamp(12px,1.4vw,24px);padding:clamp(12px,1.4vw,22px)}
+.home-page .new-card .new-product-image{width:30%;max-width:185px;height:auto;aspect-ratio:1;flex:0 0 30%;align-self:flex-start}
+.home-page .new-product-info{min-width:0;overflow-wrap:anywhere}
+.home-page .new-card-copy h3{font-size:clamp(16px,1.4vw,26px)}
+.home-page .daily-section .daily-banner{height:auto;min-height:clamp(260px,23.2vw,352px);padding:clamp(24px,3vw,55px) clamp(24px,5vw,105px);gap:clamp(16px,2vw,36px)}
+.home-page .daily-section .daily-content{min-width:0}
+.home-page .daily-section .daily-image{max-width:100%;height:auto}
+.home-page .daily-content .daily-benefits span{max-width:100%;width:auto}
+.home-page .benefits-swiper .swiper-slide{height:auto}
+.home-page .benefit-card{display:flex;flex-direction:column;height:100%}
+.home-page .benefit-card-visual{height:auto;min-height:clamp(160px,12vw,224px);aspect-ratio:2.5/1}
+.home-page .benefit-card-copy{padding-left:clamp(12px,2vw,36px)}
+.home-page .benefit-card-copy h3{font-size:clamp(15px,1.2vw,22px)}
+.home-page .benefit-card-footer{height:auto;min-height:90px;flex:1;flex-wrap:wrap;padding:clamp(12px,1.4vw,26px)}
+.home-page .benefit-card-footer > *{min-width:0}
+.home-page .brand-top,.home-page .brand-content{gap:clamp(16px,2vw,32px)}
+.home-page .brand-heading{flex:0 1 33.4%;min-width:0}
+.home-page .brand-ad{flex:0 0 33.4%;width:33.4%;max-width:500px;height:auto;aspect-ratio:1}
+.home-page .brand-content{min-height:0}
+.home-page .brand-product-list{gap:clamp(12px,2vw,32px)}
+.home-page .brand-product{flex:0 0 clamp(145px,30.5%,300px)}
+.home-page .brand-product-image{width:100%;height:auto;aspect-ratio:1}
+.home-page .brand-content > .brand-tabs-prev,.home-page .brand-content > .brand-tabs-next{top:clamp(80px,16vw,250px)}
+@media (max-width:1199px){
+ .home-page .recommend-section,.home-page .best-section,.home-page .new-section,
+ .home-page .benefits-section,.home-page .brand-section{padding-inline:clamp(16px,2.5vw,30px)}
+ .home-page .recommend-card{flex-basis:clamp(170px,27%,300px)}
+ .home-page .recommend-card-featured{flex-basis:clamp(220px,36%,400px)}
+ .home-page .best-swiper .swiper-slide{width:clamp(170px,27%,300px)}
+ .home-page .brand-product{flex-basis:clamp(160px,45%,300px)}
+ .home-page .new-slider-shell > .new-prev,.home-page .benefits-prev,.home-page .brand-content > .brand-tabs-prev{left:0}
+ .home-page .new-slider-shell > .new-next,.home-page .benefits-next,.home-page .brand-content > .brand-tabs-next{right:0}
+}
+@media (max-width:767px){
+ .home-page .recommend-card,.home-page .recommend-card-featured{flex-basis:clamp(138px,47%,280px)}
+ .home-page .best-swiper .swiper-slide{width:clamp(155px,52%,290px)}
+ .home-page .recommend-image,.home-page .best-image,.home-page .brand-product-image{border-radius:16px}
+ .home-page .recommend-heading h2,.home-page .best-heading h2,.home-page .new-heading h2{font-size:clamp(20px,5vw,23px)}
+ .home-page .recommend-name,.home-page .best-info h3{font-size:14px}
+ .home-page .recommend-price{font-size:16px}
+ .home-page .daily-section .daily-banner{flex-direction:column;align-items:flex-start;min-height:0}
+ .home-page .daily-section .daily-content{flex:auto;width:100%}
+ .home-page .daily-section .daily-image{width:100%;max-height:260px;align-self:center}
+ .home-page .brand-top{flex-direction:column}
+ .home-page .brand-heading{flex:auto;width:100%}
+ .home-page .brand-tabs-shell{width:100%}
+ .home-page .brand-content{flex-direction:column}
+ .home-page .brand-ad{flex:auto;width:min(100%,500px)}
+ .home-page .brand-products{width:100%}
+ .home-page .brand-product{flex-basis:clamp(138px,47%,260px)}
+ .home-page .hero-sec + .quick-menu .quick-menu-list{gap:clamp(4px,1.5vw,12px)}
+ .home-page .hero-sec + .quick-menu .quick-menu-list a{white-space:normal}
+ .home-page .new-product-info{padding-bottom:0;display:flex;flex-direction:column}
+ .home-page .new-product-purchase{position:static;margin-top:auto;padding-top:12px}
+ .home-page .new-slider-shell > .new-prev,.home-page .new-slider-shell > .new-next,
+ .home-page .benefits-prev,.home-page .benefits-next{width:40px;height:40px}
+ .home-page .new-slider-shell > .new-prev > img,.home-page .new-slider-shell > .new-next > img{width:100%;height:100%}
+}
+@media (max-width:360px){
+ .home-page .new-card-bottom{flex-wrap:wrap}
+ .home-page .new-product-info{flex-basis:100%}
+ .home-page .new-card .new-product-image{width:42%;flex-basis:42%}
+}
