@@ -426,7 +426,7 @@ body {
 
 .category-panel {
     position: absolute; top: calc(100% + 12px); left: 8px;
-    width: 430px; height: 350px; box-sizing: border-box;
+    width: 430px; height: 295px; box-sizing: border-box;
     padding: 40px 30px; background: #fff; border: 1px solid #e0e8df;
     border-radius: 20px; box-shadow: 0 14px 36px rgba(0, 0, 0, .18);
     display: grid; grid-template-columns: 142px 3px 1fr; column-gap: 30px;
