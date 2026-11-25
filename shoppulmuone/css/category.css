@@ -1280,21 +1280,33 @@ body.category-filter-visible{overflow:hidden}
  }
 }
 
-/* PC 카탈로그 상품 안내바: 상품 개수는 왼쪽, 정렬+필터는 전체 바의 가로 중앙 */
+/* PC 상품 안내 바: 개수는 왼쪽, 정렬/필터는 오른쪽에서 세로 중앙 정렬 */
 @media (min-width: 901px) {
  .category-page .category-toolbar {
-  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) max-content;
+  align-items:center;
  }
  .category-page .category-toolbar-actions {
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
+  position:static;
+  left:auto;
+  top:auto;
+  transform:none;
+  grid-column:2;
+  grid-row:1;
   display:flex;
+  flex-wrap:nowrap;
   align-items:center;
-  justify-content:center;
+  justify-content:flex-end;
+  width:max-content;
+  min-width:max-content;
   gap:26px;
   margin:0;
+ }
+ .category-page .category-sort-trigger,
+ .category-page .category-filter-trigger {
+  white-space:nowrap;
+  flex-wrap:nowrap;
  }
 }
 
