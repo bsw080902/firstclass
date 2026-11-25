@@ -1113,3 +1113,154 @@
  .category-page .category-main-tabs button,
  .category-page .category-main-tabs button::after{transition:none}
 }
+
+
+/* 카테고리 필터: PC 우측 드로어 / 모바일 바텀시트 */
+body.category-filter-visible{overflow:hidden}
+.category-filter-backdrop{
+ position:fixed;inset:0;z-index:9998;
+ background:rgba(18,27,22,.46);
+ backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+ opacity:0;visibility:hidden;pointer-events:none;
+ transition:opacity .35s ease,visibility 0s linear .35s;
+}
+.category-filter-backdrop.is-open{
+ opacity:1;visibility:visible;pointer-events:auto;
+ transition:opacity .35s ease,visibility 0s;
+}
+#category-filter-panel.category-filter-drawer{
+ display:block;position:fixed;top:0;right:0;bottom:0;left:auto;
+ z-index:9999;
+ width:min(388px,100vw);max-width:100vw;height:100dvh;max-height:none;
+ box-sizing:border-box;overflow-y:auto;overscroll-behavior:contain;
+ margin:0;padding:26px 24px 34px;
+ border:0;border-radius:20px 0 0 20px;
+ background:#fff;box-shadow:-15px 0 35px rgba(0,0,0,.13);
+ opacity:1;visibility:hidden;pointer-events:none;
+ transform:translateX(104%);
+ transition:transform .5s cubic-bezier(.22,1,.36,1),visibility 0s linear .5s;
+ scrollbar-width:thin;
+}
+#category-filter-panel.category-filter-drawer.is-open{
+ visibility:visible;pointer-events:auto;transform:translateX(0);
+ transition:transform .5s cubic-bezier(.22,1,.36,1),visibility 0s;
+}
+#category-filter-panel.category-filter-drawer .category-filter{
+ width:100%;min-width:0;padding:0;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;
+}
+#category-filter-panel.category-filter-drawer #category-filter-form{
+ display:flex;flex-direction:column;gap:0;padding:0;margin:0;border:0;
+}
+#category-filter-panel.category-filter-drawer .category-filter-top{
+ display:flex;align-items:center;gap:12px;
+ padding:0 0 18px;margin:0 0 4px;border:0;
+}
+#category-filter-panel.category-filter-drawer .category-filter-top h2{
+ position:static;width:auto;height:auto;padding:0;margin:0 auto 0 0;overflow:visible;
+ clip:auto;white-space:normal;font-size:23px;font-weight:700;color:var(--text-primary);
+}
+#category-filter-panel.category-filter-drawer .category-filter-reset{
+ font:inherit;font-size:13px;color:var(--brand-green);background:none;border:0;cursor:pointer;padding:6px;
+}
+#category-filter-panel.category-filter-drawer .category-filter-close{
+ flex:0 0 34px;width:34px;height:34px;padding:5px;
+ display:grid;place-items:center;
+ color:var(--text-primary);background:transparent;border:0;border-radius:8px;cursor:pointer;
+}
+#category-filter-panel.category-filter-drawer .category-filter-close:hover{background:var(--bg-surface)}
+#category-filter-panel.category-filter-drawer .category-filter-section{
+ display:block;min-height:0;width:100%;margin:0;
+ padding:20px 0 22px;border:0;border-bottom:1px solid var(--border-default);
+}
+#category-filter-panel.category-filter-drawer .category-filter-section summary{
+ display:flex;justify-content:space-between;align-items:center;gap:12px;
+ list-style:none;cursor:pointer;padding:0 3px;
+ font-size:17px;font-weight:600;line-height:1.4;color:var(--text-primary);
+}
+#category-filter-panel.category-filter-drawer .category-filter-section summary::-webkit-details-marker{display:none}
+#category-filter-panel.category-filter-drawer .category-filter-section summary::after{
+ content:"";width:10px;height:10px;flex:0 0 10px;
+ border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+ transform:rotate(225deg) translate(-2px,-2px);
+ transition:transform .25s ease;
+}
+#category-filter-panel.category-filter-drawer .category-filter-section:not([open]) summary::after{
+ transform:rotate(45deg) translate(-2px,-2px);
+}
+#category-filter-panel.category-filter-drawer .category-filter-options{
+ display:grid;grid-template-columns:1fr;gap:16px;
+ padding:20px 2px 0;margin:0;width:100%;min-width:0;
+}
+#category-filter-panel.category-filter-drawer .category-filter-options label{
+ display:flex;align-items:center;gap:12px;min-height:22px;min-width:0;
+ margin:0;font-size:14px;font-weight:400;line-height:1.45;
+ color:var(--text-primary);cursor:pointer;
+}
+#category-filter-panel.category-filter-drawer .category-filter-options label span{min-width:0;overflow-wrap:anywhere}
+#category-filter-panel.category-filter-drawer .category-filter-options input{
+ appearance:none;display:grid;place-items:center;width:20px;height:20px;
+ flex:0 0 20px;margin:0;padding:0;border:1.5px solid #bcc7bf;
+ border-radius:5px;background:#fff;cursor:pointer;
+}
+#category-filter-panel.category-filter-drawer .category-filter-options input:checked{
+ background:var(--brand-lime);border-color:var(--brand-lime);
+}
+#category-filter-panel.category-filter-drawer .category-filter-options input:checked::after{
+ content:"";width:9px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;
+ transform:rotate(-45deg) translate(1px,-1px);
+}
+#category-filter-panel.category-filter-drawer .category-price-filter{
+ display:flex;align-items:center;gap:8px;padding:18px 0 0;margin:0;
+}
+#category-filter-panel.category-filter-drawer .category-price-filter input{
+ flex:1 1 0;width:0;min-width:0;max-width:none;height:42px;
+ padding:8px 4px;text-align:center;border:1px solid #cdd7cd;
+ border-radius:10px;background:#fff;color:var(--text-primary);font:inherit;font-size:12px;box-sizing:border-box;
+}
+#category-filter-panel.category-filter-drawer .category-price-filter button{
+ display:grid;place-items:center;flex:0 0 40px;width:40px;height:40px;
+ border:0;border-radius:10px;background:#e9ece9;color:#68756a;cursor:pointer;
+}
+#category-filter-panel.category-filter-drawer .category-filter-message{
+ margin:14px 0 0;font-size:12px;line-height:1.5;color:var(--text-secondary);
+}
+#category-filter-panel.category-filter-drawer .category-filter-handle{display:none}
+#category-filter-panel.category-filter-drawer .category-filter-options,
+#category-filter-panel.category-filter-drawer .category-price-filter{
+ animation:category-drawer-options-enter .3s ease both;
+}
+@keyframes category-drawer-options-enter{
+ from{opacity:0;transform:translateY(-6px)}
+ to{opacity:1;transform:translateY(0)}
+}
+@media(max-width:767px){
+ #category-filter-panel.category-filter-drawer{
+  inset:auto 0 0 0;width:100%;height:auto;max-height:min(86dvh,850px);
+  padding:12px 20px calc(28px + env(safe-area-inset-bottom));
+  border-radius:24px 24px 0 0;
+  transform:translateY(104%);
+  box-shadow:0 -15px 35px rgba(0,0,0,.12);
+  transition:transform .5s cubic-bezier(.22,1,.36,1),visibility 0s linear .5s;
+ }
+ #category-filter-panel.category-filter-drawer.is-open{
+  transform:translateY(0);
+  transition:transform .5s cubic-bezier(.22,1,.36,1),visibility 0s;
+ }
+ #category-filter-panel.category-filter-drawer .category-filter-handle{
+  display:block;width:42px;height:5px;border-radius:99px;
+  background:#d9e1da;margin:0 auto 20px;
+ }
+ #category-filter-panel.category-filter-drawer .category-filter-top h2{font-size:20px}
+ #category-filter-panel.category-filter-drawer .category-filter-section{padding:17px 0 19px}
+ #category-filter-panel.category-filter-drawer .category-filter-section summary{font-size:16px}
+ #category-filter-panel.category-filter-drawer .category-filter-options{gap:13px;padding-top:16px}
+ #category-filter-panel.category-filter-drawer .category-filter-options label{font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){
+ .category-filter-backdrop,#category-filter-panel.category-filter-drawer,
+ #category-filter-panel.category-filter-drawer.is-open,
+ #category-filter-panel.category-filter-drawer .category-filter-options,
+ #category-filter-panel.category-filter-drawer .category-price-filter{
+  transition:none;animation:none;
+ }
+}
