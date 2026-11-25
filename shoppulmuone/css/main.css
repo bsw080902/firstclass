@@ -2326,10 +2326,14 @@ html,body{
   transition:opacity .2s ease,visibility .2s ease,transform .25s ease;
  }
  .site-header.is-compact .header-nav{
+  /* 숨겨진 메뉴가 헤더 중앙 정렬 높이에 포함되지 않도록 배치 */
+  position:absolute;
+  top:calc(100% + 15px);
+  left:50%;
   opacity:0;
   visibility:hidden;
   pointer-events:none;
-  transform:translateY(-8px);
+  transform:translate(-50%,-8px);
  }
  .site-header.is-compact .header-center{
   position:absolute;
@@ -2337,7 +2341,13 @@ html,body{
   top:50%;
   transform:translate(-50%,-50%);
   width:auto;
+  height:42px;
   gap:0;
+ }
+ .site-header.is-compact .header-search{
+  flex:0 0 42px;
+  height:42px;
+  margin:0;
  }
  .site-header.is-compact .header-search{width:min(480px,38vw)}
 }
