@@ -125,11 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
  // 상세 탭: 페이지 스크롤 없이 패널만 전환
  const tabBar = document.querySelector('.detail-tabs');
  const tabs = Array.from(tabBar.querySelectorAll('[role="tab"]'));
- const underline = tabBar.querySelector('.detail-tab-indicator');
- function positionUnderline(tab) {
-  underline.style.width = tab.offsetWidth + 'px';
-  underline.style.transform = 'translateX(' + tab.offsetLeft + 'px)';
- }
  function activateTab(tab, moveFocus = false) {
   tabs.forEach(button => {
    const isActive = button === tab;
@@ -143,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
     panel.classList.add('is-entering');
    }
   });
-  positionUnderline(tab);
   if (moveFocus) tab.focus();
  }
  tabs.forEach((tab, index) => {
@@ -159,12 +153,4 @@ document.addEventListener('DOMContentLoaded', () => {
    activateTab(tabs[target], true);
   });
  });
- // 웹 폰트 로딩과 반응형 화면 크기 변화에도 밑줄 정렬 유지
- requestAnimationFrame(() => positionUnderline(tabs[0]));
- window.addEventListener('resize', () => {
-  positionUnderline(tabBar.querySelector('[aria-selected="true"]'));
- });
- if (document.fonts?.ready) {
-  document.fonts.ready.then(() => positionUnderline(tabBar.querySelector('[aria-selected="true"]')));
- }
 });
