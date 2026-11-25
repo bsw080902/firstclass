@@ -2266,3 +2266,25 @@ body {
 @media(min-width:768px){
  .header-nav > .category-panel{left:0; margin-left:calc((var(--category-trigger-width, 87px) - 202px) / 2)}
 }
+
+
+/* 공통 내비게이션 고정: 스크롤 방향과 상관없이 상단 헤더 표시 */
+.site-header,
+.site-header.is-hidden {
+ position:sticky;
+ top:0;
+ transform:none;
+}
+
+/* 모바일 빠른 메뉴: 화면 하단에 항상 고정 */
+@media (max-width:767px) {
+ .mobile-tabbar {
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:100;
+  transform:none;
+  visibility:visible;
+ }
+}
