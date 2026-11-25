@@ -55,3 +55,14 @@ document.addEventListener("DOMContentLoaded",()=>{
   });
  });
 });
+
+
+/* 실제 카테고리 버튼 폭을 기준으로 드롭다운 중앙 정렬 */
+document.addEventListener('DOMContentLoaded',()=>{
+ const trigger=document.querySelector('.header-nav > .category-link');
+ if(!trigger)return;
+ const sync=()=>trigger.parentElement.style.setProperty('--category-trigger-width',`${trigger.getBoundingClientRect().width}px`);
+ sync();
+ if(typeof ResizeObserver!=='undefined')new ResizeObserver(sync).observe(trigger);
+ window.addEventListener('resize',sync);
+});

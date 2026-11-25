@@ -2260,3 +2260,9 @@ body {
 
 /* 화살표 공간 유지: 번호 바가 좌우로 움직이지 않도록 설정 */
 @media(prefers-reduced-motion:reduce){.product-page-arrow{transition:none}}
+
+
+/* PC 카테고리 버튼 중앙에 1차 메뉴 정렬, 펼쳐도 왼쪽 메뉴 위치 유지 */
+@media(min-width:768px){
+ .header-nav > .category-panel{left:0; margin-left:calc((var(--category-trigger-width, 87px) - 202px) / 2)}
+}
