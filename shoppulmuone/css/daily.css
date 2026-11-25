@@ -1,11 +1,11 @@
 /* 일일배달 페이지: 기존 혜택 페이지의 디자인 시스템 재사용 */
-.daily-page .daily-tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
+.daily-page .daily-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}
 .daily-page .daily-tabs a{min-height:56px;padding:16px 12px;text-align:center;line-height:normal}
 
 @media(max-width:767px){.daily-page .daily-tabs a{min-height:46px;padding:16px 12px}}
 
-/* 다섯 버튼을 화면 크기와 관계없이 한 줄로 유지 */
-.daily-page .daily-tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
+/* 네 버튼을 화면 크기와 관계없이 한 줄로 유지 */
+.daily-page .daily-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:767px){.daily-page .daily-tabs{gap:6px}.daily-page .daily-tabs a{padding:12px 4px;font-size:12px;overflow-wrap:anywhere}}
 
 /* 정기구독 안내: 기존 샵풀무원 컬러·카드·라운드 시스템 */
@@ -276,7 +276,7 @@
  max-height:310px;
  object-fit:contain;
 }
-/* 카테고리 페이지 언더라인 탭 속성과 일치 (5개 탭 / 기존 앵커 기능 유지) */
+/* 카테고리 페이지 언더라인 탭 속성과 일치 (4개 탭 / 기존 앵커 기능 유지) */
 .benefit-page.daily-page .daily-tab-area{
  background:#fff;
  padding:20px 24px 0;
@@ -285,7 +285,7 @@
  max-width:1120px;
  margin:0 auto;
  display:grid;
- grid-template-columns:repeat(5,minmax(0,1fr));
+ grid-template-columns:repeat(4,minmax(0,1fr));
  align-items:stretch;
  gap:12px;
  padding:0 0 5px;
