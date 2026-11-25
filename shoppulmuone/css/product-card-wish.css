@@ -43,19 +43,21 @@
 }
 
 
-/* 모바일 상품 카드: PC와 같은 우측 하단 정렬, 작은 화면에 맞춘 SVG 버튼 크기 */
+/* 상품 이미지 너비 기준으로 버튼 크기 자동 조절 (PC 최대 크기 유지) */
 @media (max-width:767px) {
+  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) { container-type:inline-size; }
   body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) :is(.recommend-actions,.best-actions,.best-product-actions) {
+    --action-height:clamp(16px, 12cqi, 32px);
     position:absolute;
     left:auto;
-    right:8px;
-    bottom:8px;
+    right:clamp(4px, 4cqi, 12px);
+    bottom:clamp(4px, 4cqi, 12px);
     width:auto;
-    max-width:calc(100% - 16px);
+    max-width:92%;
     display:flex;
     align-items:center;
     justify-content:flex-end;
-    gap:4px;
+    gap:clamp(2px, 2cqi, 6px);
   }
   body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) :is(.recommend-actions,.best-actions,.best-product-actions) button,
   body .new-card .new-product-actions button,
@@ -65,7 +67,7 @@
     justify-content:center;
     flex:0 0 auto;
     width:auto;
-    height:22px;
+    height:var(--action-height, clamp(18px, 5.5vw, 32px));
     padding:0;
     border:0;
     background:transparent;
@@ -76,7 +78,7 @@
   body .new-page .new-product-actions button img {
     display:block;
     width:auto;
-    height:22px;
+    height:var(--action-height, clamp(18px, 5.5vw, 32px));
     max-width:none;
     object-fit:contain;
   }
@@ -91,6 +93,6 @@
   body .new-card .new-product-actions,
   body .new-page .new-product-actions {
     justify-content:flex-end;
-    gap:4px;
+    gap:clamp(2px, 1vw, 6px);
   }
 }
