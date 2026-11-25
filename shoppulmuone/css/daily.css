@@ -501,3 +501,79 @@
   gap:32px 14px;
  }
 }
+
+
+/* 일일배달: 상품 카테고리 4개를 묶고 정기구독 안내는 독립 버튼으로 분리 */
+.benefit-page.daily-page .daily-tab-area .daily-tabs {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  padding: 0;
+  border: 0;
+  overflow: visible;
+}
+.benefit-page.daily-page .daily-category-group {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 1px solid var(--border-default);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.benefit-page.daily-page .daily-tab-area .daily-tabs a {
+  box-sizing: border-box;
+  flex: 1 0 auto;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0 clamp(16px, 2.5vw, 40px);
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  border: 0;
+  border-radius: 0;
+  transition: background-color .25s ease, color .25s ease;
+}
+.benefit-page.daily-page .daily-tab-area .daily-tabs .daily-category-group a + a {
+  border-left: 1px solid var(--border-default);
+}
+.benefit-page.daily-page .daily-tab-area .daily-tabs a.daily-subscription-tab {
+  flex: 0 0 auto;
+  border: 1px solid var(--border-default);
+  border-radius: 999px;
+}
+.benefit-page.daily-page .daily-tab-area .daily-tabs a:not(.is-active):hover {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+.benefit-page.daily-page .daily-tab-area .daily-tabs a.is-active,
+.benefit-page.daily-page .daily-tab-area .daily-tabs a[aria-current="page"] {
+  background: var(--brand-lime);
+  color: #fff;
+  font-weight: 500;
+}
+.benefit-page.daily-page .daily-tab-area .daily-tabs a::after {
+  content: none;
+}
+@media (max-width: 900px) {
+  .benefit-page.daily-page .daily-tab-area .daily-tabs {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .benefit-page.daily-page .daily-category-group {
+    flex: 1 1 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .benefit-page.daily-page .daily-category-group::-webkit-scrollbar { display: none; }
+  .benefit-page.daily-page .daily-tab-area .daily-tabs a {
+    padding: 0 18px;
+    font-size: 14px;
+    min-height: 46px;
+  }
+  .benefit-page.daily-page .daily-tab-area .daily-tabs a.daily-subscription-tab {
+    margin-left: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .benefit-page.daily-page .daily-tab-area .daily-tabs a { transition: none; }
+}
