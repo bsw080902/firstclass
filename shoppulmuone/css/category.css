@@ -1264,3 +1264,18 @@ body.category-filter-visible{overflow:hidden}
   transition:none;animation:none;
  }
 }
+
+/* 카탈로그 상품 개수/정렬/필터 안내 바: PC 시안 1120 × 92px */
+@media (min-width: 901px) {
+ .category-page .category-toolbar {
+  width:100%;
+  max-width:1120px;
+  height:92px;
+  min-height:92px;
+  margin-left:auto;
+  margin-right:auto;
+  padding-top:18px;
+  padding-bottom:18px;
+  box-sizing:border-box;
+ }
+}
