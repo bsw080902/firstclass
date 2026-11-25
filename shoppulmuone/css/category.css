@@ -1116,7 +1116,7 @@
 
 
 /* 카테고리 필터: PC 우측 드로어 / 모바일 바텀시트 */
-body.category-filter-visible{overscroll-behavior:none}
+body.category-filter-visible{overflow:hidden}
 .category-filter-backdrop{
  position:fixed;inset:0;z-index:9998;
  background:rgba(18,27,22,.46);
