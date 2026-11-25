@@ -21,6 +21,14 @@
  const setCompact=(value)=>{
   header.classList.toggle('is-compact',desktop()&&value);
  };
+ // 헤더의 빈 공간, 검색창, 로고 또는 아이콘을 누르면 메뉴 줄 다시 표시
+ // 기존 링크/폼의 클릭 동작은 막지 않습니다.
+ header.addEventListener('pointerdown',()=>{
+  if(desktop())setCompact(false);
+ });
+ header.addEventListener('focusin',()=>{
+  if(desktop())setCompact(false);
+ });
  const onScroll=()=>{
   if(!desktop()){
    setCompact(false);
