@@ -99,10 +99,14 @@ filterHeader.insertBefore(filterReset,filterClose);
 const keepSections=filterPopover.querySelectorAll(".category-filter-section");
 keepSections.forEach(section=>section.open=true);
 let filterPreviousFocus=null;
+let filterOpenScrollY=0;
 function setFilterOpen(open){
  const isOpen=filterControl.classList.contains("is-open");
  if(open===isOpen)return;
- if(open) filterPreviousFocus=document.activeElement;
+ if(open){
+  filterPreviousFocus=document.activeElement;
+  filterOpenScrollY=window.scrollY;
+ }
  filterControl.classList.toggle("is-open",open);
  filterTrigger.setAttribute("aria-expanded",String(open));
  filterPopover.classList.toggle("is-open",open);
@@ -110,8 +114,15 @@ function setFilterOpen(open){
  document.body.classList.toggle("category-filter-visible",open);
  filterPopover.inert=!open;
  filterPopover.setAttribute("aria-hidden",String(!open));
- if(open) filterClose.focus();
- else (filterPreviousFocus?.isConnected?filterPreviousFocus:filterTrigger).focus();
+ // 포커스를 버튼으로 돌릴 때 브라우저가 버튼 위치로 자동 스크롤하지 않게 합니다.
+ if(open) filterClose.focus({preventScroll:true});
+ else {
+  (filterPreviousFocus?.isConnected?filterPreviousFocus:filterTrigger).focus({preventScroll:true});
+  // 바깥 배경 클릭으로 닫더라도 사용자가 보던 상품 위치를 유지합니다.
+  if(Math.abs(window.scrollY-filterOpenScrollY)>1){
+   window.scrollTo({top:filterOpenScrollY,behavior:"instant"});
+  }
+ }
 }
 function closeCategoryMenus(){
  middlePicker.classList.remove("is-open");
