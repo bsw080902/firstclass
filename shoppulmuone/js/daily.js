@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = ids.map(id => document.getElementById(id));
   const intro = document.getElementById('daily');
   const links = document.querySelectorAll('.daily-tabs a, .daily-panel a');
-  // 전체 탭은 기존 예시 상품 목록을 별도로 보존합니다.
-  const originalAllCards = sections.filter(section => section && section.id !== 'subscription').flatMap(section => Array.from(section.querySelectorAll('.best-product'), card => card.cloneNode(true)));
   // 카테고리별 실제 상품 카드: 전체 탭도 동일한 카드를 복제해 사용
   const products = {
     juice: [
@@ -46,23 +44,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('#' + id + ' .daily-product-grid');
     if (grid) grid.replaceChildren(...items.map(productCard));
   });
-  // 전체 탭: 카테고리별 제목 없이 모든 상품을 하나의 그리드에 나열
+  // 전체 탭: 실제 등록된 대표 상품 다섯 개만 표시
   if (intro) {
     const allGrid = document.createElement('div');
     allGrid.className = 'best-product-grid daily-product-grid';
-    originalAllCards.forEach(card => allGrid.appendChild(card));
-    // 기존 전체 탭의 첫 5개 상품과 순서를 유지
-    const featuredAll = [...products.juice, ...products.meal];
-    featuredAll.forEach((product, index) => {
-      const card = productCard(product);
-      allGrid.insertBefore(card, allGrid.children[index] || null);
-    });
+    [...products.juice, ...products.meal].forEach(product => allGrid.appendChild(productCard(product)));
     intro.querySelector('.benefit-placeholder')?.remove();
     intro.appendChild(allGrid);
   }
   document.querySelectorAll('.daily-product-grid').forEach(grid => {
     grid.querySelectorAll('.best-product').forEach((card, index) => card.style.setProperty('--best-card-index', index));
   });
+  const countBar = document.getElementById('daily-results-bar');
+  const countText = document.getElementById('daily-results-count');
+  function updateProductCount(id, all) {
+    const activeGrid = all ? intro?.querySelector('.daily-product-grid') : document.getElementById(id)?.querySelector('.daily-product-grid');
+    const count = activeGrid ? activeGrid.querySelectorAll('.best-product:not([hidden])').length : 0;
+    if (countBar) countBar.hidden = id === 'subscription';
+    if (countText) countText.textContent = count + '개의';
+  }
   function activate(id) {
     const valid = ids.includes(id);
     const all = !valid;
@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         intro.classList.add('daily-enter');
       }
     }
+    updateProductCount(id, all);
     links.forEach(link => {
       const selected = link.hash === '#' + (all ? 'all' : id);
       link.classList.toggle('is-active', selected);
