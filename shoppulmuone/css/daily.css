@@ -215,3 +215,156 @@
 .benefit-page.daily-page .daily-product-grid .best-price span{color:#f04452;font-size:16px;font-weight:700;margin-right:5px}
 .benefit-page.daily-page .daily-product-grid .best-product-price strong,
 .benefit-page.daily-page .daily-product-grid .best-price strong{font-size:16px;font-weight:700;color:inherit}
+
+
+/* 일일배달 HERO: 홈의 img/daily.png를 사용한 좌우 레이아웃 */
+.benefit-page.daily-page .daily-hero{
+ width:100%;
+ background:#e9f5e1;
+ padding:48px 24px;
+ box-sizing:border-box;
+}
+.benefit-page.daily-page .daily-hero-inner{
+ max-width:1120px;
+ min-height:300px;
+ margin:0 auto;
+ display:grid;
+ grid-template-columns:minmax(0,0.85fr) minmax(0,1.35fr);
+ align-items:center;
+ gap:38px;
+}
+.benefit-page.daily-page .daily-hero-copy{min-width:0}
+.benefit-page.daily-page .daily-hero-copy h1{
+ margin:0 0 16px;
+ font-size:clamp(30px,2.5vw,40px);
+ font-weight:700;
+ line-height:1.2;
+ color:var(--text-primary);
+}
+.benefit-page.daily-page .daily-hero-copy p{
+ margin:0;
+ font-size:16px;
+ line-height:1.65;
+ color:var(--text-secondary);
+}
+.benefit-page.daily-page .daily-hero-benefits{
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+ margin-top:24px;
+}
+.benefit-page.daily-page .daily-hero-benefits span{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ min-height:38px;
+ padding:0 16px;
+ border:1px solid var(--brand-green);
+ border-radius:999px;
+ box-sizing:border-box;
+ color:var(--brand-green);
+ background:#fff;
+ font-size:13px;
+ font-weight:600;
+ white-space:nowrap;
+}
+.benefit-page.daily-page .daily-hero-image{
+ display:block;
+ width:100%;
+ max-width:100%;
+ height:auto;
+ max-height:310px;
+ object-fit:contain;
+}
+/* 일일배달 대분류: 가운데서 양쪽으로 펼쳐지는 언더라인 */
+.benefit-page.daily-page .daily-tab-area{
+ background:#fff;
+ padding:20px 24px 0;
+}
+.benefit-page.daily-page .daily-tabs{
+ max-width:1120px;
+ margin:0 auto;
+ padding:0 0 5px;
+ display:grid;
+ grid-template-columns:repeat(5,minmax(0,1fr));
+ gap:12px;
+ border-bottom:1px solid var(--border-default);
+}
+.benefit-page.daily-page .daily-tabs a,
+.benefit-page.daily-page .daily-tabs a:hover,
+.benefit-page.daily-page .daily-tabs a:focus-visible,
+.benefit-page.daily-page .daily-tabs a.is-active{
+ position:relative;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ min-width:0;
+ min-height:56px;
+ padding:12px 6px 16px;
+ border:0;
+ border-radius:0;
+ box-shadow:none;
+ background:transparent;
+ color:var(--text-secondary);
+ text-decoration:none;
+ text-align:center;
+ font-size:15px;
+ font-weight:500;
+ line-height:1.3;
+ filter:none;
+ transform:none;
+ transition:color .25s ease;
+}
+.benefit-page.daily-page .daily-tabs a.is-active,
+.benefit-page.daily-page .daily-tabs a.is-active:hover{
+ color:var(--brand-lime);
+ font-weight:700;
+}
+.benefit-page.daily-page .daily-tabs a:not(.is-active):hover{color:var(--text-primary)}
+.benefit-page.daily-page .daily-tabs a::after{
+ content:"";
+ position:absolute;
+ bottom:-6px;
+ left:0;right:0;
+ height:3px;
+ background:var(--brand-lime);
+ border-radius:4px;
+ transform:scaleX(0);
+ transform-origin:center;
+ transition:transform .42s cubic-bezier(.22,1,.36,1);
+ pointer-events:none;
+}
+.benefit-page.daily-page .daily-tabs a.is-active::after{transform:scaleX(1)}
+.benefit-page.daily-page .daily-tabs a:focus-visible{outline:2px solid var(--brand-green);outline-offset:-3px}
+@media(max-width:900px){
+ .benefit-page.daily-page .daily-hero{padding:38px 20px}
+ .benefit-page.daily-page .daily-hero-inner{gap:20px;grid-template-columns:1fr 1.2fr;min-height:260px}
+ .benefit-page.daily-page .daily-hero-copy h1{font-size:30px}
+ .benefit-page.daily-page .daily-hero-copy p{font-size:14px}
+ .benefit-page.daily-page .daily-hero-benefits span{font-size:12px;padding:0 12px}
+}
+@media(max-width:767px){
+ .benefit-page.daily-page .daily-hero{padding:36px 16px 28px}
+ .benefit-page.daily-page .daily-hero-inner{display:flex;flex-direction:column;gap:24px;min-height:0;text-align:center}
+ .benefit-page.daily-page .daily-hero-copy h1{font-size:30px}
+ .benefit-page.daily-page .daily-hero-benefits{justify-content:center;margin-top:18px}
+ .benefit-page.daily-page .daily-hero-image{max-width:520px;max-height:220px}
+ .benefit-page.daily-page .daily-tab-area{padding:14px 16px 0}
+ .benefit-page.daily-page .daily-tabs{
+  display:flex;flex-wrap:nowrap;justify-content:flex-start;
+  overflow-x:auto;gap:0;scrollbar-width:none;
+ }
+ .benefit-page.daily-page .daily-tabs::-webkit-scrollbar{display:none}
+ .benefit-page.daily-page .daily-tabs a,
+ .benefit-page.daily-page .daily-tabs a:hover,
+ .benefit-page.daily-page .daily-tabs a:focus-visible,
+ .benefit-page.daily-page .daily-tabs a.is-active{
+  flex:0 0 auto;min-width:125px;min-height:48px;
+  padding:10px 12px 14px;
+  font-size:13px;white-space:nowrap;overflow-wrap:normal;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ .benefit-page.daily-page .daily-tabs a,
+ .benefit-page.daily-page .daily-tabs a::after{transition:none}
+}
