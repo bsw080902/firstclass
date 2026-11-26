@@ -14,10 +14,31 @@
 <body>
   <main class="detail" aria-label="뉴메이트 비타민 C 1000 상세페이지">
     <img src="./Numate_01.PNG" alt="뉴메이트 제품 상세 소개 1" fetchpriority="high">
-    <img src="./Numate_02.GIF" alt="뉴메이트 제품 상세 소개 2">
+    <img id="numate-animation" src="./Numate_02.GIF" alt="뉴메이트 제품 상세 소개 2">
     <img src="./Numate_03.PNG" alt="뉴메이트 제품 상세 소개 3" loading="lazy">
     <img src="./Numate_04.PNG" alt="뉴메이트 제품 상세 소개 4" loading="lazy">
     <img src="./Numate_05.PNG" alt="뉴메이트 제품 상세 소개 5" loading="lazy">
   </main>
+  <script>
+    (async function () {
+      const img = document.getElementById('numate-animation');
+      try {
+        const response = await fetch(img.getAttribute('src'));
+        if (!response.ok) return;
+        const bytes = new Uint8Array(await response.arrayBuffer());
+        if (String.fromCharCode(...bytes.slice(0, 3)) !== 'GIF') return;
+        const offset = 13 + ((bytes[10] & 128) ? 3 * (2 ** ((bytes[10] & 7) + 1)) : 0);
+        const loop = new Uint8Array([33,255,11,78,69,84,83,67,65,80,69,50,46,48,3,1,0,0,0]);
+        const result = new Uint8Array(bytes.length + loop.length);
+        result.set(bytes.slice(0, offset));
+        result.set([71,73,70,56,57,97], 0);
+        result.set(loop, offset);
+        result.set(bytes.slice(offset), offset + loop.length);
+        img.src = URL.createObjectURL(new Blob([result], {type: 'image/gif'}));
+      } catch (error) {
+        console.warn('GIF loop setup failed:', error);
+      }
+    })();
+  </script>
 </body>
 </html>
