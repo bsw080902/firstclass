@@ -501,3 +501,6 @@
   gap:32px 14px;
  }
 }
+
+/* Changing daily categories must not trigger browser scroll anchoring. */
+html:has(.daily-page){overflow-anchor:none}
