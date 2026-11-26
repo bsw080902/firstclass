@@ -62,7 +62,7 @@
 .header-nav .category-link .icon-hover { width: 26px; height: 26px; }
 /* 카테고리 클릭: 색상은 고정하고 아이콘의 투명도와 크기만 부드럽게 전환 */
 .header-nav .category-link { transition:none; }
-.header-nav .category-link .nav-icon-switch img { transition:opacity .45s cubic-bezier(.4,0,.2,1), transform .45s cubic-bezier(.4,0,.2,1); filter:none; transform-origin:center; }
+.header-nav .category-link .nav-icon-switch img { transition:opacity .25s ease, transform .25s ease; filter:none; transform-origin:center; }
 .header-nav .category-link .icon-default { transform:scale(1); }
 .header-nav .category-link .icon-hover { transform:scale(.85); }
 .header-nav .category-link.is-active .icon-default { transform:scale(.85); }
@@ -2773,10 +2773,8 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
 /* Equal-width recommendation cards, filling the desktop row without overflow. */
 @media(min-width:1025px){.home-page .recommend-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}.home-page .recommend-card{width:100%;min-width:0}}
 
-/* 카테고리 선택: 배경과 글자 색만 동시에 전환하며 밝기 필터는 사용하지 않음 */
-#category-panel .category-panel-left .category-item { transition:background-color .35s ease, color .35s ease; filter:none; }
+/* 카테고리 상태 변경은 단일 색상으로 즉시 표시하고 메뉴 펼침 애니메이션은 유지 */
+#category-panel .category-panel-left .category-item { transition:none; filter:none; }
 #category-panel .category-panel-left .category-item.is-selected { background:#80c441; color:#fff; }
 #category-panel .category-panel-left .category-item:not(.is-selected) { background:transparent; color:#6b7b6f; }
 #category-panel .category-all-link, #category-panel .category-panel-right a { transition:none; }
-
-@media(prefers-reduced-motion:reduce){#category-panel .category-panel-left .category-item{transition:none}}
