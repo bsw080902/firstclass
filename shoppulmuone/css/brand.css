@@ -96,3 +96,10 @@
  .brand-detail-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,0) 32%,rgba(255,255,255,.12) 48%,rgba(255,255,255,.65) 65%,rgba(255,255,255,.88) 82%,rgba(255,255,255,.96) 100%)}
  .brand-detail-copy{z-index:1}
 }
+
+@media(min-width:768px){
+.brand-detail-hero[data-brand="9"] .brand-detail-copy,
+.brand-detail-hero[data-brand="14"] .brand-detail-copy{margin-left:0;width:max-content;max-width:24%;position:relative;left:var(--brand-copy-center);transform:translateX(-50%);}
+.brand-detail-hero[data-brand="9"]{--brand-copy-center:85%}
+.brand-detail-hero[data-brand="14"]{--brand-copy-center:79%}
+}
