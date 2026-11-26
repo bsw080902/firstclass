@@ -2639,3 +2639,8 @@ a.text-cta:hover, a.text-cta:focus-visible,
 .header-search-panel button:hover{color:var(--brand-green,#009333)}
 .header-search-panel button:focus-visible{outline:2px solid var(--brand-green,#009333);outline-offset:3px;border-radius:4px}
 @media(max-width:767px){.header-search-panel{grid-template-columns:1fr;padding:24px 0;border-radius:20px;max-height:calc(100dvh - 180px)}.header-search-panel>div{padding:0 22px;min-height:0}.header-search-panel .search-popular-column{border-left:0;border-top:1px solid #dce5da;margin-top:24px;padding-top:24px}.search-panel-heading{margin-bottom:18px}.search-panel-heading h2{font-size:19px}.header-search-panel .search-word{font-size:15px}.search-history-empty{font-size:14px}}
+
+/* Recommendation status: white pill, green type, fixed over the image. */
+.recommend-section .recommend-image{position:relative}
+.recommend-section .recommend-status{position:absolute;z-index:2;top:clamp(10px,1vw,18px);left:clamp(10px,1vw,18px);display:inline-flex;align-items:center;justify-content:center;padding:6px 12px;border-radius:999px;background:#fff;color:var(--brand-green,#009333);font-size:clamp(12px,0.85vw,16px);font-weight:700;line-height:1;pointer-events:none;white-space:nowrap}
+@media(max-width:767px){.recommend-section .recommend-status{top:10px;left:10px;padding:5px 9px;font-size:12px}}
