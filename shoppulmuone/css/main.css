@@ -2652,3 +2652,8 @@ a.text-cta:hover, a.text-cta:focus-visible,
 body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointer-events:none}
 @media(max-width:767px){.site-scroll-top{bottom:calc(16px + var(--scroll-top-offset,0px));font-size:13px;padding:9px 15px}}
 @media(prefers-reduced-motion:reduce){.site-scroll-top{transition:none}}
+
+/* Compact circular back-to-top icon. */
+.site-scroll-top{width:48px;height:48px;padding:0;box-sizing:border-box;gap:0;border-radius:50%}
+.site-scroll-top svg{width:22px;height:22px}
+@media(max-width:767px){.site-scroll-top{width:44px;height:44px;padding:0}}
