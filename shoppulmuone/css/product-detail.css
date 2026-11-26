@@ -124,3 +124,12 @@
 @media(max-width:767px){.detail-main{padding-top:24px}.detail-original-price{font-size:16px}}
 
 .detail-product-summary{font-size:18px;color:var(--text-primary,#17251d);line-height:1.5;margin:0 0 16px}.detail-product-summary[hidden]{display:none!important}@media(max-width:767px){.detail-product-summary{font-size:16px}}
+
+/* Mobile product detail tabs: all four entries fit and indicator stays in its cell. */
+@media(max-width:767px){
+ .detail-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%;box-sizing:border-box;gap:0;overflow:visible;align-items:stretch}
+ .detail-tabs button{min-width:0;min-height:50px;box-sizing:border-box;padding:8px 3px 10px;font-size:clamp(10px,2.9vw,13px);line-height:1.35;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+ .detail-tabs button::after{transform:none;opacity:0;transition:opacity .2s ease}
+ .detail-tabs button[aria-selected="true"]::after{transform:none;opacity:1}
+}
+@media(max-width:767px) and (prefers-reduced-motion:reduce){.detail-tabs button::after{transition:none}}
