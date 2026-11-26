@@ -1362,8 +1362,8 @@ body {
 .brand-tabs-shell { display: flex; position: relative; flex: 1; min-width: 0; align-items: center; }
 .brand-tabs { display: flex; gap: 16px; overflow-x: auto; scrollbar-width: none; scroll-behavior: smooth; padding: 4px 0; width: 100%; }
 .brand-tabs::-webkit-scrollbar { display: none; }
-.brand-tab { flex: 0 0 auto; padding: 12px 23px; border: 1px solid #dce4da; border-radius: 999px; background: #fff; color: #637267; font: inherit; font-size: 14px; cursor: pointer; transition: background .2s, color .2s, transform .2s; }
-.brand-tab:hover { transform: translateY(-2px); }
+.brand-tab { flex: 0 0 auto; padding: 12px 23px; border: 1px solid #dce4da; border-radius: 999px; background: #fff; color: #637267; font: inherit; font-size: 14px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+.brand-tab:not(.is-active):hover, .brand-tab:not(.is-active):focus-visible { border-color: #80c441; color: #80c441; }
 .brand-tab.is-active { background: #80c441; border-color: #80c441; color: #fff; font-weight: 700; }
 .brand-tabs-prev,
 .brand-tabs-next {
