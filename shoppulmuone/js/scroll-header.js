@@ -17,17 +17,23 @@
  let previousY=window.scrollY;
  let traveled=0;
  let direction=0;
+ let scrollCompact=false;
+ let hovering=false;
  const threshold=12;
  const setCompact=(value)=>{
-  header.classList.toggle('is-compact',desktop()&&value);
+  scrollCompact=value;
+  header.classList.toggle('is-compact',desktop()&&value&&!hovering);
  };
- // 헤더의 빈 공간, 검색창, 로고 또는 아이콘을 누르면 메뉴 줄 다시 표시
- // 기존 링크/폼의 클릭 동작은 막지 않습니다.
- header.addEventListener('pointerdown',()=>{
-  if(desktop())setCompact(false);
+ // 클릭이나 검색창 포커스가 아니라 마우스 호버로만 일시적으로 펼침.
+ header.addEventListener('pointerenter',event=>{
+  if(!desktop()||event.pointerType!=='mouse')return;
+  hovering=true;
+  header.classList.remove('is-compact');
  });
- header.addEventListener('focusin',()=>{
-  if(desktop())setCompact(false);
+ header.addEventListener('pointerleave',event=>{
+  if(event.pointerType!=='mouse')return;
+  hovering=false;
+  setCompact(scrollCompact);
  });
  const onScroll=()=>{
   if(!desktop()){
@@ -46,13 +52,14 @@
   if(traveled>=threshold){
    // 헤더 내 메뉴를 사용하는 동안은 메뉴를 접지 않음
    if(direction<0)setCompact(false);
-   else if(!header.matches(':focus-within')&&!header.querySelector('.category-panel.is-open'))setCompact(true);
+   else setCompact(true);
    traveled=0;
   }
  };
  window.addEventListener('scroll',onScroll,{passive:true});
  window.addEventListener('resize',()=>{
-  header.classList.remove('is-compact');
+  hovering=false;
+  setCompact(false);
   syncSpacer();
   previousY=window.scrollY;
   traveled=0;
