@@ -77,3 +77,15 @@
 /* Align visible logo artwork with the text, not the PNG canvas. */
 .brand-detail-copy img{display:block;flex:none;width:auto;height:auto;max-width:clamp(88px,8vw,154px);max-height:clamp(52px,5vw,96px);object-fit:contain;object-position:left center}
 @media(min-width:768px){.brand-detail-hero[data-brand="4"] .brand-detail-copy{margin-left:75%;width:22%;}}
+
+/* Center each copy group within the clear right-hand area, keeping its internal left alignment. */
+@media(min-width:768px){
+.brand-detail-hero[data-brand="6"] .brand-detail-copy,
+.brand-detail-hero[data-brand="10"] .brand-detail-copy,
+.brand-detail-hero[data-brand="11"] .brand-detail-copy,
+.brand-detail-hero[data-brand="13"] .brand-detail-copy{margin-left:0;width:max-content;max-width:24%;position:relative;left:var(--brand-copy-center,84%);transform:translateX(-50%);}
+.brand-detail-hero[data-brand="6"]{--brand-copy-center:85%}
+.brand-detail-hero[data-brand="10"]{--brand-copy-center:82%}
+.brand-detail-hero[data-brand="11"]{--brand-copy-center:83%}
+.brand-detail-hero[data-brand="13"]{--brand-copy-center:84%}
+}
