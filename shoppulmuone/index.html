@@ -771,11 +771,34 @@
         const brandAd = document.querySelector('.brand-ad');
         const brandMore = document.querySelector('.brand-more');
         let selectedBrand = 0;
-        const brandPlaceholder = document.createElement('p');
-        brandPlaceholder.className = 'brand-placeholder';
-        brandPlaceholder.setAttribute('role', 'status');
-        brandPlaceholder.hidden = true;
-        document.querySelector('.brand-content').appendChild(brandPlaceholder);
+        // 브랜드 탭 순서와 대표 이미지 번호를 1:1로 연결합니다.
+        // 이미지가 아직 업로드되지 않은 경우 다른 브랜드의 이미지를 표시하지 않습니다.
+        const brandImageExtensions = ['png', 'jpg', 'jpeg', 'webp', 'PNG', 'JPG', 'JPEG', 'WEBP'];
+        const brandProductList = brandProducts.querySelector('.brand-product-list');
+        const temporaryBrandCards = Array.from(brandProductList.children);
+        function updateBrandImage(index) {
+            const image = document.createElement('img');
+            image.alt = brandNames[index] + ' 브랜드 대표 이미지';
+            const stem = 'img/pulmuonebrand_' + (index + 1);
+            const sources = brandImageExtensions.map(extension => stem + '.' + extension);
+            // 첫 번째 브랜드의 기존 이미지만 임시 대체 이미지로 사용합니다.
+            if (index === 0) sources.push('img/Brand_ad.png');
+            let sourceIndex = 0;
+            image.addEventListener('error', () => {
+                if (image.parentElement !== brandAd) return;
+                sourceIndex++;
+                if (sourceIndex < sources.length) {
+                    image.src = sources[sourceIndex];
+                    return;
+                }
+                const placeholder = document.createElement('span');
+                placeholder.textContent = brandNames[index];
+                placeholder.style.cssText = 'display:grid;place-items:center;width:100%;height:100%;background:var(--bg-accent,#f5f8f3);color:var(--brand-green,#009333);font-size:clamp(18px,2vw,32px);font-weight:700;text-align:center;';
+                brandAd.replaceChildren(placeholder);
+            });
+            brandAd.replaceChildren(image);
+            image.src = sources[0];
+        }
 
         function selectBrand(index) {
             if (index < 0 || index >= brandNames.length) return;
@@ -790,11 +813,15 @@
             const targetLeft = activeTab.offsetLeft - brandTabs.offsetLeft - (brandTabs.clientWidth - activeTab.offsetWidth) / 2;
             brandTabs.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
 
-            // 제공된 상품 자료는 풀무원식품 1개 브랜드분이므로 다른 브랜드는 안내 표시.
-            brandProducts.hidden = index !== 0;
-            brandAd.hidden = index !== 0;
-            brandPlaceholder.hidden = index === 0;
-            brandPlaceholder.textContent = brandNames[index] + ' 상품 콘텐츠 준비 중';
+            updateBrandImage(index);
+            // 상품 데이터가 준비되기 전까지 기존 3개 상품을 임시로 재사용합니다.
+            // 상품명, 실제 브랜드명, 이미지, 가격 및 기존 버튼 동작은 그대로 유지합니다.
+            brandProducts.hidden = false;
+            brandAd.hidden = false;
+            const offset = index % temporaryBrandCards.length;
+            const orderedCards = temporaryBrandCards.slice(offset).concat(temporaryBrandCards.slice(0, offset));
+            brandProductList.append(...orderedCards);
+            brandProductList.scrollLeft = 0;
             brandMore.setAttribute('aria-label', index === 0 ? '브랜드 상품 더 보기' : brandNames[index] + ' 상품 더 보기');
             updateBrandArrows();
         }
