@@ -62,12 +62,11 @@
 .header-nav .nav-dropdown:hover .icon-hover,
 .header-nav .nav-dropdown:focus-visible .icon-hover { opacity: 1; }
 .header-nav .category-link .icon-hover { width: 26px; height: 26px; }
-/* 카테고리 아이콘은 필터 중간색 없이 글자와 동시에 한 번만 전환 */
-.header-nav .category-link .icon-default { transition: opacity .25s ease; } 
+/* 카테고리: 글자와 아이콘의 색상은 중간색 없이 동일 상태로 전환 */
+.header-nav .category-link, .header-nav .category-link img { transition: none; }
 .header-nav .category-link:hover .icon-default,
 .header-nav .category-link:focus-visible .icon-default,
 .header-nav .category-link.is-active .icon-default { filter: brightness(0) saturate(100%) invert(36%) sepia(95%) saturate(1605%) hue-rotate(105deg) brightness(90%) contrast(103%); }
-@media(prefers-reduced-motion:reduce){.header-nav .category-link .icon-default,.category-panel .category-item{transition:none}}
 /* SVG 이미지는 CSS color를 상속하지 않으므로 hover 때 녹색 필터 적용 */
 .header-nav a:hover img:not(.nav-divider):not(.icon-hover),
 .header-nav a:focus-visible img:not(.nav-divider):not(.icon-hover),
@@ -442,7 +441,7 @@ body {
 .category-panel .category-item {
     width: 142px; height: 40px; border: 0; border-radius: 10px;
     background: transparent; color: #6b7b6f; font: inherit; font-size: 15px;
-    cursor: pointer; transition: background-color .2s ease, color .2s ease;
+    cursor: pointer; transition: none;
 }
 /* 마우스 진입은 JS에서 즉시 선택 상태로 전환하므로 별도 hover 색상을 적용하지 않음. */
 .category-panel .category-item:not(.is-selected):focus-visible { outline: 2px solid var(--brand-green); outline-offset: 2px; }
@@ -2764,3 +2763,9 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
 
 /* Equal-width recommendation cards, filling the desktop row without overflow. */
 @media(min-width:1025px){.home-page .recommend-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}.home-page .recommend-card{width:100%;min-width:0}}
+
+/* 카테고리 상태 변경은 단일 색상으로 즉시 표시하고 메뉴 펼침 애니메이션은 유지 */
+#category-panel .category-panel-left .category-item { transition:none; filter:none; }
+#category-panel .category-panel-left .category-item.is-selected { background:#80c441; color:#fff; }
+#category-panel .category-panel-left .category-item:not(.is-selected) { background:transparent; color:#6b7b6f; }
+#category-panel .category-all-link, #category-panel .category-panel-right a { transition:none; }
