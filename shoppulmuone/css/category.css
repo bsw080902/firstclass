@@ -1328,14 +1328,3 @@ body.category-filter-visible{overflow:hidden}
 
 /* Category primary tabs: keep text lime on hover, matching the active accent. */
 .category-page .category-main-tabs button:not(.is-active):hover,.category-page .category-main-tabs button:not(.is-active):focus-visible{color:var(--brand-lime,#80c342)}
-
-/* Minor category buttons: match BEST button dimensions, typography and states. */
-.category-page .category-minor-tabs{gap:12px}
-.category-page .category-minor-tabs button{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;flex:0 0 auto;min-width:116px;min-height:40px;padding:0 18px;border:1px solid var(--border-default);border-radius:999px;background:#fff;color:var(--text-secondary);font:inherit;font-size:14px;font-weight:500;transform:none;filter:none;transition:background-color .25s ease,border-color .25s ease,color .25s ease}
-.category-page .category-minor-tabs button:not(.is-active):hover,.category-page .category-minor-tabs button:not(.is-active):focus-visible{background:#fff;border-color:var(--brand-lime);color:var(--brand-lime);transform:none;filter:none}
-.category-page .category-minor-tabs button.is-active,.category-page .category-minor-tabs button.is-active:hover,.category-page .category-minor-tabs button.is-active:focus-visible{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff;font-weight:700;transform:none;filter:none}
-.category-page .category-minor-tabs button:focus-visible{outline:2px solid var(--brand-green);outline-offset:3px}
-@media(min-width:901px){.category-page .category-minor-tabs{gap:14px}.category-page .category-minor-tabs button{min-width:150px;min-height:50px;padding:0 22px;font-size:16px}}
-@media(min-width:768px) and (max-width:900px){.category-page .category-minor-tabs button{min-height:44px;font-size:15px}}
-@media(max-width:767px){.category-page .category-minor-tabs{gap:8px}.category-page .category-minor-tabs button{min-width:0;min-height:38px;padding:0 16px;font-size:13px}}
-@media(prefers-reduced-motion:reduce){.category-page .category-minor-tabs button{transition:none}}
