@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded",()=>{
  if(!panel)return;
  panel.querySelectorAll(".category-panel-left .category-item").forEach(button=>{
   button.addEventListener("pointerenter",event=>{
-   if(event.pointerType!=="mouse"||!panel.classList.contains("is-open"))return;
+   if(event.pointerType!=="mouse"||!panel.classList.contains("is-open")||button.classList.contains("is-selected"))return;
    button.click();
   });
  });
