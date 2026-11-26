@@ -2322,7 +2322,6 @@ html,body{
  .site-header .header-inner{position:relative}
  .site-header .header-actions{
   position:absolute;
-  right:100px;
   /* 높이가 변하는 부모의 50%를 매 프레임 재계산하지 않고 묶음 전체를 이동 */
   top:43px;
   transform:translate3d(0,0,0);
@@ -2416,6 +2415,7 @@ html,body{
   top:57px;
   width:max-content;
   opacity:1;
+  will-change:transform,opacity;
   transform:translate3d(-50%,0,0);
   transition:transform .32s cubic-bezier(.4,0,.2,1),
              visibility 0s;
