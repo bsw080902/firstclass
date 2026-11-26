@@ -332,3 +332,12 @@
  .benefit-page:not(.daily-page) .benefit-hero p{font-size:12px}
  .benefit-page:not(.daily-page) .benefit-hero h1{font-size:26px}
 }
+
+/* Mobile benefit underline tabs: fixed equal cells and fade-only indicator. */
+@media(max-width:767px){
+ .benefit-page:not(.daily-page) .benefit-tabs:has(>button){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;box-sizing:border-box;gap:0;overflow:visible;align-items:stretch;justify-content:stretch}
+ .benefit-page:not(.daily-page) .benefit-tabs button,.benefit-page:not(.daily-page) .benefit-tabs button.is-active,.benefit-page:not(.daily-page) .benefit-tabs button.is-active:hover,.benefit-page:not(.daily-page) .benefit-tabs button.is-active:focus-visible{min-width:0;min-height:50px;box-sizing:border-box;padding:8px 3px 10px;font-size:clamp(11px,3.4vw,14px);font-weight:500;line-height:1.35;white-space:normal;word-break:keep-all}
+ .benefit-page:not(.daily-page) .benefit-tabs button::after{transform:none;opacity:0;transition:opacity .2s ease}
+ .benefit-page:not(.daily-page) .benefit-tabs button.is-active::after{transform:none;opacity:1}
+}
+@media(max-width:767px) and (prefers-reduced-motion:reduce){.benefit-page:not(.daily-page) .benefit-tabs button::after{transition:none}}
