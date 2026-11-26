@@ -397,7 +397,7 @@
                     <div class="brand-content">
                         <button class="brand-tabs-prev" type="button" aria-label="이전 브랜드 보기"><img src="img/Left_icon.svg" alt=""></button>
                         <button class="brand-tabs-next" type="button" aria-label="다음 브랜드 보기"><img src="img/Right_icon.svg" alt=""></button>
-                        <div class="brand-ad"><img src="img/Brand_ad.png" alt="풀무원 - 건강한 재료로 만드는 풀무원 바른 먹거리" loading="lazy"></div>
+                        <div class="brand-ad"><img src="img/pulmuonebrand_1.jpg" alt="풀무원식품 브랜드 대표 이미지" loading="lazy"></div>
                         <div class="brand-products">
                             <div class="brand-product-list">
                                 <article class="brand-product">
@@ -771,33 +771,13 @@
         const brandAd = document.querySelector('.brand-ad');
         const brandMore = document.querySelector('.brand-more');
         let selectedBrand = 0;
-        // 브랜드 탭 순서와 대표 이미지 번호를 1:1로 연결합니다.
-        // 이미지가 아직 업로드되지 않은 경우 다른 브랜드의 이미지를 표시하지 않습니다.
-        const brandImageExtensions = ['png', 'jpg', 'jpeg', 'webp', 'PNG', 'JPG', 'JPEG', 'WEBP'];
+        // 브랜드 탭의 순서와 GitHub에 등록된 JPG 이미지 번호를 연결합니다.
         const brandProductList = brandProducts.querySelector('.brand-product-list');
         const temporaryBrandCards = Array.from(brandProductList.children);
+        const brandImage = brandAd.querySelector('img');
         function updateBrandImage(index) {
-            const image = document.createElement('img');
-            image.alt = brandNames[index] + ' 브랜드 대표 이미지';
-            const stem = 'img/pulmuonebrand_' + (index + 1);
-            const sources = brandImageExtensions.map(extension => stem + '.' + extension);
-            // 첫 번째 브랜드의 기존 이미지만 임시 대체 이미지로 사용합니다.
-            if (index === 0) sources.push('img/Brand_ad.png');
-            let sourceIndex = 0;
-            image.addEventListener('error', () => {
-                if (image.parentElement !== brandAd) return;
-                sourceIndex++;
-                if (sourceIndex < sources.length) {
-                    image.src = sources[sourceIndex];
-                    return;
-                }
-                const placeholder = document.createElement('span');
-                placeholder.textContent = brandNames[index];
-                placeholder.style.cssText = 'display:grid;place-items:center;width:100%;height:100%;background:var(--bg-accent,#f5f8f3);color:var(--brand-green,#009333);font-size:clamp(18px,2vw,32px);font-weight:700;text-align:center;';
-                brandAd.replaceChildren(placeholder);
-            });
-            brandAd.replaceChildren(image);
-            image.src = sources[0];
+            brandImage.src = 'img/pulmuonebrand_' + (index + 1) + '.jpg';
+            brandImage.alt = brandNames[index] + ' 브랜드 대표 이미지';
         }
 
         function selectBrand(index) {
