@@ -1325,3 +1325,6 @@ body.category-filter-visible{overflow:hidden}
  body.category-filter-visible { overflow:auto; }
  .category-filter-backdrop.is-open { touch-action:auto; }
 }
+
+/* Category primary tabs: keep text lime on hover, matching the active accent. */
+.category-page .category-main-tabs button:not(.is-active):hover,.category-page .category-main-tabs button:not(.is-active):focus-visible{color:var(--brand-lime,#80c342)}
