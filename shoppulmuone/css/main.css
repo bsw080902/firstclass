@@ -2791,3 +2791,6 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
  .home-page .best-swiper .swiper-slide{min-width:0;}
  .home-page .best-card{width:100%;min-width:0;}
 }
+
+/* 인기 검색어 상위 3개 순위 숫자만 볼드 처리 */
+.header-search-panel .search-popular-list li:nth-child(-n+3) .search-rank{font-weight:700}
