@@ -2220,7 +2220,7 @@ body {
 .product-page-numbers{
  position:relative;display:flex;align-items:center;justify-content:center;
  gap:3px;flex:0 0 auto;height:24px;min-height:24px;
- padding:2px 4px;
+ padding:2px;
  background:rgba(104,117,106,.2);border-radius:50px;
  overflow:hidden;
  box-sizing:border-box;
@@ -2232,7 +2232,7 @@ body {
  background:transparent;
 }
 .product-page-marker{
- position:absolute;z-index:0;left:4px;top:50%;
+ position:absolute;z-index:0;left:2px;top:50%;
  width:24px;height:20px;box-sizing:border-box;
  margin-top:-10px;border-radius:25px;
  background:var(--brand-lime,#80c342);
