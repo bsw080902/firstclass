@@ -88,21 +88,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     updateProductCount(id, all);
     links.forEach(link => {
-      const selected = link.hash === '#' + (all ? 'all' : id);
+      const selected = (new URL(link.href, location.href).searchParams.get('menu') || link.hash.slice(1)) === (all ? 'all' : id);
       link.classList.toggle('is-active', selected);
       if (selected) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
     });
   }
   function updateFromHash() {
-    const id = decodeURIComponent(location.hash.slice(1));
+    const id = new URLSearchParams(location.search).get('menu') || decodeURIComponent(location.hash.slice(1));
     activate(id);
   }
   links.forEach(link => link.addEventListener('click', event => {
-    const id = link.hash.slice(1);
+    const id = new URL(link.href, location.href).searchParams.get('menu') || link.hash.slice(1);
     if (id !== 'all' && !ids.includes(id)) return;
     event.preventDefault();
-    if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
+    const url = new URL(location.href); url.searchParams.set('menu', id); url.hash = ''; history.replaceState(null, '', url);
     activate(id);
   }));
   document.querySelectorAll('.daily-product-grid').forEach(grid => {
