@@ -66,3 +66,31 @@ document.addEventListener('DOMContentLoaded',()=>{
  if(typeof ResizeObserver!=='undefined')new ResizeObserver(sync).observe(trigger);
  window.addEventListener('resize',sync);
 });
+
+/* Shared header search history. Popular ranks are design sample data. */
+document.addEventListener("DOMContentLoaded",()=>{
+ const form=document.querySelector(".header-search"), input=form?.querySelector('input[type="search"]'), mobile=document.querySelector(".mobile-search");
+ if(!form||!input)return;
+ const key="pulmuone-recent-searches", popular=[["피자",20],["떡볶이",15],["만두",13],["과자",10],["김치",7]];
+ let history=[];try{const saved=JSON.parse(localStorage.getItem(key)||"[]");if(Array.isArray(saved))history=saved.filter(x=>typeof x==="string").slice(0,10);}catch{}
+ const panel=document.createElement("section");panel.className="header-search-panel";panel.id="header-search-panel";panel.hidden=true;panel.setAttribute("aria-label","최근 검색어 및 인기 검색어");
+ panel.innerHTML='<div class="search-history-column"><div class="search-panel-heading"><h2>최근 검색어</h2><button type="button" class="search-clear">모두삭제</button></div><ul class="search-history-list"></ul><p class="search-history-empty">최근 검색어가 없습니다.</p></div><div class="search-popular-column"><div class="search-panel-heading"><h2>인기 검색어</h2></div><ol class="search-popular-list"></ol></div>';
+ document.body.append(panel);
+ input.setAttribute("aria-controls",panel.id);input.setAttribute("aria-expanded","false");input.autocomplete="off";
+ function persist(){try{localStorage.setItem(key,JSON.stringify(history));}catch{}}
+ function choose(word){input.value=word;remember(word);open();}
+ function remember(word){history=[word,...history.filter(x=>x!==word)].slice(0,10);persist();render();}
+ function render(){const list=panel.querySelector(".search-history-list");list.replaceChildren();history.forEach(word=>{const li=document.createElement("li"), pick=document.createElement("button"), del=document.createElement("button");pick.type=del.type="button";pick.className="search-word";pick.textContent=word;pick.addEventListener("click",()=>choose(word));del.className="search-delete";del.textContent="×";del.setAttribute("aria-label",word+" 삭제");del.addEventListener("click",()=>{history=history.filter(x=>x!==word);persist();render();});li.append(pick,del);list.append(li);});panel.querySelector(".search-history-empty").hidden=history.length>0;panel.querySelector(".search-clear").disabled=!history.length;}
+ popular.forEach(([word,count],i)=>{const li=document.createElement("li"),btn=document.createElement("button");btn.type="button";btn.innerHTML='<span class="search-rank"></span><span class="search-word"></span><span class="search-count"></span>';btn.children[0].textContent=(i+1)+".";btn.children[1].textContent=word;btn.children[2].textContent=count;btn.addEventListener("click",()=>choose(word));li.append(btn);panel.querySelector(".search-popular-list").append(li);});
+ function position(){if(panel.hidden)return;const r=form.getBoundingClientRect();if(!r.width||!r.height){close();return;}const w=Math.min(730,window.innerWidth-32);panel.style.width=w+"px";panel.style.left=Math.max(16,Math.min(window.innerWidth-w-16,r.left+r.width/2-w/2))+"px";panel.style.top=(r.bottom+12)+"px";}
+ function open(){panel.hidden=false;input.setAttribute("aria-expanded","true");position();}
+ function close(){panel.hidden=true;input.setAttribute("aria-expanded","false");}
+ panel.querySelector(".search-clear").addEventListener("click",()=>{history=[];persist();render();});
+ input.addEventListener("focus",open);input.addEventListener("click",open);
+ form.addEventListener("submit",e=>{e.preventDefault();const word=input.value.trim();if(word)remember(word);open();});
+ document.addEventListener("pointerdown",e=>{if(!panel.contains(e.target)&&!form.contains(e.target)&&!mobile?.contains(e.target))close();});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!panel.hidden)close();});
+ if(mobile)mobile.addEventListener("click",()=>{requestAnimationFrame(()=>{if(!form.classList.contains("mobile-search-open")&&mobile.getAttribute("aria-expanded")!=="true"){if(!panel.hidden){close();return;}form.classList.add("mobile-search-open");mobile.setAttribute("aria-expanded","true");input.focus();}else if(form.classList.contains("mobile-search-open"))open();else close();});});
+ window.addEventListener("resize",position);window.addEventListener("scroll",position,{passive:true});
+ render();
+});
