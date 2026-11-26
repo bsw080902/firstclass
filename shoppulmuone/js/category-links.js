@@ -93,3 +93,19 @@ document.addEventListener("DOMContentLoaded",()=>{
  window.addEventListener("resize",position);window.addEventListener("scroll",position,{passive:true});
  render();
 });
+
+/* Shared mobile category sheet and navigation states. */
+document.addEventListener('DOMContentLoaded',()=>{
+ const panel=document.querySelector('#category-panel'),trigger=document.querySelector('.category-link'),bar=document.querySelector('.mobile-tabbar');if(!panel||!trigger||!bar)return;
+ const parent=trigger.parentElement,media=matchMedia('(max-width:767px)'),cat=bar.querySelector('.mobile-category'),search=bar.querySelector('.mobile-search'),input=document.querySelector('.header-search input');
+ const backdrop=document.createElement('div');backdrop.className='mobile-category-backdrop';backdrop.setAttribute('aria-hidden','true');document.body.append(backdrop);
+ const head=document.createElement('div');head.className='mobile-category-sheet-head';head.innerHTML='<button type="button" class="mobile-category-sheet-close" aria-label="카테고리 닫기">×</button>';panel.prepend(head);
+ const close=()=>{panel.classList.remove('is-open');trigger.classList.remove('is-active');trigger.setAttribute('aria-expanded','false');document.body.classList.remove('mobile-category-open');cat?.setAttribute('aria-expanded','false');};
+ backdrop.addEventListener('click',close);head.querySelector('button').addEventListener('click',close);
+ const place=()=>{if(media.matches){if(panel.parentElement!==document.body)document.body.append(panel);panel.classList.add('mobile-category-sheet');}else{close();panel.classList.remove('mobile-category-sheet');if(panel.parentElement!==parent)parent.insertBefore(panel,parent.querySelector('.best-link'));}};
+ place();media.addEventListener('change',place);
+ const page=location.pathname.split('/').pop()||'index.html';
+ const cart=bar.querySelector('[aria-label="장바구니"]');if(cart)cart.href='cart.html';
+ function sync(){const opened=media.matches&&panel.classList.contains('is-open'),searchOpen=input?.getAttribute('aria-expanded')==='true';if(media.matches)document.body.classList.toggle('mobile-category-open',opened);cat?.setAttribute('aria-expanded',String(opened));search?.setAttribute('aria-expanded',String(Boolean(searchOpen)));bar.querySelectorAll('.mobile-tab').forEach(tab=>{const active=tab===cat?(opened||page==='category.html'):tab===search?searchOpen:tab.getAttribute('href')===page;tab.classList.toggle('is-current',Boolean(active));if(tab.tagName==='A'){if(active)tab.setAttribute('aria-current','page');else tab.removeAttribute('aria-current');}});}
+ new MutationObserver(sync).observe(panel,{attributes:true,attributeFilter:['class']});if(input)new MutationObserver(sync).observe(input,{attributes:true,attributeFilter:['aria-expanded']});sync();
+});
