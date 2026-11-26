@@ -2661,3 +2661,7 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
 /* Match the existing "다른 상품 더 보기" CTA hover motion. */
 @media(hover:hover) and (pointer:fine){.site-scroll-top.is-visible:hover{transform:translate(-50%,-3px);transition:transform .25s ease,filter .25s ease,opacity .3s ease,visibility .4s}}
 @media(prefers-reduced-motion:reduce){.site-scroll-top.is-visible:hover{transform:translate(-50%,0);transition:none}}
+
+/* Current account page: keep the My Page icon green independently of hover. */
+.header-actions .header-action-menu > a[href="my.html"][aria-current="page"] img,.mobile-tabbar a[href="my.html"][aria-current="page"] img{filter:brightness(0) saturate(100%) invert(36%) sepia(95%) saturate(1605%) hue-rotate(105deg) brightness(90%) contrast(103%)}
+.header-actions .header-action-menu > a[href="my.html"][aria-current="page"],.mobile-tabbar a[href="my.html"][aria-current="page"]{color:#009333}
