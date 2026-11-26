@@ -2641,3 +2641,21 @@ html,body{
  .home-page .new-product-info{flex-basis:100%}
  .home-page .new-card .new-product-image{width:42%;flex-basis:42%}
 }
+
+
+/* 축소 헤더 호버: JS 이벤트가 누락되어도 CSS가 직접 펼침 상태를 보장 */
+@media (min-width:1025px) and (hover:hover) and (pointer:fine) {
+ .site-header.is-compact:hover {height:120px}
+ .site-header.is-compact:hover .header-actions {transform:translate3d(0,0,0)}
+ .site-header.is-compact:hover .header-search {transform:translateY(0)}
+ .site-header.is-compact:hover .header-nav {
+   visibility:visible;
+   opacity:1;
+   pointer-events:auto;
+   transform:translate3d(-50%,0,0);
+   transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s;
+ }
+}
+@media (min-width:1025px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:reduce){
+ .site-header.is-compact:hover .header-nav{transition:none}
+}
