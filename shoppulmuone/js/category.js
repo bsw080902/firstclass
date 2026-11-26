@@ -51,6 +51,8 @@ const catalogProducts=[
 {name:"[산지직송]햇 초사리 곱창돌김 150g(50매)",brand:"올가",image:"new_item4.jpg",price:"31,900원",discount:"8%"},
 {name:"[산지직송]11Brix 당도선별 GAP 제주 유라감귤 (2.5kg)",brand:"올가",image:"new_item5.jpg",price:"24,900원",discount:"9%"}
 ];
+const freshProducts=[{"brand":"풀무원식품","name":"특등급 국산콩 단단한 부침용 두부 (340gx2개)","price":"4,990원","discount":"45%","minor":"두부","image":"fresh1.jpg","imageRoot":true},{"brand":"풀무원식품","name":"특등급 국산콩 무농약 콩나물 (250g)","price":"2,280원","discount":"12%","minor":"콩나물","image":"fresh2.jpg","imageRoot":true},{"brand":"풀무원식품","name":"목초달걀 무항생제 1+등급 XL(특란) (15구) (900g)","price":"9,980원","discount":"","minor":"달걀","image":"fresh3.jpg","imageRoot":true},{"brand":"올가","name":"동물복지인증 유정란으로 만든 구운계란 (10입)","price":"11,900원","discount":"","minor":"달걀","image":"fresh4.jpg","imageRoot":true},{"brand":"풀무원식품","name":"고농도 진한 다용도 두부 (300g)","price":"1,780원","discount":"18%","minor":"두부","originalPrice":"2,180원","image":"fresh5.jpg","imageRoot":true},{"brand":"올가","name":"Cage Free 동물복지 유정란 20입 (1040g)","price":"18,900원","discount":"","minor":"달걀","image":"fresh6.jpg","imageRoot":true},{"brand":"올가","name":"순두부찌개 (순두부&찌개양념)","price":"4,760원","discount":"30%","minor":"두부","image":"fresh7.jpg","imageRoot":true},{"brand":"풀무원식품","name":"동물복지 목초란 (15구) (780g)","price":"10,980원","discount":"","minor":"달걀","image":"fresh8.jpg","imageRoot":true}];
+function freshSelection(minor){return minor==="전체"?freshProducts:freshProducts.filter(p=>p.minor===minor);}
 const tabs=document.querySelectorAll(".category-main-tabs button");
 const subtabs=document.querySelector("#category-subtabs");
 const minorTabs=document.querySelector("#category-minor-tabs");
@@ -275,7 +277,7 @@ function renderCatalogProducts(productsSource=catalogProducts){
  products.forEach((p,i)=>{
   const article=document.createElement("article");article.className="best-product";article.style.setProperty("--best-card-index",i);
   const media=document.createElement("div");media.className="best-product-media";
-  const img=document.createElement("img");img.src="img/"+p.image;img.alt=p.name;img.loading="lazy";media.append(img);
+  const img=document.createElement("img");img.src=(p.imageRoot?"":"img/")+p.image;img.alt=p.name;img.loading="lazy";media.append(img);
   const actions=document.createElement("div");actions.className="best-product-actions";
   actions.innerHTML='<button type="button" class="best-wish" aria-pressed="false"><img class="best-wish-default" src="img/Heart_button.svg" alt=""><img class="best-wish-selected" src="img/Heart_button_active.svg" alt=""></button><button type="button" class="best-cart"><img src="img/Cart_button.svg" alt=""></button>';
   actions.querySelector(".best-wish").setAttribute("aria-label",p.name+" 찜하기");actions.querySelector(".best-cart").setAttribute("aria-label",p.name+" 장바구니 담기");media.append(actions);
@@ -285,6 +287,7 @@ function renderCatalogProducts(productsSource=catalogProducts){
   const delivery=document.createElement("p");delivery.className="best-product-delivery";const deliveryText=p.delivery||"배송 예정일은 결제 시 확인";const dateMatch=deliveryText.match(/^(지금 결제 시\s*)(\d{1,2}-\d{1,2}\s*\([^)]+\))(.*)$/);if(dateMatch){delivery.append(document.createTextNode(dateMatch[1]));const date=document.createElement("strong");date.textContent=dateMatch[2];delivery.append(date,document.createTextNode(dateMatch[3]));}else{delivery.textContent=deliveryText;}
   const price=document.createElement("p");price.className="best-product-price";
   if(p.discount){const discount=document.createElement("span");discount.className="best-product-discount";discount.textContent=p.discount;price.append(discount)}
+  if(p.originalPrice){const original=document.createElement("del");original.textContent=p.originalPrice;original.style.cssText="color:#858585;font-size:12px;font-weight:400";price.prepend(original);}
   const amount=document.createElement("strong");amount.textContent=p.price;price.append(amount);
   info.append(brand,name,delivery,price);article.append(media,info);grid.append(article);
  });
@@ -394,7 +397,9 @@ function showCategory(key,selected=0,minor="전체"){
  if(hasDetails)requestAnimationFrame(()=>requestAnimationFrame(()=>minorTabs.classList.add("is-revealed")));
  heading.textContent=current==="전체"?middle:current;
  const products=!hasDetails?(examples[middle]||[middle+" 상품"]):current==="전체"?details.flatMap(label=>examples[label]||[label+" 상품"]):examples[current]||[current+" 상품"];
- if(key==="living" && middle==="반려동물"){
+ if(key==="fresh" && middle==="두부 · 콩나물 · 달걀"){
+  renderCatalogProducts(freshSelection(current));
+ }else if(key==="living" && middle==="반려동물"){
   renderCatalogProducts(petProducts);
  }else if(key==="fresh" && middle==="과일 · 채소 · 쌀" && (current==="전체" || current==="과일")){
   renderCatalogProducts(fruitProducts);
@@ -415,6 +420,7 @@ sortButtons.forEach(btn=>btn.addEventListener("click",()=>{
  sortLabel.textContent=btn.textContent.trim();closeCategoryMenus();
  sortButtons.forEach(item=>{const selected=item===btn;item.classList.toggle("is-active",selected);item.setAttribute("aria-pressed",String(selected));});
  if(document.querySelector(".category-main-tabs button[data-category=all]")?.classList.contains("is-active"))renderCatalogProducts();
+ else if(document.querySelector(".category-main-tabs button[data-category=fresh]")?.classList.contains("is-active") && renderedMiddle==="두부 · 콩나물 · 달걀")renderCatalogProducts(freshSelection(document.querySelector("#category-minor-tabs .is-active")?.textContent||"전체"));
  else if(document.querySelector(".category-main-tabs button[data-category=living]")?.classList.contains("is-active") && renderedMiddle==="반려동물")renderCatalogProducts(petProducts);
  else if(document.querySelector(".category-main-tabs button[data-category=fresh]")?.classList.contains("is-active") && renderedMiddle==="과일 · 채소 · 쌀" && ["전체","과일"].includes(document.querySelector("#category-minor-tabs .is-active")?.textContent))renderCatalogProducts(fruitProducts);
  else if(document.querySelector(".category-main-tabs button[data-category=meal]")?.classList.contains("is-active") && renderedMiddle==="면요리")renderCatalogProducts(noodleProducts);
