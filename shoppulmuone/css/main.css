@@ -2684,3 +2684,7 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
 .header-search-panel .search-delete{font-size:20px}
 @media(max-width:767px){.header-search-panel .search-panel-heading h2{font-size:17px}.header-search-panel .search-word,.header-search-panel .search-rank,.header-search-panel .search-count{font-size:13px}}
 @media(prefers-reduced-motion:reduce){.site-header.is-compact:has(.header-search input[aria-expanded="true"]) .header-nav{transition:none}}
+
+/* Current header destination — same green filter as the hover state. */
+.site-header .header-actions > a.is-current > img,
+.site-header .header-actions > .header-action-menu > a.is-current > img{filter:brightness(0) saturate(100%) invert(36%) sepia(95%) saturate(1605%) hue-rotate(105deg) brightness(90%) contrast(103%)}
