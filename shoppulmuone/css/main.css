@@ -1814,7 +1814,7 @@ body {
     height: 42px;
     background: #fff;
   }
-  .hero-sec { margin-top: 40px; }
+  .hero-sec { margin-top: 40px; padding-top: 16px; }
   .hero-sec .swiper {
     width: calc(100% - 36px);
     height: auto;
@@ -2450,7 +2450,7 @@ html,body{
  .site-header .header-center{position:static;transform:none;order:0;width:100%;min-width:0;gap:12px}
  .site-header .header-search{width:min(100%,480px);box-sizing:border-box}
  .site-header .header-nav{width:auto;flex-wrap:nowrap;gap:clamp(8px,1.4vw,16px);padding:0}
- .site-header .header-nav .best-link{gap:8px}
+ .site-header .header-nav .best-link{gap:clamp(8px,1.4vw,16px)}
  .site-header .header-actions{gap:8px}
  .site-header .header-logo img{width:clamp(95px,12vw,120px)}
 }
