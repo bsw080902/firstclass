@@ -1,82 +1,58 @@
-/* 브랜드 전용 페이지: 메인 브랜드 상품 카드 디자인을 그리드로 확장 */
-.brand-page .brand-section{padding:34px 24px 100px;overflow:visible}
-.brand-page .brand-inner{max-width:1496px}
-.brand-page .brand-top{margin-bottom:32px}
-.brand-page .brand-heading h1{font-size:24px;line-height:1.35;margin:0}
-.brand-page .brand-catalog{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:28px 20px;align-items:start}
-.brand-page .brand-ad{grid-column:span 2;grid-row:span 1;width:100%;height:auto;aspect-ratio:1/1;min-width:0;flex:none}
-.brand-page .brand-product{min-width:0;width:100%;flex:none}
-.brand-page .brand-product-image{width:100%;height:auto;aspect-ratio:1/1}
-.brand-page .brand-product .recommend-price{margin-top:22px}
-.brand-page .brand-empty{padding:70px 20px;text-align:center;color:var(--text-secondary);background:var(--bg-surface);border-radius:20px}
-.brand-page .brand-empty[hidden],.brand-page .brand-catalog[hidden]{display:none}
-@media(max-width:1100px){.brand-page .brand-heading{flex-basis:260px}.brand-page .brand-catalog{grid-template-columns:repeat(3,minmax(0,1fr))}.brand-page .brand-ad{grid-column:span 2}}
-@media(max-width:767px){.brand-page .brand-section{padding:30px 16px 70px}.brand-page .brand-top{gap:18px}.brand-page .brand-catalog{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 14px}.brand-page .brand-ad{grid-column:span 2;max-width:100%;aspect-ratio:2/1}.brand-page .brand-product .recommend-name{font-size:13px}.brand-page .brand-product .recommend-price{margin-top:16px}}
-@media(prefers-reduced-motion:reduce){.brand-page .brand-tab{transition:none}}
-
-/* 베스트 페이지와 같은 상단 구조: 경로 / 소개 / 브랜드 탭 */
-.brand-page .brand-breadcrumb{background:#fff}
-.brand-page .brand-breadcrumb-inner{max-width:1496px;margin:auto;padding:26px 0;display:flex;gap:12px;align-items:center;color:var(--text-secondary);font-size:13px}
-.brand-page .brand-breadcrumb a{color:inherit;text-decoration:none}
-.brand-page .brand-section{padding:0 24px 100px}
-.brand-page .brand-top{display:block;position:relative;isolation:isolate;margin-bottom:40px;padding:34px 0 36px}
-.brand-page .brand-top::before{content:"";position:absolute;z-index:-1;inset:0 auto 0 50%;width:100vw;transform:translateX(-50%);background:var(--bg-surface)}
-.brand-page .brand-heading{margin-bottom:44px}
-.brand-page .brand-heading h1{font-size:36px}
-.brand-page .brand-heading .brand-description{margin:12px 0 0;color:var(--text-secondary);font-size:16px;font-weight:400}
-.brand-page .brand-tabs-shell{width:100%}
-.brand-page .brand-tabs{gap:12px}
-.brand-page .brand-tab{padding:16px 24px;min-height:54px}
-/* 첫 브랜드 이미지는 카드 1칸 크기로 축소 */
-.brand-page .brand-ad{grid-column:span 1;width:100%;aspect-ratio:1/1}
-@media(max-width:1100px){.brand-page .brand-ad{grid-column:span 1}.brand-page .brand-breadcrumb-inner{padding-left:16px;padding-right:16px}}
-@media(max-width:767px){.brand-page .brand-top{padding:28px 0}.brand-page .brand-heading{margin-bottom:28px}.brand-page .brand-heading h1{font-size:28px}.brand-page .brand-heading .brand-description{font-size:14px}.brand-page .brand-ad{grid-column:span 1;aspect-ratio:1/1}.brand-page .brand-tab{min-height:46px;padding:12px 18px}}
-
-/* 모든 브랜드 탭이 잘리지 않도록 줄바꿈 표시 */
-.brand-page .brand-tabs-shell{overflow:visible}
-.brand-page .brand-tabs{display:flex;flex-wrap:wrap;overflow:visible;width:100%;gap:12px;scroll-behavior:auto}
-.brand-page .brand-tab{flex:0 0 auto}
-
-/* 브랜드 대표 이미지 한 장만 PC에서 400 × 400px */
-@media(min-width:1200px){
- .brand-page .brand-catalog{grid-template-columns:400px repeat(4,minmax(0,1fr))}
- .brand-page .brand-ad{width:400px;height:400px;aspect-ratio:auto;grid-column:1}
- .brand-page .brand-ad img{display:block;width:100%;height:100%;object-fit:cover}
+/* 브랜드 전체보기: bg/Accent 배경과 16개 브랜드 이미지 */
+.brand-page {
+    background: var(--bg-accent);
 }
-
-/* PC: 첫 줄 대표 이미지 400x400, 나머지 상품 이미지는 모두 300x300 */
-@media(min-width:1200px){
- .brand-page .brand-catalog{display:flex;flex-wrap:wrap;align-items:flex-start;gap:28px 20px;grid-template-columns:none}
- .brand-page .brand-ad{flex:0 0 400px;width:400px;height:400px;grid-column:auto}
- .brand-page .brand-product{flex:0 0 300px;width:300px;max-width:300px}
- .brand-page .brand-product-image{width:300px;height:300px;aspect-ratio:1/1}
+.brand-page .brand-section {
+    padding: clamp(48px, 8.3vw, 160px) clamp(16px, 5.75vw, 112px);
+    background: var(--bg-accent);
 }
-
-/* 최종 크기 통일: PC 대표 이미지와 모든 상품 이미지 300×300 */
-@media(min-width:1200px){
- .brand-page .brand-ad,.brand-page .brand-product{flex:0 0 300px;width:300px;max-width:300px}
- .brand-page .brand-ad,.brand-page .brand-product-image{width:300px;height:300px;aspect-ratio:1/1}
- .brand-page .brand-ad img,.brand-page .brand-product-image>img{width:100%;height:100%;object-fit:cover}
+.brand-page .brand-inner {
+    width: 100%;
+    max-width: 1720px;
+    margin: 0 auto;
+    min-width: 0;
 }
-
-/* PC 브랜드 목록: 대표 이미지 포함 한 줄에 정확히 5개 */
-@media(min-width:1200px){
- .brand-page .brand-catalog{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));column-gap:20px;row-gap:28px;align-items:start}
- .brand-page .brand-ad,.brand-page .brand-product{grid-column:auto;grid-row:auto;flex:none;width:100%;max-width:none;min-width:0}
- .brand-page .brand-ad,.brand-page .brand-product-image{width:100%;height:auto;aspect-ratio:1/1}
- .brand-page .brand-ad img,.brand-page .brand-product-image>img{display:block;width:100%;height:100%;object-fit:cover}
+.brand-page #brand-title {
+    margin: 0 0 clamp(24px, 2.5vw, 48px);
+    color: var(--text-primary);
+    font-size: clamp(24px, 2vw, 36px);
+    line-height: 1.35;
+    font-weight: 700;
 }
-
-/* 브랜드 탭 선택 시 상품 카드가 순차적으로 부드럽게 등장 */
-.brand-page .brand-catalog.brand-enter>.brand-ad,
-.brand-page .brand-catalog.brand-enter>.brand-product{animation:brand-item-enter .42s ease-out both;animation-delay:calc(var(--brand-item-index,0) * 55ms)}
-.brand-page .brand-empty.brand-enter{animation:brand-item-enter .42s ease-out both}
-@keyframes brand-item-enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:reduce){.brand-page .brand-catalog.brand-enter>.brand-ad,.brand-page .brand-catalog.brand-enter>.brand-product,.brand-page .brand-empty.brand-enter{animation:none}}
-
-/* 풀무원샘물부터 브랜드 탭 두 번째 줄 시작 (PC) */
-@media(min-width:1200px){.brand-page .brand-tab-row-break{break-before:always}.brand-page .brand-tab-row-break::before{content:none}.brand-page .brand-tabs::before{content:"";flex-basis:100%;height:0;order:0}.brand-page .brand-tab-row-break{order:1}.brand-page .brand-tab-row-break~.brand-tab{order:1}}
-
-/* 명시적 줄바꿈 요소: 풀무원샘물 앞에서 새 줄 시작 */
-@media(min-width:1200px){.brand-page .brand-tabs::before{content:none}.brand-page .brand-tab,.brand-page .brand-tab~.brand-tab{order:0}.brand-page .brand-row-break{display:block;flex:0 0 100%;height:0}}
-@media(max-width:1199px){.brand-page .brand-row-break{display:none}}
+.brand-page .brand-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(20px, 2.4vw, 44px) clamp(14px, 1.6vw, 30px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.brand-page .brand-gallery-card {
+    min-width: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 468 / 400;
+}
+.brand-page .brand-gallery-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+@media (max-width: 1024px) {
+    .brand-page .brand-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+@media (max-width: 767px) {
+    .brand-page .brand-section {
+        padding: 48px 16px 64px;
+    }
+    .brand-page .brand-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px 12px;
+    }
+    .brand-page .brand-gallery-card {
+        border-radius: 8px;
+    }
+}
