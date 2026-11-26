@@ -1341,3 +1341,20 @@ body.category-filter-visible{overflow:hidden}
 .category-page .category-minor-tabs button.is-active,
 .category-page .category-minor-tabs button.is-active:hover,
 .category-page .category-minor-tabs button.is-active:active{transform:none;filter:none;transition:background-color .25s ease,border-color .25s ease,color .25s ease}
+
+/* 모바일 필터: 드래그 핸들 터치 영역을 확보하고 X 버튼은 숨김 */
+@media(max-width:767px){
+ #category-filter-panel.category-filter-drawer .category-filter-close{display:none}
+ #category-filter-panel.category-filter-drawer .category-filter-handle{
+  display:flex;align-items:flex-start;justify-content:center;
+  width:100%;height:25px;margin:0 auto 0;padding:0;
+  border:0;border-radius:0;background:transparent;
+  touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;
+ }
+ #category-filter-panel.category-filter-drawer .category-filter-handle::before{
+  content:"";display:block;width:42px;height:5px;border-radius:99px;background:#d9e1da;
+ }
+ #category-filter-panel.category-filter-drawer .category-filter-handle:focus-visible{outline:2px solid var(--brand-green,#009333);outline-offset:2px}
+ #category-filter-panel.category-filter-drawer.is-open{transform:translateY(var(--filter-drag-y,0px))}
+ #category-filter-panel.category-filter-drawer.is-open.is-dragging{transition:none;cursor:grabbing}
+}
