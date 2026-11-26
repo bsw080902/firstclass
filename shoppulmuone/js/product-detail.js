@@ -15,12 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
  };
  const requestedImage = (q.get('image') || '').split('/').pop();
  const imageName = newProductImages[requestedImage] || requestedImage;
- const image = /^[a-zA-Z0-9_.%()-]+\.(png|jpg|jpeg|webp)$/i.test(imageName || '') ? 'img/' + imageName : '';
+ const image = /^[a-zA-Z0-9_.%()-]+\.(png|jpg|jpeg|webp)$/i.test(imageName || '') ? (/^fresh[1-8]\.jpg$/i.test(imageName) ? '' : 'img/') + imageName : '';
  const set = (id, value) => { document.getElementById(id).textContent = value; };
  set('detail-name', name);
  set('detail-brand', brand);
  set('detail-info-name', name);
- set('crumb-product', name);
  document.title = name + ' | 샵풀무원';
  const imageEl = document.getElementById('detail-image');
  if (image) {
@@ -35,6 +34,18 @@ document.addEventListener('DOMContentLoaded', () => {
  const priceNumber = Number(price.replace(/[^0-9]/g, ''));
  const money = n => n.toLocaleString('ko-KR') + '원';
  set('detail-price', priceNumber ? money(priceNumber) : '가격 준비 중');
+ const originalEl = document.getElementById('detail-original-price');
+ const percent = /^\d{1,2}%$/.test(discount) ? parseInt(discount,10) : 0;
+ const suppliedOriginal = Number((q.get('original') || '').replace(/[^0-9]/g,''));
+ const knownOriginal = imageName === 'fresh1.jpg' && priceNumber === 4990 ? 9200 : imageName === 'fresh5.jpg' && priceNumber === 1780 ? 2180 : 0;
+ if(priceNumber > 0 && percent > 0 && percent < 100){
+  const original = suppliedOriginal > priceNumber ? suppliedOriginal : knownOriginal || Math.round(priceNumber / (1 - percent / 100));
+  if(original > priceNumber){
+   originalEl.textContent = money(original);
+   originalEl.hidden = false;
+   if(!knownOriginal && !(suppliedOriginal > priceNumber)) originalEl.title = '할인율을 기준으로 역산한 정상가입니다.';
+  }
+ }
  const deliveryEl = document.getElementById('detail-delivery');
  if (delivery) {
   deliveryEl.textContent = '';
