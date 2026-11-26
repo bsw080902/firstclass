@@ -99,9 +99,14 @@ document.addEventListener('DOMContentLoaded',()=>{
  const panel=document.querySelector('#category-panel'),trigger=document.querySelector('.category-link'),bar=document.querySelector('.mobile-tabbar');if(!panel||!trigger||!bar)return;
  const parent=trigger.parentElement,media=matchMedia('(max-width:767px)'),cat=bar.querySelector('.mobile-category'),search=bar.querySelector('.mobile-search'),input=document.querySelector('.header-search input');
  const backdrop=document.createElement('div');backdrop.className='mobile-category-backdrop';backdrop.setAttribute('aria-hidden','true');document.body.append(backdrop);
- const head=document.createElement('div');head.className='mobile-category-sheet-head';head.innerHTML='<button type="button" class="mobile-category-sheet-close" aria-label="카테고리 닫기">×</button>';panel.prepend(head);
+ const head=document.createElement('div');head.className='mobile-category-sheet-head';head.setAttribute('aria-hidden','true');panel.prepend(head);
  const close=()=>{panel.classList.remove('is-open');trigger.classList.remove('is-active');trigger.setAttribute('aria-expanded','false');document.body.classList.remove('mobile-category-open');cat?.setAttribute('aria-expanded','false');};
- backdrop.addEventListener('click',close);head.querySelector('button').addEventListener('click',close);
+ backdrop.addEventListener('click',close);
+ let drag=null;
+ head.addEventListener('pointerdown',e=>{if(!media.matches||!panel.classList.contains('is-open')||e.button!==0)return;drag={id:e.pointerId,y:e.clientY,time:performance.now()};head.setPointerCapture(e.pointerId);panel.classList.add('is-dragging-sheet');});
+ head.addEventListener('pointermove',e=>{if(!drag||drag.id!==e.pointerId)return;const dy=Math.max(0,e.clientY-drag.y);panel.style.setProperty('--sheet-drag-y',dy+'px');});
+ const finish=(e,cancel=false)=>{if(!drag||drag.id!==e.pointerId)return;const dy=Math.max(0,e.clientY-drag.y),speed=dy/Math.max(1,performance.now()-drag.time);drag=null;panel.classList.remove('is-dragging-sheet');if(!cancel&&(dy>=80||(dy>=30&&speed>.55)))close();panel.style.removeProperty('--sheet-drag-y');};
+ head.addEventListener('pointerup',e=>finish(e));head.addEventListener('pointercancel',e=>finish(e,true));head.addEventListener('lostpointercapture',e=>finish(e,true));
  const place=()=>{if(media.matches){if(panel.parentElement!==document.body)document.body.append(panel);panel.classList.add('mobile-category-sheet');}else{close();panel.classList.remove('mobile-category-sheet');if(panel.parentElement!==parent)parent.insertBefore(panel,parent.querySelector('.best-link'));}};
  place();media.addEventListener('change',place);
  const page=location.pathname.split('/').pop()||'index.html';
