@@ -47,7 +47,7 @@
 @media (max-width:767px) {
   body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) { container-type:inline-size; }
   body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) :is(.recommend-actions,.best-actions,.best-product-actions) {
-    --action-height:clamp(16px, 12cqi, 32px);
+    --action-height:clamp(18px, calc(12cqi + 2px), 34px);
     position:absolute;
     left:auto;
     right:clamp(4px, 4cqi, 12px);
@@ -67,7 +67,7 @@
     justify-content:center;
     flex:0 0 auto;
     width:auto;
-    height:var(--action-height, clamp(18px, 5.5vw, 32px));
+    height:var(--action-height, clamp(20px, calc(5.5vw + 2px), 34px));
     padding:0;
     border:0;
     background:transparent;
@@ -78,7 +78,7 @@
   body .new-page .new-product-actions button img {
     display:block;
     width:auto;
-    height:var(--action-height, clamp(18px, 5.5vw, 32px));
+    height:var(--action-height, clamp(20px, calc(5.5vw + 2px), 34px));
     max-width:none;
     object-fit:contain;
   }
