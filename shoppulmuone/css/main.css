@@ -2691,3 +2691,22 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
 
 /* Home daily service banner: more vertical breathing room on mobile only. */
 @media(max-width:767px){.home-page .daily-section .daily-banner{padding-block:44px}}
+
+/* Keep the navigation centered at every desktop/tablet viewport width.
+   Horizontal centering is layout-based; only vertical movement is animated. */
+@media(min-width:1025px){
+ .site-header .header-nav,.site-header.is-compact .header-nav{
+  left:0;right:0;width:max-content;margin-inline:auto;
+  transform:translateY(0);
+ }
+ .site-header.is-compact .header-nav{transform:translateY(-48px)}
+ .site-header.is-compact:hover .header-nav,
+ .site-header.is-compact:has(.header-search input[aria-expanded="true"]) .header-nav{transform:translateY(0)}
+}
+@media(min-width:768px) and (max-width:1024px){
+ .site-header .header-inner{grid-template-columns:minmax(0,1fr) minmax(0,480px) minmax(0,1fr)}
+ .site-header .header-center{justify-self:center;grid-column:2}
+ .site-header .header-logo{justify-self:start;grid-column:1;grid-row:1}
+ .site-header .header-actions{justify-self:end;grid-column:3;grid-row:1}
+ .site-header .header-nav{justify-content:center;transform:none}
+}
