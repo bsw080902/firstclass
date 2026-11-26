@@ -2669,3 +2669,18 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
 /* Popular search rows: tighter spacing and regular-weight text. */
 .header-search-panel .search-popular-list button{gap:8px;box-sizing:border-box;padding-right:8px}
 .header-search-panel .search-popular-list .search-rank,.header-search-panel .search-popular-list .search-word,.header-search-panel .search-popular-list .search-count{font-weight:400}
+
+/* Keep the desktop header expanded for the entire search panel session. */
+@media(min-width:1025px){
+ .site-header.is-compact:has(.header-search input[aria-expanded="true"]){height:120px}
+ .site-header.is-compact:has(.header-search input[aria-expanded="true"]) .header-actions{transform:translate3d(0,0,0)}
+ .site-header.is-compact:has(.header-search input[aria-expanded="true"]) .header-search{transform:translateY(0)}
+ .site-header.is-compact:has(.header-search input[aria-expanded="true"]) .header-nav{visibility:visible;opacity:1;pointer-events:auto;transform:translate3d(-50%,0,0);transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s}
+}
+/* Smaller search suggestion typography. */
+.header-search-panel .search-panel-heading h2{font-size:18px}
+.header-search-panel .search-word,.header-search-panel .search-rank,.header-search-panel .search-count{font-size:14px}
+.header-search-panel .search-history-empty{font-size:12px}
+.header-search-panel .search-delete{font-size:20px}
+@media(max-width:767px){.header-search-panel .search-panel-heading h2{font-size:17px}.header-search-panel .search-word,.header-search-panel .search-rank,.header-search-panel .search-count{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.site-header.is-compact:has(.header-search input[aria-expanded="true"]) .header-nav{transition:none}}
