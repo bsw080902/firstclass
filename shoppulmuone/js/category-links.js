@@ -84,7 +84,14 @@ document.addEventListener("DOMContentLoaded",()=>{
  popular.forEach(([word,count],i)=>{const li=document.createElement("li"),btn=document.createElement("button");btn.type="button";btn.innerHTML='<span class="search-rank"></span><span class="search-word"></span><span class="search-count"></span>';btn.children[0].textContent=(i+1)+".";btn.children[1].textContent=word;btn.children[2].textContent=count;btn.addEventListener("click",()=>choose(word));li.append(btn);panel.querySelector(".search-popular-list").append(li);});
  function position(){if(panel.hidden)return;const r=form.getBoundingClientRect();if(!r.width||!r.height){close();return;}const w=Math.min(560,window.innerWidth-32);panel.style.width=w+"px";panel.style.left=Math.max(16,Math.min(window.innerWidth-w-16,r.left+r.width/2-w/2))+"px";panel.style.top=(r.bottom+12)+"px";}
  function open(){panel.hidden=false;input.setAttribute("aria-expanded","true");position();}
- function close(){panel.hidden=true;input.setAttribute("aria-expanded","false");}
+ function close(){
+ panel.hidden=true;input.setAttribute("aria-expanded","false");
+ if(window.matchMedia("(max-width:767px)").matches){
+  form.classList.remove("mobile-search-open");
+  if(document.activeElement===input)input.blur();
+  if(mobile){mobile.setAttribute("aria-expanded","false");mobile.classList.remove("is-current");const icon=mobile.querySelector("img");if(icon)icon.src="img/Search_icon_mobile.svg";}
+ }
+}
  input.addEventListener("focus",open);input.addEventListener("click",open);
  form.addEventListener("submit",e=>{e.preventDefault();const word=input.value.trim();if(word)remember(word);open();});
  document.addEventListener("pointerdown",e=>{if(!panel.contains(e.target)&&!form.contains(e.target)&&!mobile?.contains(e.target))close();});
