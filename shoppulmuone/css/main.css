@@ -2561,3 +2561,61 @@ html,body{
 @media (min-width:1025px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:reduce){
  .site-header.is-compact:hover .header-nav{transition:none}
 }
+
+
+/* 텍스트 CTA: SVG 대신 HTML 링크와 공통 CSS 프레임 사용 */
+a.text-cta,
+a.best-more.recommend-more.text-cta,
+.benefit-card-footer a.text-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: max-content;
+    max-width: 100%;
+    min-height: 48px;
+    height: auto;
+    padding: 12px 24px;
+    border: 1px solid var(--border-default, #dde5dc);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--text-secondary, #68756a);
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform .25s ease, filter .25s ease;
+}
+a.text-cta.recommend-more { min-width: 161px; }
+a.text-cta.new-more { min-width: 161px; }
+a.text-cta.benefits-more { min-width: 157px; }
+a.text-cta.brand-more { min-width: 175px; }
+.benefit-card-footer a.text-cta {
+    display: inline-flex;
+    min-width: 125px;
+}
+a.text-cta:hover, a.text-cta:focus-visible,
+.benefit-card-footer a.text-cta:hover,
+.benefit-card-footer a.text-cta:focus-visible {
+    border: 1px solid var(--border-default, #dde5dc);
+    color: var(--text-secondary, #68756a);
+    opacity: 1;
+}
+@media (max-width: 767px) {
+    .benefit-card-footer a.text-cta {
+        min-width: 110px;
+        min-height: 42px;
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    a.text-cta, a.text-cta:hover,
+    .benefit-card-footer a.text-cta, .benefit-card-footer a.text-cta:hover {
+        transition: none;
+        transform: none;
+    }
+}
