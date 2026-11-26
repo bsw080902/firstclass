@@ -2737,7 +2737,7 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
  .mobile-category-backdrop{position:fixed;inset:0;z-index:108;background:#0005;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s,visibility .3s}
  body.mobile-category-open .mobile-category-backdrop{opacity:1;visibility:visible;pointer-events:auto}
  .mobile-tabbar .mobile-tab.is-current,.mobile-tabbar .mobile-tab[aria-expanded="true"]{color:#009333;font-weight:700}
- .mobile-tabbar .mobile-tab.is-current img,.mobile-tabbar .mobile-tab[aria-expanded="true"] img{filter:brightness(0) saturate(100%) invert(36%) sepia(95%) saturate(1605%) hue-rotate(105deg) brightness(90%) contrast(103%)}
+
  body.mobile-category-open .site-scroll-top{visibility:hidden;opacity:0;pointer-events:none}
 }
 @media(min-width:768px){.mobile-category-sheet-head,.mobile-category-backdrop{display:none}}
@@ -2794,3 +2794,24 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
 
 /* 인기 검색어 상위 3개 순위 숫자만 볼드 처리 */
 .header-search-panel .search-popular-list li:nth-child(-n+3) .search-rank{font-weight:700}
+
+/* 모바일 하단바: SVG 모양은 유지하고 아이콘과 글자의 색을 currentColor로 통일 */
+@media(max-width:767px){
+ .mobile-tabbar .mobile-tab{color:var(--text-secondary,#68756a)}
+ .mobile-tabbar .mobile-tab.is-current,.mobile-tabbar .mobile-tab[aria-expanded="true"]{color:var(--brand-green,#009333)}
+ .mobile-tabbar .mobile-category{--tab-icon:url("../img/Menu_icon.svg")}
+ .mobile-tabbar .mobile-tab[aria-label="장바구니"]{--tab-icon:url("../img/BigCart_icon.svg")}
+ .mobile-tabbar .mobile-tab[href="index.html"]{--tab-icon:url("../img/Home_icon_outline.svg")}
+ .mobile-tabbar .mobile-tab[href="index.html"].is-current{--tab-icon:url("../img/Home_icon.svg")}
+ .mobile-tabbar .mobile-search{--tab-icon:url("../img/Search_icon_mobile.svg")}
+ .mobile-tabbar .mobile-tab[href="my.html"]{--tab-icon:url("../img/Mypage_icon.svg")}
+ .mobile-tabbar .mobile-tab{position:relative}
+ .mobile-tabbar .mobile-tab img{display:none}
+ .mobile-tabbar .mobile-tab::before{
+  content:"";display:block;width:28px;height:28px;flex:0 0 28px;
+  background-color:currentColor;
+  -webkit-mask:var(--tab-icon) center / contain no-repeat;
+  mask:var(--tab-icon) center / contain no-repeat;
+ }
+ .mobile-tabbar .mobile-search::before{transform:scale(1.18);transform-origin:center}
+}
