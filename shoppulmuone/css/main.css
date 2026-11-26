@@ -2731,3 +2731,14 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
 }
 @media(min-width:768px){.mobile-category-sheet-head,.mobile-category-backdrop{display:none}}
 @media(prefers-reduced-motion:reduce){body > #category-panel.mobile-category-sheet,.mobile-category-backdrop{transition:none}}
+
+/* Mobile sheet: lower actual menu content, independent of desktop absolute positioning. */
+@media(max-width:767px){
+ body > #category-panel.mobile-category-sheet .category-panel-left,
+ body > #category-panel.mobile-category-sheet .category-panel-right{position:relative;inset:auto;width:auto;min-width:0;margin:0;align-self:start;justify-content:flex-start;padding-top:0}
+ body > #category-panel.mobile-category-sheet .category-panel-divider{position:relative;inset:auto;transform:none;height:100%;min-height:0;align-self:stretch;margin:0}
+ body > #category-panel.mobile-category-sheet .category-panel-left{grid-column:1;grid-row:1}
+ body > #category-panel.mobile-category-sheet .category-panel-divider{grid-column:2;grid-row:1}
+ body > #category-panel.mobile-category-sheet .category-panel-right{grid-column:3;grid-row:1}
+ body > #category-panel.mobile-category-sheet .category-panel-left .category-item{width:100%}
+}
