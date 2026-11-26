@@ -122,3 +122,5 @@
 .detail-original-price{display:block;margin:0 0 5px;color:#a4a4a4;font-size:18px;font-weight:600;line-height:1.4;text-decoration:line-through}
 .detail-original-price[hidden]{display:none!important}
 @media(max-width:767px){.detail-main{padding-top:24px}.detail-original-price{font-size:16px}}
+
+.detail-product-summary{font-size:18px;color:var(--text-primary,#17251d);line-height:1.5;margin:0 0 16px}.detail-product-summary[hidden]{display:none!important}@media(max-width:767px){.detail-product-summary{font-size:16px}}
