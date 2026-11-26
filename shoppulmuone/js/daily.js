@@ -95,7 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   function updateFromHash() {
-    const id = new URLSearchParams(location.search).get('menu') || decodeURIComponent(location.hash.slice(1));
+    const url = new URL(location.href);
+    const id = url.searchParams.get('menu') || url.hash.slice(1);
+    if(ids.includes(id) || id === 'all'){
+      url.searchParams.set('menu',id);url.hash='';history.replaceState(null,'',url);
+    }
     activate(id);
   }
   links.forEach(link => link.addEventListener('click', event => {
@@ -103,7 +107,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (id !== 'all' && !ids.includes(id)) return;
     event.preventDefault();
     const url = new URL(location.href); url.searchParams.set('menu', id); url.hash = ''; history.replaceState(null, '', url);
+    const previousY = window.scrollY;
     activate(id);
+    if(link.closest('.daily-panel')){
+      link.blur();
+      window.scrollTo({top:0,behavior:'instant'});
+      requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'instant'}));
+    }else{
+      window.scrollTo({top:previousY,behavior:'instant'});
+    }
   }));
   document.querySelectorAll('.daily-product-grid').forEach(grid => {
     grid.addEventListener('click', event => {
@@ -118,4 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   window.addEventListener('hashchange', updateFromHash);
   updateFromHash();
+  if(new URLSearchParams(location.search).has('menu')){
+    const reset=()=>window.scrollTo({top:0,behavior:'instant'});
+    reset();requestAnimationFrame(reset);
+    if(document.readyState!=='complete')window.addEventListener('load',reset,{once:true});
+  }
 });
