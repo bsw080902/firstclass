@@ -2644,3 +2644,11 @@ a.text-cta:hover, a.text-cta:focus-visible,
 .recommend-section .recommend-image{position:relative}
 .recommend-section .recommend-status{position:absolute;z-index:2;top:12px;left:16px;pointer-events:none;white-space:nowrap}
 @media(max-width:767px){.recommend-section .recommend-status{top:8px;left:10px}}
+
+/* Floating back-to-top: bottom center, above mobile navigation. */
+.site-scroll-top{position:fixed;z-index:95;left:50%;bottom:calc(24px + var(--scroll-top-offset,0px));display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:11px 19px;border:1px solid #dce5da;border-radius:999px;background:#fff;color:#68756a;font:inherit;font-size:14px;font-weight:600;line-height:20px;box-shadow:0 4px 16px rgba(25,50,30,.12);cursor:pointer;opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,24px);transition:opacity .3s ease,transform .4s cubic-bezier(.22,1,.36,1),visibility .4s,border-color .2s,color .2s;white-space:nowrap}
+.site-scroll-top.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}
+.site-scroll-top:hover,.site-scroll-top:focus-visible{color:#009333;border-color:#80c441}.site-scroll-top:focus-visible{outline:2px solid #009333;outline-offset:3px}
+body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointer-events:none}
+@media(max-width:767px){.site-scroll-top{bottom:calc(16px + var(--scroll-top-offset,0px));font-size:13px;padding:9px 15px}}
+@media(prefers-reduced-motion:reduce){.site-scroll-top{transition:none}}
