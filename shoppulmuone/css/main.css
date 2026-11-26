@@ -67,7 +67,8 @@
 .header-nav a:focus-visible img:not(.nav-divider):not(.icon-hover),
 .header-actions a:hover img, .header-actions a:focus-visible img,
 .header-actions .header-action-menu:hover > a > img,
-.header-actions .header-action-menu:focus-within > a > img { filter: brightness(0) saturate(100%) invert(36%) sepia(95%) saturate(1605%) hue-rotate(105deg) brightness(90%) contrast(103%); }
+.header-actions .header-action-menu:focus-within > a > img,
+.header-actions a[aria-current="page"] > img { filter: brightness(0) saturate(100%) invert(36%) sepia(95%) saturate(1605%) hue-rotate(105deg) brightness(90%) contrast(103%); }
 .header-actions a:hover, .header-actions a:focus-visible { color: #009333; }
 
 .header-actions { display: flex; align-items: center; gap: 16px; }
