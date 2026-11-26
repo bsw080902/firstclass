@@ -86,9 +86,10 @@ filterPopover.setAttribute("aria-modal","true");
 filterPopover.setAttribute("aria-label","상품 필터");
 filterPopover.setAttribute("aria-hidden","true");
 filterPopover.inert=true;
-const filterHandle=document.createElement("div");
+const filterHandle=document.createElement("button");
+filterHandle.type="button";
 filterHandle.className="category-filter-handle";
-filterHandle.setAttribute("aria-hidden","true");
+filterHandle.setAttribute("aria-label","필터 닫기");
 filterPopover.prepend(filterHandle);
 const filterHeader=filterPopover.querySelector(".category-filter-top");
 const filterClose=document.createElement("button");
@@ -115,7 +116,7 @@ function setFilterOpen(open){
  filterPopover.inert=!open;
  filterPopover.setAttribute("aria-hidden",String(!open));
  // 포커스 때문에 화면이 상단 필터 버튼으로 이동하지 않도록 함
- if(open) filterClose.focus({preventScroll:true});
+ if(open) (matchMedia("(max-width:767px)").matches?filterHandle:filterClose).focus({preventScroll:true});
  else (filterPreviousFocus?.isConnected?filterPreviousFocus:filterTrigger).focus({preventScroll:true});
 }
 function closeCategoryMenus(){
@@ -145,6 +146,43 @@ filterTrigger.addEventListener("click",()=>{
  setFilterOpen(!filterControl.classList.contains("is-open"));
 });
 filterClose.addEventListener("click",()=>setFilterOpen(false));
+// 모바일 핸들을 아래로 드래그하면 시트가 손가락을 따라 움직입니다.
+const filterMobile=matchMedia("(max-width:767px)");
+let filterDrag=null, suppressHandleClick=false;
+filterHandle.addEventListener("pointerdown",event=>{
+ if(!filterMobile.matches||!filterPopover.classList.contains("is-open")||event.button!==0||!event.isPrimary)return;
+ suppressHandleClick=false;
+ filterDrag={id:event.pointerId,y:event.clientY,time:performance.now(),dy:0};
+ filterHandle.setPointerCapture(event.pointerId);
+ filterPopover.classList.add("is-dragging");
+});
+filterHandle.addEventListener("pointermove",event=>{
+ if(!filterDrag||event.pointerId!==filterDrag.id)return;
+ filterDrag.dy=Math.max(0,event.clientY-filterDrag.y);
+ filterPopover.style.setProperty("--filter-drag-y",filterDrag.dy+"px");
+});
+function finishFilterDrag(event,cancel=false){
+ if(!filterDrag||event.pointerId!==filterDrag.id)return;
+ const dy=filterDrag.dy, speed=dy/Math.max(1,performance.now()-filterDrag.time);
+ filterDrag=null;
+ suppressHandleClick=cancel||dy>8;
+ filterPopover.classList.remove("is-dragging");
+ if(!cancel&&(dy>=90||(dy>=32&&speed>.5)))setFilterOpen(false);
+ filterPopover.style.removeProperty("--filter-drag-y");
+}
+filterHandle.addEventListener("pointerup",event=>finishFilterDrag(event));
+filterHandle.addEventListener("pointercancel",event=>finishFilterDrag(event,true));
+filterHandle.addEventListener("lostpointercapture",event=>finishFilterDrag(event,true));
+filterHandle.addEventListener("click",event=>{
+ if(suppressHandleClick&&event.detail!==0){suppressHandleClick=false;return;}
+ setFilterOpen(false);
+});
+filterMobile.addEventListener("change",()=>{
+ filterDrag=null;filterPopover.classList.remove("is-dragging");
+ filterPopover.style.removeProperty("--filter-drag-y");
+ if(filterPopover.classList.contains("is-open"))(filterMobile.matches?filterHandle:filterClose).focus({preventScroll:true});
+});
+
 filterBackdrop.addEventListener("click",()=>setFilterOpen(false));
 document.addEventListener("pointerdown",event=>{
  if(filterControl.classList.contains("is-open"))return;
