@@ -442,10 +442,10 @@ body {
 .category-panel .category-item {
     width: 142px; height: 40px; border: 0; border-radius: 10px;
     background: transparent; color: #6b7b6f; font: inherit; font-size: 15px;
-    cursor: pointer; transition: background .2s ease, color .2s ease;
+    cursor: pointer; transition: background-color .2s ease, color .2s ease;
 }
-.category-panel .category-item:not(.is-selected):hover,
-.category-panel .category-item:not(.is-selected):focus-visible { color: #009333; }
+/* 마우스 진입은 JS에서 즉시 선택 상태로 전환하므로 별도 hover 색상을 적용하지 않음. */
+.category-panel .category-item:not(.is-selected):focus-visible { outline: 2px solid var(--brand-green); outline-offset: 2px; }
 .category-panel .category-item.is-selected { background: #80c441; color: white; font-weight: 600; }
 .category-panel-divider { width: 3px; height: 192px; background: #e1e9e2; border-radius: 3px; align-self: center; }
 .category-panel-right { display: flex; flex-direction: column; align-items: center; justify-content: space-around; }
