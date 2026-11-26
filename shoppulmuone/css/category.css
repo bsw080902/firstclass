@@ -1358,3 +1358,12 @@ body.category-filter-visible{overflow:hidden}
  #category-filter-panel.category-filter-drawer.is-open{transform:translateY(var(--filter-drag-y,0px))}
  #category-filter-panel.category-filter-drawer.is-open.is-dragging{transition:none;cursor:grabbing}
 }
+
+/* Mobile underline tabs: four stable cells, no horizontal scrolling or moving line. */
+@media(max-width:767px){
+ .category-page .category-main-tabs,.category-page:has(.category-main-tabs button[data-category="all"].is-active) .category-main-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%;box-sizing:border-box;gap:0;overflow:visible;align-items:stretch;justify-content:stretch}
+ .category-page .category-main-tabs button,.category-page .category-main-tabs button.is-active,.category-page .category-main-tabs button.is-active:hover,.category-page .category-main-tabs button.is-active:focus-visible{min-width:0;min-height:50px;box-sizing:border-box;padding:8px 3px 10px;font-size:clamp(10px,2.9vw,13px);font-weight:500;line-height:1.35;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
+ .category-page .category-main-tabs button::after{transform:none;opacity:0;transition:opacity .2s ease}
+ .category-page .category-main-tabs button.is-active::after{transform:none;opacity:1}
+}
+@media(max-width:767px) and (prefers-reduced-motion:reduce){.category-page .category-main-tabs button::after{transition:none}}
