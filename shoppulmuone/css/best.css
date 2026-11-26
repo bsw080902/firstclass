@@ -274,3 +274,7 @@
 @media (max-width:767px) {
  .best-page:not(.category-page) .best-product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px 12px; }
 }
+
+/* Match the unselected BEST tab hover text to its lime outline. */
+.best-page:not(.category-page) .best-category-tabs button:not(.is-active):hover,
+.best-page:not(.category-page) .best-category-tabs button:not(.is-active):focus-visible{border-color:var(--brand-lime,#80c441);color:var(--brand-lime,#80c441);transform:none;filter:none}
