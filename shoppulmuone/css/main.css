@@ -2758,3 +2758,6 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
  body > #category-panel.mobile-category-sheet .category-panel-right a{width:100%;max-width:160px;margin-inline:auto;justify-content:center;text-align:center}
  body > #category-panel.mobile-category-sheet .category-panel-divider{justify-self:center}
 }
+
+/* Equal-width recommendation cards, filling the desktop row without overflow. */
+@media(min-width:1025px){.home-page .recommend-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}.home-page .recommend-card{width:100%;min-width:0}}
