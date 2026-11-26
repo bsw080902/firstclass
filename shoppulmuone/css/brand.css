@@ -89,3 +89,10 @@
 .brand-detail-hero[data-brand="11"]{--brand-copy-center:83%}
 .brand-detail-hero[data-brand="13"]{--brand-copy-center:84%}
 }
+
+/* Keep product photography intact on the left and improve copy contrast on the right. */
+@media (min-width:768px){
+ .brand-detail-hero{position:relative;isolation:isolate}
+ .brand-detail-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,0) 32%,rgba(255,255,255,.12) 48%,rgba(255,255,255,.65) 65%,rgba(255,255,255,.88) 82%,rgba(255,255,255,.96) 100%)}
+ .brand-detail-copy{z-index:1}
+}
