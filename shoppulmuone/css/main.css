@@ -2748,3 +2748,13 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
  body > #category-panel.mobile-category-sheet.is-open{transform:translateY(var(--sheet-drag-y,0px))}
  body > #category-panel.mobile-category-sheet.is-open.is-dragging-sheet{transition:none;cursor:grabbing}
 }
+
+/* Center each mobile sheet column within its own equal-width region. */
+@media(max-width:767px){
+ body > #category-panel.mobile-category-sheet{grid-template-columns:minmax(0,1fr) 2px minmax(0,1fr);column-gap:16px;padding-inline:20px}
+ body > #category-panel.mobile-category-sheet .category-panel-left,
+ body > #category-panel.mobile-category-sheet .category-panel-right{width:100%;box-sizing:border-box;align-items:center;justify-items:center;text-align:center}
+ body > #category-panel.mobile-category-sheet .category-panel-left .category-item,
+ body > #category-panel.mobile-category-sheet .category-panel-right a{width:100%;max-width:160px;margin-inline:auto;justify-content:center;text-align:center}
+ body > #category-panel.mobile-category-sheet .category-panel-divider{justify-self:center}
+}
