@@ -34,3 +34,11 @@
  });
  render();
 })();
+
+// Shared floating back-to-top control.
+(() => {
+ const button=document.createElement('button');button.type='button';button.className='site-scroll-top';button.setAttribute('aria-label','맨 위로 이동');button.tabIndex=-1;button.setAttribute('aria-hidden','true');button.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg><span>맨 위로</span>';document.body.append(button);
+ const update=()=>{const visible=window.scrollY>Math.max(360,window.innerHeight*.65);button.classList.toggle('is-visible',visible);button.tabIndex=visible?0:-1;button.setAttribute('aria-hidden',String(!visible));const bar=document.querySelector('.mobile-tabbar');button.style.setProperty('--scroll-top-offset',(bar&&getComputedStyle(bar).display!=='none'?bar.getBoundingClientRect().height:0)+'px');};
+ let queued=false;const schedule=()=>{if(!queued){queued=true;requestAnimationFrame(()=>{queued=false;update();});}};
+ window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);button.addEventListener('click',()=>window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}));update();
+})();
