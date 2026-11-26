@@ -2785,3 +2785,9 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
 @media(hover:hover) and (pointer:fine){.home-page a.brand-ad:hover > img{transform:scale(1.06)}}
 .home-page a.brand-ad:focus-visible{outline:3px solid var(--brand-green,#009333);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){.home-page a.brand-ad > img{transition:none}.home-page a.brand-ad:hover > img{transform:none}}
+
+/* BEST 데스크톱: Swiper가 계산한 5개 카드 너비를 사용해 양끝 잘림 방지 */
+@media(min-width:1025px){
+ .home-page .best-swiper .swiper-slide{min-width:0;}
+ .home-page .best-card{width:100%;min-width:0;}
+}
