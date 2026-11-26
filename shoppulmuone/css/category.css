@@ -1328,3 +1328,7 @@ body.category-filter-visible{overflow:hidden}
 
 /* Category primary tabs: keep text lime on hover, matching the active accent. */
 .category-page .category-main-tabs button:not(.is-active):hover,.category-page .category-main-tabs button:not(.is-active):focus-visible{color:var(--brand-lime,#80c342)}
+
+/* Match BEST hover colors only; retain the existing minor category layout. */
+.category-page .category-minor-tabs button:not(.is-active):hover,
+.category-page .category-minor-tabs button:not(.is-active):focus-visible{background:var(--bg-default,#fff);border-color:var(--brand-lime,#80c441);color:var(--brand-lime,#80c441);transform:none;filter:none}
