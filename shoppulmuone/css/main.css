@@ -2688,3 +2688,6 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
 /* Current header destination — same green filter as the hover state. */
 .site-header .header-actions > a.is-current > img,
 .site-header .header-actions > .header-action-menu > a.is-current > img{filter:brightness(0) saturate(100%) invert(36%) sepia(95%) saturate(1605%) hue-rotate(105deg) brightness(90%) contrast(103%)}
+
+/* Home daily service banner: more vertical breathing room on mobile only. */
+@media(max-width:767px){.home-page .daily-section .daily-banner{padding-block:44px}}
