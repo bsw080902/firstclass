@@ -116,3 +116,9 @@
 .detail-daily-note{margin:12px 0 0;color:var(--text-secondary,#68756a);font-size:12px;line-height:1.5}
 @media(max-width:767px){.detail-daily-frequency-list span{font-size:12px;min-height:40px}.detail-daily-weekday-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.detail-daily-weekday-list span{font-size:12px;min-height:40px}}
 @media(prefers-reduced-motion:reduce){.detail-daily-frequency-list span,.detail-daily-weekday-list span,.detail-daily-frequency-list::before{transition:none}}
+
+/* Discounted products: show the previous price above the existing price row. */
+.detail-main{padding-top:48px}
+.detail-original-price{display:block;margin:0 0 5px;color:#a4a4a4;font-size:18px;font-weight:600;line-height:1.4;text-decoration:line-through}
+.detail-original-price[hidden]{display:none!important}
+@media(max-width:767px){.detail-main{padding-top:24px}.detail-original-price{font-size:16px}}
