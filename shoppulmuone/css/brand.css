@@ -56,3 +56,18 @@
         border-radius: 8px;
     }
 }
+
+/* 브랜드 카드: 테두리와 레이아웃은 고정하고 이미지만 확대 */
+.brand-page .brand-gallery-card img {
+    transition: transform .4s ease;
+    transform-origin: center;
+}
+@media (hover: hover) and (pointer: fine) {
+    .brand-page .brand-gallery-card:hover img {
+        transform: scale(1.06);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .brand-page .brand-gallery-card img { transition: none; }
+    .brand-page .brand-gallery-card:hover img { transform: none; }
+}
