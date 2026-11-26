@@ -421,7 +421,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="brand.html" class="brand-more text-cta" aria-label="브랜드 상품 더 보기">브랜드 상품 더 보기</a>
+                    <a href="brand.html" class="brand-more text-cta" aria-label="모든 브랜드 보기">모든 브랜드 보기</a>
                 </div>
             </section>
         </main>
@@ -802,7 +802,7 @@
             const orderedCards = temporaryBrandCards.slice(offset).concat(temporaryBrandCards.slice(0, offset));
             brandProductList.append(...orderedCards);
             brandProductList.scrollLeft = 0;
-            brandMore.setAttribute('aria-label', index === 0 ? '브랜드 상품 더 보기' : brandNames[index] + ' 상품 더 보기');
+            brandMore.setAttribute('aria-label', '모든 브랜드 보기');
             updateBrandArrows();
         }
         brandNames.forEach((name, index) => {
