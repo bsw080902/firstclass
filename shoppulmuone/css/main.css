@@ -60,9 +60,16 @@
 .header-nav .nav-dropdown:hover .icon-hover,
 .header-nav .nav-dropdown:focus-visible .icon-hover { opacity: 1; }
 .header-nav .category-link .icon-hover { width: 26px; height: 26px; }
-/* 카테고리 클릭: 같은 브랜드 녹색을 유지하고 아이콘만 즉시 교체 */
+/* 카테고리 클릭: 색상은 고정하고 아이콘의 투명도와 크기만 부드럽게 전환 */
 .header-nav .category-link { transition:none; }
-.header-nav .category-link .nav-icon-switch img { transition:none; filter:none; }
+.header-nav .category-link .nav-icon-switch img { transition:opacity .25s ease, transform .25s ease; filter:none; transform-origin:center; }
+.header-nav .category-link .icon-default { transform:scale(1); }
+.header-nav .category-link .icon-hover { transform:scale(.85); }
+.header-nav .category-link.is-active .icon-default { transform:scale(.85); }
+.header-nav .category-link.is-active .icon-hover { transform:scale(1); }
+@media(prefers-reduced-motion:reduce){
+ .header-nav .category-link .nav-icon-switch img { transition:none; transform:none; }
+}
 .header-nav .category-link:hover .icon-default,
 .header-nav .category-link:focus-visible .icon-default,
 .header-nav .category-link.is-active .icon-default { filter:brightness(0) saturate(100%) invert(36%) sepia(95%) saturate(1605%) hue-rotate(105deg) brightness(90%) contrast(103%); }
