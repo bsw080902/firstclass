@@ -1328,3 +1328,9 @@ body.category-filter-visible{overflow:hidden}
 
 /* Category primary tabs: keep text lime on hover, matching the active accent. */
 .category-page .category-main-tabs button:not(.is-active):hover,.category-page .category-main-tabs button:not(.is-active):focus-visible{color:var(--brand-lime,#80c342)}
+
+/* Minor category pills: identical hover treatment to BEST category pills. */
+.category-page .category-minor-tabs button{transition:background-color .25s ease,border-color .25s ease,color .25s ease}
+.category-page .category-minor-tabs button:not(.is-active):hover,.category-page .category-minor-tabs button:not(.is-active):focus-visible{background:var(--bg-default,#fff);border-color:var(--brand-lime,#80c441);color:var(--brand-lime,#80c441);transform:none;filter:none}
+.category-page .category-minor-tabs button.is-active,.category-page .category-minor-tabs button.is-active:hover,.category-page .category-minor-tabs button.is-active:focus-visible{background:var(--brand-lime,#80c441);border-color:var(--brand-lime,#80c441);color:#fff;transform:none;filter:none}
+@media(prefers-reduced-motion:reduce){.category-page .category-minor-tabs button{transition:none}}
