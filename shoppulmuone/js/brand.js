@@ -10,4 +10,15 @@ logo.addEventListener("load",function trimLogo(){try{const canvas=document.creat
 {name:"[산지직송]독도 자연산 꽃새우 500g(20~25미)",brand:"올가",image:"new_item3.jpg",price:"135,000원",discount:"9%"},
 {name:"[산지직송]햇 초사리 곱창돌김 150g(50매)",brand:"올가",image:"new_item4.jpg",price:"31,900원",discount:"8%"},
 {name:"[산지직송]11Brix 당도선별 GAP 제주 유라감귤 (2.5kg)",brand:"올가",image:"new_item5.jpg",price:"24,900원",discount:"9%"}
-];const products=catalog.filter(p=>p.brand.replace(/\s/g,"")===name.replace(/\s/g,""));document.querySelector("#brand-detail-count").textContent=products.length+"개의";const grid=document.querySelector("#brand-detail-products");for(const p of products){const card=document.createElement("article");const img=document.createElement("img");img.src="img/"+p.image;img.alt=p.name;const title=document.createElement("h2");title.textContent=p.name;const price=document.createElement("strong");price.textContent=p.price;card.append(img,title,price);grid.append(card);}document.querySelector("#brand-detail-empty").hidden=products.length>0;});
+];const products=catalog.filter(p=>p.brand.replace(/\s/g,"")===name.replace(/\s/g,""));document.querySelector("#brand-detail-count").textContent=products.length+"개의";const grid=document.querySelector("#brand-detail-products");for(const p of products){
+const card=document.createElement("article");card.className="new-list-card best-product";
+card.innerHTML='<div class="new-list-image best-product-media"><img loading="lazy" alt=""><div class="best-product-actions"><button type="button" class="best-wish" aria-pressed="false"><img class="best-wish-default" src="img/Heart_button.svg" alt=""><img class="best-wish-selected" src="img/Heart_button_active.svg" alt=""></button><button type="button" class="best-cart"><img src="img/Cart_button.svg" alt=""></button></div></div><div class="new-list-info best-product-info"><p class="best-product-brand"></p><h3></h3><p class="new-list-delivery"></p><p class="new-list-price"><strong></strong></p></div>';
+const img=card.querySelector(".new-list-image > img");img.src="img/"+p.image;img.alt=p.name;
+card.querySelector(".best-product-brand").textContent=p.brand;
+card.querySelector("h3").textContent=p.name;
+card.querySelector(".new-list-delivery").textContent=p.delivery||"배송 예정일은 결제 시 확인";
+const price=card.querySelector(".new-list-price");price.querySelector("strong").textContent=p.price;
+if(p.discount){const discount=document.createElement("span");discount.className="new-list-discount";discount.textContent=p.discount;price.prepend(discount);}
+const wish=card.querySelector(".best-wish");wish.setAttribute("aria-label",p.name+" 찜하기");wish.addEventListener("click",()=>{const active=wish.getAttribute("aria-pressed")!=="true";wish.setAttribute("aria-pressed",String(active));wish.classList.toggle("is-selected",active);});
+card.querySelector(".best-cart").setAttribute("aria-label",p.name+" 장바구니 담기");grid.append(card);
+}document.querySelector("#brand-detail-empty").hidden=products.length>0;});
