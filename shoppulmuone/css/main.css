@@ -2778,3 +2778,10 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
 #category-panel .category-panel-left .category-item.is-selected { background:#80c441; color:#fff; }
 #category-panel .category-panel-left .category-item:not(.is-selected) { background:transparent; color:#6b7b6f; }
 #category-panel .category-all-link, #category-panel .category-panel-right a { transition:none; }
+
+/* 메인 브랜드 대표 카드: 전체 브랜드 갤러리와 동일한 내부 이미지 확대 */
+.home-page a.brand-ad{display:block;cursor:pointer}
+.home-page a.brand-ad > img{transition:transform .4s ease;transform-origin:center}
+@media(hover:hover) and (pointer:fine){.home-page a.brand-ad:hover > img{transform:scale(1.06)}}
+.home-page a.brand-ad:focus-visible{outline:3px solid var(--brand-green,#009333);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.home-page a.brand-ad > img{transition:none}.home-page a.brand-ad:hover > img{transform:none}}
