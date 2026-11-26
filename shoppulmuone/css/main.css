@@ -2642,5 +2642,5 @@ a.text-cta:hover, a.text-cta:focus-visible,
 
 /* Recommendation status: white pill, green type, fixed over the image. */
 .recommend-section .recommend-image{position:relative}
-.recommend-section .recommend-status{position:absolute;z-index:2;top:clamp(10px,1vw,18px);left:clamp(10px,1vw,18px);display:inline-flex;align-items:center;justify-content:center;padding:6px 12px;border-radius:999px;background:#fff;color:var(--brand-green,#009333);font-size:clamp(12px,0.85vw,16px);font-weight:700;line-height:1;pointer-events:none;white-space:nowrap}
+.recommend-section .recommend-status{position:absolute;z-index:2;top:clamp(10px,1vw,18px);left:clamp(10px,1vw,18px);display:inline-flex;align-items:center;justify-content:center;padding:6px 12px;border-radius:999px;background:#fff;color:var(--brand-green,#009333);font-size:clamp(12px,0.85vw,16px);font-weight:700;line-height:1;pointer-events:none;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.10)}
 @media(max-width:767px){.recommend-section .recommend-status{top:10px;left:10px;padding:5px 9px;font-size:12px}}
