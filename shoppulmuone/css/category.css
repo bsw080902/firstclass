@@ -1332,3 +1332,12 @@ body.category-filter-visible{overflow:hidden}
 /* Match BEST hover colors only; retain the existing minor category layout. */
 .category-page .category-minor-tabs button:not(.is-active):hover,
 .category-page .category-minor-tabs button:not(.is-active):focus-visible{background:var(--bg-default,#fff);border-color:var(--brand-lime,#80c441);color:var(--brand-lime,#80c441);transform:none;filter:none}
+
+/* Keep minor category buttons stationary when hovered, selected or pressed. */
+.category-page .category-minor-tabs button,
+.category-page .category-minor-tabs button:hover,
+.category-page .category-minor-tabs button:active,
+.category-page .category-minor-tabs button:focus-visible,
+.category-page .category-minor-tabs button.is-active,
+.category-page .category-minor-tabs button.is-active:hover,
+.category-page .category-minor-tabs button.is-active:active{transform:none;filter:none;transition:background-color .25s ease,border-color .25s ease,color .25s ease}
