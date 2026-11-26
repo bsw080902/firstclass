@@ -15,10 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
  };
  const requestedImage = (q.get('image') || '').split('/').pop();
  const imageName = newProductImages[requestedImage] || requestedImage;
- const image = /^[a-zA-Z0-9_.%()-]+\.(png|jpg|jpeg|webp)$/i.test(imageName || '') ? (/^fresh[1-8]\.jpg$/i.test(imageName) ? '' : 'img/') + imageName : '';
+ const image = /^[a-zA-Z0-9_.%()-]+\.(png|jpg|jpeg|webp)$/i.test(imageName || '') ? (/^(fresh|easy)[1-8]\.jpg$/i.test(imageName) ? '' : 'img/') + imageName : '';
  const set = (id, value) => { document.getElementById(id).textContent = value; };
  set('detail-name', name);
  set('detail-brand', brand);
+ const summary = (q.get('summary') || '').trim().slice(0,200);
+ if(summary){const el=document.getElementById('detail-product-summary');el.textContent=summary;el.hidden=false;}
  set('detail-info-name', name);
  document.title = name + ' | 샵풀무원';
  const imageEl = document.getElementById('detail-image');
