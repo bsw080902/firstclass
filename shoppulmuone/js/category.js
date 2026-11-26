@@ -53,6 +53,8 @@ const catalogProducts=[
 ];
 const freshProducts=[{"brand":"풀무원식품","name":"특등급 국산콩 단단한 부침용 두부 (340gx2개)","price":"4,990원","discount":"45%","minor":"두부","image":"fresh1.jpg","imageRoot":true},{"brand":"풀무원식품","name":"특등급 국산콩 무농약 콩나물 (250g)","price":"2,280원","discount":"12%","minor":"콩나물","image":"fresh2.jpg","imageRoot":true},{"brand":"풀무원식품","name":"목초달걀 무항생제 1+등급 XL(특란) (15구) (900g)","price":"9,980원","discount":"","minor":"달걀","image":"fresh3.jpg","imageRoot":true},{"brand":"올가","name":"동물복지인증 유정란으로 만든 구운계란 (10입)","price":"11,900원","discount":"","minor":"달걀","image":"fresh4.jpg","imageRoot":true},{"brand":"풀무원식품","name":"고농도 진한 다용도 두부 (300g)","price":"1,780원","discount":"18%","minor":"두부","originalPrice":"2,180원","image":"fresh5.jpg","imageRoot":true},{"brand":"올가","name":"Cage Free 동물복지 유정란 20입 (1040g)","price":"18,900원","discount":"","minor":"달걀","image":"fresh6.jpg","imageRoot":true},{"brand":"올가","name":"순두부찌개 (순두부&찌개양념)","price":"4,760원","discount":"30%","minor":"두부","image":"fresh7.jpg","imageRoot":true},{"brand":"풀무원식품","name":"동물복지 목초란 (15구) (780g)","price":"10,980원","discount":"","minor":"달걀","image":"fresh8.jpg","imageRoot":true}];
 function freshSelection(minor){return minor==="전체"?freshProducts:freshProducts.filter(p=>p.minor===minor);}
+const easyProducts=[{"brand":"풀무원식품","name":"식감혁신 본격 떡볶이 쌀떡볶이 마포식 (420g)","price":"4,980원","discount":"23%","minor":"떡볶이","originalPrice":"6,480원","image":"easy1.jpg","imageRoot":true},{"brand":"풀무원식품","name":"생만두 새우청경채 (320g)","price":"4,980원","discount":"28%","minor":"만두","originalPrice":"6,980원","image":"easy2.jpg","imageRoot":true},{"brand":"풀무원지구식단","name":"[풀무원지구식단]이슬만두 직화불고기맛 (1.02kg)","price":"12,980원","discount":"","minor":"만두","image":"easy3.jpg","imageRoot":true},{"brand":"풀무원식품","name":"식감혁신 본격 떡볶이 밀+쌀 떡볶이 2종 (각 1개씩)","price":"9,960원","discount":"23%","minor":"떡볶이","originalPrice":"12,960원","image":"easy4.jpg","imageRoot":true},{"brand":"풀무원식품","name":"노엣지피자 토마토&미트콤보 (350g)","price":"4,980원","discount":"9%","minor":"피자","originalPrice":"5,473원","summary":"토마토 소스와 3가지 고기 토핑","image":"easy5.jpg","imageRoot":true},{"brand":"풀무원지구식단","name":"[풀무원지구식단] 찰곤약 떡볶이떡 (300g)","price":"3,980원","discount":"","minor":"떡볶이","summary":"먹어봐야 아는 쫀득탱글 찰곤약떡","image":"easy6.jpg","imageRoot":true},{"brand":"올가","name":"참 물만두 (490g)","price":"10,700원","discount":"10%","minor":"만두","originalPrice":"11,889원","image":"easy7.jpg","imageRoot":true},{"brand":"풀무원지구식단","name":"[풀무원지구식단]이슬만두 김치애호박(간편트레이) (180g)","price":"3,500원","discount":"22%","minor":"만두","originalPrice":"4,500원","image":"easy8.jpg","imageRoot":true}];
+function easySelection(minor){return minor==="전체"?easyProducts:easyProducts.filter(p=>p.minor===minor);}
 const tabs=document.querySelectorAll(".category-main-tabs button");
 const subtabs=document.querySelector("#category-subtabs");
 const minorTabs=document.querySelector("#category-minor-tabs");
@@ -275,7 +277,7 @@ function renderCatalogProducts(productsSource=catalogProducts){
  const filtered=applyProductFilters(productsSource);
  const products=activeSort==="new"?[...filtered].reverse():filtered;
  products.forEach((p,i)=>{
-  const article=document.createElement("article");article.className="best-product";article.style.setProperty("--best-card-index",i);
+  const article=document.createElement("article");article.className="best-product";article.style.setProperty("--best-card-index",i);if(p.summary)article.dataset.summary=p.summary;
   const media=document.createElement("div");media.className="best-product-media";
   const img=document.createElement("img");img.src=(p.imageRoot?"":"img/")+p.image;img.alt=p.name;img.loading="lazy";media.append(img);
   const actions=document.createElement("div");actions.className="best-product-actions";
@@ -397,7 +399,9 @@ function showCategory(key,selected=0,minor="전체"){
  if(hasDetails)requestAnimationFrame(()=>requestAnimationFrame(()=>minorTabs.classList.add("is-revealed")));
  heading.textContent=current==="전체"?middle:current;
  const products=!hasDetails?(examples[middle]||[middle+" 상품"]):current==="전체"?details.flatMap(label=>examples[label]||[label+" 상품"]):examples[current]||[current+" 상품"];
- if(key==="fresh" && middle==="두부 · 콩나물 · 달걀"){
+ if(key==="meal" && middle==="만두 · 피자 · 떡볶이"){
+  renderCatalogProducts(easySelection(current));
+ }else if(key==="fresh" && middle==="두부 · 콩나물 · 달걀"){
   renderCatalogProducts(freshSelection(current));
  }else if(key==="living" && middle==="반려동물"){
   renderCatalogProducts(petProducts);
@@ -420,6 +424,7 @@ sortButtons.forEach(btn=>btn.addEventListener("click",()=>{
  sortLabel.textContent=btn.textContent.trim();closeCategoryMenus();
  sortButtons.forEach(item=>{const selected=item===btn;item.classList.toggle("is-active",selected);item.setAttribute("aria-pressed",String(selected));});
  if(document.querySelector(".category-main-tabs button[data-category=all]")?.classList.contains("is-active"))renderCatalogProducts();
+ else if(document.querySelector(".category-main-tabs button[data-category=meal]")?.classList.contains("is-active") && renderedMiddle==="만두 · 피자 · 떡볶이")renderCatalogProducts(easySelection(document.querySelector("#category-minor-tabs .is-active")?.textContent||"전체"));
  else if(document.querySelector(".category-main-tabs button[data-category=fresh]")?.classList.contains("is-active") && renderedMiddle==="두부 · 콩나물 · 달걀")renderCatalogProducts(freshSelection(document.querySelector("#category-minor-tabs .is-active")?.textContent||"전체"));
  else if(document.querySelector(".category-main-tabs button[data-category=living]")?.classList.contains("is-active") && renderedMiddle==="반려동물")renderCatalogProducts(petProducts);
  else if(document.querySelector(".category-main-tabs button[data-category=fresh]")?.classList.contains("is-active") && renderedMiddle==="과일 · 채소 · 쌀" && ["전체","과일"].includes(document.querySelector("#category-minor-tabs .is-active")?.textContent))renderCatalogProducts(fruitProducts);
