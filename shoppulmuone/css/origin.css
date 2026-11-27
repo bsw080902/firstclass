@@ -5,3 +5,6 @@
 
 /* Smooth category tab state changes */
 .origin-tabs button{transition:background-color .25s ease,border-color .25s ease,color .25s ease}.origin-tabs button:not(.is-active):hover,.origin-tabs button:not(.is-active):focus-visible{background:var(--bg-surface);border-color:var(--brand-lime);color:var(--brand-lime)}.origin-tabs button.is-active:hover,.origin-tabs button.is-active:focus-visible{background:var(--brand-lime);border-color:var(--brand-lime);color:white}@media(prefers-reduced-motion:reduce){.origin-tabs button{transition:none}}
+
+/* Reserve the same catalog height on every tab, without fixing the footer to the viewport. */
+.origin-catalog .category-results-main{position:relative;min-height:440px;box-sizing:border-box}.origin-catalog .origin-empty{position:absolute;top:0;left:calc(50% + 8px);right:0;margin:0;min-height:230px;display:grid;place-items:center;text-align:center}.origin-catalog .origin-empty[hidden]{display:none!important}@media(min-width:768px) and (max-width:1100px){.origin-catalog .category-results-main{min-height:740px}.origin-catalog .origin-empty{left:calc(66.666% + 6px)}}@media(max-width:767px){.origin-catalog .category-results-main{min-height:calc(max(170px, (100vw - 32px) / 2) + (100vw - 44px) / 2 + 205px)}.origin-catalog .origin-empty{top:calc(max(170px, (100vw - 32px) / 2) + 28px);left:0;right:0;min-height:80px}}
