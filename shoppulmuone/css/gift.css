@@ -30,3 +30,18 @@
 
 /* Increase hero height to fit the complete transparent artwork without cropping. */
 @media(min-width:768px){.gift-hero.gift-split{min-height:clamp(380px,33vw,680px)}.gift-hero.gift-split .gift-visual{align-items:center;justify-content:flex-start}.gift-hero.gift-split .gift-visual img{width:100%;height:auto;max-height:none;object-fit:contain;object-position:left center;flex-shrink:0}}
+
+/* Category-style underline tabs and shared sort popover. */
+.gift-category-tabs,.gift-price-tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;padding:0 0 5px;border-bottom:1px solid var(--border-default)}
+.gift-price-row{border-top:0;padding-top:0}.gift-price-tabs{flex:1;grid-template-columns:repeat(5,minmax(0,1fr))}
+.gift-list :is(.gift-category-tabs,.gift-price-tabs) button,.gift-list :is(.gift-category-tabs,.gift-price-tabs) button.is-active{position:relative;border:0;border-radius:0;background:transparent;color:var(--text-secondary);min-height:54px;padding:13px 8px 15px;font-weight:500;transition:color .25s ease}
+.gift-list :is(.gift-category-tabs,.gift-price-tabs) button:hover,.gift-list :is(.gift-category-tabs,.gift-price-tabs) button.is-active{color:var(--brand-lime)}
+.gift-list :is(.gift-category-tabs,.gift-price-tabs) button.is-active{font-weight:700}
+.gift-list :is(.gift-category-tabs,.gift-price-tabs) button::after{content:"";position:absolute;height:3px;left:0;right:0;bottom:-6px;border-radius:3px;background:var(--brand-lime);transform:scaleX(0);transform-origin:center;transition:transform .42s cubic-bezier(.22,1,.36,1);pointer-events:none}
+.gift-list :is(.gift-category-tabs,.gift-price-tabs) button.is-active::after{transform:scaleX(1)}
+.gift-list .gift-sort-control{position:relative;flex:none;margin-right:24px}
+.gift-list .gift-sort-control .category-sort-trigger{display:flex;align-items:center;gap:8px;border:0;background:transparent;color:var(--text-secondary);font:inherit;font-size:16px;font-weight:500;cursor:pointer;white-space:nowrap;padding:8px 0}
+.gift-list .gift-sort-control .category-sort-popover{z-index:30}
+.gift-list .gift-sort-control.is-open .category-sort-popover{visibility:visible;opacity:1;pointer-events:auto}
+@media(max-width:767px){.gift-category-tabs{grid-template-columns:repeat(6,minmax(0,1fr));gap:0}.gift-price-tabs{width:100%;gap:0}.gift-list :is(.gift-category-tabs,.gift-price-tabs) button,.gift-list :is(.gift-category-tabs,.gift-price-tabs) button.is-active{min-height:50px;font-size:clamp(10px,2.9vw,13px);padding:8px 2px;word-break:keep-all}.gift-list .gift-sort-control{margin-right:0}.gift-list .gift-sort-control .category-sort-trigger{font-size:13px}.gift-list .gift-sort-control .category-sort-popover{left:auto;right:0;transform:none}}
+@media(prefers-reduced-motion:reduce){.gift-list :is(.gift-category-tabs,.gift-price-tabs) button::after{transition:none}}
