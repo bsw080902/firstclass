@@ -8,11 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
  const isDaily = q.get('daily') === '1';
  // NEW 카드의 상단 조리/광고 사진은 상세 대표 이미지로 사용하지 않습니다.
  // 이전 링크 또는 브라우저 캐시가 광고 이미지 주소를 전달해도 실제 상품 패키지로 교정합니다.
- const newProductImages = {
-  'pulmuonead_1.png': 'pulmuonead_11.png',
-  'pulmuonead_2.png': 'pulmuonead_22.png',
-  'pulmuonead_3.png': 'pulmuonead_33.png'
- };
+ const newProductImages = { 'pulmuonead_1.png':'ad1.jpg','pulmuonead_11.png':'ad1.jpg','pulmuonead_2.png':'ad2.jpg','pulmuonead_22.png':'ad2.jpg','pulmuonead_3.png':'ad3.jpg','pulmuonead_33.png':'ad3.jpg' };
  const requestedImage = (q.get('image') || '').split('/').pop();
  const imageName = newProductImages[requestedImage] || requestedImage;
  const image = /^[a-zA-Z0-9_.%()-]+\.(png|jpg|jpeg|webp)$/i.test(imageName || '') ? 'img/' + imageName : '';
