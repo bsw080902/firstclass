@@ -71,6 +71,11 @@ document.addEventListener('DOMContentLoaded',()=>{
 document.addEventListener("DOMContentLoaded",()=>{
  const form=document.querySelector(".header-search"), input=form?.querySelector('input[type="search"]'), mobile=document.querySelector(".mobile-search");
  if(!form||!input)return;
+ const clear=document.createElement("button");clear.type="button";clear.className="search-input-clear";clear.textContent="×";clear.setAttribute("aria-label","검색어 지우기");
+ const submit=form.querySelector('button[type="submit"]');form.insertBefore(clear,submit);
+ const syncClear=()=>{clear.hidden=!input.value;clear.style.display=input.value?"inline-flex":"none";};
+ const clearStyle=document.createElement("style");clearStyle.textContent='.header-search input[type="search"]::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;display:none}.site-header .header-search .search-input-clear{flex:0 0 24px;width:24px;height:28px;align-items:center;justify-content:center;padding:0;border:0;background:transparent;color:#68756a;font-family:inherit;font-size:20px;font-weight:400;line-height:1;cursor:pointer}.site-header .header-search .search-input-clear[hidden]{display:none}';document.head.append(clearStyle);
+ input.addEventListener("input",syncClear);input.addEventListener("search",syncClear);clear.addEventListener("click",()=>{input.value="";syncClear();input.focus();open();});syncClear();
  const key="pulmuone-recent-searches", popular=[["피자",20],["떡볶이",15],["만두",13],["과자",10],["김치",7]];
  let history=[];try{const saved=JSON.parse(localStorage.getItem(key)||"[]");if(Array.isArray(saved))history=saved.filter(x=>typeof x==="string").slice(0,10);}catch{}
  const panel=document.createElement("section");panel.className="header-search-panel";panel.id="header-search-panel";panel.hidden=true;panel.setAttribute("aria-label","최근 검색어 및 인기 검색어");
@@ -78,7 +83,7 @@ document.addEventListener("DOMContentLoaded",()=>{
  document.body.append(panel);
  input.setAttribute("aria-controls",panel.id);input.setAttribute("aria-expanded","false");input.autocomplete="off";
  function persist(){try{localStorage.setItem(key,JSON.stringify(history));}catch{}}
- function choose(word){input.value=word;open();}
+ function choose(word){input.value=word;syncClear();open();}
  function remember(word){history=[word,...history.filter(x=>x!==word)].slice(0,10);persist();render();}
  function render(){const list=panel.querySelector(".search-history-list");list.replaceChildren();history.forEach(word=>{const li=document.createElement("li"), pick=document.createElement("button"), del=document.createElement("button");pick.type=del.type="button";pick.className="search-word";pick.textContent=word;pick.addEventListener("click",()=>choose(word));del.className="search-delete";del.textContent="×";del.setAttribute("aria-label",word+" 삭제");del.addEventListener("click",()=>{history=history.filter(x=>x!==word);persist();render();});li.append(pick,del);list.append(li);});panel.querySelector(".search-history-empty").hidden=history.length>0;}
  popular.forEach(([word,count],i)=>{const li=document.createElement("li"),btn=document.createElement("button");btn.type="button";btn.innerHTML='<span class="search-rank"></span><span class="search-word"></span><span class="search-count"></span>';btn.children[0].textContent=(i+1)+".";btn.children[1].textContent=word;btn.children[2].textContent=count;btn.addEventListener("click",()=>choose(word));li.append(btn);panel.querySelector(".search-popular-list").append(li);});
