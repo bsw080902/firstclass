@@ -58,3 +58,12 @@
 
 /* Align the gift sort control closer to the right edge. */
 @media(min-width:768px){.gift-list .gift-sort-control{margin-right:0}.gift-list .gift-count{padding-right:40px}}
+
+/* Match category minor (dumpling/pizza/tteokbokki) buttons. */
+.gift-list .gift-price-tabs{gap:11px;align-items:center}
+.gift-list .gift-price-tabs button,.gift-list .gift-price-tabs button:hover,.gift-list .gift-price-tabs button:active,.gift-list .gift-price-tabs button.is-active{box-sizing:border-box;min-height:42px;padding:10px 20px;font-size:15px;font-weight:500;line-height:1.4;transform:none;filter:none;box-shadow:none;transition:background-color .25s ease,border-color .25s ease,color .25s ease}
+.gift-list .gift-price-tabs button:not(.is-active){color:var(--text-secondary);background:var(--bg-default)}
+.gift-list .gift-price-tabs button:not(.is-active):hover,.gift-list .gift-price-tabs button:not(.is-active):focus-visible{background:var(--bg-default);border-color:var(--brand-lime);color:var(--brand-lime)}
+.gift-list .gift-price-tabs button.is-active,.gift-list .gift-price-tabs button.is-active:hover{background:var(--brand-lime);border-color:var(--brand-lime);color:#fff;font-weight:700}
+@media(max-width:767px){.gift-list .gift-price-tabs{gap:9px}.gift-list .gift-price-tabs button,.gift-list .gift-price-tabs button:hover,.gift-list .gift-price-tabs button.is-active{font-size:13px;min-height:35px;padding:8px 16px}}
+@media(prefers-reduced-motion:reduce){.gift-list .gift-price-tabs button{transition:none}}
