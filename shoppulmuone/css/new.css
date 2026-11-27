@@ -143,3 +143,6 @@
 @media(max-width:767px){
  .new-page .new-swiper{padding:12px 8px 28px}
 }
+
+/* Match the home NEW carousel navigation; keep buttons outside the clipped Swiper. */
+.new-page .new-slider-shell{position:relative;overflow:visible}.new-page .new-slider-shell>.new-prev{left:-19px}.new-page .new-slider-shell>.new-next{right:-19px}.new-page .new-slider-shell>:is(.new-prev,.new-next){top:50%;z-index:10}@media(max-width:767px){.new-page .new-slider-shell>.new-prev{left:0}.new-page .new-slider-shell>.new-next{right:0}.new-page .new-slider-shell>:is(.new-prev,.new-next),.new-page .new-slider-shell>:is(.new-prev,.new-next)>img{width:44px;height:44px}}
