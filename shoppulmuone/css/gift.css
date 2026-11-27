@@ -55,3 +55,6 @@
 .gift-list .gift-price-tabs button::after{content:none;display:none}
 @media(max-width:767px){.gift-list .gift-price-tabs button,.gift-list .gift-price-tabs button.is-active{min-height:40px;padding:7px 12px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){.gift-list .gift-price-tabs button{transition:none}}
+
+/* Align the gift sort control closer to the right edge. */
+@media(min-width:768px){.gift-list .gift-sort-control{margin-right:0}.gift-list .gift-count{padding-right:40px}}
