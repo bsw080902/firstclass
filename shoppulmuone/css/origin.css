@@ -17,3 +17,6 @@
 
 /* Nudge only the apple story copy toward the right. */
 @media(min-width:768px){.origin-story.is-reverse .origin-story-copy{padding-left:52px}}
+
+/* Full-bleed hero; retain the original content width below. */
+.origin-page{max-width:none;padding-left:0;padding-right:0}.origin-page>.origin-hero{width:100%;max-width:none;margin:0;border-radius:0}.origin-page>.origin-story,.origin-page>.origin-catalog{box-sizing:border-box}.origin-page>.origin-story{max-width:1672px;margin-left:auto;margin-right:auto}.origin-page>.origin-catalog.best-page.category-page{width:calc(100% - 48px)}@media(max-width:767px){.origin-page{padding-left:0;padding-right:0}.origin-page>.origin-story{margin-left:16px;margin-right:16px}.origin-page>.origin-catalog.best-page.category-page{width:calc(100% - 32px)}}
