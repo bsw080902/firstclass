@@ -8,3 +8,6 @@
 
 /* Reserve the same catalog height on every tab, without fixing the footer to the viewport. */
 .origin-catalog .category-results-main{position:relative;min-height:440px;box-sizing:border-box}.origin-catalog .origin-empty{position:absolute;top:0;left:calc(50% + 8px);right:0;margin:0;min-height:230px;display:grid;place-items:center;text-align:center}.origin-catalog .origin-empty[hidden]{display:none!important}@media(min-width:768px) and (max-width:1100px){.origin-catalog .category-results-main{min-height:740px}.origin-catalog .origin-empty{left:calc(66.666% + 6px)}}@media(max-width:767px){.origin-catalog .category-results-main{min-height:calc(max(170px, (100vw - 32px) / 2) + (100vw - 44px) / 2 + 205px)}.origin-catalog .origin-empty{top:calc(max(170px, (100vw - 32px) / 2) + 28px);left:0;right:0;min-height:80px}}
+
+/* Story titles belong to the text column, above the description. */
+.origin-story-copy h2{margin:0 0 16px;font-size:28px;font-weight:700;line-height:1.35}.origin-story-copy h2+p{margin-top:0}@media(max-width:767px){.origin-story-copy h2{font-size:23px;margin-bottom:12px}}
