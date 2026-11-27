@@ -29,3 +29,17 @@
 .amio-reviews .amio-chips{margin-top:12px}
 .amio-review-image{border-radius:20px}
 @media(max-width:767px){.amio-nav{margin:20px auto;padding:0 16px;gap:6px}.amio-nav a{font-size:12px;padding:8px 4px}.amio-full:not(.amio-hero),.amio-brand-slider{width:calc(100% - 32px);border-radius:16px;margin-top:16px}.amio-group,.amio-health{padding:40px 16px 0}.amio-group-head h2,.amio-health .amio-group-head h2,.amio-reviews h2{font-size:23px}.amio-story{border-radius:18px;margin-bottom:20px}.amio-story-inner{grid-template-columns:1fr;padding:24px 16px;gap:20px;min-height:0}.amio-story .amio-visual,.amio-story.is-reverse .amio-visual{width:100%;max-width:340px;grid-template-columns:minmax(0,1fr) minmax(0,100px);gap:12px}.amio-story .amio-item-slider,.amio-story.is-reverse .amio-item-slider{max-width:100px}.amio-copy h3{font-size:22px}.amio-description{font-size:14px}.amio-reviews{width:calc(100% - 32px);margin:32px auto 16px;padding:32px 16px;border-radius:18px}}
+
+/* Continuous product groups, with overlapping package illustrations. */
+.amio-group{box-sizing:border-box}
+.amio-group>.amio-story{border:0;border-radius:0;margin:0;background:var(--bg-surface);overflow:hidden}
+.amio-group>.amio-story:first-of-type{border-radius:24px 24px 0 0}
+.amio-group>.amio-story:last-of-type{border-radius:0 0 24px 24px}
+.amio-group>.amio-story .amio-story-inner{padding:36px 48px;gap:48px}
+.amio-story .amio-visual,.amio-story.is-reverse .amio-visual{position:relative;display:block;width:100%;max-width:400px;padding:0 72px 24px 0;box-sizing:border-box}
+.amio-story.is-reverse .amio-visual{padding:0 0 24px 72px}
+.amio-story .amio-food{width:100%;max-height:240px;height:auto;object-fit:contain}
+.amio-story .amio-item-slider,.amio-story.is-reverse .amio-item-slider{position:absolute!important;inset:auto 8px 0 auto;width:38%;max-width:140px;aspect-ratio:3/4;z-index:2}
+.amio-story.is-reverse .amio-item-slider{inset:auto auto 0 8px}
+.amio-story .amio-item-slider .swiper-slide{padding:0}
+@media(max-width:767px){.amio-group>.amio-story:first-of-type{border-radius:18px 18px 0 0}.amio-group>.amio-story:last-of-type{border-radius:0 0 18px 18px}.amio-group>.amio-story .amio-story-inner{padding:24px 16px;gap:20px}.amio-story .amio-visual,.amio-story.is-reverse .amio-visual{max-width:320px;padding:0 55px 20px 0}.amio-story.is-reverse .amio-visual{padding:0 0 20px 55px}.amio-story .amio-item-slider,.amio-story.is-reverse .amio-item-slider{max-width:100px}}
