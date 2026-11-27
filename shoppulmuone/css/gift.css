@@ -45,3 +45,13 @@
 .gift-list .gift-sort-control.is-open .category-sort-popover{visibility:visible;opacity:1;pointer-events:auto}
 @media(max-width:767px){.gift-category-tabs{grid-template-columns:repeat(6,minmax(0,1fr));gap:0}.gift-price-tabs{width:100%;gap:0}.gift-list :is(.gift-category-tabs,.gift-price-tabs) button,.gift-list :is(.gift-category-tabs,.gift-price-tabs) button.is-active{min-height:50px;font-size:clamp(10px,2.9vw,13px);padding:8px 2px;word-break:keep-all}.gift-list .gift-sort-control{margin-right:0}.gift-list .gift-sort-control .category-sort-trigger{font-size:13px}.gift-list .gift-sort-control .category-sort-popover{left:auto;right:0;transform:none}}
 @media(prefers-reduced-motion:reduce){.gift-list :is(.gift-category-tabs,.gift-price-tabs) button::after{transition:none}}
+
+/* Restore price range pills only; keep category underline tabs. */
+.gift-list .gift-price-row{border-top:0;padding-top:0}
+.gift-list .gift-price-tabs{display:flex;flex:1;flex-wrap:wrap;gap:8px;width:100%;padding:0;border-bottom:0}
+.gift-list .gift-price-tabs button,.gift-list .gift-price-tabs button.is-active{min-height:40px;padding:8px 20px;border:1px solid var(--border-default);border-radius:999px;background:var(--bg-default);color:var(--text-primary);font-size:14px;font-weight:600;transition:background-color .25s,color .25s,border-color .25s}
+.gift-list .gift-price-tabs button:hover{border-color:var(--brand-lime);color:var(--brand-lime)}
+.gift-list .gift-price-tabs button.is-active,.gift-list .gift-price-tabs button.is-active:hover{background:var(--brand-lime);border-color:var(--brand-lime);color:white}
+.gift-list .gift-price-tabs button::after{content:none;display:none}
+@media(max-width:767px){.gift-list .gift-price-tabs button,.gift-list .gift-price-tabs button.is-active{min-height:40px;padding:7px 12px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.gift-list .gift-price-tabs button{transition:none}}
