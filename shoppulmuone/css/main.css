@@ -2815,3 +2815,24 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
  }
  .mobile-tabbar .mobile-search::before{transform:scale(1.18);transform-origin:center}
 }
+
+/* 모바일 헤더 드롭다운: 트리거 중앙 정렬, 고객센터는 화면 우측 여백 안에 고정 */
+@media(max-width:767px){
+ .site-header .header-nav .benefit-menu .benefit-panel,
+ .site-header .header-nav .benefit-menu:not(.daily-menu) .benefit-panel,
+ .site-header .header-nav .daily-menu .daily-panel{
+  top:calc(100% + 8px);left:50%;right:auto;
+  transform:translate(-50%,-5px);
+ }
+ .site-header .header-nav .benefit-menu:hover .benefit-panel,
+ .site-header .header-nav .benefit-menu:focus-within .benefit-panel,
+ .site-header .header-nav .benefit-menu:not(.daily-menu):hover .benefit-panel,
+ .site-header .header-nav .benefit-menu:not(.daily-menu):focus-within .benefit-panel{
+  transform:translate(-50%,0);
+ }
+ .site-header .header-actions .header-action-menu:has(>a[aria-label="고객센터"]) .header-action-panel{
+  top:calc(100% + 8px);left:auto;right:0;
+  max-width:calc(100vw - 36px);transform:translateY(-5px);
+ }
+ .site-header .header-actions .header-action-menu:has(>a[aria-label="고객센터"]):is(:hover,:focus-within) .header-action-panel{transform:translateY(0)}
+}
