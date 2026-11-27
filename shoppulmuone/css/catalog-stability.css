@@ -1,0 +1,23 @@
+/* Keep footer in normal document flow; reserve space for the largest existing catalog. */
+.home-page .brand-content{min-height:clamp(400px,35vw,540px)}
+main.category-page .category-catalog{min-height:1460px}
+main.best-page #best-products{min-height:850px;align-content:start}
+.brand-page.is-detail .brand-detail-inner{min-height:1700px}
+.benefit-page.daily-page .benefit-content:has(.daily-results-bar:not([hidden])) > .benefit-inner{min-height:1000px;align-content:start}
+.benefit-page:not(.daily-page) .benefit-content:has([id="promotion"]):has([id="event"]) > .benefit-inner{min-height:950px;align-content:start}
+.origin-catalog .category-results-main{min-height:440px}
+@media(min-width:768px) and (max-width:1100px){
+ main.category-page .category-catalog{min-height:1750px}
+ main.best-page #best-products{min-height:900px}
+ .brand-page.is-detail .brand-detail-inner{min-height:1950px}
+ .origin-catalog .category-results-main{min-height:950px}
+}
+@media(max-width:767px){
+ .home-page .brand-content{min-height:calc(min(100vw - 32px,500px) + 440px)}
+ main.category-page .category-catalog{min-height:calc(2.5 * (100vw - 44px) + 1220px)}
+ main.best-page #best-products{min-height:calc(1.5 * (100vw - 44px) + 540px)}
+ .brand-page.is-detail .brand-detail-inner{min-height:calc(3.5 * (100vw - 52px) + 1360px)}
+ .benefit-page.daily-page .benefit-content:has(.daily-results-bar:not([hidden])) > .benefit-inner{min-height:calc(1.5 * (100vw - 46px) + 680px)}
+ .benefit-page:not(.daily-page) .benefit-content:has([id="promotion"]):has([id="event"]) > .benefit-inner{min-height:1400px}
+ .origin-catalog .category-results-main{min-height:calc(max(170px, (100vw - 32px) / 2) + (100vw - 44px) / 2 + 205px)}
+}
