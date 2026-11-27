@@ -13,6 +13,13 @@
 <script src="js/category-links.js?v=20261126-category-single-state" defer></script>
 <script src="js/scroll-header.js?v=20261126-css-header-hover" defer></script><link rel="stylesheet" href="css/product-card-wish.css?v=20261127-mobile-actions-plus2">
 <script src="js/product-card-wish.js?v=1" defer></script>
+<style>/* Home product actions: match category card's 36px desktop sizing and responsive image-relative sizing. */
+@media(min-width:768px){
+ body.home-page :is(.recommend-actions,.best-actions,.new-product-actions) button{height:36px;width:auto;padding:0}
+ body.home-page :is(.recommend-actions,.best-actions,.new-product-actions) button > img{height:36px;width:auto}
+ body.home-page :is(.recommend-actions,.best-actions,.new-product-actions) button > img.wish-active-overlay{width:100%;height:100%}
+}
+</style>
 </head>
 <body class="home-page">
     <div id="wrap">
