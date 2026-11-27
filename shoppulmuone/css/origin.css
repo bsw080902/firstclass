@@ -11,3 +11,6 @@
 
 /* Story titles belong to the text column, above the description. */
 .origin-story-copy h2{margin:0 0 16px;font-size:28px;font-weight:700;line-height:1.35}.origin-story-copy h2+p{margin-top:0}@media(max-width:767px){.origin-story-copy h2{font-size:23px;margin-bottom:12px}}
+
+/* Align the entire story copy with the lower portion of the white space above the wide photograph. */
+@media(min-width:768px){.origin-story-grid>.origin-story-copy{align-self:start;margin-top:clamp(100px,12vw,210px);padding-top:0;padding-bottom:12px}.origin-story-grid>.origin-story-copy .origin-price{margin-top:24px}}
