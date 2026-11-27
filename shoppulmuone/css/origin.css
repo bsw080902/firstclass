@@ -2,3 +2,6 @@
 .origin-cta{display:inline-flex;align-items:center;justify-content:center;min-width:120px;min-height:40px;box-sizing:border-box;padding:8px 24px;border:1px solid var(--border-default);border-radius:999px;background:transparent;color:var(--text-secondary);font-size:16px;font-weight:600;text-decoration:none;transition:color .2s,border-color .2s}.origin-cta:hover,.origin-cta:focus-visible{background:transparent;border-color:var(--brand-lime);color:var(--brand-lime);text-decoration:none}
 
 .origin-price .origin-discount{color:#f04452;font-size:22px;font-weight:600;line-height:1.3}.origin-price .origin-cta{margin-left:4px}.origin-price{column-gap:10px;row-gap:12px}@media(max-width:767px){.origin-price .origin-discount{font-size:20px}}
+
+/* Smooth category tab state changes */
+.origin-tabs button{transition:background-color .25s ease,border-color .25s ease,color .25s ease}.origin-tabs button:not(.is-active):hover,.origin-tabs button:not(.is-active):focus-visible{background:var(--bg-surface);border-color:var(--brand-lime);color:var(--brand-lime)}.origin-tabs button.is-active:hover,.origin-tabs button.is-active:focus-visible{background:var(--brand-lime);border-color:var(--brand-lime);color:white}@media(prefers-reduced-motion:reduce){.origin-tabs button{transition:none}}
