@@ -14,3 +14,6 @@
 
 /* Align the entire story copy with the lower portion of the white space above the wide photograph. */
 @media(min-width:768px){.origin-story-grid>.origin-story-copy{align-self:start;margin-top:clamp(100px,12vw,210px);padding-top:0;padding-bottom:12px}.origin-story-grid>.origin-story-copy .origin-price{margin-top:24px}}
+
+/* Nudge only the apple story copy toward the right. */
+@media(min-width:768px){.origin-story.is-reverse .origin-story-copy{padding-left:52px}}
