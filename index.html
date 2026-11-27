@@ -1,34 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>승완 클래스</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Projects</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#111;font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+main{width:calc(100% - 64px);max-width:1120px;margin:0 auto;padding:96px 0 80px}
+h1,h2,h3{margin:0;line-height:1.3}
+h1{font-size:42px;font-weight:700;letter-spacing:-.035em;margin-bottom:120px}
+section+section{margin-top:80px}
+h2{font-size:20px;font-weight:600;letter-spacing:-.02em;margin-bottom:22px}
+h3{font-size:26px;font-weight:700;letter-spacing:-.03em}
+.login-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{border:1px solid #e2e2e2;border-radius:10px;background:#fff;min-width:0}
+.login-card{min-height:244px;padding:48px 30px 28px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.login-card h3{margin-bottom:12px}
+.login-card.venti{padding-bottom:48px}
+.venti .primary{margin:auto 0}
+.primary{display:flex;align-items:center}
+a{display:inline-flex;align-items:center;gap:16px;text-decoration:none;color:#555;font-size:16px;font-weight:400;line-height:1.5;transition:color .18s ease}
+a span{display:inline-block;transition:transform .18s ease}
+a:hover{color:#111;text-decoration:underline;text-underline-offset:4px}
+a:hover span{transform:translateX(3px)}
+a:focus-visible{outline:2px solid #555;outline-offset:5px;border-radius:2px}
+.sub-links{display:flex;flex-wrap:wrap;gap:16px 26px;border-top:1px solid #e5e5e5;padding-top:24px;margin-top:24px}
+.login-card .sub-links{width:100%;justify-content:space-between;margin-top:auto}
+.wide-card{padding:64px 86px 44px;min-height:314px}
+.wide-card h3{margin-bottom:42px}
+.wide-card .sub-links{margin-top:40px;gap:16px 24px}
+.wide-card .sub-links a{gap:8px}
+.product-card{padding:48px 64px;min-height:244px}
+.product-card h3{margin-bottom:48px}
+@media(max-width:800px){main{width:calc(100% - 48px);padding-top:56px}h1{font-size:36px;margin-bottom:64px}section+section{margin-top:48px}.login-card{padding:32px 20px;min-height:210px}.login-card .sub-links{justify-content:center}.wide-card,.product-card{padding:32px;min-height:0}.wide-card h3,.product-card h3{margin-bottom:24px}.wide-card .sub-links{margin-top:24px}}
+@media(max-width:560px){main{width:calc(100% - 32px);padding:40px 0}h1{font-size:32px;margin-bottom:48px}h2{font-size:18px}.login-grid{grid-template-columns:1fr;gap:12px}.login-card{min-height:190px}.login-card .sub-links{margin-top:24px}.login-card.venti{min-height:150px;padding:28px}.wide-card,.product-card{padding:24px}h3{font-size:22px}a{font-size:14px;gap:10px}.wide-card .sub-links{gap:16px 20px}}
+@media(prefers-reduced-motion:reduce){a,a span{transition:none}}
+</style>
 </head>
 <body>
-    <h1>Hello Github!</h1>
-    <a href="Burgerking/login.html">버거킹 로그인 UI</a>
-    <Ul>
-        <li><a href="Burgerking/password_reset.html">비밀번호 재설정 화면1</a></li>
-        <li><a href="Burgerking/password_reset_complete.html">비밀번호 재설정화면2</a></li>
-    </Ul>
-    <br>
-    <a href="theventi/login.html">theventi 로그인 UI</a>
-    <br>
-    <br>
-    <a href="shoppulmuone/index.html">샵풀무원포트폴리오</a>
-    <Ul>
-        <li><a href="shoppulmuone/category.html">카테고리</a></li>
-        <li><a href="shoppulmuone/best.html">베스트</a></li>
-        <li><a href="shoppulmuone/new.html">신상품</a></li>
-        <li><a href="shoppulmuone/benefit.html">혜택</a></li>
-        <li><a href="shoppulmuone/daily.html">일일배달</a></li>
-        <li><a href="shoppulmuone/cart.html">장바구니</a></li>
-        <li><a href="shoppulmuone/my.html">마이</a></li>
-        <li><a href="shoppulmuone/login.html">로그인</a></li>
-        <li><a href="shoppulmuone/support.html">고객센터</a></li>
-    </Ul>
-    <br>
-   <a href="numate/index.html">뉴페이트 상세페이지</a>
+<main>
+<h1>All Projects</h1>
+<section aria-labelledby="login-heading">
+<h2 id="login-heading">Login UI Design</h2>
+<div class="login-grid">
+<article class="card login-card">
+<h3>버거킹</h3>
+<div class="primary"><a href="Burgerking/login.html">Burgerking 로그인 UI<span aria-hidden="true">→</span></a></div>
+<nav class="sub-links" aria-label="버거킹 비밀번호 재설정"><a href="Burgerking/password_reset.html">비밀번호 재설정 화면 1<span aria-hidden="true">→</span></a><a href="Burgerking/password_reset_complete.html">비밀번호 재설정 화면 2<span aria-hidden="true">→</span></a></nav>
+</article>
+<article class="card login-card venti">
+<h3>더벤티</h3>
+<div class="primary"><a href="theventi/login.html">TheVenti 로그인 UI<span aria-hidden="true">→</span></a></div>
+</article>
+</div>
+</section>
+<section aria-labelledby="web-heading">
+<h2 id="web-heading">Web Design</h2>
+<article class="card wide-card">
+<h3>샵풀무원</h3>
+<div class="primary"><a href="shoppulmuone/index.html">샵풀무원 포트폴리오<span aria-hidden="true">→</span></a></div>
+<nav class="sub-links" aria-label="샵풀무원 세부 페이지"><a href="shoppulmuone/category.html">카테고리<span aria-hidden="true">→</span></a>
+<a href="shoppulmuone/best.html">베스트<span aria-hidden="true">→</span></a>
+<a href="shoppulmuone/new.html">신상품<span aria-hidden="true">→</span></a>
+<a href="shoppulmuone/benefit.html">혜택<span aria-hidden="true">→</span></a>
+<a href="shoppulmuone/daily.html">일일배달<span aria-hidden="true">→</span></a>
+<a href="shoppulmuone/cart.html">장바구니<span aria-hidden="true">→</span></a>
+<a href="shoppulmuone/my.html">마이<span aria-hidden="true">→</span></a>
+<a href="shoppulmuone/login.html">로그인<span aria-hidden="true">→</span></a>
+<a href="shoppulmuone/support.html">고객센터<span aria-hidden="true">→</span></a></nav>
+</article>
+</section>
+<section aria-labelledby="product-heading">
+<h2 id="product-heading">Product Page Design</h2>
+<article class="card product-card">
+<h3>뉴메이트</h3>
+<div class="primary"><a href="numate/index.html">뉴메이트 비타민 상세페이지<span aria-hidden="true">→</span></a></div>
+</article>
+</section>
+</main>
 </body>
 </html>
