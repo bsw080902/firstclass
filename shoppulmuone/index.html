@@ -49,6 +49,37 @@ body.home-page .brand-product-image .recommend-actions > button{border-radius:18
  body.home-page .brand-product-image .recommend-actions{opacity:1;visibility:visible;transform:none}
 }
 </style>
+<style id="new-product-controls-restore">
+/* NEW section only: restore the original fixed-size wish/cart SVG controls.
+   Do not inherit card-width-dependent cqi sizing from product-card-wish.css. */
+body.home-page .new-product-info { container-type: normal; }
+body.home-page .new-product-actions { --action-height: 36px; gap: 6px !important; }
+body.home-page .new-product-actions > button {
+  height: 36px !important;
+  width: auto !important;
+  padding: 0 !important;
+}
+body.home-page .new-product-actions > button > img {
+  height: 36px !important;
+  width: auto !important;
+}
+body.home-page .new-product-actions > button > img.wish-active-overlay {
+  width: 100% !important;
+  height: 100% !important;
+}
+/* Keep text stationary: only natural line wrapping when the viewport changes. */
+body.home-page .new-product-info :is(.new-product-brand,h4,.new-product-delivery,.new-product-price),
+body.home-page .new-card-copy :is(span,h3) {
+  transition: none;
+  animation: none;
+  transform: none;
+}
+@media (max-width:767px) {
+  body.home-page .new-product-actions { --action-height: 30px; gap: 4px !important; }
+  body.home-page .new-product-actions > button,
+  body.home-page .new-product-actions > button > img { height: 30px !important; }
+}
+</style>
 </head>
 <body class="home-page">
     <div id="wrap">
