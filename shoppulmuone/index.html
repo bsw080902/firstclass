@@ -80,6 +80,29 @@ body.home-page .new-card-copy :is(span,h3) {
   body.home-page .new-product-actions > button > img { height: 30px !important; }
 }
 </style>
+<style id="new-heading-stability">
+/* NEW heading: use the same centered layout as the slider without transform. */
+body.home-page .new-section .new-inner > .new-heading,
+body.home-page .new-section .new-inner > .new-slider-shell {
+  width: min(100%, 1420px);
+  max-width: 1420px;
+  left: auto;
+  right: auto;
+  transform: none;
+  margin-inline: auto;
+}
+body.home-page .new-section .new-inner > .new-heading {
+  position: static;
+  opacity: 1;
+  transition: none;
+  animation: none;
+}
+body.home-page .new-heading h2 { font-size: 28px; transition: none; }
+body.home-page .new-heading p { font-size: 14px; transition: none; }
+@media (max-width: 767px) {
+  body.home-page .new-heading h2 { font-size: 23px; }
+}
+</style>
 </head>
 <body class="home-page">
     <div id="wrap">
@@ -711,7 +734,7 @@ body.home-page .new-card-copy :is(span,h3) {
             }, { threshold: Array.from({ length: 101 }, (_, i) => i / 100) });
 
             revealSections.forEach(section => {
-                const items = section.querySelectorAll('.quick-menu-list li, .recommend-heading, .recommend-card, .best-heading, .best-swiper, .best-more, .new-heading, .new-swiper, .new-more, .daily-content, .daily-image, .benefits-heading, .benefits-slider-shell, .benefits-pagination, .benefits-more, .brand-heading, .brand-tabs-shell, .brand-ad, .brand-product, .brand-more');
+                const items = section.querySelectorAll('.quick-menu-list li, .recommend-heading, .recommend-card, .best-heading, .best-swiper, .best-more, .new-swiper, .new-more, .daily-content, .daily-image, .benefits-heading, .benefits-slider-shell, .benefits-pagination, .benefits-more, .brand-heading, .brand-tabs-shell, .brand-ad, .brand-product, .brand-more');
                 items.forEach((item, index) => {
                     item.classList.add('scroll-reveal-item');
                     item.style.setProperty('--reveal-delay', (index % 6) * 65 + 'ms');
