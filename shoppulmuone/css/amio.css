@@ -2,3 +2,12 @@
 /* Keep all five product illustrations smaller, uncropped and in their original proportions. */
 .amio-story .amio-visual{width:100%;max-width:440px;justify-self:center;padding:0 18% 24px 0;box-sizing:border-box}.amio-story.is-reverse .amio-visual{padding:0 0 24px 18%}.amio-story .amio-food{height:auto;aspect-ratio:auto;max-height:300px;object-fit:contain}.amio-story .amio-item-slider{width:35%;max-width:150px;aspect-ratio:3/4;bottom:0}.amio-story .amio-item-slider .swiper-wrapper{height:100%}.amio-story .amio-item-slider .swiper-slide{height:100%;min-width:0;box-sizing:border-box;padding:0 0 20px;display:flex;align-items:center;justify-content:center}.amio-story .amio-item-slider img{display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain}.amio-story .amio-static{padding:0;box-sizing:border-box}.amio-story .amio-item-slider .amio-pagination{bottom:0!important}.amio-story .amio-item-slider .amio-pause{bottom:0;right:0;width:20px;height:20px}@media(max-width:767px){.amio-story .amio-visual{width:85%;max-width:340px}.amio-story .amio-item-slider{max-width:110px}.amio-story .amio-food{max-height:230px}}
 
+
+/* 아미오 소개 배너: 기존 이미지 왼쪽 여백에 로고와 실시간 텍스트 배치 */
+.amio-intro-banner{position:relative;isolation:isolate}
+.amio-intro-banner .amio-intro-copy{position:absolute;left:6%;top:50%;transform:translateY(-50%);width:39%;color:#000;z-index:1}
+.amio-intro-banner .amio-intro-logo{display:block;width:32%;max-width:180px;height:auto;object-fit:contain;margin:0 0 clamp(8px,2.1vw,40px)}
+.amio-intro-copy h2{margin:0;line-height:1.16;letter-spacing:-.045em;font-weight:800;word-break:keep-all}
+.amio-intro-copy h2 span{display:block;font-size:clamp(12px,2.75vw,53px);font-weight:800}
+.amio-intro-copy h2 strong{display:block;margin-top:.14em;font-size:clamp(17px,4.1vw,79px);font-weight:900}
+@media(max-width:767px){.amio-intro-banner .amio-intro-copy{left:4%;width:43%}.amio-intro-banner .amio-intro-logo{width:35%;margin-bottom:5px}.amio-intro-copy h2 span{font-size:clamp(9px,2.75vw,21px)}.amio-intro-copy h2 strong{font-size:clamp(13px,4.1vw,31px)}}
