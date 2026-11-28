@@ -12,8 +12,17 @@
 
 <script src="js/product-card-wish.js?v=1" defer></script>
 <link rel="stylesheet" href="css/catalog-stability.css?v=1"><link rel="stylesheet" href="css/product-card-wish.css?v=20261128-action-size-plus10">
+<style>
+/* BEST 첫 진입: 고정 헤더 높이만큼만 공간 확보.
+   공통 JS가 생성하는 가변 높이 spacer는 이 페이지에서 사용하지 않는다. */
+body.best-document #wrap > .site-header-spacer{display:none}
+body.best-document #wrap > main.best-page{padding-top:120px}
+@media(max-width:767px){
+ body.best-document #wrap > main.best-page{padding-top:112px}
+}
+</style>
 </head>
-<body><div id="wrap">
+<body class="best-document"><div id="wrap">
 <header class="site-header">
             <div class="header-inner">
                 <a class="header-logo" href="index.html" aria-label="샵풀무원 홈">
