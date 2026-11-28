@@ -60,22 +60,32 @@
 .header-nav .nav-dropdown:hover .icon-hover,
 .header-nav .nav-dropdown:focus-visible .icon-hover { opacity: 1; }
 .header-nav .category-link .icon-hover { width: 26px; height: 26px; }
-/* 카테고리 클릭: 색상은 고정하고 아이콘의 투명도와 크기만 부드럽게 전환 */
-.header-nav .category-link { transition:none; }
-.header-nav .category-link .nav-icon-switch img { transition:opacity .25s ease, transform .25s ease; filter:none; transform-origin:center; }
-.header-nav .category-link .icon-default { transform:scale(1); }
-.header-nav .category-link .icon-hover { transform:scale(.85); }
-.header-nav .category-link.is-active .icon-default { transform:scale(.85); }
-.header-nav .category-link.is-active .icon-hover { transform:scale(1); }
-@media(prefers-reduced-motion:reduce){
- .header-nav .category-link .nav-icon-switch img { transition:none; transform:none; }
+/* 카테고리: 두 아이콘에 동일한 currentColor를 적용하여 닫을 때 중간 색상 방지 */
+.header-nav .category-link{transition:none}
+.header-nav .category-link .nav-icon-switch{width:26px;height:26px;color:inherit}
+.header-nav .category-link .nav-icon-switch img{display:none}
+.header-nav .category-link .nav-icon-switch::before,
+.header-nav .category-link .nav-icon-switch::after{
+ content:"";position:absolute;inset:0;background-color:currentColor;
+ transition:opacity .25s ease,transform .25s ease;
+ transform-origin:center;
 }
-.header-nav .category-link:hover .icon-default,
-.header-nav .category-link:focus-visible .icon-default,
-.header-nav .category-link.is-active .icon-default { filter:brightness(0) saturate(100%) invert(36%) sepia(95%) saturate(1605%) hue-rotate(105deg) brightness(90%) contrast(103%); }
-.header-nav .category-link.is-active .icon-default { opacity:0; }
-.header-nav .category-link.is-active .icon-hover { opacity:1; filter:none; }
-.header-nav .category-link:is(:hover,:focus-visible,:active,.is-active) { color:var(--brand-green,#009333); }
+.header-nav .category-link .nav-icon-switch::before{
+ -webkit-mask:url("../img/Menu_icon.svg") center/contain no-repeat;
+ mask:url("../img/Menu_icon.svg") center/contain no-repeat;
+ opacity:1;transform:scale(1);
+}
+.header-nav .category-link .nav-icon-switch::after{
+ -webkit-mask:url("../img/Cancel.svg") center/contain no-repeat;
+ mask:url("../img/Cancel.svg") center/contain no-repeat;
+ opacity:0;transform:scale(.85);
+}
+.header-nav .category-link.is-active .nav-icon-switch::before{opacity:0;transform:scale(.85)}
+.header-nav .category-link.is-active .nav-icon-switch::after{opacity:1;transform:scale(1)}
+.header-nav .category-link:is(:hover,:focus-visible,:active,.is-active){color:var(--brand-green,#009333)}
+@media(prefers-reduced-motion:reduce){
+ .header-nav .category-link .nav-icon-switch::before,.header-nav .category-link .nav-icon-switch::after{transition:none;transform:none}
+}
 /* SVG 이미지는 CSS color를 상속하지 않으므로 hover 때 녹색 필터 적용 */
 .header-nav a:hover img:not(.nav-divider):not(.icon-hover),
 .header-nav a:focus-visible img:not(.nav-divider):not(.icon-hover),
