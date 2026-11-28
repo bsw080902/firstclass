@@ -8,8 +8,16 @@
 <link rel="stylesheet" href="css/best.css?v=20261103-6"><link rel="stylesheet" href="css/benefit.css?v=20261127-locked-tab-geometry">
 
 <script src="js/category-links.js?v=20261126-category-single-state" defer></script><script src="js/benefit.js?v=20261104-14" defer></script>
-<script src="js/scroll-header.js?v=20261126-css-header-hover" defer></script><link rel="stylesheet" href="css/catalog-stability.css?v=1"></head>
-<body><div id="wrap">
+<script src="js/scroll-header.js?v=20261126-css-header-hover" defer></script><link rel="stylesheet" href="css/catalog-stability.css?v=1"><style id="benefit-initial-layout">
+/* Reserve the fixed header space in CSS from the first paint. */
+body.benefit-document #wrap > .site-header-spacer{display:none!important}
+body.benefit-document #wrap > main.benefit-page{margin-top:0;padding-top:120px;box-sizing:border-box}
+body.benefit-document #wrap > main.benefit-page > .benefit-hero{margin-top:0}
+@media(max-width:767px){
+ body.benefit-document #wrap > main.benefit-page{padding-top:112px}
+}
+</style></head>
+<body class="benefit-document"><div id="wrap">
 <header class="site-header">
             <div class="header-inner">
                 <a class="header-logo" href="index.html" aria-label="샵풀무원 홈">
