@@ -2523,8 +2523,8 @@ html,body{
 .home-page .brand-heading{flex:0 1 33.4%;min-width:0}
 .home-page .brand-ad{flex:0 0 33.4%;width:33.4%;max-width:500px;height:auto;aspect-ratio:1}
 .home-page .brand-content{min-height:0}
-.home-page .brand-product-list{gap:clamp(12px,2vw,32px)}
-.home-page .brand-product{flex:0 0 clamp(145px,30.5%,300px)}
+.home-page .brand-product-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,32px);overflow:visible}
+.home-page .brand-product{min-width:0;width:100%;max-width:none}
 .home-page .brand-product-image{width:100%;height:auto;aspect-ratio:1}
 .home-page .brand-content > .brand-tabs-prev,.home-page .brand-content > .brand-tabs-next{top:clamp(80px,16vw,250px)}
 @media (max-width:1199px){
@@ -2533,7 +2533,6 @@ html,body{
  .home-page .recommend-card{flex-basis:clamp(170px,27%,300px)}
  .home-page .recommend-card-featured{flex-basis:clamp(220px,36%,400px)}
  .home-page .best-swiper .swiper-slide{width:clamp(170px,27%,300px)}
- .home-page .brand-product{flex-basis:clamp(160px,45%,300px)}
  .home-page .new-slider-shell > .new-prev,.home-page .benefits-prev,.home-page .brand-content > .brand-tabs-prev{left:0}
  .home-page .new-slider-shell > .new-next,.home-page .benefits-next,.home-page .brand-content > .brand-tabs-next{right:0}
 }
@@ -2553,7 +2552,8 @@ html,body{
  .home-page .brand-content{flex-direction:column}
  .home-page .brand-ad{flex:auto;width:min(100%,500px)}
  .home-page .brand-products{width:100%}
- .home-page .brand-product{flex-basis:clamp(138px,47%,260px)}
+ .home-page .brand-product-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,2vw,16px)}
+ .home-page .brand-product .recommend-name{font-size:clamp(12px,3.5vw,14px)}
  .home-page .hero-sec + .quick-menu .quick-menu-list{gap:clamp(4px,1.5vw,12px)}
  .home-page .hero-sec + .quick-menu .quick-menu-list a{white-space:normal}
  .home-page .new-product-info{padding-bottom:0;display:flex;flex-direction:column}
