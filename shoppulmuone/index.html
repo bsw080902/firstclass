@@ -18,15 +18,18 @@
  body.home-page :is(.recommend-actions,.best-actions,.new-product-actions) button > img{height:36px;width:auto}
  body.home-page :is(.recommend-actions,.best-actions,.new-product-actions) button > img.wish-active-overlay{width:100%;height:100%}
 }
+@media(min-width:768px) and (max-width:1280px){
+ body.home-page .brand-product-image .recommend-actions{--action-height:min(clamp(26px,calc(13cqi + 2.4px),38px),17cqi)}
+}
 </style>
 <link rel="stylesheet" href="css/catalog-stability.css?v=1">
 
-<link rel="stylesheet" href="css/product-card-wish.css?v=20261128-action-size-plus10">
+<link rel="stylesheet" href="css/product-card-wish.css?v=20261128-action-desktop-tablet-plus">
 <style id="brand-action-restore">
 /* BRAND: restore the original reference card control layout and responsive sizing. */
 body.home-page .brand-product-image{container-type:inline-size}
 body.home-page .brand-product-image .recommend-actions{
- --action-height:clamp(22px,calc(11cqi + 2.2px),35.2px);
+ --action-height:clamp(24px,calc(12cqi + 2.4px),38px);
  --action-gap:clamp(3px,2cqi,6px);
  --action-inset:clamp(6px,4cqi,12px);
  max-width:none;opacity:0;visibility:hidden;transform:translateY(7px);
