@@ -20,7 +20,35 @@
  body.home-page :is(.recommend-actions,.best-actions,.new-product-actions) button > img.wish-active-overlay{width:100%;height:100%}
 }
 </style>
-<link rel="stylesheet" href="css/catalog-stability.css?v=1"></head>
+<link rel="stylesheet" href="css/catalog-stability.css?v=1">
+<style id="home-brand-action-match">
+/* BRAND의 실제 버튼 크기를 기준으로 메인 페이지의 다른 카드에만 동일하게 적용 */
+body.home-page :is(.recommend-image,.best-image,.new-product-info) :is(.recommend-actions,.best-actions,.new-product-actions){
+ --action-height:var(--home-brand-action-height,32px);
+ gap:var(--home-brand-action-gap,6px);
+ transition:opacity .25s ease,transform .25s ease,visibility .25s ease;
+}
+body.home-page :is(.recommend-image,.best-image) :is(.recommend-actions,.best-actions){
+ right:var(--home-brand-action-right,12px);bottom:var(--home-brand-action-bottom,12px);
+}
+body.home-page :is(.recommend-image,.best-image,.new-product-info) :is(.recommend-actions,.best-actions,.new-product-actions) > button{
+ height:var(--action-height);width:auto;min-width:0;min-height:0;flex:0 0 auto;
+ display:inline-flex;align-items:center;justify-content:center;padding:0;border:0;background:transparent;line-height:0;transition:filter .25s ease;
+}
+body.home-page :is(.recommend-image,.best-image,.new-product-info) :is(.recommend-actions,.best-actions,.new-product-actions) > button > img{
+ height:var(--action-height);width:auto;max-width:none;object-fit:contain;display:block;
+}
+body.home-page :is(.recommend-image,.best-image,.new-product-info) :is(.recommend-actions,.best-actions,.new-product-actions) > button > img.wish-active-overlay{
+ position:absolute;inset:0;width:100%;height:100%;pointer-events:none;
+}
+body.home-page :is(.recommend-image,.best-image,.new-product-info) :is(.recommend-actions,.best-actions,.new-product-actions) > button:is(:hover,:focus-visible){filter:var(--home-brand-action-hover,brightness(.94));background:transparent}
+body.home-page :is(.recommend-image,.best-image,.new-product-info) :is(.recommend-actions,.best-actions,.new-product-actions) > button.recommend-wish[aria-pressed="true"]{filter:none}
+@media(prefers-reduced-motion:reduce){
+ body.home-page :is(.recommend-image,.best-image,.new-product-info) :is(.recommend-actions,.best-actions,.new-product-actions),
+ body.home-page :is(.recommend-image,.best-image,.new-product-info) :is(.recommend-actions,.best-actions,.new-product-actions) > button{transition:none}
+}
+</style>
+</head>
 <body class="home-page">
     <div id="wrap">
         <header class="site-header">
@@ -906,5 +934,31 @@
             if (search.classList.contains('mobile-search-open')) search.querySelector('input').focus();
         });
     </script>
-<script src="js/product-card-links.js?v=20261110-new-product-image" defer></script></body>
+<script src="js/product-card-links.js?v=20261110-new-product-image" defer></script>
+<script>
+/* 브랜드 버튼의 실제 CSS 계산값을 복사: 화면 크기가 바뀌면 함께 갱신 */
+(() => {
+ const images = Array.from(document.querySelectorAll('.brand-product-image'));
+ if (!images.length) return;
+ function syncBrandActionSize(){
+  const source = images.find(el => el.getBoundingClientRect().width > 0);
+  if (!source) return;
+  const group = source.querySelector('.recommend-actions');
+  const button = group?.querySelector('.recommend-cart');
+  if (!button) return;
+  const g = getComputedStyle(group), b = getComputedStyle(button);
+  const values = {height:b.height,gap:g.columnGap,right:g.right,bottom:g.bottom};
+  for (const [key,value] of Object.entries(values)) {
+   if (Number.isFinite(parseFloat(value))) document.body.style.setProperty('--home-brand-action-'+key,value);
+  }
+ }
+ syncBrandActionSize();
+ window.addEventListener('resize',syncBrandActionSize,{passive:true});
+ if ('ResizeObserver' in window){
+  const observer=new ResizeObserver(syncBrandActionSize);
+  images.forEach(el=>observer.observe(el));
+ }
+})();
+</script>
+</body>
 </html>
