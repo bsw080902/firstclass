@@ -124,6 +124,17 @@ body.home-page .benefits-section .benefit-card-footer > div > strong{font-size:1
  body.home-page .benefits-section .benefit-card-copy .benefit-badge{font-size:11px}
 }
 </style>
+<style id="benefit-footer-spacing">
+body.home-page .benefits-section .benefit-card-footer{column-gap:28px;row-gap:12px;flex-wrap:wrap}
+body.home-page .benefits-section .benefit-card-footer > div{min-width:0}
+body.home-page .benefits-section .benefit-card-footer > a{margin-inline-start:auto;flex-shrink:0}
+@media(min-width:768px) and (max-width:1280px){
+ body.home-page .benefits-section .benefit-card-footer{column-gap:24px}
+}
+@media(max-width:767px){
+ body.home-page .benefits-section .benefit-card-footer{column-gap:18px;row-gap:10px}
+}
+</style>
 </head>
 <body class="home-page">
     <div id="wrap">
