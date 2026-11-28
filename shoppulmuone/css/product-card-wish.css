@@ -29,7 +29,7 @@
 /* 브랜드 상품 카드 기준: 모든 상품 카드에 동일한 반응형 규칙 적용 */
 body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media,.new-list-image,.new-product-info){container-type:inline-size}
 body :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions){
- --action-height:clamp(22px,calc(11cqi + 2.2px),35.2px);
+ --action-height:clamp(24px,calc(12cqi + 2.4px),38px);
  --action-gap:clamp(3px,2cqi,6px);
  --action-inset:clamp(6px,4cqi,12px);
  display:flex;align-items:center;justify-content:flex-end;gap:var(--action-gap)!important;
@@ -73,4 +73,11 @@ body.home-page .best-swiper .swiper-slide-active .best-image .recommend-actions{
  body :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions),
  body :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions) > button,
  body.home-page .best-swiper .best-image .recommend-actions{transition:none}
+}
+
+/* iPad/tablet: slightly larger controls, bounded by available card width. */
+@media(min-width:768px) and (max-width:1280px){
+ body :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions){
+  --action-height:min(clamp(26px,calc(13cqi + 2.4px),38px),17cqi);
+ }
 }
