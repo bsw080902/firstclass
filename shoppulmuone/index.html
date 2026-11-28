@@ -37,7 +37,7 @@ body.home-page .best-swiper .swiper-slide-active .best-image .recommend-actions{
  body.home-page .best-swiper .best-image .recommend-actions{transition:none}
 }
 body.home-page :is(.recommend-image,.best-image,.new-product-info) :is(.recommend-actions,.best-actions,.new-product-actions){
- --action-height:clamp(20px,calc(10cqi + 2px),32px);
+ --action-height:min(var(--brand-reference-height,32px),clamp(20px,calc(10cqi + 2px),32px));
  gap:clamp(3px,2cqi,6px);
  transition:opacity .25s ease,transform .25s ease,visibility .25s ease;
 }
@@ -62,7 +62,7 @@ body.home-page :is(.recommend-image,.best-image,.new-product-info) :is(.recommen
 }
 @media(max-width:767px){
  body.home-page :is(.recommend-image,.best-image,.new-product-info) :is(.recommend-actions,.best-actions,.new-product-actions){
-  --action-height:clamp(18px,calc(12cqi + 2px),34px);
+  --action-height:min(var(--brand-reference-height,34px),clamp(18px,calc(12cqi + 2px),34px));
   gap:clamp(2px,2cqi,6px);
  }
  body.home-page :is(.recommend-image,.best-image) :is(.recommend-actions,.best-actions){
@@ -958,5 +958,21 @@ body.home-page :is(.recommend-image,.best-image,.new-product-info) :is(.recommen
     </script>
 <script src="js/product-card-links.js?v=20261110-new-product-image" defer></script>
 
+<script>
+/* 브랜드 버튼의 실제 높이를 상한으로 사용하되, 더 좁은 카드는 자체 너비에 따라 축소 */
+(() => {
+ const reference = document.querySelector('.brand-product-image');
+ if (!reference) return;
+ const sync = () => {
+  const button = reference.querySelector('.recommend-cart > img');
+  if (!button) return;
+  const height = parseFloat(getComputedStyle(button).height);
+  if (Number.isFinite(height) && height > 0) document.body.style.setProperty('--brand-reference-height',height+'px');
+ };
+ sync();
+ window.addEventListener('resize',sync,{passive:true});
+ if ('ResizeObserver' in window) new ResizeObserver(sync).observe(reference);
+})();
+</script>
 </body>
 </html>
