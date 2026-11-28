@@ -2854,3 +2854,12 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
 
 /* 섹션 하단 CTA: 자세히 보기와 동일한 호버 밝기만 적용 (기존 이동 효과 유지) */
 a.text-cta:is(.recommend-more,.best-more,.new-more,.benefits-more,.brand-more):is(:hover,:focus-visible){filter:brightness(.94)}
+
+/* 모바일 BRAND: 상품 두 개만 표시하고 브랜드 탭의 다음 항목을 가장자리에 노출 */
+@media(max-width:767px){
+ .home-page .brand-product-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+ .home-page .brand-product-list > .brand-product:nth-child(n+3){display:none}
+ .home-page .brand-tabs-shell{width:calc(100% + 16px);max-width:none;min-width:0;align-self:flex-start;overflow:hidden}
+ .home-page .brand-tabs{gap:9px;padding:4px 16px 4px 0;box-sizing:border-box;overflow-x:auto;scrollbar-width:none;touch-action:pan-x pan-y}
+ .home-page .brand-tabs .brand-tab{flex:0 0 auto;padding:8px 14px;font-size:12px;line-height:1.4;white-space:nowrap}
+}
