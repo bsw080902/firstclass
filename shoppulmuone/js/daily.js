@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="best-product-info daily-main-best-info">
         <p class="best-product-brand">${product.brand}</p>
         <h3>${product.name}</h3>
-        <p class="best-product-delivery">${product.delivery === false ? '배송 예정일은 결제 시 확인' : '지금 결제 시 <strong>10-22 (목)</strong> 도착'}</p>
+        <p class="best-product-delivery">지금 결제 시 <strong>10-22 (목)</strong> 도착</p>
         <p class="best-price">${product.discount ? '<span>'+product.discount+'</span> ' : ''}<strong>${product.price}</strong></p>
       </div>`;
     return card;
