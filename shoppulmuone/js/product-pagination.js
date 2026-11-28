@@ -28,8 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function go(grid, target) {
     const state = states.get(grid);
     const total = Math.max(1, Math.ceil(cards(grid).length / PAGE_SIZE));
-    state.page = Math.max(0, Math.min(total - 1, target));
+    const nextPage = Math.max(0, Math.min(total - 1, target));
+    if (nextPage === state.page) return;
+    state.page = nextPage;
     refresh(grid, false);
+    // 사용자 페이지 이동에만 적용: 초기화 및 필터 갱신에는 스크롤하지 않음.
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }
   function refresh(grid, reset) {
     const state = states.get(grid);
