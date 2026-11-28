@@ -2,6 +2,28 @@
 
 <script src="js/brand.js?v=20261128-delivery-tag-fix" defer></script><link rel="stylesheet" href="css/catalog-stability.css?v=1"><link rel="stylesheet" href="css/product-card-wish.css?v=20261128-action-desktop-tablet-plus">
 <style>.new-list-delivery strong{color:#80c441;font-weight:600}</style>
+<style id="delivery-date-display-fix">
+.best-product-delivery strong,.new-list-delivery strong,.detail-delivery strong{color:#80c441;font-weight:700}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+ const selector='.best-product-delivery,.new-list-delivery,.detail-delivery';
+ function fix(){
+  document.querySelectorAll(selector).forEach(function(el){
+   const text=el.textContent.trim();
+   if(text==='상품 정보 준비 중')return;
+   if(text==='지금 결제 시 10-22 (목) 도착' && el.children.length===1 && el.firstElementChild.tagName==='STRONG' && el.firstElementChild.textContent==='10-22 (목)')return;
+   const date=document.createElement('strong');
+   date.textContent='10-22 (목)';
+   el.replaceChildren(document.createTextNode('지금 결제 시 '),date,document.createTextNode(' 도착'));
+  });
+ }
+ fix();
+ new MutationObserver(function(records){
+  if(records.some(function(record){return record.target.nodeType===1 && (record.target.closest(selector)||Array.from(record.addedNodes).some(function(node){return node.nodeType===1&&(node.matches(selector)||node.querySelector(selector));}));}))fix();
+ }).observe(document.body,{childList:true,subtree:true,characterData:true});
+});
+</script>
 </head><body><div id="wrap"><header class="site-header">
             <div class="header-inner">
                 <a class="header-logo" href="index.html" aria-label="샵풀무원 홈">
