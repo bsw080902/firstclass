@@ -2836,3 +2836,8 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
  }
  .site-header .header-actions .header-action-menu:has(>a[aria-label="고객센터"]):is(:hover,:focus-within) .header-action-panel{transform:translateY(0)}
 }
+
+/* 자세히 보기: 상품 카드 장바구니와 동일한 밝기 전환, 위치 이동 없음 */
+.benefit-card-footer a.text-cta{transition:filter .25s ease}
+.benefit-card-footer a.text-cta:hover,.benefit-card-footer a.text-cta:focus-visible{transform:none;filter:brightness(.94);opacity:1}
+@media(prefers-reduced-motion:reduce){.benefit-card-footer a.text-cta{transition:none}}
