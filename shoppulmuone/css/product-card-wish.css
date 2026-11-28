@@ -26,97 +26,56 @@
  .best-wish > .best-wish-default,.best-wish > .best-wish-selected {transition:none}
 }
 
-/* 카드 호버 시 나타나는 빠른 행동 버튼: 기존 크기/배치 유지 */
-.recommend-actions,
-.best-actions {
-  transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
+/* 공통 상품 카드 버튼: 1920px 기준 높이 32px, SVG 원본 비율 유지.
+   화면 너비에 비례하며 좁은 카드에서는 카드 내부 공간을 넘지 않도록 제한. */
+body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media,.new-product-info){
+  container-type:inline-size;
 }
-.recommend-actions button,
-.best-actions button {
-  transition: filter .25s ease;
+body :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions){
+  --action-height:clamp(18px,1.666667vw,32px);
+  --action-gap:clamp(3px,.3125vw,6px);
+  --action-inset:clamp(4px,.625vw,12px);
+  display:flex;align-items:center;justify-content:flex-end;
+  gap:var(--action-gap);
+  transition:opacity .25s ease,transform .25s ease,visibility .25s ease;
 }
-@media (prefers-reduced-motion: reduce) {
-  .recommend-actions,
-  .best-actions,
-  .recommend-actions button,
-  .best-actions button { transition: none; }
-}
-
-
-/* 상품 이미지 너비 기준으로 버튼 크기 자동 조절 (PC 최대 크기 유지) */
-@media (max-width:767px) {
-  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) { container-type:inline-size; }
-  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) :is(.recommend-actions,.best-actions,.best-product-actions) {
-    --action-height:clamp(18px, calc(12cqi + 2px), 34px);
-    position:absolute;
-    left:auto;
-    right:clamp(4px, 4cqi, 12px);
-    bottom:clamp(4px, 4cqi, 12px);
-    width:auto;
-    max-width:92%;
-    display:flex;
-    align-items:center;
-    justify-content:flex-end;
-    gap:clamp(2px, 2cqi, 6px);
-  }
-  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) :is(.recommend-actions,.best-actions,.best-product-actions) button,
-  body .new-card .new-product-actions button,
-  body .new-page .new-product-actions button {
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    flex:0 0 auto;
-    width:auto;
-    height:var(--action-height, clamp(20px, calc(5.5vw + 2px), 34px));
-    padding:0;
-    border:0;
-    background:transparent;
-    line-height:0;
-  }
-  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) :is(.recommend-actions,.best-actions,.best-product-actions) button img,
-  body .new-card .new-product-actions button img,
-  body .new-page .new-product-actions button img {
-    display:block;
-    width:auto;
-    height:var(--action-height, clamp(20px, calc(5.5vw + 2px), 34px));
-    max-width:none;
-    object-fit:contain;
-  }
-  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) .recommend-wish > img.wish-active-overlay,
-  body .new-product-actions .recommend-wish > img.wish-active-overlay {
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    pointer-events:none;
-  }
-  body .new-card .new-product-actions,
-  body .new-page .new-product-actions {
-    justify-content:flex-end;
-    gap:clamp(2px, 1vw, 6px);
+@supports (width:1cqi){
+  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media,.new-product-info) :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions){
+    --action-height:min(clamp(18px,1.666667vw,32px),16cqi);
   }
 }
-
-/* 태블릿/PC에서도 화면이 아닌 실제 상품 이미지 폭 기준으로 버튼을 축소.
-   모바일의 기존 크기 규칙은 유지한다. */
-@media (min-width:768px) {
-  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) { container-type:inline-size; }
-  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) :is(.recommend-actions,.best-actions,.best-product-actions) {
-    --action-height:clamp(20px, calc(10cqi + 2px), 32px);
-    right:clamp(6px,4cqi,12px);
-    bottom:clamp(6px,4cqi,12px);
-    gap:clamp(3px,2cqi,6px);
-  }
-  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) :is(.recommend-actions,.best-actions,.best-product-actions) > button {
-    height:var(--action-height); width:auto; flex:0 0 auto; padding:0;
-  }
-  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) :is(.recommend-actions,.best-actions,.best-product-actions) > button img {
-    height:var(--action-height);width:auto;max-width:none;object-fit:contain;
-  }
-  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) .recommend-wish > img.wish-active-overlay {width:100%;height:100%;}
-  body .new-card .new-product-info {container-type:inline-size;}
-  body .new-card .new-product-actions {--action-height:clamp(20px,calc(10cqi + 2px),32px);gap:clamp(3px,2cqi,6px);}
-  body .new-card .new-product-actions > button,body .new-card .new-product-actions > button img {height:var(--action-height);width:auto;}
-  body .new-card .new-product-actions > button {flex:0 0 auto;}
-  body .new-card .new-product-actions .recommend-wish > img.wish-active-overlay {width:100%;height:100%;}
+body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) :is(.recommend-actions,.best-actions,.best-product-actions){
+  position:absolute;left:auto;right:var(--action-inset);bottom:var(--action-inset);width:auto;max-width:calc(100% - 2 * var(--action-inset));
+  opacity:0;visibility:hidden;transform:translateY(7px);
+}
+body :is(.recommend-card,.best-card,.brand-product,.best-product,.new-list-card):is(:hover,:focus-within) :is(.recommend-actions,.best-actions,.best-product-actions),
+body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media):is(:hover,:focus-within) :is(.recommend-actions,.best-actions,.best-product-actions){
+  opacity:1;visibility:visible;transform:translateY(0);
+}
+body :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions) > button{
+  display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+  box-sizing:border-box;width:auto;height:var(--action-height);min-width:0;min-height:0;
+  padding:0;border:0;border-radius:999px;background:transparent;line-height:0;cursor:pointer;
+  transition:filter .25s ease;
+}
+body :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions) > button > img{
+  display:block;width:auto;height:var(--action-height);max-width:none;object-fit:contain;
+}
+body :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions) > button:is(.recommend-wish,.best-wish){
+  position:relative;width:calc(var(--action-height) * 65 / 36);
+}
+body :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions) > button:is(.recommend-cart,.best-cart){
+  width:calc(var(--action-height) * 107 / 36);
+}
+body :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions) > button > :is(img.wish-active-overlay,img.best-wish-selected){
+  position:absolute;inset:0;width:100%;height:100%;pointer-events:none;
+}
+body :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions) > button:is(:hover,:focus-visible){filter:brightness(.94);background:transparent}
+body :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions) > button:is(.recommend-wish,.best-wish)[aria-pressed="true"]{filter:none}
+@media(hover:none){
+  body :is(.recommend-image,.best-image,.brand-product-image,.best-product-media) :is(.recommend-actions,.best-actions,.best-product-actions){opacity:1;visibility:visible;transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  body :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions),
+  body :is(.recommend-actions,.best-actions,.best-product-actions,.new-product-actions) > button{transition:none}
 }
