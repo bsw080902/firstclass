@@ -81,3 +81,9 @@ body.home-page .best-swiper .swiper-slide-active .best-image .recommend-actions{
   --action-height:min(clamp(26px,calc(13cqi + 2.4px),38px),17cqi);
  }
 }
+
+/* All product cards: consistent brand / product name / delivery typography. */
+body :is(.recommend-brand,.best-brand,.new-product-brand,.best-product-brand,.new-list-brand){font-size:14px!important}
+body :is(.recommend-name,.best-info h3,.new-product-info h4,.new-product-info h3,.best-product-info h3,.new-list-info h3,.daily-main-best-info h3){font-size:16px!important}
+body :is(.recommend-delivery,.best-delivery,.new-product-delivery,.best-product-delivery,.new-list-delivery){font-size:14px!important}
+body :is(.recommend-delivery,.best-delivery,.new-product-delivery,.best-product-delivery,.new-list-delivery) strong{font-size:inherit!important}
