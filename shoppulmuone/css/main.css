@@ -2841,3 +2841,6 @@ body.category-filter-visible .site-scroll-top{opacity:0;visibility:hidden;pointe
 .benefit-card-footer a.text-cta{transition:filter .25s ease}
 .benefit-card-footer a.text-cta:hover,.benefit-card-footer a.text-cta:focus-visible{transform:none;filter:brightness(.94);opacity:1}
 @media(prefers-reduced-motion:reduce){.benefit-card-footer a.text-cta{transition:none}}
+
+/* 섹션 하단 CTA: 자세히 보기와 동일한 호버 밝기만 적용 (기존 이동 효과 유지) */
+a.text-cta:is(.recommend-more,.best-more,.new-more,.benefits-more,.brand-more):is(:hover,:focus-visible){filter:brightness(.94)}
