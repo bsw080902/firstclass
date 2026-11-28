@@ -23,6 +23,18 @@
 <link rel="stylesheet" href="css/catalog-stability.css?v=1">
 <style id="home-brand-action-match">
 /* BRAND의 실제 버튼 크기를 기준으로 메인 페이지의 다른 카드에만 동일하게 적용 */
+/* BEST 가운데 이미지의 확대 배율이 버튼에 중복 적용되지 않도록 역보정 */
+body.home-page .best-swiper .best-image .recommend-actions{
+ scale:1;transform-origin:right bottom;
+ transition:opacity .25s ease,transform .25s ease,visibility .25s ease,scale .4s ease;
+}
+body.home-page .best-swiper .swiper-slide-active .best-image .recommend-actions{scale:0.909090909}
+@media(max-width:767px){
+ body.home-page .best-swiper .swiper-slide-active .best-image .recommend-actions{scale:0.943396226}
+}
+@media(prefers-reduced-motion:reduce){
+ body.home-page .best-swiper .best-image .recommend-actions{transition:none}
+}
 body.home-page :is(.recommend-image,.best-image,.new-product-info) :is(.recommend-actions,.best-actions,.new-product-actions){
  --action-height:var(--home-brand-action-height,32px);
  gap:var(--home-brand-action-gap,6px);
