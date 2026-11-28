@@ -87,3 +87,10 @@ body :is(.recommend-brand,.best-brand,.new-product-brand,.best-product-brand,.ne
 body :is(.recommend-name,.best-info h3,.new-product-info h4,.new-product-info h3,.best-product-info h3,.new-list-info h3,.daily-main-best-info h3){font-size:16px!important}
 body :is(.recommend-delivery,.best-delivery,.new-product-delivery,.best-product-delivery,.new-list-delivery){font-size:14px!important}
 body :is(.recommend-delivery,.best-delivery,.new-product-delivery,.best-product-delivery,.new-list-delivery) strong{font-size:inherit!important}
+
+/* Mobile product card text: reduce each desktop size by 2px. */
+@media(max-width:767px){
+ body :is(.recommend-brand,.best-brand,.new-product-brand,.best-product-brand,.new-list-brand){font-size:12px!important}
+ body :is(.recommend-name,.best-info h3,.new-product-info h4,.new-product-info h3,.best-product-info h3,.new-list-info h3,.daily-main-best-info h3){font-size:14px!important}
+ body :is(.recommend-delivery,.best-delivery,.new-product-delivery,.best-product-delivery,.new-list-delivery){font-size:12px!important}
+}
