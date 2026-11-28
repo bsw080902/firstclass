@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
  const brand = (q.get('brand') || '풀무원').slice(0,90);
  const price = (q.get('price') || '').slice(0,30);
  const discount = (q.get('discount') || '').slice(0,12);
- const delivery = (q.get('delivery') || '').slice(0,130);
+ const rawDelivery = (q.get('delivery') || '').slice(0,130);
+ const delivery = !rawDelivery || /배송\s*예정일은\s*결제\s*시\s*확인|배송\s*정보는\s*주문\s*시\s*확인/.test(rawDelivery) ? '지금 결제 시 10-22 (목) 도착' : rawDelivery;
  const isDaily = q.get('daily') === '1';
  // NEW 카드의 상단 조리/광고 사진은 상세 대표 이미지로 사용하지 않습니다.
  // 이전 링크 또는 브라우저 캐시가 광고 이미지 주소를 전달해도 실제 상품 패키지로 교정합니다.
